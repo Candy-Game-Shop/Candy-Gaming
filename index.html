@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
     <script>
+        // Configure Tailwind color tokens and fonts for the cream-blush rose-berry boutique theme
         tailwind.config = {
             theme: {
                 extend: {
@@ -43,7 +44,7 @@
     </script>
 
     <style>
-        /* Soft Cream-Blush (#fdf6f7 / #fff9fa / #fff2f4), Alabaster-Pearl & Rose-Berry Boutique Surface */
+        /* Warm Cream-Blush (#fdf6f7 / #fff9fa / #fff2f4), Alabaster-Pearl & Rose-Berry Boutique Surface */
         html, body {
             background-color: #fdf6f7;
             color: #2d1122;
@@ -75,6 +76,7 @@
             box-shadow: 0 10px 22px -8px rgba(219, 39, 119, 0.52);
             transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
         }
+
         .boutique-btn:hover {
             transform: translateY(-1px);
             box-shadow: 0 14px 26px -8px rgba(190, 24, 93, 0.62);
@@ -87,7 +89,7 @@
             -webkit-backdrop-filter: blur(14px);
         }
 
-        /* Boutique Card with Delicate Corner Accents & Soft Layered Shadow */
+        /* Boutique Card with Delicate Corner Accents & Layered Soft Shadow */
         .boutique-card {
             position: relative;
             background: linear-gradient(180deg, #ffffff 0%, #fff2f4 100%);
@@ -97,6 +99,7 @@
                 0 2px 6px -1px rgba(219, 39, 119, 0.06);
             transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
         }
+
         .boutique-card:hover {
             transform: translateY(-3px);
             border-color: rgba(219, 39, 119, 0.35);
@@ -133,11 +136,12 @@
             z-index: 5;
         }
 
-        /* Non-blocking modal rule: closed modals never block screen or pointer events */
+        /* Non-blocking modal rule: closed modals never block clicks or screen space */
         .boutique-modal {
             display: none;
             pointer-events: none;
         }
+
         .boutique-modal.is-open {
             display: flex;
             pointer-events: auto;
@@ -147,9 +151,11 @@
             width: 6px;
             height: 6px;
         }
+
         ::-webkit-scrollbar-track {
             background: #fff2f4;
         }
+
         ::-webkit-scrollbar-thumb {
             background: rgba(219, 39, 119, 0.32);
             border-radius: 9999px;
@@ -162,7 +168,7 @@
     <header class="sticky top-0 z-40 pearl-header border-b border-rose-200/80 shadow-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
             <!-- Brand Logo (Clicking returns to #landingView) -->
-            <div class="flex items-center gap-3 cursor-pointer" onclick="showLandingView()">
+            <div id="brandLogoBtn" class="flex items-center gap-3 cursor-pointer" role="button" tabindex="0" aria-label="Candy Official Gaming Home">
                 <div class="relative w-11 h-11 rounded-full overflow-hidden border-2 border-rose-300 bg-blush shadow-xs flex-shrink-0">
                     <img src="IMG_20261123_150211_100.jpg"
                          alt="Candy Official Gaming"
@@ -195,7 +201,6 @@
                 <!-- Secret-gated Admin Panel button (hidden for normal buyers) -->
                 <button type="button"
                         id="headerAdminBtn"
-                        onclick="openAdminPanel()"
                         class="hidden items-center gap-1.5 px-3.5 py-2 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-xs font-bold cursor-pointer transition-all">
                     <i class="fa-solid fa-key text-xs text-champagne"></i>
                     <span id="adminBtnText">Admin</span>
@@ -230,7 +235,6 @@
                         <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
                             <button type="button"
                                     id="enterMlbbCatalogBtn"
-                                    onclick="openCatalogView()"
                                     class="w-full sm:w-auto px-6 py-3.5 rounded-full boutique-btn text-xs sm:text-sm font-bold cute-font cursor-pointer flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-crown"></i>
                                 <span>Mobile Legend အကောင့်များကြည့်ရန်</span>
@@ -264,7 +268,7 @@
                         </p>
 
                         <button type="button"
-                                onclick="openCatalogView()"
+                                id="secondaryCatalogBtn"
                                 class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-petal text-berry border border-rose-200 text-xs font-bold cute-font cursor-pointer flex items-center justify-center gap-1.5 transition-all">
                             <span>MLBB Account များ ကြည့်ရန်</span>
                             <i class="fa-solid fa-chevron-right text-[10px]"></i>
@@ -289,7 +293,7 @@
                 </div>
 
                 <button type="button"
-                        onclick="showLandingView()"
+                        id="backToLandingBtn"
                         class="self-start sm:self-auto px-4 py-2.5 rounded-full bg-white hover:bg-blush text-wine border border-rose-200 text-xs font-bold cute-font cursor-pointer flex items-center gap-2 shadow-xs transition-all">
                     <i class="fa-solid fa-arrow-left text-magenta"></i>
                     <span>← ကြိုဆိုစာမျက်နှာသို့</span>
@@ -302,7 +306,6 @@
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-magenta/70 text-xs"></i>
                     <input type="text"
                            id="searchDesktop"
-                           oninput="syncSearch('desktop')"
                            placeholder="Account Code, High Rank, Star, Skin, Highlight ရှာဖွေပါ..."
                            class="w-full bg-white border border-rose-200 focus:border-magenta text-sm rounded-full pl-10 pr-4 py-2.5 text-wine placeholder-espresso/45 focus:outline-none focus:ring-2 focus:ring-rose-200 transition-all">
                 </div>
@@ -311,7 +314,6 @@
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-magenta/70 text-xs"></i>
                     <input type="text"
                            id="searchMobile"
-                           oninput="syncSearch('mobile')"
                            placeholder="Account Code, High Rank, Skin, Highlight ရှာပါ..."
                            class="w-full bg-white border border-rose-200 focus:border-magenta text-xs rounded-full pl-10 pr-4 py-2.5 text-wine placeholder-espresso/45 focus:outline-none focus:ring-2 focus:ring-rose-200 transition-all">
                 </div>
@@ -321,19 +323,19 @@
                     <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-bold cute-font">
                         <button type="button"
                                 id="chip-ALL"
-                                onclick="setFilterChip('ALL')"
+                                data-filter="ALL"
                                 class="filter-chip px-4 py-2.5 rounded-full boutique-btn cursor-pointer whitespace-nowrap">
                             <i class="fa-solid fa-layer-group mr-1"></i> အားလုံး (All)
                         </button>
                         <button type="button"
                                 id="chip-AVAILABLE"
-                                onclick="setFilterChip('AVAILABLE')"
+                                data-filter="AVAILABLE"
                                 class="filter-chip px-4 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer whitespace-nowrap transition-all">
                             <i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> ဝယ်ယူနိုင်သည်များ
                         </button>
                         <button type="button"
                                 id="chip-HIGH_RANK"
-                                onclick="setFilterChip('HIGH_RANK')"
+                                data-filter="HIGH_RANK"
                                 class="filter-chip px-4 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer whitespace-nowrap transition-all">
                             <i class="fa-solid fa-crown text-champagne mr-1"></i> High Rank
                         </button>
@@ -342,7 +344,6 @@
                     <div class="flex items-center justify-between md:justify-end gap-2.5 text-xs">
                         <span id="catalogCountText" class="text-espresso/75 font-semibold cute-font">0 Accounts</span>
                         <select id="sortSelect"
-                                onchange="renderCatalogGrid()"
                                 class="bg-white border border-rose-200 text-wine rounded-full px-3.5 py-2 text-xs font-medium focus:outline-none focus:border-magenta">
                             <option value="newest">အသစ်ဆုံး (Newest)</option>
                             <option value="price-low">ဈေးနှုန်း: နည်းမှ အများ</option>
@@ -366,7 +367,7 @@
                 </p>
                 <div class="pt-2">
                     <button type="button"
-                            onclick="resetCatalogFilters()"
+                            id="resetFiltersBtn"
                             class="px-5 py-2.5 rounded-full bg-blush hover:bg-petal text-berry border border-rose-200 text-xs font-bold cute-font cursor-pointer transition-all">
                         Filter များ ပြန်ရှင်းမည်
                     </button>
@@ -378,7 +379,7 @@
     <!-- FOOTER -->
     <footer class="mt-14 pearl-header border-t border-rose-200/80 py-7 text-espresso/75">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-            <div class="flex items-center gap-2.5 cursor-pointer" onclick="showLandingView()">
+            <div id="footerBrandBtn" class="flex items-center gap-2.5 cursor-pointer" role="button" tabindex="0" aria-label="Return to welcome screen">
                 <img src="IMG_20261123_150211_100.jpg"
                      alt="Candy Official Gaming"
                      onerror="this.onerror=null;this.src='https://placehold.co/80x80/fff2f4/be185d?text=COG';"
@@ -396,7 +397,6 @@
                 </a>
                 <a id="footerAdminLink"
                    href="javascript:void(0)"
-                   onclick="openAdminPanel()"
                    class="hidden hover:text-amber-700 font-semibold transition-colors items-center gap-1">
                     <i class="fa-solid fa-lock text-champagne"></i> Admin
                 </a>
@@ -406,11 +406,10 @@
 
     <!-- 3. ACCOUNT DETAIL MODAL (#accountModal - NON-BLOCKING WHEN CLOSED) -->
     <div id="accountModal"
-         class="boutique-modal fixed inset-0 z-50 items-center justify-center p-4 bg-wine/55 backdrop-blur-xs overflow-y-auto"
-         onclick="if(event.target === this) closeBoutiqueModal('accountModal')">
+         class="boutique-modal fixed inset-0 z-50 items-center justify-center p-4 bg-wine/55 backdrop-blur-xs overflow-y-auto">
         <div class="relative w-full max-w-3xl boutique-card rounded-3xl overflow-hidden shadow-2xl my-8">
             <button type="button"
-                    onclick="closeBoutiqueModal('accountModal')"
+                    id="closeAccountModalBtn"
                     aria-label="Close account modal"
                     class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/95 hover:bg-magenta text-wine hover:text-white border border-rose-200 flex items-center justify-center cursor-pointer shadow-xs transition-all">
                 <i class="fa-solid fa-xmark"></i>
@@ -421,8 +420,7 @@
 
     <!-- 4. SECRET-GATED ADMIN PANEL (#adminModal - NON-BLOCKING WHEN CLOSED) -->
     <div id="adminModal"
-         class="boutique-modal fixed inset-0 z-50 items-center justify-center p-4 bg-wine/60 backdrop-blur-xs overflow-y-auto"
-         onclick="if(event.target === this) closeBoutiqueModal('adminModal')">
+         class="boutique-modal fixed inset-0 z-50 items-center justify-center p-4 bg-wine/60 backdrop-blur-xs overflow-y-auto">
         <div class="relative w-full max-w-4xl boutique-card rounded-3xl overflow-hidden shadow-2xl my-8">
             <div class="flex items-center justify-between px-6 py-4 bg-blush border-b border-rose-200/80">
                 <div class="flex items-center gap-2">
@@ -432,7 +430,7 @@
                     </h2>
                 </div>
                 <button type="button"
-                        onclick="closeBoutiqueModal('adminModal')"
+                        id="closeAdminModalBtn"
                         aria-label="Close admin modal"
                         class="text-espresso/75 hover:text-magenta text-base cursor-pointer">
                     <i class="fa-solid fa-xmark"></i>
@@ -448,7 +446,7 @@
                     <h3 class="text-xl font-bold cute-font text-wine">Admin Sign In</h3>
                     <p class="text-xs text-espresso/75">Firebase Admin Email နှင့် Password ဖြင့် ဝင်ရောက်ပါ</p>
                 </div>
-                <form onsubmit="handleAdminSignIn(event)" class="space-y-3.5 text-left">
+                <form id="adminLoginForm" class="space-y-3.5 text-left">
                     <div>
                         <label class="block text-xs font-semibold text-espresso mb-1">Admin Email</label>
                         <input type="email"
@@ -479,19 +477,19 @@
                     <div class="flex flex-wrap items-center gap-2 cute-font">
                         <button type="button"
                                 id="adminTab-list"
-                                onclick="switchAdminTab('list')"
+                                data-tab="list"
                                 class="admin-tab px-4 py-2 rounded-full text-xs font-bold boutique-btn cursor-pointer">
                             <i class="fa-solid fa-list mr-1"></i> Accounts (<span id="adminTotalCount">0</span>)
                         </button>
                         <button type="button"
                                 id="adminTab-form"
-                                onclick="switchAdminTab('form')"
+                                data-tab="form"
                                 class="admin-tab px-4 py-2 rounded-full text-xs font-bold bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer">
                             <i class="fa-solid fa-plus mr-1"></i> Account ထည့် / ပြင်ရန်
                         </button>
                         <button type="button"
                                 id="adminTab-security"
-                                onclick="switchAdminTab('security')"
+                                data-tab="security"
                                 class="admin-tab px-4 py-2 rounded-full text-xs font-bold bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer">
                             <i class="fa-solid fa-shield-halved mr-1"></i> Security
                         </button>
@@ -500,7 +498,7 @@
                     <div class="flex items-center gap-3">
                         <span id="adminActiveEmail" class="hidden sm:inline text-xs text-espresso/75"></span>
                         <button type="button"
-                                onclick="handleAdminSignOut()"
+                                id="adminLogoutBtn"
                                 class="px-3 py-1.5 rounded-full bg-rose-50 hover:bg-rose-100 text-berry border border-rose-200 text-xs font-bold cursor-pointer">
                             <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
                         </button>
@@ -534,13 +532,13 @@
                             <i class="fa-solid fa-sparkles text-magenta mr-1"></i> MLBB Account အသစ်ထည့်မည်
                         </h3>
                         <button type="button"
-                                onclick="resetAccountForm()"
+                                id="clearAccountFormBtn"
                                 class="text-xs text-espresso/75 hover:text-magenta cursor-pointer">
                             Form ရှင်းမည်
                         </button>
                     </div>
 
-                    <form onsubmit="handleAccountSave(event)" class="space-y-4">
+                    <form id="accountEditorForm" class="space-y-4">
                         <input type="hidden" id="editingAccountId">
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -645,7 +643,6 @@
                                            id="accPhotosInput"
                                            accept="image/*"
                                            multiple
-                                           onchange="handleAccPhotosUpload(event)"
                                            class="hidden">
                                 </label>
                                 <span class="text-[11px] text-espresso/70">ပုံများစွာ ရွေးချယ်၍ Slider အဖြစ် ပြသနိုင်ပါသည်။</span>
@@ -664,7 +661,7 @@
                                 <i class="fa-solid fa-floppy-disk mr-1"></i> သိမ်းဆည်းမည်
                             </button>
                             <button type="button"
-                                    onclick="switchAdminTab('list')"
+                                    id="cancelAccountEditBtn"
                                     class="px-4 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 text-xs cursor-pointer">
                                 မလုပ်တော့ပါ
                             </button>
@@ -681,7 +678,7 @@
                             Password Reset Link ကို လက်ရှိ Admin Email သို့ ပို့လိုပါက အောက်ပါခလုတ်ကို နှိပ်ပါ။
                         </p>
                         <button type="button"
-                                onclick="handlePasswordReset()"
+                                id="sendResetEmailBtn"
                                 class="px-4 py-2 rounded-full bg-blush hover:bg-petal text-berry border border-rose-200 font-bold text-xs cursor-pointer transition-all">
                             <i class="fa-solid fa-envelope mr-1"></i> Password Reset Email ပို့မည်
                         </button>
@@ -693,8 +690,7 @@
 
     <!-- DELETE CONFIRMATION MODAL (NON-BLOCKING WHEN CLOSED) -->
     <div id="deleteModal"
-         class="boutique-modal fixed inset-0 z-50 items-center justify-center p-4 bg-wine/60 backdrop-blur-xs"
-         onclick="if(event.target === this) closeBoutiqueModal('deleteModal')">
+         class="boutique-modal fixed inset-0 z-50 items-center justify-center p-4 bg-wine/60 backdrop-blur-xs">
         <div class="boutique-card rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl border border-rose-300">
             <div class="w-12 h-12 mx-auto rounded-full bg-rose-100 text-berry flex items-center justify-center text-xl">
                 <i class="fa-solid fa-triangle-exclamation"></i>
@@ -710,7 +706,7 @@
                     ဖျက်ပစ်မည်
                 </button>
                 <button type="button"
-                        onclick="closeBoutiqueModal('deleteModal')"
+                        id="cancelDeleteBtn"
                         class="flex-1 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 text-xs font-semibold cursor-pointer transition-all">
                     မဖျက်တော့ပါ
                 </button>
@@ -742,7 +738,7 @@
             sendPasswordResetEmail
         } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
-        // Firebase Configuration (candy-shop-a365d)
+        // Firebase Configuration for Candy Official Gaming (candy-shop-a365d)
         const firebaseConfig = {
             apiKey: "AIzaSyDcOqqy9EP1xkFdOe0xh4kt4TMPWEOz_nA",
             authDomain: "candy-shop-a365d.firebaseapp.com",
@@ -756,295 +752,308 @@
         const mlbbCollection = collection(db, "mlbb_accounts");
         const visitLogsCollection = collection(db, "visit_logs");
 
-        // Secret gate for Admin Panel (?admin=kify2026 or #admin-kify2026)
-        const ADMIN_SECRET_KEY = "kify2026";
+        // Secret gate for Admin Panel (?admin=candy2026 or #admin-candy2026)
+        const ADMIN_SECRET_KEY = "candy2026";
         const TOMBSTONE_STORAGE_KEY = "candy_gaming_deleted_mlbb_ids_v1";
 
         let accountsList = [];
-        let activeFilterChip = "ALL";
-        let currentAdminUser = null;
-        let uploadedDraftPhotos = [];
-        let sliderPhotos = [];
-        let activeSlideIndex = 0;
+        let activeFilter = "ALL";
+        let currentUser = null;
         let pendingDeleteId = null;
+        let formPhotos = [];
+        let modalSlides = [];
+        let currentSlideIndex = 0;
 
-        // Tombstone set persisted in localStorage so deleted items never reappear on reload
-        function loadDeletedIds() {
+        /**
+         * Safely reads tombstone-deleted account IDs so removed accounts do not reappear.
+         */
+        function getTombstoneIds() {
             try {
                 const raw = localStorage.getItem(TOMBSTONE_STORAGE_KEY);
                 const parsed = raw ? JSON.parse(raw) : [];
-                return new Set(Array.isArray(parsed) ? parsed.map(String) : []);
-            } catch (_) {
-                return new Set();
+                return Array.isArray(parsed) ? parsed.map(String) : [];
+            } catch (_err) {
+                return [];
             }
         }
 
-        let deletedIds = loadDeletedIds();
-
-        function saveDeletedIds() {
+        /**
+         * Persists a deleted account ID to the local tombstone list.
+         */
+        function addTombstoneId(id) {
             try {
-                localStorage.setItem(TOMBSTONE_STORAGE_KEY, JSON.stringify(Array.from(deletedIds)));
-            } catch (_) {}
+                const current = new Set(getTombstoneIds());
+                current.add(String(id));
+                localStorage.setItem(TOMBSTONE_STORAGE_KEY, JSON.stringify([...current]));
+            } catch (_err) {
+                // Ignore storage quota or private mode issues
+            }
         }
 
-        function markDeleted(id) {
-            if (!id) return;
-            deletedIds.add(String(id));
-            saveDeletedIds();
+        /**
+         * Removes an account ID from tombstones when newly saved or edited.
+         */
+        function clearTombstoneId(id) {
+            try {
+                const filtered = getTombstoneIds().filter((item) => String(item) !== String(id));
+                localStorage.setItem(TOMBSTONE_STORAGE_KEY, JSON.stringify(filtered));
+            } catch (_err) {
+                // Ignore storage errors
+            }
         }
 
-        function unmarkDeleted(id) {
-            if (!id) return;
-            deletedIds.delete(String(id));
-            saveDeletedIds();
-        }
-
-        function hasSecretAdminKey() {
+        /**
+         * Checks whether the current URL carries the secret Admin key.
+         */
+        function isAdminSecretUnlocked() {
             try {
                 const params = new URLSearchParams(window.location.search);
-                const queryKey = params.get("admin");
-                const hashKey = (window.location.hash || "").replace(/^#/, "");
-                return (
-                    queryKey === ADMIN_SECRET_KEY ||
-                    hashKey === `admin-${ADMIN_SECRET_KEY}` ||
-                    hashKey === ADMIN_SECRET_KEY
-                );
-            } catch (_) {
-                return false;
+                const queryMatch = params.get("admin") === ADMIN_SECRET_KEY;
+                const hashValue = (window.location.hash || "").replace(/^#/, "").trim();
+                const hashMatch =
+                    hashValue === `admin-${ADMIN_SECRET_KEY}` ||
+                    hashValue === `admin=${ADMIN_SECRET_KEY}` ||
+                    hashValue === ADMIN_SECRET_KEY;
+                return queryMatch || hashMatch || Boolean(currentUser);
+            } catch (_err) {
+                return Boolean(currentUser);
             }
         }
 
+        /**
+         * Shows or hides Admin entry controls based on secret gate or active auth session.
+         */
         function syncAdminGateVisibility() {
-            const allowed = hasSecretAdminKey();
+            const unlocked = isAdminSecretUnlocked();
             const headerBtn = document.getElementById("headerAdminBtn");
             const footerLink = document.getElementById("footerAdminLink");
-            const adminModal = document.getElementById("adminModal");
+            const btnText = document.getElementById("adminBtnText");
 
             if (headerBtn) {
-                headerBtn.classList.toggle("hidden", !allowed);
-                headerBtn.classList.toggle("inline-flex", allowed);
+                if (unlocked) {
+                    headerBtn.classList.remove("hidden");
+                    headerBtn.classList.add("inline-flex");
+                } else {
+                    headerBtn.classList.add("hidden");
+                    headerBtn.classList.remove("inline-flex");
+                }
             }
+
             if (footerLink) {
-                footerLink.classList.toggle("hidden", !allowed);
-                footerLink.classList.toggle("inline-flex", allowed);
+                if (unlocked) {
+                    footerLink.classList.remove("hidden");
+                    footerLink.classList.add("inline-flex");
+                } else {
+                    footerLink.classList.add("hidden");
+                    footerLink.classList.remove("inline-flex");
+                }
             }
-            if (!allowed && adminModal) {
-                closeBoutiqueModal("adminModal");
+
+            if (btnText) {
+                btnText.textContent = currentUser ? "Admin Studio" : "Admin";
             }
         }
 
-        function escapeHtml(text) {
-            return String(text ?? "")
+        /**
+         * Displays a non-blocking notification toast.
+         */
+        function showToast(message, type = "info") {
+            const container = document.getElementById("toastContainer");
+            if (!container) return;
+
+            const colorClasses =
+                type === "error"
+                    ? "bg-rose-700 text-white border-rose-500"
+                    : type === "success"
+                        ? "bg-emerald-700 text-white border-emerald-500"
+                        : "bg-wine text-white border-rose-300";
+
+            const toast = document.createElement("div");
+            toast.className = `px-4 py-2.5 rounded-2xl border shadow-lg text-xs font-semibold cute-font flex items-center gap-2 transition-all ${colorClasses}`;
+            toast.innerHTML = `<i class="fa-solid ${type === "error" ? "fa-circle-xmark" : type === "success" ? "fa-circle-check" : "fa-sparkles"}"></i><span>${escapeHtml(message)}</span>`;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                toast.style.transform = "translateY(8px)";
+                setTimeout(() => toast.remove(), 220);
+            }, 2800);
+        }
+
+        /**
+         * Escapes HTML strings safely for template interpolation.
+         */
+        function escapeHtml(str) {
+            return String(str ?? "")
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
                 .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;");
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
         }
 
-        function normalizeTgUsername(raw) {
-            const cleaned = String(raw || "CandyGaming8")
-                .trim()
-                .replace(/^@/, "")
-                .replace(/^https?:\/\/(t\.me|telegram\.me)\//i, "")
-                .split(/[/?#]/)[0]
-                .trim();
-            return cleaned || "CandyGaming8";
+        /**
+         * Formats numbers into Myanmar Kyat currency strings.
+         */
+        function formatMMK(amount) {
+            const num = Number(amount);
+            if (!Number.isFinite(num) || num <= 0) return "ဆက်သွယ်မေးမြန်းရန်";
+            return `${num.toLocaleString("en-US")} MMK`;
         }
 
-        async function logBuyerVisit() {
-            if (hasSecretAdminKey()) return;
-            const flagKey = "candy_mlbb_visit_logged_v1";
-            if (sessionStorage.getItem(flagKey)) return;
-            sessionStorage.setItem(flagKey, "1");
-            try {
-                await addDoc(visitLogsCollection, {
-                    timestamp: Date.now(),
-                    screen: `${window.innerWidth}x${window.innerHeight}`,
-                    referrer: document.referrer ? document.referrer.slice(0, 120) : "Direct"
-                });
-            } catch (_) {
-                // Non-blocking
+        /**
+         * Opens a modal using explicit pointer-events & flex state.
+         */
+        function openBoutiqueModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.add("is-open");
+            modal.setAttribute("aria-hidden", "false");
+        }
+
+        /**
+         * Closes a modal and guarantees zero screen or click blocking.
+         */
+        function closeBoutiqueModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.remove("is-open");
+            modal.setAttribute("aria-hidden", "true");
+            if (modalId === "deleteModal") {
+                pendingDeleteId = null;
             }
         }
 
-        function compressImageFile(file) {
-            return new Promise((resolve) => {
-                const reader = new FileReader();
-                reader.onload = (ev) => {
-                    const img = new Image();
-                    img.onload = () => {
-                        const maxDimension = 800;
-                        let width = img.width;
-                        let height = img.height;
-                        if (width > maxDimension || height > maxDimension) {
-                            if (width >= height) {
-                                height = Math.round((height * maxDimension) / width);
-                                width = maxDimension;
-                            } else {
-                                width = Math.round((width * maxDimension) / height);
-                                height = maxDimension;
-                            }
-                        }
-                        const canvas = document.createElement("canvas");
-                        canvas.width = width;
-                        canvas.height = height;
-                        const ctx = canvas.getContext("2d");
-                        ctx.drawImage(img, 0, 0, width, height);
-                        resolve(canvas.toDataURL("image/jpeg", 0.74));
-                    };
-                    img.onerror = () => resolve(ev.target.result);
-                    img.src = ev.target.result;
-                };
-                reader.onerror = () => resolve(null);
-                reader.readAsDataURL(file);
-            });
+        /**
+         * Step 1 View: Displays the landing welcome screen (#landingView) and hides catalog (#catalogSection).
+         */
+        function showLandingView() {
+            const landing = document.getElementById("landingView");
+            const catalog = document.getElementById("catalogSection");
+            if (landing) landing.classList.remove("hidden");
+            if (catalog) catalog.classList.add("hidden");
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
-        function fitPhotosToFirestore(photos, maxChars = 900000) {
-            const selected = [];
-            let totalChars = 0;
-            for (const photo of photos) {
-                if (typeof photo !== "string" || !photo) continue;
-                if (selected.length > 0 && totalChars + photo.length > maxChars) break;
-                selected.push(photo);
-                totalChars += photo.length;
-            }
-            return selected;
-        }
-
-        function subscribeToMlbbAccounts() {
-            onSnapshot(mlbbCollection, (snapshot) => {
-                const items = [];
-                snapshot.forEach((docSnap) => {
-                    if (deletedIds.has(docSnap.id)) return;
-                    items.push({ id: docSnap.id, ...docSnap.data() });
-                });
-                accountsList = items;
-                renderCatalogGrid();
-                if (currentAdminUser) {
-                    renderAdminAccountsTable();
-                }
-            }, (error) => {
-                console.error("Firestore subscription error:", error);
-                renderCatalogGrid();
-            });
-        }
-
-        function subscribeToAdminAuth() {
-            onAuthStateChanged(auth, (user) => {
-                currentAdminUser = user || null;
-                const btnText = document.getElementById("adminBtnText");
-                const emailLabel = document.getElementById("adminActiveEmail");
-                const secEmail = document.getElementById("securityEmailText");
-                const loginBox = document.getElementById("adminLoginView");
-                const dashBox = document.getElementById("adminDashboardView");
-
-                if (currentAdminUser) {
-                    if (btnText) btnText.textContent = "Admin (Active)";
-                    if (emailLabel) emailLabel.textContent = currentAdminUser.email || "";
-                    if (secEmail) secEmail.textContent = currentAdminUser.email || "-";
-                    if (loginBox) loginBox.classList.add("hidden");
-                    if (dashBox) dashBox.classList.remove("hidden");
-                    renderAdminAccountsTable();
-                } else {
-                    if (btnText) btnText.textContent = "Admin";
-                    if (emailLabel) emailLabel.textContent = "";
-                    if (secEmail) secEmail.textContent = "-";
-                    if (loginBox) loginBox.classList.remove("hidden");
-                    if (dashBox) dashBox.classList.add("hidden");
-                }
-                syncAdminGateVisibility();
-            });
-        }
-
-        // View Navigation: #landingView first, #catalogSection revealed on button click
-        window.openCatalogView = function() {
+        /**
+         * Step 2 View: Reveals the MLBB catalog (#catalogSection) and hides welcome screen (#landingView).
+         */
+        function openCatalogView() {
             const landing = document.getElementById("landingView");
             const catalog = document.getElementById("catalogSection");
             if (landing) landing.classList.add("hidden");
             if (catalog) catalog.classList.remove("hidden");
             renderCatalogGrid();
             window.scrollTo({ top: 0, behavior: "smooth" });
-        };
+        }
 
-        window.showLandingView = function() {
-            const landing = document.getElementById("landingView");
-            const catalog = document.getElementById("catalogSection");
-            if (catalog) catalog.classList.add("hidden");
-            if (landing) landing.classList.remove("hidden");
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        };
-
-        window.syncSearch = function(source) {
-            const desk = document.getElementById("searchDesktop");
-            const mob = document.getElementById("searchMobile");
-            if (source === "desktop" && desk && mob) mob.value = desk.value;
-            if (source === "mobile" && desk && mob) desk.value = mob.value;
-            renderCatalogGrid();
-        };
-
-        window.setFilterChip = function(chip) {
-            activeFilterChip = chip;
-            document.querySelectorAll(".filter-chip").forEach((el) => {
-                el.className = "filter-chip px-4 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer whitespace-nowrap transition-all";
-            });
-            const active = document.getElementById(`chip-${chip}`);
-            if (active) {
-                active.className = "filter-chip px-4 py-2.5 rounded-full boutique-btn cursor-pointer whitespace-nowrap";
+        /**
+         * Synchronizes desktop and mobile search inputs and re-renders the catalog.
+         */
+        function syncSearch(source) {
+            const desktop = document.getElementById("searchDesktop");
+            const mobile = document.getElementById("searchMobile");
+            if (source === "desktop" && desktop && mobile) {
+                mobile.value = desktop.value;
+            } else if (source === "mobile" && desktop && mobile) {
+                desktop.value = mobile.value;
             }
             renderCatalogGrid();
-        };
+        }
 
-        window.resetCatalogFilters = function() {
-            const desk = document.getElementById("searchDesktop");
-            const mob = document.getElementById("searchMobile");
-            const sort = document.getElementById("sortSelect");
-            if (desk) desk.value = "";
-            if (mob) mob.value = "";
-            if (sort) sort.value = "newest";
+        /**
+         * Updates active filter chip styling and re-renders the catalog.
+         */
+        function setFilterChip(filterKey) {
+            activeFilter = filterKey;
+            const chips = document.querySelectorAll(".filter-chip");
+            chips.forEach((chip) => {
+                const isSelected = chip.getAttribute("data-filter") === filterKey;
+                if (isSelected) {
+                    chip.className = "filter-chip px-4 py-2.5 rounded-full boutique-btn cursor-pointer whitespace-nowrap";
+                } else {
+                    chip.className = "filter-chip px-4 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer whitespace-nowrap transition-all";
+                }
+            });
+            renderCatalogGrid();
+        }
+
+        /**
+         * Resets search query, filter chip, and sort dropdown.
+         */
+        function resetCatalogFilters() {
+            const desktop = document.getElementById("searchDesktop");
+            const mobile = document.getElementById("searchMobile");
+            const sortSelect = document.getElementById("sortSelect");
+            if (desktop) desktop.value = "";
+            if (mobile) mobile.value = "";
+            if (sortSelect) sortSelect.value = "newest";
             setFilterChip("ALL");
-        };
+        }
 
-        window.renderCatalogGrid = function() {
+        /**
+         * Returns true when an account's rank/title indicates a high-rank MLBB account.
+         */
+        function isHighRankAccount(acc) {
+            const haystack = `${acc.rank || ""} ${acc.title || ""} ${(acc.highlights || []).join(" ")}`.toLowerCase();
+            if (haystack.includes("high rank") || haystack.includes("immortal") || haystack.includes("glory") || haystack.includes("mythic")) {
+                const starMatch = haystack.match(/(\d+)\s*★|star\s*(\d+)/i);
+                if (starMatch) {
+                    const stars = parseInt(starMatch[1] || starMatch[2] || "0", 10);
+                    return stars >= 50;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        /**
+         * Filters and sorts MLBB accounts and renders the responsive grid.
+         */
+        function renderCatalogGrid() {
             const grid = document.getElementById("catalogGrid");
             const emptyState = document.getElementById("emptyCatalogState");
             const countText = document.getElementById("catalogCountText");
-            if (!grid || !emptyState) return;
+            if (!grid || !emptyState || !countText) return;
 
-            const dVal = (document.getElementById("searchDesktop")?.value || "").trim().toLowerCase();
-            const mVal = (document.getElementById("searchMobile")?.value || "").trim().toLowerCase();
-            const query = dVal || mVal;
-            const sortMode = document.getElementById("sortSelect")?.value || "newest";
+            const tombstones = new Set(getTombstoneIds());
+            const query = (
+                document.getElementById("searchDesktop")?.value ||
+                document.getElementById("searchMobile")?.value ||
+                ""
+            ).trim().toLowerCase();
+            const sortBy = document.getElementById("sortSelect")?.value || "newest";
 
-            const filtered = accountsList.filter((item) => {
-                if (deletedIds.has(item.id)) return false;
-                if (activeFilterChip === "AVAILABLE" && item.status === "SOLD") return false;
-                if (activeFilterChip === "HIGH_RANK" && !/high\s*rank|mythic|glory|immortal|★/i.test(String(item.rank || ""))) {
-                    return false;
-                }
-                if (query) {
-                    const hay = [
-                        item.title,
-                        item.rank,
-                        item.description,
-                        ...(Array.isArray(item.highlights) ? item.highlights : [])
+            let filtered = accountsList.filter((acc) => !tombstones.has(String(acc.id)));
+
+            if (activeFilter === "AVAILABLE") {
+                filtered = filtered.filter((acc) => (acc.status || "AVAILABLE").toUpperCase() === "AVAILABLE");
+            } else if (activeFilter === "HIGH_RANK") {
+                filtered = filtered.filter((acc) => isHighRankAccount(acc));
+            }
+
+            if (query) {
+                filtered = filtered.filter((acc) => {
+                    const text = [
+                        acc.title,
+                        acc.rank,
+                        acc.winrate,
+                        acc.description,
+                        ...(Array.isArray(acc.highlights) ? acc.highlights : [])
                     ].join(" ").toLowerCase();
-                    if (!hay.includes(query)) return false;
-                }
-                return true;
-            });
+                    return text.includes(query);
+                });
+            }
 
-            if (sortMode === "price-low") {
+            if (sortBy === "price-low") {
                 filtered.sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
-            } else if (sortMode === "price-high") {
+            } else if (sortBy === "price-high") {
                 filtered.sort((a, b) => Number(b.price || 0) - Number(a.price || 0));
             } else {
-                filtered.sort((a, b) => Number(b.created || 0) - Number(a.created || 0));
+                filtered.sort((a, b) => Number(b.createdAt || 0) - Number(a.createdAt || 0));
             }
 
-            if (countText) {
-                countText.textContent = `${filtered.length} Account${filtered.length === 1 ? "" : "s"}`;
-            }
+            countText.textContent = `${filtered.length} ${filtered.length === 1 ? "Account" : "Accounts"}`;
 
             if (filtered.length === 0) {
                 grid.innerHTML = "";
@@ -1053,655 +1062,838 @@
             }
 
             emptyState.classList.add("hidden");
+
             grid.innerHTML = filtered.map((acc) => {
-                const isSold = acc.status === "SOLD";
-                const imgs = Array.isArray(acc.images) && acc.images.length > 0 ? acc.images : [];
-                const coverImg = imgs[0] || "https://placehold.co/640x380/fff2f4/be185d?text=Candy+Official+Gaming";
-                const priceFormatted = Number(acc.price || 0).toLocaleString();
-                const highlights = Array.isArray(acc.highlights) ? acc.highlights.slice(0, 3) : [];
+                const isSold = (acc.status || "AVAILABLE").toUpperCase() === "SOLD";
+                const photos = Array.isArray(acc.photos) && acc.photos.length > 0
+                    ? acc.photos
+                    : ["https://placehold.co/800x460/fff2f4/be185d?text=Candy+MLBB+Account"];
+                const coverSrc = photos[0];
+                const highlights = Array.isArray(acc.highlights) ? acc.highlights.filter(Boolean) : [];
 
                 return `
                     <article class="boutique-card rounded-3xl overflow-hidden flex flex-col justify-between">
                         <div>
-                            <div class="relative h-48 sm:h-52 bg-blush overflow-hidden cursor-pointer" onclick="openAccountModal('${escapeHtml(acc.id)}')">
-                                <img src="${escapeHtml(coverImg)}"
-                                     alt="${escapeHtml(acc.title)}"
-                                     onerror="this.onerror=null;this.src='https://placehold.co/640x380/fff2f4/be185d?text=Candy+Official+Gaming';"
-                                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            <div class="relative aspect-[16/9] w-full bg-blush overflow-hidden">
+                                <img src="${escapeHtml(coverSrc)}"
+                                     alt="${escapeHtml(acc.title || "MLBB Account")}"
+                                     onerror="this.onerror=null;this.src='https://placehold.co/800x460/fff2f4/be185d?text=Candy+MLBB+Account';"
+                                     class="w-full h-full object-cover">
 
-                                <div class="absolute top-3 left-3">
-                                    ${isSold
-                                        ? `<span class="px-2.5 py-1 rounded-full bg-rose-600 text-white text-[10px] font-bold uppercase tracking-wide shadow-xs">Sold Out</span>`
-                                        : `<span class="px-2.5 py-1 rounded-full bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wide shadow-xs">Available</span>`
-                                    }
-                                </div>
+                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-xs ${
+                                    isSold
+                                        ? "bg-rose-900/90 text-rose-100 border border-rose-400/40"
+                                        : "bg-emerald-600/95 text-white border border-emerald-300/50"
+                                }">
+                                    ${isSold ? "SOLD OUT" : "AVAILABLE"}
+                                </span>
 
-                                <div class="absolute top-3 right-3">
-                                    <span class="px-2.5 py-1 rounded-full bg-white/95 text-wine border border-rose-200 text-[11px] font-bold cute-font shadow-xs">
-                                        ${escapeHtml(acc.rank || "MLBB")}
+                                ${acc.rank ? `
+                                    <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-[11px] font-bold bg-white/95 text-wine border border-rose-200 shadow-xs cute-font">
+                                        ${escapeHtml(acc.rank)}
                                     </span>
-                                </div>
+                                ` : ""}
 
-                                ${imgs.length > 1
-                                    ? `<span class="absolute bottom-3 right-3 px-2.5 py-0.5 rounded-full bg-white/90 text-espresso border border-rose-200 text-[10px] font-bold">
-                                           <i class="fa-regular fa-images mr-1 text-magenta"></i>${imgs.length}
-                                       </span>`
-                                    : ""
-                                }
+                                <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full text-[11px] font-bold bg-wine/80 text-white backdrop-blur-xs flex items-center gap-1">
+                                    <i class="fa-regular fa-images text-rose-200"></i> ${photos.length}
+                                </span>
                             </div>
 
-                            <div class="p-5 space-y-3">
-                                <h3 onclick="openAccountModal('${escapeHtml(acc.id)}')"
-                                    class="text-lg font-bold cute-font text-wine hover:text-magenta transition-colors cursor-pointer line-clamp-1">
-                                    ${escapeHtml(acc.title)}
+                            <div class="p-5 space-y-3.5">
+                                <h3 class="text-base sm:text-lg font-bold cute-font text-wine truncate">
+                                    ${escapeHtml(acc.title || "MLBB Account")}
                                 </h3>
 
-                                <div class="grid grid-cols-3 gap-2 bg-blush/80 border border-rose-200/70 rounded-2xl p-2.5 text-center text-xs">
+                                <div class="grid grid-cols-3 gap-2 text-center bg-blush/85 border border-rose-200/70 rounded-2xl p-2.5">
                                     <div>
                                         <p class="text-[10px] text-espresso/65">Skins</p>
-                                        <p class="font-bold text-wine">${Number(acc.skins || 0)}</p>
+                                        <p class="text-xs sm:text-sm font-bold text-wine">${Number(acc.skins || 0)}</p>
                                     </div>
-                                    <div>
+                                    <div class="border-x border-rose-200/70">
                                         <p class="text-[10px] text-espresso/65">Heroes</p>
-                                        <p class="font-bold text-espresso">${Number(acc.heroes || 0)}</p>
+                                        <p class="text-xs sm:text-sm font-bold text-wine">${Number(acc.heroes || 0)}</p>
                                     </div>
                                     <div>
                                         <p class="text-[10px] text-espresso/65">Win Rate</p>
-                                        <p class="font-bold text-berry">${escapeHtml(acc.winrate || "-")}</p>
+                                        <p class="text-xs sm:text-sm font-bold text-berry">${escapeHtml(acc.winrate || "50%+")}</p>
                                     </div>
                                 </div>
 
-                                ${highlights.length > 0
-                                    ? `<div class="flex flex-wrap gap-1.5">
-                                           ${highlights.map((h) => `
-                                               <span class="px-2.5 py-0.5 rounded-full bg-blush text-berry border border-rose-200 text-[10px] font-semibold">
-                                                   <i class="fa-solid fa-heart text-rosecoral text-[9px] mr-1"></i>${escapeHtml(h)}
-                                               </span>
-                                           `).join("")}
-                                       </div>`
-                                    : ""
-                                }
+                                ${highlights.length > 0 ? `
+                                    <div class="flex flex-wrap gap-1.5">
+                                        ${highlights.slice(0, 3).map((tag) => `
+                                            <span class="px-2.5 py-1 rounded-full bg-white text-berry border border-rose-200 text-[11px] font-semibold">
+                                                <i class="fa-solid fa-heart text-rosecoral text-[9px] mr-1"></i>${escapeHtml(tag)}
+                                            </span>
+                                        `).join("")}
+                                    </div>
+                                ` : ""}
                             </div>
                         </div>
 
-                        <div class="px-5 pb-5 pt-3 border-t border-rose-100 flex items-center justify-between gap-3">
+                        <div class="px-5 pb-5 pt-2 flex items-center justify-between gap-3 border-t border-rose-200/60">
                             <div>
                                 <p class="text-[10px] text-espresso/65">ဈေးနှုန်း</p>
-                                <p class="text-base sm:text-lg font-extrabold berry-gradient-text">
-                                    ${priceFormatted} <span class="text-xs font-bold text-champagne">MMK</span>
+                                <p class="text-sm sm:text-base font-extrabold text-berry cute-font">
+                                    ${escapeHtml(formatMMK(acc.price))}
                                 </p>
                             </div>
 
                             <button type="button"
-                                    onclick="openAccountModal('${escapeHtml(acc.id)}')"
-                                    class="px-4 py-2.5 rounded-full ${isSold ? "bg-blush text-espresso/55 border border-rose-200" : "boutique-btn"} text-xs font-bold cute-font cursor-pointer flex items-center gap-1.5">
-                                <span>အသေးစိတ် →</span>
+                                    data-open-account="${escapeHtml(acc.id)}"
+                                    class="open-detail-btn px-4 py-2.5 rounded-full boutique-btn text-xs font-bold cute-font cursor-pointer flex items-center gap-1.5">
+                                <span>အသေးစိတ်</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </button>
                         </div>
                     </article>
                 `;
             }).join("");
-        };
 
-        // Account Detail Modal with Multi-Photo Slider & Telegram Order Button (@CandyGaming8)
-        window.openAccountModal = function(id) {
-            const acc = accountsList.find((a) => a.id === id);
-            if (!acc) return;
+            grid.querySelectorAll(".open-detail-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const id = btn.getAttribute("data-open-account");
+                    if (id) openAccountDetailModal(id);
+                });
+            });
+        }
 
-            const imgs = Array.isArray(acc.images) && acc.images.length > 0
-                ? acc.images
-                : ["https://placehold.co/720x420/fff2f4/be185d?text=Candy+Official+Gaming"];
-            sliderPhotos = imgs;
-            activeSlideIndex = 0;
-
-            const isSold = acc.status === "SOLD";
-            const priceFormatted = Number(acc.price || 0).toLocaleString();
-            const tgUser = normalizeTgUsername(acc.telegram || "CandyGaming8");
-            const orderText = encodeURIComponent(
-                `မင်္ဂလာပါ @${tgUser}၊ Candy Official Gaming မှ MLBB Account [${acc.title}] (${acc.rank || "MLBB"}၊ ဈေးနှုန်း: ${priceFormatted} MMK) ကို ဝယ်ယူလိုပါသည်။`
-            );
-            const tgUrl = `https://t.me/${tgUser}?text=${orderText}`;
-            const highlights = Array.isArray(acc.highlights) ? acc.highlights : [];
-
+        /**
+         * Opens the multi-photo slider detail modal for a selected MLBB account.
+         */
+        function openAccountDetailModal(accountId) {
+            const acc = accountsList.find((item) => String(item.id) === String(accountId));
             const body = document.getElementById("accountModalBody");
-            if (!body) return;
+            if (!acc || !body) return;
+
+            modalSlides = Array.isArray(acc.photos) && acc.photos.length > 0
+                ? acc.photos
+                : ["https://placehold.co/900x520/fff2f4/be185d?text=Candy+MLBB+Account"];
+            currentSlideIndex = 0;
+
+            const isSold = (acc.status || "AVAILABLE").toUpperCase() === "SOLD";
+            const tgHandle = (acc.telegram || "CandyGaming8").replace(/^@/, "") || "CandyGaming8";
+            const orderText = encodeURIComponent(
+                `မင်္ဂလာပါ @${tgHandle} ရှင့်၊ Candy Official Gaming မှ "${acc.title || "MLBB Account"}" (${formatMMK(acc.price)}) ကို ဝယ်ယူလိုပါသည်။`
+            );
+            const highlights = Array.isArray(acc.highlights) ? acc.highlights.filter(Boolean) : [];
 
             body.innerHTML = `
                 <div class="space-y-3">
-                    <div class="relative h-64 sm:h-80 rounded-2xl bg-blush border border-rose-200/80 overflow-hidden">
-                        <img id="sliderMainImg"
-                             src="${escapeHtml(sliderPhotos[0])}"
-                             alt="${escapeHtml(acc.title)}"
-                             onerror="this.onerror=null;this.src='https://placehold.co/720x420/fff2f4/be185d?text=Candy+Official+Gaming';"
-                             class="w-full h-full object-contain">
+                    <div class="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-blush border border-rose-200">
+                        <img id="sliderMainImage"
+                             src="${escapeHtml(modalSlides[0])}"
+                             alt="${escapeHtml(acc.title || "MLBB Account")}"
+                             onerror="this.onerror=null;this.src='https://placehold.co/900x520/fff2f4/be185d?text=Candy+MLBB+Account';"
+                             class="w-full h-full object-cover">
 
-                        ${sliderPhotos.length > 1
-                            ? `<button type="button"
-                                       onclick="stepAccountSlide(-1)"
-                                       aria-label="Previous photo"
-                                       class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/95 hover:bg-magenta text-wine hover:text-white border border-rose-200 flex items-center justify-center cursor-pointer shadow-xs transition-all">
-                                   <i class="fa-solid fa-chevron-left text-xs"></i>
-                               </button>
-                               <button type="button"
-                                       onclick="stepAccountSlide(1)"
-                                       aria-label="Next photo"
-                                       class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/95 hover:bg-magenta text-wine hover:text-white border border-rose-200 flex items-center justify-center cursor-pointer shadow-xs transition-all">
-                                   <i class="fa-solid fa-chevron-right text-xs"></i>
-                               </button>`
-                            : ""
-                        }
-
-                        <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-white/95 text-wine text-xs font-bold border border-rose-200">
-                            <span id="sliderCounterText">1</span> / ${sliderPhotos.length}
-                        </span>
+                        ${modalSlides.length > 1 ? `
+                            <button type="button"
+                                    id="prevSlideBtn"
+                                    aria-label="Previous photo"
+                                    class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 hover:bg-magenta text-wine hover:text-white border border-rose-200 flex items-center justify-center cursor-pointer shadow-xs transition-all">
+                                <i class="fa-solid fa-chevron-left text-xs"></i>
+                            </button>
+                            <button type="button"
+                                    id="nextSlideBtn"
+                                    aria-label="Next photo"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 hover:bg-magenta text-wine hover:text-white border border-rose-200 flex items-center justify-center cursor-pointer shadow-xs transition-all">
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                            <span id="slideCounterBadge"
+                                  class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-wine/85 text-white text-xs font-bold cute-font">
+                                1 / ${modalSlides.length}
+                            </span>
+                        ` : ""}
                     </div>
 
-                    ${sliderPhotos.length > 1
-                        ? `<div class="flex items-center gap-2 overflow-x-auto pb-1">
-                               ${sliderPhotos.map((src, idx) => `
-                                   <img id="sliderThumb-${idx}"
-                                        src="${escapeHtml(src)}"
-                                        onclick="selectAccountSlide(${idx})"
-                                        onerror="this.onerror=null;this.src='https://placehold.co/120x80/fff2f4/be185d?text=Photo';"
-                                        class="w-16 h-12 rounded-xl object-cover cursor-pointer border-2 transition-all ${idx === 0 ? "border-magenta opacity-100" : "border-transparent opacity-60 hover:opacity-100"}">
-                               `).join("")}
-                           </div>`
-                        : ""
-                    }
+                    ${modalSlides.length > 1 ? `
+                        <div id="sliderThumbs" class="flex items-center gap-2 overflow-x-auto pb-1">
+                            ${modalSlides.map((src, idx) => `
+                                <button type="button"
+                                        data-slide-idx="${idx}"
+                                        class="slider-thumb-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all ${
+                                            idx === 0 ? "border-magenta scale-105" : "border-rose-200 opacity-75 hover:opacity-100"
+                                        }">
+                                    <img src="${escapeHtml(src)}"
+                                         alt="Slide ${idx + 1}"
+                                         onerror="this.onerror=null;this.src='https://placehold.co/160x120/fff2f4/be185d?text=IMG';"
+                                         class="w-full h-full object-cover">
+                                </button>
+                            `).join("")}
+                        </div>
+                    ` : ""}
                 </div>
 
-                <div class="space-y-4">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-rose-200/70 pb-3.5">
-                        <div>
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="px-2.5 py-0.5 rounded-full bg-blush text-berry border border-rose-200 text-xs font-bold">
-                                    ${escapeHtml(acc.rank || "MLBB")}
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-rose-200/80 pb-4">
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="text-xl sm:text-2xl font-bold cute-font text-wine">
+                                ${escapeHtml(acc.title || "MLBB Account")}
+                            </h3>
+                            <span class="px-3 py-0.5 rounded-full text-[11px] font-bold ${
+                                isSold
+                                    ? "bg-rose-100 text-berry border border-rose-300"
+                                    : "bg-emerald-100 text-emerald-800 border border-emerald-300"
+                            }">
+                                ${isSold ? "SOLD OUT" : "AVAILABLE"}
+                            </span>
+                        </div>
+                        <p class="text-xs text-espresso/75 mt-1 cute-font">
+                            Rank: <span class="font-bold text-wine">${escapeHtml(acc.rank || "-")}</span>
+                        </p>
+                    </div>
+
+                    <div class="text-left sm:text-right">
+                        <p class="text-[11px] text-espresso/65">ဈေးနှုန်း</p>
+                        <p class="text-xl font-extrabold text-berry cute-font">${escapeHtml(formatMMK(acc.price))}</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3 text-center bg-blush/90 border border-rose-200/80 rounded-2xl p-3.5">
+                    <div>
+                        <p class="text-[11px] text-espresso/70">Total Skins</p>
+                        <p class="text-base font-bold text-wine">${Number(acc.skins || 0)}</p>
+                    </div>
+                    <div class="border-x border-rose-200">
+                        <p class="text-[11px] text-espresso/70">Total Heroes</p>
+                        <p class="text-base font-bold text-wine">${Number(acc.heroes || 0)}</p>
+                    </div>
+                    <div>
+                        <p class="text-[11px] text-espresso/70">Win Rate</p>
+                        <p class="text-base font-bold text-berry">${escapeHtml(acc.winrate || "50%+")}</p>
+                    </div>
+                </div>
+
+                ${highlights.length > 0 ? `
+                    <div class="space-y-1.5">
+                        <p class="text-xs font-bold text-espresso cute-font">Highlight Skins</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            ${highlights.map((item) => `
+                                <span class="px-3 py-1 rounded-full bg-white text-berry border border-rose-200 text-xs font-semibold">
+                                    ${escapeHtml(item)}
                                 </span>
-                                ${isSold
-                                    ? `<span class="px-2.5 py-0.5 rounded-full bg-rose-100 text-berry border border-rose-200 text-xs font-bold">Sold Out</span>`
-                                    : `<span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold">Available</span>`
-                                }
-                            </div>
-                            <h2 class="text-xl sm:text-2xl font-bold cute-font text-wine">${escapeHtml(acc.title)}</h2>
-                        </div>
-                        <div class="sm:text-right">
-                            <p class="text-[11px] text-espresso/65">ဈေးနှုန်း</p>
-                            <p class="text-xl sm:text-2xl font-extrabold berry-gradient-text">
-                                ${priceFormatted} <span class="text-xs font-bold text-champagne">MMK</span>
-                            </p>
+                            `).join("")}
                         </div>
                     </div>
+                ` : ""}
 
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 bg-blush/80 border border-rose-200/70 rounded-2xl p-3 text-center text-xs">
-                        <div>
-                            <p class="text-[10px] text-espresso/65">Skins</p>
-                            <p class="font-bold text-wine text-sm">${Number(acc.skins || 0)}</p>
-                        </div>
-                        <div>
-                            <p class="text-[10px] text-espresso/65">Heroes</p>
-                            <p class="font-bold text-espresso text-sm">${Number(acc.heroes || 0)}</p>
-                        </div>
-                        <div>
-                            <p class="text-[10px] text-espresso/65">Win Rate</p>
-                            <p class="font-bold text-berry text-sm">${escapeHtml(acc.winrate || "-")}</p>
-                        </div>
-                        <div>
-                            <p class="text-[10px] text-espresso/65">Bind Status</p>
-                            <p class="font-bold text-emerald-700 text-sm">Moonton Clean</p>
-                        </div>
+                ${acc.description ? `
+                    <div class="bg-white/90 border border-rose-200/80 rounded-2xl p-4 space-y-1">
+                        <p class="text-xs font-bold text-espresso cute-font">အသေးစိတ် အချက်အလက်</p>
+                        <p class="text-xs sm:text-sm text-espresso/85 whitespace-pre-line leading-relaxed">
+                            ${escapeHtml(acc.description)}
+                        </p>
                     </div>
+                ` : ""}
 
-                    ${highlights.length > 0
-                        ? `<div class="space-y-1.5">
-                               <p class="text-xs font-bold text-wine">Rare Skin Highlights</p>
-                               <div class="flex flex-wrap gap-1.5">
-                                   ${highlights.map((h) => `
-                                       <span class="px-3 py-1 rounded-full bg-blush text-berry border border-rose-200 text-xs font-medium">
-                                           <i class="fa-solid fa-sparkles text-rosecoral text-[10px] mr-1"></i>${escapeHtml(h)}
-                                       </span>
-                                   `).join("")}
-                               </div>
-                           </div>`
-                        : ""
-                    }
-
-                    <div class="bg-blush/70 border border-rose-200/70 rounded-2xl p-3.5 text-xs text-espresso/85 leading-relaxed whitespace-pre-line">
-                        ${escapeHtml(acc.description || "အသေးစိတ် သိလိုပါက @CandyGaming8 Telegram သို့ ဆက်သွယ်မေးမြန်းနိုင်ပါသည်။")}
-                    </div>
-
-                    <div class="pt-1">
-                        ${isSold
-                            ? `<button type="button"
-                                       disabled
-                                       class="w-full py-3.5 rounded-full bg-blush text-espresso/50 border border-rose-200 text-xs sm:text-sm font-bold cursor-not-allowed">
-                                   ဤ Account ကို ရောင်းချပြီးပါပြီ (Sold Out)
-                               </button>`
-                            : `<a href="${escapeHtml(tgUrl)}"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  class="w-full py-3.5 rounded-full boutique-btn text-xs sm:text-sm font-bold cute-font flex items-center justify-center gap-2">
-                                  <i class="fa-brands fa-telegram text-base"></i>
-                                  <span>@${escapeHtml(tgUser)} မှ တိုက်ရိုက် ဝယ်ယူရန်</span>
-                              </a>`
-                        }
-                    </div>
+                <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
+                    <a href="https://t.me/${escapeHtml(tgHandle)}?text=${orderText}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="w-full sm:flex-1 py-3 px-5 rounded-full boutique-btn text-xs sm:text-sm font-bold cute-font flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-telegram text-base"></i>
+                        <span>@${escapeHtml(tgHandle)} မှ တိုက်ရိုက် မှာယူမည်</span>
+                    </a>
+                    <button type="button"
+                            id="detailModalCloseBtn"
+                            class="w-full sm:w-auto px-5 py-3 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 text-xs font-bold cute-font cursor-pointer">
+                        ပိတ်မည်
+                    </button>
                 </div>
             `;
 
-            openBoutiqueModal("accountModal");
-        };
+            const prevBtn = document.getElementById("prevSlideBtn");
+            const nextBtn = document.getElementById("nextSlideBtn");
+            if (prevBtn) prevBtn.addEventListener("click", () => changeDetailSlide(-1));
+            if (nextBtn) nextBtn.addEventListener("click", () => changeDetailSlide(1));
 
-        window.selectAccountSlide = function(idx) {
-            if (!sliderPhotos.length) return;
-            activeSlideIndex = ((idx % sliderPhotos.length) + sliderPhotos.length) % sliderPhotos.length;
-            const imgEl = document.getElementById("sliderMainImg");
-            const cntEl = document.getElementById("sliderCounterText");
-            if (imgEl) imgEl.src = sliderPhotos[activeSlideIndex];
-            if (cntEl) cntEl.textContent = String(activeSlideIndex + 1);
-
-            sliderPhotos.forEach((_, i) => {
-                const thumb = document.getElementById(`sliderThumb-${i}`);
-                if (!thumb) return;
-                thumb.className = i === activeSlideIndex
-                    ? "w-16 h-12 rounded-xl object-cover cursor-pointer border-2 border-magenta opacity-100 transition-all"
-                    : "w-16 h-12 rounded-xl object-cover cursor-pointer border-2 border-transparent opacity-60 hover:opacity-100 transition-all";
+            body.querySelectorAll(".slider-thumb-btn").forEach((thumb) => {
+                thumb.addEventListener("click", () => {
+                    const idx = Number(thumb.getAttribute("data-slide-idx") || 0);
+                    setDetailSlide(idx);
+                });
             });
-        };
 
-        window.stepAccountSlide = function(delta) {
-            selectAccountSlide(activeSlideIndex + delta);
-        };
+            const detailClose = document.getElementById("detailModalCloseBtn");
+            if (detailClose) detailClose.addEventListener("click", () => closeBoutiqueModal("accountModal"));
 
-        window.openBoutiqueModal = function(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) modal.classList.add("is-open");
-        };
+            openBoutiqueModal("accountModal");
+        }
 
-        window.closeBoutiqueModal = function(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) modal.classList.remove("is-open");
-        };
+        /**
+         * Cycles active slide index in the detail modal.
+         */
+        function changeDetailSlide(delta) {
+            if (!modalSlides.length) return;
+            const nextIndex = (currentSlideIndex + delta + modalSlides.length) % modalSlides.length;
+            setDetailSlide(nextIndex);
+        }
 
-        // Secret-Gated Admin Panel Entry
-        window.openAdminPanel = function() {
-            if (!hasSecretAdminKey()) return;
+        /**
+         * Updates the active detail modal image, counter, and thumbnail ring.
+         */
+        function setDetailSlide(index) {
+            if (!modalSlides.length) return;
+            currentSlideIndex = Math.max(0, Math.min(index, modalSlides.length - 1));
+            const img = document.getElementById("sliderMainImage");
+            const counter = document.getElementById("slideCounterBadge");
+            if (img) img.src = modalSlides[currentSlideIndex];
+            if (counter) counter.textContent = `${currentSlideIndex + 1} / ${modalSlides.length}`;
+
+            const thumbs = document.querySelectorAll(".slider-thumb-btn");
+            thumbs.forEach((btn, idx) => {
+                if (idx === currentSlideIndex) {
+                    btn.className = "slider-thumb-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all border-magenta scale-105";
+                } else {
+                    btn.className = "slider-thumb-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all border-rose-200 opacity-75 hover:opacity-100";
+                }
+            });
+        }
+
+        /**
+         * Opens the Admin Studio modal if secret-unlocked or already signed in.
+         */
+        function openAdminPanel() {
+            if (!isAdminSecretUnlocked()) {
+                showToast("Admin access requires the secret link.", "error");
+                return;
+            }
+            refreshAdminAuthUI();
             openBoutiqueModal("adminModal");
-        };
+        }
 
-        window.handleAdminSignIn = async function(e) {
-            e.preventDefault();
-            if (!hasSecretAdminKey()) return;
+        /**
+         * Switches login vs dashboard view inside Admin Studio based on auth state.
+         */
+        function refreshAdminAuthUI() {
+            const loginView = document.getElementById("adminLoginView");
+            const dashView = document.getElementById("adminDashboardView");
+            const activeEmailEl = document.getElementById("adminActiveEmail");
+            const securityEmailEl = document.getElementById("securityEmailText");
 
-            const email = (document.getElementById("adminEmail")?.value || "").trim();
+            if (currentUser) {
+                if (loginView) loginView.classList.add("hidden");
+                if (dashView) dashView.classList.remove("hidden");
+                if (activeEmailEl) activeEmailEl.textContent = currentUser.email || "";
+                if (securityEmailEl) securityEmailEl.textContent = currentUser.email || "-";
+                renderAdminAccountsTable();
+            } else {
+                if (loginView) loginView.classList.remove("hidden");
+                if (dashView) dashView.classList.add("hidden");
+            }
+            syncAdminGateVisibility();
+        }
+
+        /**
+         * Signs in to Firebase Auth for Admin Studio.
+         */
+        async function handleAdminSignIn(event) {
+            event.preventDefault();
+            const email = document.getElementById("adminEmail")?.value.trim() || "";
             const password = document.getElementById("adminPassword")?.value || "";
             const btn = document.getElementById("adminSignInBtn");
 
-            if (btn) {
-                btn.disabled = true;
-                btn.textContent = "Signing in...";
+            if (!email || !password) {
+                showToast("Email နှင့် Password ထည့်သွင်းပါ", "error");
+                return;
             }
 
             try {
+                if (btn) btn.disabled = true;
                 await signInWithEmailAndPassword(auth, email, password);
-                const passEl = document.getElementById("adminPassword");
-                if (passEl) passEl.value = "";
                 showToast("Admin Studio သို့ ဝင်ရောက်ပြီးပါပြီ", "success");
             } catch (err) {
-                console.error("Admin sign-in error:", err);
-                showToast(`Login မအောင်မြင်ပါ (${err?.code || "auth-error"})`, "error");
+                showToast(err?.message || "Sign in failed", "error");
             } finally {
-                if (btn) {
-                    btn.disabled = false;
-                    btn.textContent = "Sign In to Admin Studio";
-                }
+                if (btn) btn.disabled = false;
             }
-        };
+        }
 
-        window.handleAdminSignOut = async function() {
+        /**
+         * Signs out of Firebase Auth.
+         */
+        async function handleAdminSignOut() {
             try {
                 await signOut(auth);
-                closeBoutiqueModal("adminModal");
-                showToast("Logout လုပ်ပြီးပါပြီ", "info");
+                showToast("Logout ပြီးပါပြီ", "info");
             } catch (err) {
-                console.error("Sign-out error:", err);
-                showToast("Logout လုပ်ရာတွင် အမှားရှိနေပါသည်", "error");
+                showToast(err?.message || "Logout failed", "error");
             }
-        };
+        }
 
-        window.handlePasswordReset = async function() {
-            const addr = currentAdminUser?.email || "";
-            if (!addr) {
-                showToast("Admin Email မတွေ့ပါ", "error");
+        /**
+         * Sends a password reset email to the currently signed-in admin.
+         */
+        async function handlePasswordReset() {
+            if (!currentUser?.email) {
+                showToast("Signed-in Admin Email မရှိပါ", "error");
                 return;
             }
             try {
-                await sendPasswordResetEmail(auth, addr);
-                showToast(`Reset link ကို ${addr} သို့ ပို့ပြီးပါပြီ`, "success");
+                await sendPasswordResetEmail(auth, currentUser.email);
+                showToast(`Password reset email sent to ${currentUser.email}`, "success");
             } catch (err) {
-                console.error("Password reset error:", err);
-                showToast("Reset email မပို့နိုင်ပါ", "error");
+                showToast(err?.message || "Failed to send reset email", "error");
             }
-        };
+        }
 
-        window.switchAdminTab = function(tabName) {
-            document.querySelectorAll(".admin-tab").forEach((btn) => {
-                btn.className = "admin-tab px-4 py-2 rounded-full text-xs font-bold bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer";
-            });
-            const activeTab = document.getElementById(`adminTab-${tabName}`);
-            if (activeTab) {
-                activeTab.className = "admin-tab px-4 py-2 rounded-full text-xs font-bold boutique-btn cursor-pointer";
-            }
-
+        /**
+         * Switches active sub-tab inside Admin Studio (list, form, security).
+         */
+        function switchAdminTab(tabName) {
             const panes = ["list", "form", "security"];
-            panes.forEach((p) => {
-                const el = document.getElementById(`adminPane-${p}`);
-                if (el) el.classList.toggle("hidden", p !== tabName);
+            panes.forEach((name) => {
+                const pane = document.getElementById(`adminPane-${name}`);
+                const tabBtn = document.getElementById(`adminTab-${name}`);
+                if (pane) {
+                    if (name === tabName) pane.classList.remove("hidden");
+                    else pane.classList.add("hidden");
+                }
+                if (tabBtn) {
+                    if (name === tabName) {
+                        tabBtn.className = "admin-tab px-4 py-2 rounded-full text-xs font-bold boutique-btn cursor-pointer";
+                    } else {
+                        tabBtn.className = "admin-tab px-4 py-2 rounded-full text-xs font-bold bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer";
+                    }
+                }
             });
-        };
+        }
 
-        window.renderAdminAccountsTable = function() {
+        /**
+         * Renders the Admin Studio accounts management table.
+         */
+        function renderAdminAccountsTable() {
             const tbody = document.getElementById("adminAccountsBody");
-            const countSpan = document.getElementById("adminTotalCount");
+            const countEl = document.getElementById("adminTotalCount");
             if (!tbody) return;
 
-            const rows = accountsList.filter((a) => !deletedIds.has(a.id));
-            if (countSpan) countSpan.textContent = String(rows.length);
+            const tombstones = new Set(getTombstoneIds());
+            const visibleAccounts = accountsList.filter((acc) => !tombstones.has(String(acc.id)));
+            if (countEl) countEl.textContent = String(visibleAccounts.length);
 
-            if (rows.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-espresso/60">MLBB Account မရှိသေးပါ</td></tr>`;
+            if (visibleAccounts.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="p-6 text-center text-xs text-espresso/65">
+                            MLBB Account မရှိသေးပါ။ "Account ထည့် / ပြင်ရန်" မှ အသစ်ထည့်ပါ။
+                        </td>
+                    </tr>
+                `;
                 return;
             }
 
-            tbody.innerHTML = rows.map((acc) => {
-                const isSold = acc.status === "SOLD";
-                const thumb = (Array.isArray(acc.images) && acc.images[0]) || "https://placehold.co/100x70/fff2f4/be185d?text=MLBB";
+            tbody.innerHTML = visibleAccounts.map((acc) => {
+                const isSold = (acc.status || "AVAILABLE").toUpperCase() === "SOLD";
+                const thumb = Array.isArray(acc.photos) && acc.photos[0]
+                    ? acc.photos[0]
+                    : "https://placehold.co/120x80/fff2f4/be185d?text=MLBB";
+
                 return `
-                    <tr class="hover:bg-blush/50">
+                    <tr class="hover:bg-blush/50 transition-colors">
                         <td class="p-3">
                             <img src="${escapeHtml(thumb)}"
-                                 alt="${escapeHtml(acc.title)}"
-                                 onerror="this.onerror=null;this.src='https://placehold.co/100x70/fff2f4/be185d?text=MLBB';"
-                                 class="w-12 h-9 rounded-lg object-cover border border-rose-200">
+                                 alt="${escapeHtml(acc.title || "")}"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/120x80/fff2f4/be185d?text=MLBB';"
+                                 class="w-14 h-10 rounded-lg object-cover border border-rose-200">
                         </td>
-                        <td class="p-3 font-semibold text-wine">${escapeHtml(acc.title)}</td>
-                        <td class="p-3 text-berry font-medium">${escapeHtml(acc.rank || "-")}</td>
-                        <td class="p-3 text-espresso">${Number(acc.skins || 0)} / ${Number(acc.heroes || 0)}</td>
-                        <td class="p-3 font-bold text-magenta">${Number(acc.price || 0).toLocaleString()} MMK</td>
+                        <td class="p-3 font-bold text-wine">${escapeHtml(acc.title || "-")}</td>
+                        <td class="p-3">${escapeHtml(acc.rank || "-")}</td>
+                        <td class="p-3">${Number(acc.skins || 0)} Skins / ${Number(acc.heroes || 0)} Heroes</td>
+                        <td class="p-3 font-bold text-berry">${escapeHtml(formatMMK(acc.price))}</td>
                         <td class="p-3">
-                            <button type="button"
-                                    onclick="toggleAccountStatus('${escapeHtml(acc.id)}')"
-                                    class="px-2.5 py-1 rounded-full text-[10px] font-bold cursor-pointer ${isSold ? "bg-rose-100 text-berry border border-rose-200" : "bg-emerald-50 text-emerald-700 border border-emerald-200"}">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                                isSold ? "bg-rose-100 text-berry" : "bg-emerald-100 text-emerald-800"
+                            }">
                                 ${isSold ? "SOLD" : "AVAILABLE"}
-                            </button>
+                            </span>
                         </td>
-                        <td class="p-3 text-right space-x-2">
+                        <td class="p-3 text-right whitespace-nowrap space-x-1.5">
                             <button type="button"
-                                    onclick="editAdminAccount('${escapeHtml(acc.id)}')"
-                                    title="Edit"
-                                    class="text-berry hover:text-magenta p-1 cursor-pointer">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                    data-edit-id="${escapeHtml(acc.id)}"
+                                    class="edit-acc-btn px-3 py-1 rounded-full bg-white hover:bg-blush text-wine border border-rose-200 text-[11px] font-bold cursor-pointer">
+                                ပြင်ရန်
                             </button>
                             <button type="button"
-                                    onclick="requestDeleteAccount('${escapeHtml(acc.id)}')"
-                                    title="Delete"
-                                    class="text-rose-500 hover:text-rose-700 p-1 cursor-pointer">
-                                <i class="fa-solid fa-trash-can"></i>
+                                    data-delete-id="${escapeHtml(acc.id)}"
+                                    data-delete-title="${escapeHtml(acc.title || "Account")}"
+                                    class="delete-acc-btn px-3 py-1 rounded-full bg-rose-50 hover:bg-berry text-berry hover:text-white border border-rose-200 text-[11px] font-bold cursor-pointer transition-colors">
+                                ဖျက်ရန်
                             </button>
                         </td>
                     </tr>
                 `;
             }).join("");
-        };
 
-        window.handleAccPhotosUpload = async function(e) {
-            const files = Array.from(e.target.files || []);
-            if (!files.length) return;
-            for (const f of files) {
-                const compressed = await compressImageFile(f);
-                if (compressed) uploadedDraftPhotos.push(compressed);
-            }
-            e.target.value = "";
-            renderDraftPhotosStrip();
-        };
+            tbody.querySelectorAll(".edit-acc-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const id = btn.getAttribute("data-edit-id");
+                    if (id) startEditAccount(id);
+                });
+            });
 
-        function renderDraftPhotosStrip() {
-            const strip = document.getElementById("accPhotosPreview");
-            if (!strip) return;
-            if (!uploadedDraftPhotos.length) {
-                strip.innerHTML = `<span id="noAccPhotosLabel" class="text-xs text-espresso/50 self-center mx-auto">ဓာတ်ပုံ မရွေးရသေးပါ</span>`;
-                return;
-            }
-            strip.innerHTML = uploadedDraftPhotos.map((src, idx) => `
-                <div class="relative w-16 h-16 rounded-xl overflow-hidden border border-rose-300 bg-white">
-                    <img src="${escapeHtml(src)}" class="w-full h-full object-cover">
-                    <button type="button"
-                            onclick="removeDraftPhotoItem(${idx})"
-                            aria-label="Remove photo"
-                            class="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-magenta text-white text-[10px] flex items-center justify-center cursor-pointer">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            `).join("");
+            tbody.querySelectorAll(".delete-acc-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const id = btn.getAttribute("data-delete-id");
+                    const title = btn.getAttribute("data-delete-title") || "Account";
+                    if (id) promptDeleteAccount(id, title);
+                });
+            });
         }
 
-        window.removeDraftPhotoItem = function(idx) {
-            uploadedDraftPhotos.splice(idx, 1);
-            renderDraftPhotosStrip();
-        };
+        /**
+         * Resets the Admin Account editor form to create mode.
+         */
+        function resetAccountForm() {
+            const form = document.getElementById("accountEditorForm");
+            if (form) form.reset();
+            const hiddenId = document.getElementById("editingAccountId");
+            const tgInput = document.getElementById("accTelegram");
+            const heading = document.getElementById("formTitleHeading");
+            const fileInput = document.getElementById("accPhotosInput");
+            if (hiddenId) hiddenId.value = "";
+            if (tgInput) tgInput.value = "CandyGaming8";
+            if (fileInput) fileInput.value = "";
+            if (heading) {
+                heading.innerHTML = `<i class="fa-solid fa-sparkles text-magenta mr-1"></i> MLBB Account အသစ်ထည့်မည်`;
+            }
+            formPhotos = [];
+            renderFormPhotosPreview();
+        }
 
-        window.resetAccountForm = function() {
-            document.getElementById("editingAccountId").value = "";
-            document.getElementById("accTitle").value = "";
-            document.getElementById("accRank").value = "";
-            document.getElementById("accPrice").value = "";
-            document.getElementById("accSkins").value = "";
-            document.getElementById("accHeroes").value = "";
-            document.getElementById("accWinrate").value = "";
-            document.getElementById("accTelegram").value = "CandyGaming8";
-            document.getElementById("accStatus").value = "AVAILABLE";
-            document.getElementById("accHighlights").value = "";
-            document.getElementById("accDescription").value = "";
-            document.getElementById("formTitleHeading").innerHTML = `<i class="fa-solid fa-sparkles text-magenta mr-1"></i> MLBB Account အသစ်ထည့်မည်`;
-            uploadedDraftPhotos = [];
-            renderDraftPhotosStrip();
-        };
-
-        window.editAdminAccount = function(id) {
-            const acc = accountsList.find((a) => a.id === id);
+        /**
+         * Loads an existing account into the editor form.
+         */
+        function startEditAccount(accountId) {
+            const acc = accountsList.find((item) => String(item.id) === String(accountId));
             if (!acc) return;
 
             document.getElementById("editingAccountId").value = acc.id;
             document.getElementById("accTitle").value = acc.title || "";
             document.getElementById("accRank").value = acc.rank || "";
             document.getElementById("accPrice").value = acc.price ?? "";
-            document.getElementById("accSkins").value = acc.skins ?? "";
-            document.getElementById("accHeroes").value = acc.heroes ?? "";
+            document.getElementById("accSkins").value = acc.skins ?? 0;
+            document.getElementById("accHeroes").value = acc.heroes ?? 0;
             document.getElementById("accWinrate").value = acc.winrate || "";
-            document.getElementById("accTelegram").value = normalizeTgUsername(acc.telegram || "CandyGaming8");
-            document.getElementById("accStatus").value = acc.status === "SOLD" ? "SOLD" : "AVAILABLE";
-            document.getElementById("accHighlights").value = Array.isArray(acc.highlights) ? acc.highlights.join(", ") : "";
+            document.getElementById("accTelegram").value = acc.telegram || "CandyGaming8";
+            document.getElementById("accStatus").value = (acc.status || "AVAILABLE").toUpperCase();
+            document.getElementById("accHighlights").value = Array.isArray(acc.highlights)
+                ? acc.highlights.join(", ")
+                : (acc.highlights || "");
             document.getElementById("accDescription").value = acc.description || "";
-            document.getElementById("formTitleHeading").innerHTML = `<i class="fa-solid fa-pen-to-square text-magenta mr-1"></i> Account ပြင်ဆင်မည်`;
 
-            uploadedDraftPhotos = Array.isArray(acc.images) ? [...acc.images] : [];
-            renderDraftPhotosStrip();
+            formPhotos = Array.isArray(acc.photos) ? [...acc.photos] : [];
+            renderFormPhotosPreview();
+
+            const heading = document.getElementById("formTitleHeading");
+            if (heading) {
+                heading.innerHTML = `<i class="fa-solid fa-pen-to-square text-magenta mr-1"></i> Account ပြင်ဆင်ရန် (${escapeHtml(acc.title || "")})`;
+            }
             switchAdminTab("form");
-        };
+        }
 
-        window.handleAccountSave = async function(e) {
-            e.preventDefault();
-            if (!currentAdminUser) {
-                showToast("Admin Login အရင်ဝင်ပါ", "error");
+        /**
+         * Converts an uploaded image file to a compressed JPEG data URL for Firestore storage.
+         */
+        function compressImageToDataUrl(file, maxWidth = 1024, quality = 0.78) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        let targetW = img.width;
+                        let targetH = img.height;
+                        if (targetW > maxWidth) {
+                            targetH = Math.round((targetH * maxWidth) / targetW);
+                            targetW = maxWidth;
+                        }
+                        const canvas = document.createElement("canvas");
+                        canvas.width = targetW;
+                        canvas.height = targetH;
+                        const ctx = canvas.getContext("2d");
+                        if (!ctx) {
+                            resolve(String(ev.target?.result || ""));
+                            return;
+                        }
+                        ctx.drawImage(img, 0, 0, targetW, targetH);
+                        resolve(canvas.toDataURL("image/jpeg", quality));
+                    };
+                    img.onerror = reject;
+                    img.src = String(ev.target?.result || "");
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        /**
+         * Handles multi-photo file uploads inside the Admin editor form.
+         */
+        async function handleAccPhotosUpload(event) {
+            const files = Array.from(event.target?.files || []);
+            if (!files.length) return;
+
+            for (const file of files) {
+                try {
+                    const dataUrl = await compressImageToDataUrl(file);
+                    if (dataUrl) formPhotos.push(dataUrl);
+                } catch (_err) {
+                    showToast("ပုံတစ်ပုံကို ဖတ်၍မရပါ", "error");
+                }
+            }
+
+            renderFormPhotosPreview();
+            event.target.value = "";
+        }
+
+        /**
+         * Renders photo thumbnails and remove buttons inside the Admin editor form.
+         */
+        function renderFormPhotosPreview() {
+            const container = document.getElementById("accPhotosPreview");
+            if (!container) return;
+
+            if (!formPhotos.length) {
+                container.innerHTML = `<span id="noAccPhotosLabel" class="text-xs text-espresso/50 self-center mx-auto">ဓာတ်ပုံ မရွေးရသေးပါ</span>`;
                 return;
             }
 
-            const btn = document.getElementById("saveAccountBtn");
-            if (btn) {
-                btn.disabled = true;
-                btn.textContent = "သိမ်းဆည်းနေပါသည်...";
+            container.innerHTML = formPhotos.map((src, idx) => `
+                <div class="relative w-20 h-16 rounded-xl overflow-hidden border border-rose-200 bg-white shadow-xs">
+                    <img src="${escapeHtml(src)}"
+                         alt="Preview ${idx + 1}"
+                         onerror="this.onerror=null;this.src='https://placehold.co/160x120/fff2f4/be185d?text=IMG';"
+                         class="w-full h-full object-cover">
+                    <button type="button"
+                            data-remove-photo="${idx}"
+                            aria-label="Remove photo"
+                            class="remove-form-photo-btn absolute top-1 right-1 w-5 h-5 rounded-full bg-wine/85 hover:bg-berry text-white text-[10px] flex items-center justify-center cursor-pointer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            `).join("");
+
+            container.querySelectorAll(".remove-form-photo-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const idx = Number(btn.getAttribute("data-remove-photo") || -1);
+                    if (idx >= 0 && idx < formPhotos.length) {
+                        formPhotos.splice(idx, 1);
+                        renderFormPhotosPreview();
+                    }
+                });
+            });
+        }
+
+        /**
+         * Creates or updates an MLBB account document in Firestore.
+         */
+        async function handleAccountSave(event) {
+            event.preventDefault();
+            if (!currentUser) {
+                showToast("Please sign in to Admin Studio first.", "error");
+                return;
             }
 
-            const editId = (document.getElementById("editingAccountId")?.value || "").trim();
+            const saveBtn = document.getElementById("saveAccountBtn");
+            const existingId = (document.getElementById("editingAccountId")?.value || "").trim();
             const title = (document.getElementById("accTitle")?.value || "").trim();
             const rank = (document.getElementById("accRank")?.value || "").trim();
             const price = Number(document.getElementById("accPrice")?.value || 0);
             const skins = Number(document.getElementById("accSkins")?.value || 0);
             const heroes = Number(document.getElementById("accHeroes")?.value || 0);
-            const winrate = (document.getElementById("accWinrate")?.value || "").trim();
-            const telegram = normalizeTgUsername(document.getElementById("accTelegram")?.value || "CandyGaming8");
-            const status = document.getElementById("accStatus")?.value === "SOLD" ? "SOLD" : "AVAILABLE";
-            const highlights = (document.getElementById("accHighlights")?.value || "")
-                .split(",")
-                .map((s) => s.trim())
-                .filter(Boolean);
+            const winrate = (document.getElementById("accWinrate")?.value || "").trim() || "50%+";
+            const telegram = ((document.getElementById("accTelegram")?.value || "CandyGaming8").trim().replace(/^@/, "")) || "CandyGaming8";
+            const status = (document.getElementById("accStatus")?.value || "AVAILABLE").toUpperCase();
+            const highlightsRaw = document.getElementById("accHighlights")?.value || "";
+            const highlights = highlightsRaw.split(",").map((s) => s.trim()).filter(Boolean);
             const description = (document.getElementById("accDescription")?.value || "").trim();
 
-            const fallbackImg = "https://placehold.co/720x420/fff2f4/be185d?text=Candy+Official+Gaming";
-            const safePhotos = fitPhotosToFirestore(uploadedDraftPhotos.length ? uploadedDraftPhotos : [fallbackImg]);
+            if (!title || !rank) {
+                showToast("Title နှင့် Rank ထည့်သွင်းပါ", "error");
+                return;
+            }
+
+            const payload = {
+                title,
+                rank,
+                price: Number.isFinite(price) ? price : 0,
+                skins: Number.isFinite(skins) ? skins : 0,
+                heroes: Number.isFinite(heroes) ? heroes : 0,
+                winrate,
+                telegram,
+                status,
+                highlights,
+                description,
+                photos: [...formPhotos],
+                updatedAt: Date.now()
+            };
 
             try {
-                if (editId) {
-                    unmarkDeleted(editId);
-                    await updateDoc(doc(db, "mlbb_accounts", editId), {
-                        title,
-                        rank,
-                        price,
-                        skins,
-                        heroes,
-                        winrate,
-                        telegram,
-                        status,
-                        highlights,
-                        description,
-                        images: safePhotos,
-                        updatedAt: Date.now()
-                    });
-                    showToast("Account ပြင်ဆင်ပြီးပါပြီ", "success");
+                if (saveBtn) saveBtn.disabled = true;
+                if (existingId) {
+                    clearTombstoneId(existingId);
+                    await updateDoc(doc(db, "mlbb_accounts", existingId), payload);
+                    showToast("MLBB Account ပြင်ဆင်ပြီးပါပြီ", "success");
                 } else {
-                    const newId = "candy-mlbb-" + Date.now().toString(36);
-                    unmarkDeleted(newId);
-                    await setDoc(doc(db, "mlbb_accounts", newId), {
-                        id: newId,
-                        title,
-                        rank,
-                        price,
-                        skins,
-                        heroes,
-                        winrate,
-                        telegram,
-                        status,
-                        highlights,
-                        description,
-                        images: safePhotos,
-                        created: Date.now()
-                    });
-                    showToast("MLBB Account အသစ် တင်ပြီးပါပြီ", "success");
+                    payload.createdAt = Date.now();
+                    const createdRef = await addDoc(mlbbCollection, payload);
+                    clearTombstoneId(createdRef.id);
+                    showToast("MLBB Account အသစ် သိမ်းဆည်းပြီးပါပြီ", "success");
                 }
-
                 resetAccountForm();
                 switchAdminTab("list");
             } catch (err) {
-                console.error("Save account error:", err);
-                showToast("သိမ်းမရပါ။ Firestore Rules နှင့် Photo Size ကို စစ်ဆေးပါ။", "error");
+                showToast(err?.message || "Failed to save account", "error");
             } finally {
-                if (btn) {
-                    btn.disabled = false;
-                    btn.innerHTML = `<i class="fa-solid fa-floppy-disk mr-1"></i> သိမ်းဆည်းမည်`;
-                }
-            }
-        };
-
-        window.toggleAccountStatus = async function(id) {
-            if (!currentAdminUser) {
-                showToast("Admin Login အရင်ဝင်ပါ", "error");
-                return;
-            }
-            const acc = accountsList.find((a) => a.id === id);
-            if (!acc) return;
-
-            const nextStatus = acc.status === "SOLD" ? "AVAILABLE" : "SOLD";
-            try {
-                await updateDoc(doc(db, "mlbb_accounts", id), { status: nextStatus, updatedAt: Date.now() });
-                showToast(`Status ကို ${nextStatus} သို့ ပြောင်းလဲပြီးပါပြီ`, "success");
-            } catch (err) {
-                console.error("Toggle status error:", err);
-                showToast("Status ပြောင်းမရပါ", "error");
-            }
-        };
-
-        window.requestDeleteAccount = function(id) {
-            if (!currentAdminUser) {
-                showToast("Admin Login အရင်ဝင်ပါ", "error");
-                return;
-            }
-            const acc = accountsList.find((a) => a.id === id);
-            if (!acc) return;
-
-            pendingDeleteId = id;
-            const targetLabel = document.getElementById("deleteTargetName");
-            if (targetLabel) targetLabel.textContent = `${acc.title} (${acc.rank || "MLBB"})`;
-
-            const confirmBtn = document.getElementById("confirmDeleteBtn");
-            if (confirmBtn) {
-                confirmBtn.onclick = () => executeAccountDeletion(pendingDeleteId);
-            }
-            openBoutiqueModal("deleteModal");
-        };
-
-        async function executeAccountDeletion(id) {
-            if (!id || !currentAdminUser) return;
-            try {
-                markDeleted(id);
-                accountsList = accountsList.filter((a) => a.id !== id);
-                renderCatalogGrid();
-                renderAdminAccountsTable();
-
-                await deleteDoc(doc(db, "mlbb_accounts", id));
-                closeBoutiqueModal("deleteModal");
-                pendingDeleteId = null;
-                showToast("Account ကို ဖျက်ပစ်ပြီးပါပြီ", "info");
-            } catch (err) {
-                console.error("Delete error:", err);
-                unmarkDeleted(id);
-                showToast("ဖျက်မရပါ။ Firestore Rules ကို စစ်ဆေးပါ။", "error");
+                if (saveBtn) saveBtn.disabled = false;
             }
         }
 
-        window.showToast = function(msg, type = "info") {
-            const container = document.getElementById("toastContainer");
-            if (!container) return;
+        /**
+         * Opens the delete confirmation modal for a specific account.
+         */
+        function promptDeleteAccount(accountId, title) {
+            pendingDeleteId = String(accountId);
+            const label = document.getElementById("deleteTargetName");
+            if (label) label.textContent = `"${title}" ကို အပြီးဖျက်ပစ်လိုပါသလား?`;
+            openBoutiqueModal("deleteModal");
+        }
 
-            const box = document.createElement("div");
-            let styles = "bg-white border-rose-200 text-wine";
-            let icon = "fa-circle-info text-magenta";
+        /**
+         * Deletes an account from Firestore and records a tombstone ID so it never reappears.
+         */
+        async function executeAccountDelete() {
+            if (!pendingDeleteId) return;
+            const targetId = pendingDeleteId;
+            const confirmBtn = document.getElementById("confirmDeleteBtn");
 
-            if (type === "success") {
-                styles = "bg-white border-emerald-300 text-emerald-900";
-                icon = "fa-circle-check text-emerald-600";
-            } else if (type === "error") {
-                styles = "bg-white border-rose-300 text-rose-900";
-                icon = "fa-circle-xmark text-berry";
+            try {
+                if (confirmBtn) confirmBtn.disabled = true;
+                addTombstoneId(targetId);
+                accountsList = accountsList.filter((item) => String(item.id) !== String(targetId));
+                renderCatalogGrid();
+                renderAdminAccountsTable();
+                await deleteDoc(doc(db, "mlbb_accounts", targetId));
+                showToast("Account ဖျက်ပြီးပါပြီ", "success");
+            } catch (err) {
+                showToast(err?.message || "Delete failed", "error");
+            } finally {
+                if (confirmBtn) confirmBtn.disabled = false;
+                closeBoutiqueModal("deleteModal");
             }
+        }
 
-            box.className = `flex items-center gap-2.5 px-4 py-3 rounded-2xl border shadow-lg text-xs font-semibold ${styles} pointer-events-auto transition-all duration-300`;
-            box.innerHTML = `<i class="fa-solid ${icon} text-sm"></i><span>${escapeHtml(msg)}</span>`;
-            container.appendChild(box);
+        /**
+         * Records a lightweight visit log entry once per browser session.
+         */
+        async function recordSessionVisit() {
+            try {
+                if (sessionStorage.getItem("candy_visit_logged_v1")) return;
+                sessionStorage.setItem("candy_visit_logged_v1", "1");
+                const docId = `visit_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+                await setDoc(doc(visitLogsCollection, docId), {
+                    store: "Candy Official Gaming",
+                    game: "MLBB",
+                    visitedAt: Date.now()
+                });
+            } catch (_err) {
+                // Non-critical telemetry; ignore when unauthenticated or offline
+            }
+        }
 
-            setTimeout(() => {
-                box.classList.add("opacity-0");
-                setTimeout(() => box.remove(), 250);
-            }, 2800);
-        };
+        /**
+         * Wires all static DOM event listeners cleanly on startup.
+         */
+        function bindAllEvents() {
+            document.getElementById("brandLogoBtn")?.addEventListener("click", showLandingView);
+            document.getElementById("footerBrandBtn")?.addEventListener("click", showLandingView);
+            document.getElementById("enterMlbbCatalogBtn")?.addEventListener("click", openCatalogView);
+            document.getElementById("secondaryCatalogBtn")?.addEventListener("click", openCatalogView);
+            document.getElementById("backToLandingBtn")?.addEventListener("click", showLandingView);
+            document.getElementById("resetFiltersBtn")?.addEventListener("click", resetCatalogFilters);
 
-        window.addEventListener("DOMContentLoaded", () => {
-            syncAdminGateVisibility();
-            logBuyerVisit();
-            renderCatalogGrid();
-            subscribeToMlbbAccounts();
-            subscribeToAdminAuth();
+            document.getElementById("searchDesktop")?.addEventListener("input", () => syncSearch("desktop"));
+            document.getElementById("searchMobile")?.addEventListener("input", () => syncSearch("mobile"));
+            document.getElementById("sortSelect")?.addEventListener("change", renderCatalogGrid);
+
+            document.querySelectorAll(".filter-chip").forEach((chip) => {
+                chip.addEventListener("click", () => {
+                    const filterKey = chip.getAttribute("data-filter") || "ALL";
+                    setFilterChip(filterKey);
+                });
+            });
+
+            document.getElementById("headerAdminBtn")?.addEventListener("click", openAdminPanel);
+            document.getElementById("footerAdminLink")?.addEventListener("click", openAdminPanel);
+            document.getElementById("closeAccountModalBtn")?.addEventListener("click", () => closeBoutiqueModal("accountModal"));
+            document.getElementById("closeAdminModalBtn")?.addEventListener("click", () => closeBoutiqueModal("adminModal"));
+            document.getElementById("cancelDeleteBtn")?.addEventListener("click", () => closeBoutiqueModal("deleteModal"));
+            document.getElementById("confirmDeleteBtn")?.addEventListener("click", executeAccountDelete);
+
+            document.getElementById("accountModal")?.addEventListener("click", (ev) => {
+                if (ev.target === ev.currentTarget) closeBoutiqueModal("accountModal");
+            });
+            document.getElementById("adminModal")?.addEventListener("click", (ev) => {
+                if (ev.target === ev.currentTarget) closeBoutiqueModal("adminModal");
+            });
+            document.getElementById("deleteModal")?.addEventListener("click", (ev) => {
+                if (ev.target === ev.currentTarget) closeBoutiqueModal("deleteModal");
+            });
+
+            document.getElementById("adminLoginForm")?.addEventListener("submit", handleAdminSignIn);
+            document.getElementById("adminLogoutBtn")?.addEventListener("click", handleAdminSignOut);
+            document.getElementById("sendResetEmailBtn")?.addEventListener("click", handlePasswordReset);
+
+            document.querySelectorAll(".admin-tab").forEach((tabBtn) => {
+                tabBtn.addEventListener("click", () => {
+                    const tabName = tabBtn.getAttribute("data-tab") || "list";
+                    switchAdminTab(tabName);
+                });
+            });
+
+            document.getElementById("clearAccountFormBtn")?.addEventListener("click", resetAccountForm);
+            document.getElementById("cancelAccountEditBtn")?.addEventListener("click", () => {
+                resetAccountForm();
+                switchAdminTab("list");
+            });
+            document.getElementById("accPhotosInput")?.addEventListener("change", handleAccPhotosUpload);
+            document.getElementById("accountEditorForm")?.addEventListener("submit", handleAccountSave);
+
+            window.addEventListener("hashchange", syncAdminGateVisibility);
+            document.addEventListener("keydown", (ev) => {
+                if (ev.key === "Escape") {
+                    closeBoutiqueModal("deleteModal");
+                    closeBoutiqueModal("accountModal");
+                    closeBoutiqueModal("adminModal");
+                }
+            });
+        }
+
+        // Start event bindings, auth listener, and real-time Firestore subscription
+        bindAllEvents();
+        syncAdminGateVisibility();
+        showLandingView();
+
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+            refreshAdminAuthUI();
         });
 
-        window.addEventListener("hashchange", syncAdminGateVisibility);
+        onSnapshot(mlbbCollection, (snapshot) => {
+            const tombstones = new Set(getTombstoneIds());
+            accountsList = snapshot.docs
+                .map((d) => ({ id: d.id, ...d.data() }))
+                .filter((acc) => !tombstones.has(String(acc.id)));
+
+            renderCatalogGrid();
+            if (currentUser) {
+                renderAdminAccountsTable();
+            }
+        }, (err) => {
+            showToast(err?.message || "Firestore sync error", "error");
+        });
+
+        recordSessionVisit();
     </script>
 </body>
 </html>
