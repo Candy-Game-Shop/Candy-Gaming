@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candy Official Gaming — MLBB Account Boutique</title>
+    <title>Candy Official Gaming — MLBB Boutique</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Padauk:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
+        // Tailwind CSS custom tokens for Cream-Blush, Alabaster, Soft Blush & Rose-Berry boutique palette
         tailwind.config = {
             theme: {
                 extend: {
@@ -40,7 +41,7 @@
     </script>
 
     <style>
-        /* Cream-Blush (#fdf6f7), Alabaster (#fff9fa), Soft Blush (#fff2f4) & Rose-Berry (#be185d / #9d174d) Boutique Palette */
+        /* Editorial cream-blush (#fdf6f7), alabaster (#fff9fa), soft blush (#fff2f4) & rose-berry (#be185d / #9d174d) styling */
         html, body {
             background-color: #fdf6f7;
             color: #3b1d2a;
@@ -61,7 +62,7 @@
         }
 
         .berry-title-gradient {
-            background: linear-gradient(125deg, #3b1d2a 0%, #9d174d 50%, #be185d 88%);
+            background: linear-gradient(125deg, #3b1d2a 0%, #9d174d 52%, #be185d 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -105,7 +106,7 @@
                 0 6px 14px -4px rgba(190, 24, 93, 0.12);
         }
 
-        /* Closed modals strictly have display: none; pointer-events: none; so they never block page interactions */
+        /* Non-blocking closed modals: strictly display: none; pointer-events: none; unless .is-open is set */
         .modal-backdrop {
             display: none;
             pointer-events: none;
@@ -144,13 +145,13 @@
                 <img src="IMG_20261126_162338_994.jpg"
                      alt="Candy Official Gaming"
                      onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff2f4/be185d?text=COG';"
-                     class="w-11 h-11 rounded-full object-cover bg-blush border-2 border-roseberry/25 flex-shrink-0">
+                     class="w-11 h-11 rounded-xl object-cover bg-blush border border-roseberry/25 flex-shrink-0">
                 <div>
                     <div class="flex items-center gap-2">
-                        <span class="text-xl sm:text-2xl font-bold editorial-font berry-title-gradient tracking-tight">
+                        <span class="text-lg sm:text-2xl font-bold editorial-font berry-title-gradient tracking-tight">
                             Candy Official Gaming
                         </span>
-                        <span class="hidden sm:inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-blush text-deepberry border border-roseberry/20">
+                        <span class="hidden sm:inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-xl bg-blush text-deepberry border border-roseberry/20">
                             <i class="fa-solid fa-crown text-roseberry text-[9px]"></i> MLBB
                         </span>
                     </div>
@@ -158,12 +159,12 @@
                 </div>
             </button>
 
-            <!-- Header Navigation & Contact -->
+            <!-- Header Navigation & Direct Telegram Contact -->
             <div class="flex items-center gap-2 sm:gap-2.5">
                 <button type="button"
                         id="headerCatalogBtn"
-                        class="px-3.5 py-2 rounded-full bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer transition-all flex items-center gap-1.5">
-                    <i class="fa-solid fa-grid-2 text-roseberry"></i>
+                        class="px-3.5 py-2 rounded-xl bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-layer-group text-roseberry"></i>
                     <span class="hidden sm:inline">MLBB Catalog</span>
                     <span class="sm:hidden">Catalog</span>
                 </button>
@@ -171,15 +172,15 @@
                 <a href="https://t.me/CandyGaming8"
                    target="_blank"
                    rel="noopener noreferrer"
-                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold transition-all">
+                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold transition-all">
                     <i class="fa-brands fa-telegram text-sky-600 text-sm"></i>
                     <span>@CandyGaming8</span>
                 </a>
 
-                <!-- Secret-Gated Admin Studio Toggle (hidden from normal buyers) -->
+                <!-- Secret-Gated Admin Studio Toggle (hidden unless ?admin=candy2026 or #admin-candy2026 is present) -->
                 <button type="button"
                         id="headerAdminToggleBtn"
-                        class="hidden items-center gap-1.5 px-3.5 py-2 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-950 border border-amber-300 text-xs font-bold cursor-pointer transition-all">
+                        class="hidden items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-950 border border-amber-300 text-xs font-bold cursor-pointer transition-all">
                     <i class="fa-solid fa-key text-amber-700 text-xs"></i>
                     <span>Admin Studio</span>
                 </button>
@@ -191,15 +192,14 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
 
         <!-- SECRET-GATED ADMIN STUDIO (#adminPanelSection) -->
-        <!-- Hidden by default for normal buyers; unlocks immediately on ?admin=candy2026 or #admin-candy2026 -->
         <section id="adminPanelSection" class="hidden boutique-panel rounded-3xl p-5 sm:p-8 space-y-6 border-2 border-roseberry/25">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-roseberry/15 pb-4">
                 <div class="space-y-1">
-                    <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blush text-deepberry border border-roseberry/20 text-[11px] font-bold">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-xl bg-blush text-deepberry border border-roseberry/20 text-[11px] font-bold">
                         <i class="fa-solid fa-shield-halved text-roseberry"></i>
                         <span>Secret Admin Panel (candy2026)</span>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-bold editorial-font berry-title-gradient">
+                    <h2 class="text-xl sm:text-2xl font-bold editorial-font berry-title-gradient">
                         Candy Official Gaming — MLBB Account Studio
                     </h2>
                     <p id="adminFirebaseStatus" class="text-[11px] text-mauve">
@@ -208,14 +208,14 @@
                 </div>
 
                 <div class="flex flex-wrap items-center gap-2">
-                    <div class="px-3.5 py-2 rounded-2xl bg-blush border border-roseberry/20 text-xs font-bold text-plumink flex items-center gap-2">
+                    <div class="px-3.5 py-2 rounded-xl bg-blush border border-roseberry/20 text-xs font-bold text-plumink flex items-center gap-2">
                         <i class="fa-solid fa-eye text-roseberry"></i>
                         <span>Total Visits:</span>
                         <span id="adminVisitCounter" class="text-deepberry font-extrabold">0</span>
                     </div>
                     <button type="button"
                             id="collapseAdminBtn"
-                            class="px-3.5 py-2 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                            class="px-3.5 py-2 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
                         <i class="fa-solid fa-chevron-up mr-1"></i> ဝှက်မည်
                     </button>
                 </div>
@@ -229,7 +229,7 @@
                     </h3>
                     <button type="button"
                             id="resetAdminFormBtn"
-                            class="px-3 py-1.5 rounded-full bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                            class="px-3 py-1.5 rounded-xl bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
                         Form ရှင်းမည်
                     </button>
                 </div>
@@ -322,7 +322,7 @@
                     <!-- Multi-Photo File Picker (Up to 15 photos) -->
                     <div class="space-y-2">
                         <div class="flex flex-wrap items-center gap-3">
-                            <label class="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold transition-all">
+                            <label class="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold transition-all">
                                 <i class="fa-solid fa-images"></i>
                                 <span>ဓာတ်ပုံများ ရွေးရန် (Max 15)</span>
                                 <input type="file"
@@ -353,12 +353,12 @@
                     <div class="flex flex-wrap items-center gap-3 pt-1">
                         <button type="submit"
                                 id="submitMlbbAccountBtn"
-                                class="px-6 py-2.5 rounded-full berry-cta-btn text-xs font-bold cursor-pointer">
+                                class="px-6 py-2.5 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer">
                             <i class="fa-solid fa-floppy-disk mr-1.5"></i> Save MLBB Account
                         </button>
                         <button type="button"
                                 id="cancelEditAccountBtn"
-                                class="hidden px-4 py-2.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                                class="hidden px-4 py-2.5 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
                             Cancel Edit
                         </button>
                     </div>
@@ -384,36 +384,30 @@
             </div>
         </section>
 
-        <!-- STEP 1: LANDING / WELCOME VIEW (#landingView) -->
+        <!-- STEP 1: LANDING VIEW (#landingView) -->
         <section id="landingView" class="py-4 sm:py-8">
             <div class="boutique-card rounded-3xl p-6 sm:p-10 md:p-12 max-w-5xl mx-auto">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
                     <div class="space-y-4 max-w-2xl">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush border border-roseberry/20 text-deepberry text-xs font-bold">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-blush border border-roseberry/20 text-deepberry text-xs font-bold">
                             <i class="fa-solid fa-heart text-roseberry"></i>
-                            <span>Candy Official Gaming • MLBB VIP Collection</span>
+                            <span>Candy Official Gaming • MLBB Boutique</span>
                         </div>
 
-                        <h1 class="text-3xl sm:text-5xl font-bold editorial-font berry-title-gradient leading-tight">
+                        <!-- Balanced greeting typography (text-xl sm:text-3xl) -->
+                        <h1 class="text-xl sm:text-3xl font-bold editorial-font berry-title-gradient leading-snug">
                             Candy Gaming မှကြိုဆိုပါတယ်ရှင့်
                         </h1>
 
                         <p class="text-xs sm:text-sm text-mauve leading-relaxed">
-                            Mobile Legends: Bang Bang (MLBB) အကောင့်များကိုသာ သီးသန့် ရွေးချယ်တင်ဆက်ပေးနေသော Boutique Store ဖြစ်ပါသည်။
-                            High Rank၊ Clean Account နှင့် Rare Skin Highlights များကို ဓာတ်ပုံအစုံအလင် ကြည့်ရှုပြီး
-                            <a href="https://t.me/CandyGaming8"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               class="text-deepberry font-bold underline decoration-roseberry/40 hover:text-roseberry">
-                                @CandyGaming8
-                            </a>
-                            Telegram မှ တိုက်ရိုက် မှာယူနိုင်ပါသည်။
+                            Mobile Legend အကောင့်များကိုသာ သီးသန့်ရောင်းချပေးသော Candy Store ဖြစ်ပါသည်
                         </p>
 
+                        <!-- Clean primary navigation button leading to catalog -->
                         <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
                             <button type="button"
                                     id="openCatalogBtn"
-                                    class="w-full sm:w-auto px-6 py-3.5 rounded-full berry-cta-btn text-xs sm:text-sm font-bold cursor-pointer flex items-center justify-center gap-2">
+                                    class="w-full sm:w-auto px-6 py-3 rounded-xl berry-cta-btn text-xs sm:text-sm font-bold cursor-pointer flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-crown"></i>
                                 <span>Mobile Legend အကောင့်များကြည့်ရန်</span>
                                 <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -422,41 +416,19 @@
                             <a href="https://t.me/CandyGaming8"
                                target="_blank"
                                rel="noopener noreferrer"
-                               class="w-full sm:w-auto px-5 py-3.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all">
+                               class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all">
                                 <i class="fa-brands fa-telegram text-sky-600 text-base"></i>
                                 <span>@CandyGaming8 နှင့် ဆက်သွယ်ရန်</span>
                             </a>
                         </div>
                     </div>
 
-                    <div class="bg-blush/90 border border-roseberry/20 rounded-2xl p-5 sm:p-6 md:max-w-xs w-full space-y-3.5">
-                        <div class="rounded-2xl overflow-hidden border border-roseberry/20 bg-white aspect-[16/10]">
-                            <img src="IMG_20261126_162338_994.jpg"
-                                 alt="Candy Official Gaming MLBB Showcase"
-                                 onerror="this.onerror=null;this.src='https://placehold.co/640x400/fff2f4/be185d?text=Candy+MLBB+Vault';"
-                                 class="w-full h-full object-cover">
-                        </div>
-
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-2xl bg-white border border-roseberry/20 flex items-center justify-center text-roseberry text-base flex-shrink-0">
-                                <i class="fa-solid fa-gem"></i>
-                            </div>
-                            <div>
-                                <p class="text-base font-bold editorial-font text-plumink">Curated MLBB Vault</p>
-                                <p class="text-[11px] text-mauve">Slide Photos • Rank • Skins</p>
-                            </div>
-                        </div>
-
-                        <p class="text-xs text-plumink/80 leading-relaxed">
-                            ရရှိနိုင်သော Mobile Legends အကောင့်စာရင်းကို ကြည့်ရှုရန် အောက်ပါခလုတ်ကို နှိပ်ပါ။
-                        </p>
-
-                        <button type="button"
-                                id="landingSecondaryCatalogBtn"
-                                class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-petal text-deepberry border border-roseberry/25 text-xs font-bold cursor-pointer flex items-center justify-center gap-1.5 transition-all">
-                            <span>Mobile Legend အကောင့်များကြည့်ရန်</span>
-                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                        </button>
+                    <!-- Single clean photo showcase frame with no nested boxes, badges, or extra captions -->
+                    <div class="w-full md:max-w-sm rounded-2xl overflow-hidden border border-roseberry/20 bg-white aspect-[16/10]">
+                        <img src="IMG_20261126_162338_994.jpg"
+                             alt="Candy Official Gaming"
+                             onerror="this.onerror=null;this.src='https://placehold.co/800x500/fff2f4/be185d?text=Candy+Official+Gaming';"
+                             class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -466,18 +438,18 @@
         <section id="catalogSection" class="hidden space-y-6">
             <div class="boutique-card rounded-3xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div class="space-y-1">
-                    <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blush text-deepberry border border-roseberry/20 text-[11px] font-bold">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-xl bg-blush text-deepberry border border-roseberry/20 text-[11px] font-bold">
                         <i class="fa-solid fa-sparkles text-roseberry"></i>
                         <span>Candy Gaming မှကြိုဆိုပါတယ်ရှင့်</span>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-bold editorial-font berry-title-gradient">
+                    <h2 class="text-xl sm:text-2xl font-bold editorial-font berry-title-gradient">
                         Mobile Legend အကောင့်များ
                     </h2>
                 </div>
 
                 <button type="button"
                         id="backToLandingBtn"
-                        class="self-start sm:self-auto px-4 py-2.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer flex items-center gap-2 transition-all">
+                        class="self-start sm:self-auto px-4 py-2.5 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer flex items-center gap-2 transition-all">
                     <i class="fa-solid fa-arrow-left text-roseberry"></i>
                     <span>← ကြိုဆိုစာမျက်နှာသို့</span>
                 </button>
@@ -490,24 +462,24 @@
                     <input type="text"
                            id="catalogSearchInput"
                            placeholder="Account Code, High Rank, Skin, Highlight ရှာဖွေပါ..."
-                           class="w-full bg-white border border-roseberry/20 focus:border-roseberry text-xs sm:text-sm rounded-full pl-10 pr-4 py-2.5 text-plumink placeholder-mauve/70 focus:outline-none transition-all">
+                           class="w-full bg-white border border-roseberry/20 focus:border-roseberry text-xs sm:text-sm rounded-xl pl-10 pr-4 py-2.5 text-plumink placeholder-mauve/70 focus:outline-none transition-all">
                 </div>
 
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-1">
                     <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-bold">
                         <button type="button"
                                 data-filter="ALL"
-                                class="catalog-filter-pill px-4 py-2.5 rounded-full berry-cta-btn cursor-pointer whitespace-nowrap">
+                                class="catalog-filter-pill px-4 py-2.5 rounded-xl berry-cta-btn cursor-pointer whitespace-nowrap">
                             <i class="fa-solid fa-layer-group mr-1"></i> All
                         </button>
                         <button type="button"
                                 data-filter="AVAILABLE"
-                                class="catalog-filter-pill px-4 py-2.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all">
+                                class="catalog-filter-pill px-4 py-2.5 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all">
                             <i class="fa-solid fa-circle-check text-emerald-700 mr-1"></i> Available
                         </button>
                         <button type="button"
                                 data-filter="HIGH_RANK"
-                                class="catalog-filter-pill px-4 py-2.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all">
+                                class="catalog-filter-pill px-4 py-2.5 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all">
                             <i class="fa-solid fa-crown text-amber-700 mr-1"></i> High Rank
                         </button>
                     </div>
@@ -515,7 +487,7 @@
                     <div class="flex items-center justify-between md:justify-end gap-2.5 text-xs">
                         <span id="catalogCountBadge" class="text-mauve font-semibold">0 Accounts</span>
                         <select id="catalogSortSelect"
-                                class="bg-white border border-roseberry/20 text-plumink rounded-full px-3.5 py-2 text-xs font-medium focus:outline-none focus:border-roseberry">
+                                class="bg-white border border-roseberry/20 text-plumink rounded-xl px-3.5 py-2 text-xs font-medium focus:outline-none focus:border-roseberry">
                             <option value="newest">Newest</option>
                             <option value="price-asc">Price Asc</option>
                             <option value="price-desc">Price Desc</option>
@@ -530,7 +502,7 @@
 
             <!-- Empty State -->
             <div id="catalogEmptyState" class="hidden boutique-card rounded-3xl p-10 sm:p-14 text-center space-y-3">
-                <div class="w-16 h-16 mx-auto rounded-full bg-blush border border-roseberry/20 flex items-center justify-center text-roseberry text-2xl">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-blush border border-roseberry/20 flex items-center justify-center text-roseberry text-2xl">
                     <i class="fa-solid fa-wand-sparkles"></i>
                 </div>
                 <h3 class="text-xl font-bold editorial-font text-plumink">ပြသရန် MLBB Account မရှိသေးပါ</h3>
@@ -540,7 +512,7 @@
                 <div class="pt-2">
                     <button type="button"
                             id="clearCatalogFiltersBtn"
-                            class="px-5 py-2.5 rounded-full bg-blush hover:bg-petal text-deepberry border border-roseberry/25 text-xs font-bold cursor-pointer transition-all">
+                            class="px-5 py-2.5 rounded-xl bg-blush hover:bg-petal text-deepberry border border-roseberry/25 text-xs font-bold cursor-pointer transition-all">
                         Filter များ ပြန်ရှင်းမည်
                     </button>
                 </div>
@@ -557,7 +529,7 @@
                 <img src="IMG_20261126_162338_994.jpg"
                      alt="Candy Official Gaming"
                      onerror="this.onerror=null;this.src='https://placehold.co/80x80/fff2f4/be185d?text=COG';"
-                     class="w-8 h-8 rounded-full object-cover bg-blush border border-roseberry/25 flex-shrink-0">
+                     class="w-8 h-8 rounded-xl object-cover bg-blush border border-roseberry/25 flex-shrink-0">
                 <span class="font-bold editorial-font text-base text-plumink">Candy Official Gaming</span>
                 <span>• MLBB Boutique</span>
             </button>
@@ -586,7 +558,7 @@
             <button type="button"
                     id="closeDetailModalBtn"
                     aria-label="Close account detail modal"
-                    class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/95 hover:bg-roseberry text-plumink hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
+                    class="absolute top-4 right-4 z-20 w-9 h-9 rounded-xl bg-white/95 hover:bg-roseberry text-plumink hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="detailModalBody" class="p-5 sm:p-7 space-y-5"></div>
@@ -598,7 +570,7 @@
          aria-hidden="true"
          class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-plumink/60 backdrop-blur-2xs">
         <div class="boutique-card rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl">
-            <div id="noticeIconWrap" class="w-12 h-12 mx-auto rounded-full bg-blush text-deepberry border border-roseberry/20 flex items-center justify-center text-xl">
+            <div id="noticeIconWrap" class="w-12 h-12 mx-auto rounded-2xl bg-blush text-deepberry border border-roseberry/20 flex items-center justify-center text-xl">
                 <i id="noticeIcon" class="fa-solid fa-circle-info"></i>
             </div>
             <div class="space-y-1">
@@ -649,7 +621,7 @@
         const DEFAULT_BANNER_IMAGE = "IMG_20261126_162338_994.jpg";
         const FALLBACK_PLACEHOLDER_IMAGE = "https://placehold.co/800x450/fff2f4/be185d?text=Candy+MLBB+Account";
 
-        // Start empty unless accounts exist in localStorage or Firestore (no seeded fake demo accounts)
+        // Storefront state
         let accounts = [];
         let visitCount = 0;
         let activeFilter = "ALL";
@@ -659,7 +631,7 @@
         let pendingConfirmCallback = null;
 
         /**
-         * Normalizes any photo reference, replacing IMG_20261125_220821_646.png with IMG_20261126_162338_994.jpg.
+         * Normalizes image paths to reference IMG_20261126_162338_994.jpg cleanly.
          */
         function normalizePhotoRef(ref) {
             const raw = String(ref ?? "").trim();
@@ -671,45 +643,49 @@
         }
 
         /**
-         * Reads tombstone-protected deleted IDs so deleted accounts never reappear.
+         * Loads tombstone-protected deletedIds Set from localStorage.
          */
-        function loadDeletedIds() {
+        function loadDeletedIdsSet() {
             try {
                 const raw = localStorage.getItem(DELETED_IDS_STORAGE_KEY);
                 const parsed = raw ? JSON.parse(raw) : [];
-                return Array.isArray(parsed) ? parsed.map(String) : [];
+                return new Set(Array.isArray(parsed) ? parsed.map(String) : []);
             } catch (_err) {
-                return [];
+                return new Set();
             }
         }
 
         /**
-         * Persists an account ID in the tombstone deletedIds set.
+         * Saves tombstone-protected deletedIds Set to localStorage.
+         */
+        function saveDeletedIdsSet(idSet) {
+            try {
+                localStorage.setItem(DELETED_IDS_STORAGE_KEY, JSON.stringify([...idSet].map(String)));
+            } catch (_err) {
+                // Ignore storage write errors
+            }
+        }
+
+        /**
+         * Records an account ID in deletedIds so Firestore snapshots never resurrect it.
          */
         function addDeletedId(id) {
-            try {
-                const set = new Set(loadDeletedIds());
-                set.add(String(id));
-                localStorage.setItem(DELETED_IDS_STORAGE_KEY, JSON.stringify([...set]));
-            } catch (_err) {
-                // Ignore storage errors
-            }
+            const set = loadDeletedIdsSet();
+            set.add(String(id));
+            saveDeletedIdsSet(set);
         }
 
         /**
-         * Removes an account ID from deletedIds when newly added/updated.
+         * Clears an account ID from deletedIds when saving/creating an account.
          */
         function removeDeletedId(id) {
-            try {
-                const filtered = loadDeletedIds().filter((item) => String(item) !== String(id));
-                localStorage.setItem(DELETED_IDS_STORAGE_KEY, JSON.stringify(filtered));
-            } catch (_err) {
-                // Ignore storage errors
-            }
+            const set = loadDeletedIdsSet();
+            set.delete(String(id));
+            saveDeletedIdsSet(set);
         }
 
         /**
-         * Normalizes an account record and sanitizes photo references.
+         * Sanitizes an MLBB account object and bounds photos to MAX_PHOTOS (15).
          */
         function sanitizeAccountRecord(acc) {
             if (!acc || !acc.id) return null;
@@ -725,10 +701,10 @@
         }
 
         /**
-         * Reads MLBB accounts from localStorage, filtered against deletedIds.
+         * Loads MLBB accounts from localStorage while excluding tombstone-deleted IDs.
          */
         function loadLocalAccounts() {
-            const deletedSet = new Set(loadDeletedIds());
+            const deletedSet = loadDeletedIdsSet();
             try {
                 const raw = localStorage.getItem(ACCOUNTS_STORAGE_KEY);
                 const parsed = raw ? JSON.parse(raw) : [];
@@ -742,22 +718,22 @@
         }
 
         /**
-         * Saves MLBB accounts to localStorage, filtered against deletedIds.
+         * Saves MLBB accounts to localStorage while excluding tombstone-deleted IDs.
          */
         function saveLocalAccounts(list) {
-            const deletedSet = new Set(loadDeletedIds());
+            const deletedSet = loadDeletedIdsSet();
             try {
                 const clean = (Array.isArray(list) ? list : [])
                     .map(sanitizeAccountRecord)
                     .filter((acc) => acc && !deletedSet.has(acc.id));
                 localStorage.setItem(ACCOUNTS_STORAGE_KEY, JSON.stringify(clean));
             } catch (_err) {
-                // Ignore quota errors
+                // Ignore storage quota errors
             }
         }
 
         /**
-         * Checks if URL search or hash carries ?admin=candy2026 or #admin-candy2026.
+         * Checks whether ?admin=candy2026 or #admin-candy2026 is active.
          */
         function isAdminSecretActive() {
             try {
@@ -785,7 +761,7 @@
         }
 
         /**
-         * Unlocks or hides #adminPanelSection based on secret URL query/hash.
+         * Immediately unlocks #adminPanelSection when ?admin=candy2026 or #admin-candy2026 is present.
          */
         function updateAdminGateUI() {
             const unlocked = isAdminSecretActive();
@@ -846,7 +822,7 @@
         }
 
         /**
-         * Opens a modal element cleanly.
+         * Opens a modal element.
          */
         function openModal(id) {
             const el = document.getElementById(id);
@@ -856,7 +832,7 @@
         }
 
         /**
-         * Closes a modal element and resets pointer-events/display so it never blocks clicks.
+         * Closes a modal element cleanly (display: none; pointer-events: none; via CSS class).
          */
         function closeModal(id) {
             const el = document.getElementById(id);
@@ -869,7 +845,7 @@
         }
 
         /**
-         * Displays a custom non-blocking notice modal instead of native alert().
+         * Displays a non-blocking custom notice modal (#noticeModal).
          */
         function showNotice(title, message, variant = "info") {
             pendingConfirmCallback = null;
@@ -891,7 +867,7 @@
                 actionsEl.innerHTML = `
                     <button type="button"
                             id="noticeOkBtn"
-                            class="px-6 py-2.5 rounded-full berry-cta-btn text-xs font-bold cursor-pointer">
+                            class="px-6 py-2.5 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer">
                         OK
                     </button>
                 `;
@@ -902,7 +878,7 @@
         }
 
         /**
-         * Displays a custom non-blocking confirmation modal instead of native confirm().
+         * Displays a non-blocking custom confirmation modal (#noticeModal).
          */
         function showConfirm(title, message, onConfirm) {
             pendingConfirmCallback = typeof onConfirm === "function" ? onConfirm : null;
@@ -920,12 +896,12 @@
                 actionsEl.innerHTML = `
                     <button type="button"
                             id="noticeConfirmYesBtn"
-                            class="flex-1 py-2.5 px-4 rounded-full berry-cta-btn text-xs font-bold cursor-pointer">
+                            class="flex-1 py-2.5 px-4 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer">
                         ဖျက်မည်
                     </button>
                     <button type="button"
                             id="noticeConfirmCancelBtn"
-                            class="flex-1 py-2.5 px-4 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                            class="flex-1 py-2.5 px-4 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
                         မဖျက်တော့ပါ
                     </button>
                 `;
@@ -943,7 +919,7 @@
         }
 
         /**
-         * Two-step navigation: shows #landingView and hides #catalogSection.
+         * Step 1 navigation: shows #landingView and hides #catalogSection.
          */
         function goToLanding() {
             document.getElementById("landingView")?.classList.remove("hidden");
@@ -952,7 +928,7 @@
         }
 
         /**
-         * Two-step navigation: hides #landingView and shows #catalogSection.
+         * Step 2 navigation: reveals #catalogSection and hides #landingView.
          */
         function goToCatalog() {
             document.getElementById("landingView")?.classList.add("hidden");
@@ -962,23 +938,23 @@
         }
 
         /**
-         * Updates filter pill active state and re-renders catalog cards.
+         * Sets active filter pill (ALL, AVAILABLE, HIGH_RANK) and re-renders catalog.
          */
         function setFilter(filterKey) {
             activeFilter = filterKey;
             document.querySelectorAll(".catalog-filter-pill").forEach((btn) => {
                 const isActive = btn.getAttribute("data-filter") === filterKey;
                 if (isActive) {
-                    btn.className = "catalog-filter-pill px-4 py-2.5 rounded-full berry-cta-btn cursor-pointer whitespace-nowrap";
+                    btn.className = "catalog-filter-pill px-4 py-2.5 rounded-xl berry-cta-btn cursor-pointer whitespace-nowrap";
                 } else {
-                    btn.className = "catalog-filter-pill px-4 py-2.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all";
+                    btn.className = "catalog-filter-pill px-4 py-2.5 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all";
                 }
             });
             renderCatalog();
         }
 
         /**
-         * Resets catalog search, filter pill, and sort control.
+         * Resets catalog search, filter, and sort controls.
          */
         function clearCatalogFilters() {
             const searchInput = document.getElementById("catalogSearchInput");
@@ -989,7 +965,7 @@
         }
 
         /**
-         * Determines whether an account qualifies as High Rank.
+         * Evaluates whether an MLBB account qualifies as High Rank.
          */
         function isHighRankAccount(acc) {
             const combined = `${acc.rank || ""} ${acc.title || ""} ${acc.highlight || ""}`.toLowerCase();
@@ -1004,7 +980,7 @@
         }
 
         /**
-         * Filters, sorts, and renders MLBB accounts in #catalogGrid.
+         * Renders MLBB account cards inside #catalogGrid.
          */
         function renderCatalog() {
             const grid = document.getElementById("catalogGrid");
@@ -1012,7 +988,7 @@
             const badge = document.getElementById("catalogCountBadge");
             if (!grid || !emptyState || !badge) return;
 
-            const deletedSet = new Set(loadDeletedIds());
+            const deletedSet = loadDeletedIdsSet();
             const query = (document.getElementById("catalogSearchInput")?.value || "").trim().toLowerCase();
             const sortBy = document.getElementById("catalogSortSelect")?.value || "newest";
 
@@ -1077,19 +1053,19 @@
                                      onerror="this.onerror=null;this.src='${FALLBACK_PLACEHOLDER_IMAGE}';"
                                      class="w-full h-full object-cover">
 
-                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase ${
+                                <span class="absolute top-3 left-3 px-3 py-1 rounded-xl text-[10px] font-bold uppercase ${
                                     isSold ? "bg-deepberry text-white" : "bg-emerald-700 text-white"
                                 }">
                                     ${isSold ? "SOLD OUT" : "AVAILABLE"}
                                 </span>
 
                                 ${acc.rank ? `
-                                    <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-[11px] font-bold bg-white/95 text-plumink border border-roseberry/20">
+                                    <span class="absolute top-3 right-3 px-3 py-1 rounded-xl text-[11px] font-bold bg-white/95 text-plumink border border-roseberry/20">
                                         ${escapeHtml(acc.rank)}
                                     </span>
                                 ` : ""}
 
-                                <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full text-[11px] font-bold bg-plumink/85 text-white flex items-center gap-1">
+                                <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-plumink/85 text-white flex items-center gap-1">
                                     <i class="fa-regular fa-images"></i> ${photos.length}
                                 </span>
                             </div>
@@ -1113,7 +1089,7 @@
                                 ${highlights.length > 0 ? `
                                     <div class="flex flex-wrap gap-1.5">
                                         ${highlights.slice(0, 3).map((tag) => `
-                                            <span class="px-2.5 py-1 rounded-full bg-white text-deepberry border border-roseberry/20 text-[11px] font-semibold">
+                                            <span class="px-2.5 py-1 rounded-xl bg-white text-deepberry border border-roseberry/20 text-[11px] font-semibold">
                                                 ${escapeHtml(tag)}
                                             </span>
                                         `).join("")}
@@ -1132,7 +1108,7 @@
 
                             <button type="button"
                                     data-open-detail="${escapeHtml(acc.id)}"
-                                    class="open-detail-btn px-4 py-2.5 rounded-full berry-cta-btn text-xs font-bold cursor-pointer flex items-center gap-1.5">
+                                    class="open-detail-btn px-4 py-2.5 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer flex items-center gap-1.5">
                                 <span>အသေးစိတ်</span>
                                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </button>
@@ -1150,8 +1126,8 @@
         }
 
         /**
-         * Opens the account detail modal (#detailModal) with multi-photo slider (up to 15 photos)
-         * and direct Telegram order link prefilled for @CandyGaming8.
+         * Opens the multi-photo slider detail modal (#detailModal) with up to 15 photos
+         * and direct Telegram ordering via @CandyGaming8.
          */
         function openDetailModal(id) {
             const acc = accounts.find((item) => String(item.id) === String(id));
@@ -1187,17 +1163,17 @@
                             <button type="button"
                                     id="sliderPrevBtn"
                                     aria-label="Previous photo"
-                                    class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/95 hover:bg-roseberry text-plumink hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
+                                    class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl bg-white/95 hover:bg-roseberry text-plumink hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
                                 <i class="fa-solid fa-chevron-left text-xs"></i>
                             </button>
                             <button type="button"
                                     id="sliderNextBtn"
                                     aria-label="Next photo"
-                                    class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/95 hover:bg-roseberry text-plumink hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl bg-white/95 hover:bg-roseberry text-plumink hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
                                 <i class="fa-solid fa-chevron-right text-xs"></i>
                             </button>
                             <span id="sliderCounterBadge"
-                                  class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-plumink/85 text-white text-xs font-bold">
+                                  class="absolute bottom-3 right-3 px-3 py-1 rounded-xl bg-plumink/85 text-white text-xs font-bold">
                                 1 / ${sliderPhotoList.length}
                             </span>
                         ` : ""}
@@ -1227,7 +1203,7 @@
                             <h3 class="text-2xl font-bold editorial-font text-plumink">
                                 ${escapeHtml(acc.title || "MLBB Account")}
                             </h3>
-                            <span class="px-3 py-0.5 rounded-full text-[11px] font-bold ${
+                            <span class="px-3 py-0.5 rounded-xl text-[11px] font-bold ${
                                 isSold
                                     ? "bg-petal text-deepberry border border-roseberry/25"
                                     : "bg-emerald-100 text-emerald-800 border border-emerald-300"
@@ -1262,7 +1238,7 @@
                         <p class="text-xs font-bold text-plumink">Highlight Skins</p>
                         <div class="flex flex-wrap gap-1.5">
                             ${highlights.map((tag) => `
-                                <span class="px-3 py-1 rounded-full bg-white text-deepberry border border-roseberry/20 text-xs font-semibold">
+                                <span class="px-3 py-1 rounded-xl bg-white text-deepberry border border-roseberry/20 text-xs font-semibold">
                                     ${escapeHtml(tag)}
                                 </span>
                             `).join("")}
@@ -1283,13 +1259,13 @@
                     <a href="https://t.me/${escapeHtml(tgHandle)}?text=${prefilledText}"
                        target="_blank"
                        rel="noopener noreferrer"
-                       class="w-full sm:flex-1 py-3 px-5 rounded-full berry-cta-btn text-xs sm:text-sm font-bold flex items-center justify-center gap-2">
+                       class="w-full sm:flex-1 py-3 px-5 rounded-xl berry-cta-btn text-xs sm:text-sm font-bold flex items-center justify-center gap-2">
                         <i class="fa-brands fa-telegram text-base"></i>
                         <span>@${escapeHtml(tgHandle)} မှ တိုက်ရိုက် မှာယူမည်</span>
                     </a>
                     <button type="button"
                             id="detailDoneBtn"
-                            class="w-full sm:w-auto px-5 py-3 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                            class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
                         ပိတ်မည်
                     </button>
                 </div>
@@ -1310,7 +1286,7 @@
         }
 
         /**
-         * Shifts slider photo index by delta (-1 or +1).
+         * Moves active slider photo forward or backward.
          */
         function moveSlider(delta) {
             if (!sliderPhotoList.length) return;
@@ -1319,7 +1295,7 @@
         }
 
         /**
-         * Sets active slider photo and updates counter and thumbnail ring.
+         * Updates slider image, counter label, and active thumbnail highlight.
          */
         function setSliderIndex(idx) {
             if (!sliderPhotoList.length) return;
@@ -1339,7 +1315,7 @@
         }
 
         /**
-         * Renders the Admin Studio accounts table and visit counter.
+         * Renders Admin Studio accounts table and visit counter.
          */
         function renderAdminTable() {
             const visitCounterEl = document.getElementById("adminVisitCounter");
@@ -1348,7 +1324,7 @@
             const tbody = document.getElementById("adminAccountsTbody");
             if (!tbody) return;
 
-            const deletedSet = new Set(loadDeletedIds());
+            const deletedSet = loadDeletedIdsSet();
             const items = accounts.filter((acc) => acc && acc.id && !deletedSet.has(String(acc.id)));
 
             if (items.length === 0) {
@@ -1381,7 +1357,7 @@
                         <td class="p-3">${Number(acc.skins || 0)} Skins • ${escapeHtml(acc.winRate || "50%+")}</td>
                         <td class="p-3 font-bold text-deepberry">${escapeHtml(formatMMK(acc.price))}</td>
                         <td class="p-3">
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                            <span class="px-2.5 py-0.5 rounded-xl text-[10px] font-bold ${
                                 isSold ? "bg-petal text-deepberry" : "bg-emerald-100 text-emerald-800"
                             }">
                                 ${isSold ? "SOLD" : "AVAILABLE"}
@@ -1390,13 +1366,13 @@
                         <td class="p-3 text-right whitespace-nowrap space-x-1.5">
                             <button type="button"
                                     data-edit-id="${escapeHtml(acc.id)}"
-                                    class="admin-edit-btn px-3 py-1 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-[11px] font-bold cursor-pointer">
+                                    class="admin-edit-btn px-3 py-1 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-[11px] font-bold cursor-pointer">
                                 Edit
                             </button>
                             <button type="button"
                                     data-delete-id="${escapeHtml(acc.id)}"
                                     data-delete-title="${escapeHtml(acc.title || "Account")}"
-                                    class="admin-delete-btn px-3 py-1 rounded-full bg-petal hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/25 text-[11px] font-bold cursor-pointer transition-colors">
+                                    class="admin-delete-btn px-3 py-1 rounded-xl bg-petal hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/25 text-[11px] font-bold cursor-pointer transition-colors">
                                 Delete
                             </button>
                         </td>
@@ -1428,7 +1404,7 @@
         }
 
         /**
-         * Renders thumbnails for up to 15 photos inside the Admin form.
+         * Renders Admin photo thumbnails (up to MAX_PHOTOS = 15).
          */
         function renderEditorThumbnails() {
             const container = document.getElementById("adminPhotoThumbnails");
@@ -1454,7 +1430,7 @@
                     <button type="button"
                             data-remove-photo-idx="${idx}"
                             aria-label="Remove photo"
-                            class="remove-editor-photo-btn absolute top-1 right-1 w-5 h-5 rounded-full bg-plumink/85 hover:bg-roseberry text-white text-[10px] flex items-center justify-center cursor-pointer">
+                            class="remove-editor-photo-btn absolute top-1 right-1 w-5 h-5 rounded-lg bg-plumink/85 hover:bg-roseberry text-white text-[10px] flex items-center justify-center cursor-pointer">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -1472,7 +1448,7 @@
         }
 
         /**
-         * Reads and compresses an image file to a JPEG data URL.
+         * Compresses uploaded image file using Canvas.
          */
         function compressImageFile(file, maxWidth = 1024, quality = 0.78) {
             return new Promise((resolve, reject) => {
@@ -1506,7 +1482,7 @@
         }
 
         /**
-         * Handles selecting up to 15 image files in the Admin form.
+         * Handles file input for up to 15 photos in Admin form.
          */
         async function handleAdminPhotoFiles(event) {
             const files = Array.from(event.target?.files || []);
@@ -1530,7 +1506,7 @@
         }
 
         /**
-         * Resets the Admin account form to create mode.
+         * Resets Admin form fields and photo list.
          */
         function resetAdminForm() {
             document.getElementById("mlbbAccountForm")?.reset();
@@ -1549,7 +1525,7 @@
         }
 
         /**
-         * Loads an existing MLBB account into the Admin form for editing.
+         * Loads an existing account into Admin form for editing.
          */
         function startEditAccount(id) {
             const acc = accounts.find((item) => String(item.id) === String(id));
@@ -1586,7 +1562,7 @@
         }
 
         /**
-         * Creates or updates an MLBB account in localStorage and Firestore (mlbb_accounts).
+         * Saves or updates an MLBB account in localStorage and Firestore (mlbb_accounts).
          */
         async function handleSaveAccount(event) {
             event.preventDefault();
@@ -1660,14 +1636,14 @@
                 }, { merge: true });
                 showNotice("Saved", "MLBB Account ကို သိမ်းဆည်းပြီးပါပြီ", "success");
             } catch (_err) {
-                showNotice("Saved Locally", "Local storage တွင် သိမ်းဆည်းပြီးပါပြီ (Firestore rule စစ်ဆေးပါ)", "info");
+                showNotice("Saved Locally", "Local storage တွင် သိမ်းဆည်းပြီးပါပြီ", "info");
             }
 
             resetAdminForm();
         }
 
         /**
-         * Deletes an MLBB account using tombstone deletedIds protection + Firestore deleteDoc + localStorage update.
+         * Deletes an MLBB account with tombstone deletedIds protection + Firestore deleteDoc + localStorage sync.
          */
         async function removeAccount(id) {
             const targetId = String(id);
@@ -1686,7 +1662,7 @@
         }
 
         /**
-         * Records a visit in Firestore visit_logs once per browser session.
+         * Logs session visit to Firestore visit_logs once per session.
          */
         async function recordSessionVisit() {
             try {
@@ -1699,19 +1675,18 @@
                     clientTime: Date.now()
                 });
             } catch (_err) {
-                // Ignore unauthenticated or offline telemetry error
+                // Ignore offline or security rule restrictions
             }
         }
 
         /**
-         * Binds all event listeners explicitly and cleanly.
+         * Binds all DOM event listeners explicitly.
          */
         function bindAllListeners() {
             document.getElementById("brandHomeBtn")?.addEventListener("click", goToLanding);
             document.getElementById("footerBrandBtn")?.addEventListener("click", goToLanding);
             document.getElementById("headerCatalogBtn")?.addEventListener("click", goToCatalog);
             document.getElementById("openCatalogBtn")?.addEventListener("click", goToCatalog);
-            document.getElementById("landingSecondaryCatalogBtn")?.addEventListener("click", goToCatalog);
             document.getElementById("backToLandingBtn")?.addEventListener("click", goToLanding);
             document.getElementById("clearCatalogFiltersBtn")?.addEventListener("click", clearCatalogFilters);
 
@@ -1763,11 +1738,15 @@
                 if (ev.key === "Escape") {
                     closeModal("noticeModal");
                     closeModal("detailModal");
+                } else if (ev.key === "ArrowLeft" && document.getElementById("detailModal")?.classList.contains("is-open")) {
+                    moveSlider(-1);
+                } else if (ev.key === "ArrowRight" && document.getElementById("detailModal")?.classList.contains("is-open")) {
+                    moveSlider(1);
                 }
             });
         }
 
-        // Boot application: two-step flow starts on #landingView, secret admin panel checks ?admin=candy2026 / #admin-candy2026
+        // Initialize storefront UI, two-step navigation, secret admin gate & Firebase listeners
         accounts = loadLocalAccounts();
         bindAllListeners();
         goToLanding();
@@ -1791,7 +1770,7 @@
         });
 
         onSnapshot(accountsCol, (snapshot) => {
-            const deletedSet = new Set(loadDeletedIds());
+            const deletedSet = loadDeletedIdsSet();
             const remoteItems = [];
             snapshot.forEach((docSnap) => {
                 const data = docSnap.data() || {};
