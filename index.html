@@ -3,40 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candy Official Gaming — MLBB VIP Boutique</title>
-    <link rel="icon" type="image/jpeg" href="IMG_20261123_150211_100.jpg">
-    <link rel="apple-touch-icon" href="IMG_20261123_150211_100.jpg">
+    <title>Candy Official Gaming — MLBB Account Boutique</title>
 
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Google Fonts: Quicksand, Plus Jakarta Sans & Padauk -->
+    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans & Padauk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Padauk:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
-        // Configure Tailwind color tokens and fonts for the cream-blush rose-berry boutique theme
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        alabaster: '#fdf6f7',
+                        alabaster: '#fff9fa',
                         blush: '#fff2f4',
-                        petal: '#ffe3e8',
-                        wine: '#2d1122',
-                        espresso: '#52203d',
-                        berry: '#be185d',
-                        magenta: '#db2777',
-                        rosecoral: '#f43f5e',
-                        champagne: '#d97706'
+                        creamblush: '#fdf6f7',
+                        roseberry: '#be185d',
+                        deepberry: '#9d174d',
+                        petal: '#fbcfe8',
+                        plumink: '#3b1d2a',
+                        mauve: '#8b6373'
                     },
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'Padauk', 'sans-serif'],
-                        cute: ['Quicksand', 'Plus Jakarta Sans', 'Padauk', 'sans-serif']
+                        editorial: ['Cormorant Garamond', 'Padauk', 'serif']
                     }
                 }
             }
@@ -44,105 +40,78 @@
     </script>
 
     <style>
-        /* Warm Cream-Blush (#fdf6f7 / #fff9fa / #fff2f4), Alabaster-Pearl & Rose-Berry Boutique Surface */
+        /* Cream-Blush (#fdf6f7), Alabaster (#fff9fa), Soft Blush (#fff2f4) & Rose-Berry (#be185d / #9d174d) Boutique Palette */
         html, body {
             background-color: #fdf6f7;
-            color: #2d1122;
+            color: #3b1d2a;
             font-family: 'Plus Jakarta Sans', 'Padauk', sans-serif;
             overflow-x: hidden;
         }
 
         body {
             background-image:
-                radial-gradient(circle at 10% 8%, rgba(244, 63, 94, 0.08) 0%, transparent 38%),
-                radial-gradient(circle at 90% 12%, rgba(219, 39, 119, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 50% 94%, rgba(190, 24, 93, 0.06) 0%, transparent 45%),
-                linear-gradient(180deg, #fff9fa 0%, #fff2f4 54%, #fdf6f7 100%);
+                radial-gradient(circle at 12% 8%, rgba(190, 24, 93, 0.08) 0%, transparent 38%),
+                radial-gradient(circle at 88% 12%, rgba(157, 23, 77, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 96%, rgba(190, 24, 93, 0.06) 0%, transparent 45%),
+                linear-gradient(180deg, #fff9fa 0%, #fff2f4 55%, #fdf6f7 100%);
         }
 
-        .cute-font {
-            font-family: 'Quicksand', 'Plus Jakarta Sans', 'Padauk', sans-serif;
+        .editorial-font {
+            font-family: 'Cormorant Garamond', 'Padauk', serif;
         }
 
-        .berry-gradient-text {
-            background: linear-gradient(125deg, #2d1122 0%, #be185d 45%, #db2777 75%, #f43f5e 100%);
+        .berry-title-gradient {
+            background: linear-gradient(125deg, #3b1d2a 0%, #9d174d 50%, #be185d 88%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .boutique-btn {
-            background: linear-gradient(135deg, #f43f5e 0%, #db2777 55%, #be185d 100%);
+        .berry-cta-btn {
+            background: linear-gradient(135deg, #be185d 0%, #9d174d 100%);
             color: #ffffff;
-            box-shadow: 0 10px 22px -8px rgba(219, 39, 119, 0.52);
-            transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+            box-shadow: 0 10px 22px -8px rgba(157, 23, 77, 0.55);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
         }
 
-        .boutique-btn:hover {
+        .berry-cta-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 14px 26px -8px rgba(190, 24, 93, 0.62);
-            filter: brightness(1.03);
+            box-shadow: 0 14px 26px -8px rgba(157, 23, 77, 0.65);
+            filter: brightness(1.04);
         }
 
-        .pearl-header {
-            background: rgba(255, 249, 250, 0.92);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+        .boutique-panel {
+            background: rgba(255, 249, 250, 0.95);
+            border: 1px solid rgba(190, 24, 93, 0.16);
+            box-shadow:
+                0 14px 32px -16px rgba(59, 29, 42, 0.16),
+                0 2px 6px -1px rgba(190, 24, 93, 0.05);
         }
 
-        /* Boutique Card with Delicate Corner Accents & Layered Soft Shadow */
         .boutique-card {
             position: relative;
-            background: linear-gradient(180deg, #ffffff 0%, #fff2f4 100%);
-            border: 1px solid rgba(219, 39, 119, 0.16);
+            background: linear-gradient(180deg, #ffffff 0%, #fff9fa 65%, #fff2f4 100%);
+            border: 1px solid rgba(190, 24, 93, 0.16);
             box-shadow:
-                0 12px 28px -14px rgba(45, 17, 34, 0.16),
-                0 2px 6px -1px rgba(219, 39, 119, 0.06);
-            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+                0 12px 28px -14px rgba(59, 29, 42, 0.15),
+                0 2px 6px -1px rgba(190, 24, 93, 0.05);
+            transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
         }
 
         .boutique-card:hover {
             transform: translateY(-3px);
-            border-color: rgba(219, 39, 119, 0.35);
+            border-color: rgba(190, 24, 93, 0.36);
             box-shadow:
-                0 20px 36px -16px rgba(45, 17, 34, 0.22),
-                0 6px 14px -4px rgba(219, 39, 119, 0.12);
+                0 20px 36px -16px rgba(59, 29, 42, 0.22),
+                0 6px 14px -4px rgba(190, 24, 93, 0.12);
         }
 
-        .boutique-card::before {
-            content: "";
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 15px;
-            height: 15px;
-            border-top: 1.5px solid rgba(244, 63, 94, 0.42);
-            border-left: 1.5px solid rgba(244, 63, 94, 0.42);
-            border-top-left-radius: 6px;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        .boutique-card::after {
-            content: "";
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 15px;
-            height: 15px;
-            border-bottom: 1.5px solid rgba(190, 24, 93, 0.35);
-            border-right: 1.5px solid rgba(190, 24, 93, 0.35);
-            border-bottom-right-radius: 6px;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        /* Non-blocking modal rule: closed modals never block clicks or screen space */
-        .boutique-modal {
+        /* Closed modals must strictly have display: none; pointer-events: none; so they never block clicks */
+        .modal-backdrop {
             display: none;
             pointer-events: none;
         }
 
-        .boutique-modal.is-open {
+        .modal-backdrop.is-open {
             display: flex;
             pointer-events: auto;
         }
@@ -157,53 +126,61 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(219, 39, 119, 0.32);
+            background: rgba(190, 24, 93, 0.32);
             border-radius: 9999px;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-rose-200 selection:text-wine">
+<body class="min-h-screen flex flex-col justify-between selection:bg-petal selection:text-plumink">
 
-    <!-- TOP NAVIGATION BAR -->
-    <header class="sticky top-0 z-40 pearl-header border-b border-rose-200/80 shadow-xs">
+    <!-- STICKY HEADER BAR -->
+    <header class="sticky top-0 z-40 bg-alabaster/95 backdrop-blur-md border-b border-roseberry/15 shadow-2xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
-            <!-- Brand Logo (Clicking returns to #landingView) -->
-            <div id="brandLogoBtn" class="flex items-center gap-3 cursor-pointer" role="button" tabindex="0" aria-label="Candy Official Gaming Home">
-                <div class="relative w-11 h-11 rounded-full overflow-hidden border-2 border-rose-300 bg-blush shadow-xs flex-shrink-0">
-                    <img src="IMG_20261123_150211_100.jpg"
-                         alt="Candy Official Gaming"
-                         onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff2f4/be185d?text=CANDY';"
-                         class="w-full h-full object-cover">
+            <!-- Brand Home Button -->
+            <button type="button"
+                    id="brandHomeBtn"
+                    aria-label="Candy Official Gaming Home"
+                    class="flex items-center gap-3 text-left cursor-pointer group">
+                <div class="w-11 h-11 rounded-full bg-blush border-2 border-roseberry/25 flex items-center justify-center text-roseberry font-bold editorial-font text-lg flex-shrink-0">
+                    COG
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
-                        <span class="text-lg sm:text-xl font-bold cute-font berry-gradient-text tracking-wide">
+                        <span class="text-xl sm:text-2xl font-bold editorial-font berry-title-gradient tracking-tight">
                             Candy Official Gaming
                         </span>
-                        <span class="hidden sm:inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-rose-100 text-berry border border-rose-200">
-                            <i class="fa-solid fa-crown text-rosecoral text-[9px]"></i> MLBB ONLY
+                        <span class="hidden sm:inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-blush text-deepberry border border-roseberry/20">
+                            <i class="fa-solid fa-crown text-roseberry text-[9px]"></i> MLBB
                         </span>
                     </div>
-                    <p class="text-[11px] text-espresso/75 cute-font">Mobile Legends Account Boutique</p>
+                    <p class="text-[11px] text-mauve">Mobile Legends Boutique • Curated Accounts</p>
                 </div>
-            </div>
+            </button>
 
-            <!-- Right Controls -->
-            <div class="flex items-center gap-2">
+            <!-- Header Navigation & Contact -->
+            <div class="flex items-center gap-2 sm:gap-2.5">
+                <button type="button"
+                        id="headerCatalogBtn"
+                        class="px-3.5 py-2 rounded-full bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-grid-2 text-roseberry"></i>
+                    <span class="hidden sm:inline">MLBB Catalog</span>
+                    <span class="sm:hidden">Catalog</span>
+                </button>
+
                 <a href="https://t.me/CandyGaming8"
                    target="_blank"
                    rel="noopener noreferrer"
-                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white hover:bg-blush text-wine border border-rose-200 text-xs font-bold shadow-xs transition-all">
+                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold transition-all">
                     <i class="fa-brands fa-telegram text-sky-600 text-sm"></i>
                     <span>@CandyGaming8</span>
                 </a>
 
-                <!-- Secret-gated Admin Panel button (hidden for normal buyers) -->
+                <!-- Secret-Gated Admin Studio Toggle (hidden from normal buyers) -->
                 <button type="button"
-                        id="headerAdminBtn"
-                        class="hidden items-center gap-1.5 px-3.5 py-2 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-xs font-bold cursor-pointer transition-all">
-                    <i class="fa-solid fa-key text-xs text-champagne"></i>
-                    <span id="adminBtnText">Admin</span>
+                        id="headerAdminToggleBtn"
+                        class="hidden items-center gap-1.5 px-3.5 py-2 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-950 border border-amber-300 text-xs font-bold cursor-pointer transition-all">
+                    <i class="fa-solid fa-key text-amber-700 text-xs"></i>
+                    <span>Admin Studio</span>
                 </button>
             </div>
         </div>
@@ -212,30 +189,230 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
 
-        <!-- 1. LANDING / ENTRY GATEWAY VIEW (#landingView) -->
-        <section id="landingView" class="py-4 sm:py-8">
-            <div class="boutique-card rounded-3xl p-6 sm:p-10 md:p-12 max-w-4xl mx-auto overflow-hidden">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                    <div class="space-y-4 max-w-xl">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush border border-rose-200 text-berry text-xs font-bold cute-font">
-                            <i class="fa-solid fa-heart text-rosecoral"></i>
-                            <span>Candy Official Gaming • MLBB VIP Store</span>
+        <!-- SECRET-GATED ADMIN STUDIO (#adminPanelSection) -->
+        <!-- Stays hidden by default for normal buyers; unlocks immediately on ?admin=candy2026 or #admin-candy2026 -->
+        <section id="adminPanelSection" class="hidden boutique-panel rounded-3xl p-5 sm:p-8 space-y-6 border-2 border-roseberry/25">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-roseberry/15 pb-4">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blush text-deepberry border border-roseberry/20 text-[11px] font-bold">
+                        <i class="fa-solid fa-shield-halved text-roseberry"></i>
+                        <span>Secret Admin Panel (candy2026)</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold editorial-font berry-title-gradient">
+                        Candy Official Gaming — MLBB Account Studio
+                    </h2>
+                    <p id="adminFirebaseStatus" class="text-[11px] text-mauve">
+                        Connecting to Firebase (candy-shop-a365d)...
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2">
+                    <div class="px-3.5 py-2 rounded-2xl bg-blush border border-roseberry/20 text-xs font-bold text-plumink flex items-center gap-2">
+                        <i class="fa-solid fa-eye text-roseberry"></i>
+                        <span>Total Visits:</span>
+                        <span id="adminVisitCounter" class="text-deepberry font-extrabold">0</span>
+                    </div>
+                    <button type="button"
+                            id="collapseAdminBtn"
+                            class="px-3.5 py-2 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                        <i class="fa-solid fa-chevron-up mr-1"></i> ဝှက်မည်
+                    </button>
+                </div>
+            </div>
+
+            <!-- Add / Edit MLBB Account Form -->
+            <div class="bg-white/95 border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-4">
+                <div class="flex items-center justify-between gap-2">
+                    <h3 id="adminFormHeading" class="text-lg font-bold editorial-font text-plumink">
+                        <i class="fa-solid fa-plus-circle text-roseberry mr-1"></i> MLBB Account အသစ်ထည့်ရန်
+                    </h3>
+                    <button type="button"
+                            id="resetAdminFormBtn"
+                            class="px-3 py-1.5 rounded-full bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                        Form ရှင်းမည်
+                    </button>
+                </div>
+
+                <form id="mlbbAccountForm" class="space-y-4">
+                    <input type="hidden" id="editingAccountId">
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                        <div>
+                            <label class="block text-xs font-bold text-plumink mb-1">Account Title / Code *</label>
+                            <input type="text"
+                                   id="accTitleInput"
+                                   required
+                                   placeholder="Candy MLBB #001"
+                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
                         </div>
 
-                        <h1 class="text-2xl sm:text-4xl font-bold cute-font berry-gradient-text leading-snug">
+                        <div>
+                            <label class="block text-xs font-bold text-plumink mb-1">Rank / Star *</label>
+                            <input type="text"
+                                   id="accRankInput"
+                                   required
+                                   placeholder="High Rank 115★"
+                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-plumink mb-1">Price (MMK) *</label>
+                            <input type="number"
+                                   id="accPriceInput"
+                                   min="0"
+                                   required
+                                   placeholder="150000"
+                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-plumink mb-1">Status</label>
+                            <select id="accStatusInput"
+                                    class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
+                                <option value="AVAILABLE">AVAILABLE</option>
+                                <option value="SOLD">SOLD</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-plumink mb-1">Skins Count *</label>
+                            <input type="number"
+                                   id="accSkinsInput"
+                                   min="0"
+                                   required
+                                   placeholder="260"
+                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-plumink mb-1">Win Rate</label>
+                            <input type="text"
+                                   id="accWinRateInput"
+                                   placeholder="63.4%"
+                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-plumink mb-1">Highlight Skin</label>
+                            <input type="text"
+                                   id="accHighlightInput"
+                                   placeholder="Angela Collector, Ruby Aspirant"
+                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-plumink mb-1">Telegram Handle</label>
+                            <input type="text"
+                                   id="accTelegramInput"
+                                   value="CandyGaming8"
+                                   placeholder="CandyGaming8"
+                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-plumink mb-1">Photo URLs (up to 15, comma or newline separated)</label>
+                        <input type="text"
+                               id="accPhotoUrlsInput"
+                               placeholder="https://example.com/photo1.jpg, https://example.com/photo2.jpg"
+                               class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
+                    </div>
+
+                    <!-- Multi-Photo File Picker (Up to 15 photos) -->
+                    <div class="space-y-2">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <label class="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold transition-all">
+                                <i class="fa-solid fa-images"></i>
+                                <span>ဓာတ်ပုံများ ရွေးရန် (Max 15)</span>
+                                <input type="file"
+                                       id="accPhotoFilesInput"
+                                       accept="image/*"
+                                       multiple
+                                       class="hidden">
+                            </label>
+                            <span id="adminPhotoCountLabel" class="text-xs font-semibold text-mauve">0 / 15 Photos</span>
+                        </div>
+
+                        <div id="adminPhotoThumbnails"
+                             class="flex flex-wrap gap-2 min-h-[60px] p-2.5 rounded-2xl bg-blush/70 border border-roseberry/15">
+                            <span id="emptyPhotoThumbHint" class="text-xs text-mauve self-center mx-auto">
+                                ဓာတ်ပုံ URL ထည့်နိုင်သလို ဓာတ်ပုံဖိုင်များလည်း ရွေးချယ်နိုင်ပါသည် (Max 15)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-plumink mb-1">Notes / Bind Details</label>
+                        <textarea id="accNotesInput"
+                                  rows="2"
+                                  placeholder="Clean Moonton bind, full access details..."
+                                  class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none"></textarea>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-1">
+                        <button type="submit"
+                                id="submitMlbbAccountBtn"
+                                class="px-6 py-2.5 rounded-full berry-cta-btn text-xs font-bold cursor-pointer">
+                            <i class="fa-solid fa-floppy-disk mr-1.5"></i> Save MLBB Account
+                        </button>
+                        <button type="button"
+                                id="cancelEditAccountBtn"
+                                class="hidden px-4 py-2.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                            Cancel Edit
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Admin Accounts Table -->
+            <div class="overflow-x-auto rounded-2xl border border-roseberry/15 bg-white">
+                <table class="w-full text-left text-xs text-plumink">
+                    <thead class="bg-blush text-plumink uppercase tracking-wider border-b border-roseberry/15">
+                        <tr>
+                            <th class="p-3">Photo</th>
+                            <th class="p-3">Account</th>
+                            <th class="p-3">Rank</th>
+                            <th class="p-3">Skins / WR</th>
+                            <th class="p-3">Price</th>
+                            <th class="p-3">Status</th>
+                            <th class="p-3 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminAccountsTbody" class="divide-y divide-roseberry/10"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- STEP 1: LANDING / WELCOME VIEW (#landingView) -->
+        <section id="landingView" class="py-4 sm:py-8">
+            <div class="boutique-card rounded-3xl p-6 sm:p-10 md:p-12 max-w-5xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+                    <div class="space-y-4 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush border border-roseberry/20 text-deepberry text-xs font-bold">
+                            <i class="fa-solid fa-heart text-roseberry"></i>
+                            <span>Candy Official Gaming • MLBB VIP Collection</span>
+                        </div>
+
+                        <h1 class="text-3xl sm:text-5xl font-bold editorial-font berry-title-gradient leading-tight">
                             Candy Gaming မှကြိုဆိုပါတယ်ရှင့်
                         </h1>
 
-                        <p class="text-xs sm:text-sm text-espresso/80 leading-relaxed">
-                            Mobile Legends: Bang Bang အကောင့်များကို စိတ်ချယုံကြည်စွာ ကြည့်ရှုဝယ်ယူနိုင်ပါသည်။
-                            Skin အစုံ၊ High Rank နှင့် Clean Account များကို ဓာတ်ပုံအပြည့်အစုံ စစ်ဆေးပြီး
-                            <span class="text-magenta font-bold">@CandyGaming8</span> Telegram မှ တိုက်ရိုက် မှာယူနိုင်ပါသည်။
+                        <p class="text-xs sm:text-sm text-mauve leading-relaxed">
+                            Mobile Legends: Bang Bang (MLBB) အကောင့်များကိုသာ သီးသန့် ရွေးချယ်တင်ဆက်ပေးနေသော Boutique Store ဖြစ်ပါသည်။
+                            High Rank၊ Clean Account နှင့် Rare Skin Highlights များကို ဓာတ်ပုံအစုံအလင် ကြည့်ရှုပြီး
+                            <a href="https://t.me/CandyGaming8"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="text-deepberry font-bold underline decoration-roseberry/40 hover:text-roseberry">
+                                @CandyGaming8
+                            </a>
+                            Telegram မှ တိုက်ရိုက် မှာယူနိုင်ပါသည်။
                         </p>
 
                         <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
                             <button type="button"
-                                    id="enterMlbbCatalogBtn"
-                                    class="w-full sm:w-auto px-6 py-3.5 rounded-full boutique-btn text-xs sm:text-sm font-bold cute-font cursor-pointer flex items-center justify-center gap-2">
+                                    id="openCatalogBtn"
+                                    class="w-full sm:w-auto px-6 py-3.5 rounded-full berry-cta-btn text-xs sm:text-sm font-bold cursor-pointer flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-crown"></i>
                                 <span>Mobile Legend အကောင့်များကြည့်ရန်</span>
                                 <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -244,33 +421,32 @@
                             <a href="https://t.me/CandyGaming8"
                                target="_blank"
                                rel="noopener noreferrer"
-                               class="w-full sm:w-auto px-5 py-3.5 rounded-full bg-white hover:bg-blush text-wine border border-rose-200 text-xs sm:text-sm font-bold cute-font flex items-center justify-center gap-2 transition-all">
+                               class="w-full sm:w-auto px-5 py-3.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all">
                                 <i class="fa-brands fa-telegram text-sky-600 text-base"></i>
-                                <span>@CandyGaming8 ဆက်သွယ်ရန်</span>
+                                <span>@CandyGaming8 နှင့် ဆက်သွယ်ရန်</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Right Boutique Card Preview -->
-                    <div class="bg-blush/90 border border-rose-200/90 rounded-2xl p-5 sm:p-6 md:max-w-xs w-full space-y-4 shadow-xs">
+                    <div class="bg-blush/90 border border-roseberry/20 rounded-2xl p-5 sm:p-6 md:max-w-xs w-full space-y-3.5">
                         <div class="flex items-center gap-3">
-                            <div class="w-11 h-11 rounded-2xl bg-white border border-rose-200 flex items-center justify-center text-magenta text-lg flex-shrink-0">
-                                <i class="fa-solid fa-gem text-rosecoral"></i>
+                            <div class="w-11 h-11 rounded-2xl bg-white border border-roseberry/20 flex items-center justify-center text-roseberry text-lg flex-shrink-0">
+                                <i class="fa-solid fa-gem"></i>
                             </div>
                             <div>
-                                <p class="text-sm font-bold cute-font text-wine">MLBB Account များ ကြည့်ရန်</p>
-                                <p class="text-[11px] text-espresso/70">အောက်ခလုတ်နှိပ်၍ Catalog ဝင်ပါ</p>
+                                <p class="text-base font-bold editorial-font text-plumink">Curated MLBB Vault</p>
+                                <p class="text-[11px] text-mauve">Slide Photos • Rank • Skins</p>
                             </div>
                         </div>
 
-                        <p class="text-xs text-espresso/80 leading-relaxed">
-                            Available / Sold Out အခြေအနေ၊ High Rank၊ Win Rate နှင့် Rare Skin Highlights များကို အသေးစိတ် ကြည့်ရှုနိုင်ပါသည်။
+                        <p class="text-xs text-plumink/80 leading-relaxed">
+                            ရရှိနိုင်သော Mobile Legends အကောင့်စာရင်းကို ကြည့်ရှုရန် အောက်ပါခလုတ်ကို နှိပ်ပါ။
                         </p>
 
                         <button type="button"
-                                id="secondaryCatalogBtn"
-                                class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-petal text-berry border border-rose-200 text-xs font-bold cute-font cursor-pointer flex items-center justify-center gap-1.5 transition-all">
-                            <span>MLBB Account များ ကြည့်ရန်</span>
+                                id="landingSecondaryCatalogBtn"
+                                class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-petal text-deepberry border border-roseberry/25 text-xs font-bold cursor-pointer flex items-center justify-center gap-1.5 transition-all">
+                            <span>Mobile Legend အကောင့်များကြည့်ရန်</span>
                             <i class="fa-solid fa-chevron-right text-[10px]"></i>
                         </button>
                     </div>
@@ -278,97 +454,85 @@
             </div>
         </section>
 
-        <!-- 2. CATALOG VIEW (#catalogSection - HIDDEN UNTIL CLICKED) -->
+        <!-- STEP 2: MLBB CATALOG VIEW (#catalogSection) -->
         <section id="catalogSection" class="hidden space-y-6">
-            <!-- Catalog Top Bar with Back-to-Welcome Button -->
             <div class="boutique-card rounded-3xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div class="space-y-1">
-                    <div class="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-0.5 rounded-full bg-blush text-berry border border-rose-200 cute-font">
-                        <i class="fa-solid fa-sparkles text-rosecoral"></i>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blush text-deepberry border border-roseberry/20 text-[11px] font-bold">
+                        <i class="fa-solid fa-sparkles text-roseberry"></i>
                         <span>Candy Gaming မှကြိုဆိုပါတယ်ရှင့်</span>
                     </div>
-                    <h2 class="text-xl sm:text-2xl font-bold cute-font berry-gradient-text">
+                    <h2 class="text-2xl sm:text-3xl font-bold editorial-font berry-title-gradient">
                         Mobile Legend အကောင့်များ
                     </h2>
                 </div>
 
                 <button type="button"
                         id="backToLandingBtn"
-                        class="self-start sm:self-auto px-4 py-2.5 rounded-full bg-white hover:bg-blush text-wine border border-rose-200 text-xs font-bold cute-font cursor-pointer flex items-center gap-2 shadow-xs transition-all">
-                    <i class="fa-solid fa-arrow-left text-magenta"></i>
+                        class="self-start sm:self-auto px-4 py-2.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer flex items-center gap-2 transition-all">
+                    <i class="fa-solid fa-arrow-left text-roseberry"></i>
                     <span>← ကြိုဆိုစာမျက်နှာသို့</span>
                 </button>
             </div>
 
-            <!-- Search Input (Desktop & Mobile) -->
+            <!-- Search, Filter Pills & Sort Controls -->
             <div class="space-y-3">
-                <div class="hidden md:block relative max-w-xl">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-magenta/70 text-xs"></i>
+                <div class="relative max-w-xl">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-roseberry/70 text-xs"></i>
                     <input type="text"
-                           id="searchDesktop"
-                           placeholder="Account Code, High Rank, Star, Skin, Highlight ရှာဖွေပါ..."
-                           class="w-full bg-white border border-rose-200 focus:border-magenta text-sm rounded-full pl-10 pr-4 py-2.5 text-wine placeholder-espresso/45 focus:outline-none focus:ring-2 focus:ring-rose-200 transition-all">
+                           id="catalogSearchInput"
+                           placeholder="Account Code, High Rank, Skin, Highlight ရှာဖွေပါ..."
+                           class="w-full bg-white border border-roseberry/20 focus:border-roseberry text-xs sm:text-sm rounded-full pl-10 pr-4 py-2.5 text-plumink placeholder-mauve/70 focus:outline-none transition-all">
                 </div>
 
-                <div class="md:hidden relative w-full">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-magenta/70 text-xs"></i>
-                    <input type="text"
-                           id="searchMobile"
-                           placeholder="Account Code, High Rank, Skin, Highlight ရှာပါ..."
-                           class="w-full bg-white border border-rose-200 focus:border-magenta text-xs rounded-full pl-10 pr-4 py-2.5 text-wine placeholder-espresso/45 focus:outline-none focus:ring-2 focus:ring-rose-200 transition-all">
-                </div>
-
-                <!-- Category/Status Filters & Sort Selector -->
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-1">
-                    <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-bold cute-font">
+                    <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-bold">
                         <button type="button"
-                                id="chip-ALL"
                                 data-filter="ALL"
-                                class="filter-chip px-4 py-2.5 rounded-full boutique-btn cursor-pointer whitespace-nowrap">
-                            <i class="fa-solid fa-layer-group mr-1"></i> အားလုံး (All)
+                                class="catalog-filter-pill px-4 py-2.5 rounded-full berry-cta-btn cursor-pointer whitespace-nowrap">
+                            <i class="fa-solid fa-layer-group mr-1"></i> All
                         </button>
                         <button type="button"
-                                id="chip-AVAILABLE"
                                 data-filter="AVAILABLE"
-                                class="filter-chip px-4 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer whitespace-nowrap transition-all">
-                            <i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> ဝယ်ယူနိုင်သည်များ
+                                class="catalog-filter-pill px-4 py-2.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all">
+                            <i class="fa-solid fa-circle-check text-emerald-700 mr-1"></i> Available
                         </button>
                         <button type="button"
-                                id="chip-HIGH_RANK"
                                 data-filter="HIGH_RANK"
-                                class="filter-chip px-4 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer whitespace-nowrap transition-all">
-                            <i class="fa-solid fa-crown text-champagne mr-1"></i> High Rank
+                                class="catalog-filter-pill px-4 py-2.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all">
+                            <i class="fa-solid fa-crown text-amber-700 mr-1"></i> High Rank
                         </button>
                     </div>
 
                     <div class="flex items-center justify-between md:justify-end gap-2.5 text-xs">
-                        <span id="catalogCountText" class="text-espresso/75 font-semibold cute-font">0 Accounts</span>
-                        <select id="sortSelect"
-                                class="bg-white border border-rose-200 text-wine rounded-full px-3.5 py-2 text-xs font-medium focus:outline-none focus:border-magenta">
-                            <option value="newest">အသစ်ဆုံး (Newest)</option>
-                            <option value="price-low">ဈေးနှုန်း: နည်းမှ အများ</option>
-                            <option value="price-high">ဈေးနှုန်း: အများမှ နည်း</option>
+                        <span id="catalogCountBadge" class="text-mauve font-semibold">0 Accounts</span>
+                        <select id="catalogSortSelect"
+                                class="bg-white border border-roseberry/20 text-plumink rounded-full px-3.5 py-2 text-xs font-medium focus:outline-none focus:border-roseberry">
+                            <option value="newest">Newest</option>
+                            <option value="price-asc">Price Asc</option>
+                            <option value="price-desc">Price Desc</option>
+                            <option value="skins-desc">Skins Desc</option>
                         </select>
                     </div>
                 </div>
             </div>
 
-            <!-- RESPONSIVE MLBB ACCOUNT CARD GRID -->
+            <!-- MLBB Accounts Grid -->
             <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
-            <!-- EMPTY STATE -->
-            <div id="emptyCatalogState" class="hidden boutique-card rounded-3xl p-10 sm:p-14 text-center space-y-3">
-                <div class="w-16 h-16 mx-auto rounded-full bg-blush border border-rose-200 flex items-center justify-center text-magenta text-2xl">
+            <!-- Empty State -->
+            <div id="catalogEmptyState" class="hidden boutique-card rounded-3xl p-10 sm:p-14 text-center space-y-3">
+                <div class="w-16 h-16 mx-auto rounded-full bg-blush border border-roseberry/20 flex items-center justify-center text-roseberry text-2xl">
                     <i class="fa-solid fa-wand-sparkles"></i>
                 </div>
-                <h3 class="text-xl font-bold cute-font text-wine">ပြသရန် MLBB Account မရှိသေးပါ</h3>
-                <p class="text-xs sm:text-sm text-espresso/75 max-w-md mx-auto">
-                    Filter ကို ပြန်ပြောင်းကြည့်နိုင်သလို Admin Panel မှ Account အသစ်များလည်း ထည့်သွင်းနိုင်ပါသည်။
+                <h3 class="text-xl font-bold editorial-font text-plumink">ပြသရန် MLBB Account မရှိသေးပါ</h3>
+                <p class="text-xs sm:text-sm text-mauve max-w-md mx-auto">
+                    Filter ကို ပြန်ပြောင်းကြည့်နိုင်သလို Admin Studio မှ MLBB Account အသစ်များ ထည့်သွင်းနိုင်ပါသည်။
                 </p>
                 <div class="pt-2">
                     <button type="button"
-                            id="resetFiltersBtn"
-                            class="px-5 py-2.5 rounded-full bg-blush hover:bg-petal text-berry border border-rose-200 text-xs font-bold cute-font cursor-pointer transition-all">
+                            id="clearCatalogFiltersBtn"
+                            class="px-5 py-2.5 rounded-full bg-blush hover:bg-petal text-deepberry border border-roseberry/25 text-xs font-bold cursor-pointer transition-all">
                         Filter များ ပြန်ရှင်းမည်
                     </button>
                 </div>
@@ -377,366 +541,83 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="mt-14 pearl-header border-t border-rose-200/80 py-7 text-espresso/75">
+    <footer class="mt-14 bg-alabaster/95 border-t border-roseberry/15 py-7 text-mauve">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-            <div id="footerBrandBtn" class="flex items-center gap-2.5 cursor-pointer" role="button" tabindex="0" aria-label="Return to welcome screen">
-                <img src="IMG_20261123_150211_100.jpg"
-                     alt="Candy Official Gaming"
-                     onerror="this.onerror=null;this.src='https://placehold.co/80x80/fff2f4/be185d?text=COG';"
-                     class="w-8 h-8 rounded-full object-cover border border-rose-300">
-                <span class="font-bold cute-font text-sm text-wine">Candy Official Gaming</span>
-                <span>• MLBB VIP Boutique</span>
-            </div>
+            <button type="button"
+                    id="footerBrandBtn"
+                    class="flex items-center gap-2.5 cursor-pointer text-left">
+                <span class="w-8 h-8 rounded-full bg-blush border border-roseberry/25 flex items-center justify-center text-roseberry font-bold editorial-font text-xs">
+                    COG
+                </span>
+                <span class="font-bold editorial-font text-base text-plumink">Candy Official Gaming</span>
+                <span>• MLBB Boutique</span>
+            </button>
 
             <div class="flex items-center gap-5">
                 <a href="https://t.me/CandyGaming8"
                    target="_blank"
                    rel="noopener noreferrer"
-                   class="hover:text-magenta font-semibold transition-colors flex items-center gap-1.5">
+                   class="hover:text-deepberry font-semibold transition-colors flex items-center gap-1.5">
                     <i class="fa-brands fa-telegram text-sky-600"></i> @CandyGaming8
                 </a>
-                <a id="footerAdminLink"
-                   href="javascript:void(0)"
-                   class="hidden hover:text-amber-700 font-semibold transition-colors items-center gap-1">
-                    <i class="fa-solid fa-lock text-champagne"></i> Admin
-                </a>
+                <button type="button"
+                        id="footerAdminBtn"
+                        class="hidden hover:text-amber-900 font-semibold transition-colors items-center gap-1 cursor-pointer">
+                    <i class="fa-solid fa-key text-amber-700"></i> Admin Studio
+                </button>
             </div>
         </div>
     </footer>
 
-    <!-- 3. ACCOUNT DETAIL MODAL (#accountModal - NON-BLOCKING WHEN CLOSED) -->
-    <div id="accountModal"
-         class="boutique-modal fixed inset-0 z-50 items-center justify-center p-4 bg-wine/55 backdrop-blur-xs overflow-y-auto">
+    <!-- ACCOUNT DETAIL MODAL (#detailModal - CLOSED BY DEFAULT WITH display: none; pointer-events: none;) -->
+    <div id="detailModal"
+         aria-hidden="true"
+         class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-plumink/55 backdrop-blur-2xs overflow-y-auto">
         <div class="relative w-full max-w-3xl boutique-card rounded-3xl overflow-hidden shadow-2xl my-8">
             <button type="button"
-                    id="closeAccountModalBtn"
-                    aria-label="Close account modal"
-                    class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/95 hover:bg-magenta text-wine hover:text-white border border-rose-200 flex items-center justify-center cursor-pointer shadow-xs transition-all">
+                    id="closeDetailModalBtn"
+                    aria-label="Close account detail modal"
+                    class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/95 hover:bg-roseberry text-plumink hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div id="accountModalBody" class="p-5 sm:p-7 space-y-5"></div>
+            <div id="detailModalBody" class="p-5 sm:p-7 space-y-5"></div>
         </div>
     </div>
 
-    <!-- 4. SECRET-GATED ADMIN PANEL (#adminModal - NON-BLOCKING WHEN CLOSED) -->
-    <div id="adminModal"
-         class="boutique-modal fixed inset-0 z-50 items-center justify-center p-4 bg-wine/60 backdrop-blur-xs overflow-y-auto">
-        <div class="relative w-full max-w-4xl boutique-card rounded-3xl overflow-hidden shadow-2xl my-8">
-            <div class="flex items-center justify-between px-6 py-4 bg-blush border-b border-rose-200/80">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-crown text-magenta"></i>
-                    <h2 class="text-base sm:text-lg font-bold cute-font text-wine">
-                        Candy Official Gaming — Admin Studio
-                    </h2>
-                </div>
-                <button type="button"
-                        id="closeAdminModalBtn"
-                        aria-label="Close admin modal"
-                        class="text-espresso/75 hover:text-magenta text-base cursor-pointer">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <!-- LOGIN FORM -->
-            <div id="adminLoginView" class="p-6 sm:p-8 max-w-md mx-auto space-y-5 text-center">
-                <div class="w-14 h-14 mx-auto rounded-2xl bg-blush border border-rose-200 flex items-center justify-center text-magenta text-xl">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <div class="space-y-1">
-                    <h3 class="text-xl font-bold cute-font text-wine">Admin Sign In</h3>
-                    <p class="text-xs text-espresso/75">Firebase Admin Email နှင့် Password ဖြင့် ဝင်ရောက်ပါ</p>
-                </div>
-                <form id="adminLoginForm" class="space-y-3.5 text-left">
-                    <div>
-                        <label class="block text-xs font-semibold text-espresso mb-1">Admin Email</label>
-                        <input type="email"
-                               id="adminEmail"
-                               required
-                               placeholder="admin@example.com"
-                               class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-wine focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-espresso mb-1">Password</label>
-                        <input type="password"
-                               id="adminPassword"
-                               required
-                               placeholder="••••••••"
-                               class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-wine focus:outline-none">
-                    </div>
-                    <button type="submit"
-                            id="adminSignInBtn"
-                            class="w-full py-3 rounded-xl boutique-btn text-xs sm:text-sm font-bold cute-font cursor-pointer">
-                        Sign In to Admin Studio
-                    </button>
-                </form>
-            </div>
-
-            <!-- ADMIN DASHBOARD -->
-            <div id="adminDashboardView" class="hidden p-5 sm:p-6 space-y-5">
-                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-rose-200/80 pb-4">
-                    <div class="flex flex-wrap items-center gap-2 cute-font">
-                        <button type="button"
-                                id="adminTab-list"
-                                data-tab="list"
-                                class="admin-tab px-4 py-2 rounded-full text-xs font-bold boutique-btn cursor-pointer">
-                            <i class="fa-solid fa-list mr-1"></i> Accounts (<span id="adminTotalCount">0</span>)
-                        </button>
-                        <button type="button"
-                                id="adminTab-form"
-                                data-tab="form"
-                                class="admin-tab px-4 py-2 rounded-full text-xs font-bold bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer">
-                            <i class="fa-solid fa-plus mr-1"></i> Account ထည့် / ပြင်ရန်
-                        </button>
-                        <button type="button"
-                                id="adminTab-security"
-                                data-tab="security"
-                                class="admin-tab px-4 py-2 rounded-full text-xs font-bold bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer">
-                            <i class="fa-solid fa-shield-halved mr-1"></i> Security
-                        </button>
-                    </div>
-
-                    <div class="flex items-center gap-3">
-                        <span id="adminActiveEmail" class="hidden sm:inline text-xs text-espresso/75"></span>
-                        <button type="button"
-                                id="adminLogoutBtn"
-                                class="px-3 py-1.5 rounded-full bg-rose-50 hover:bg-rose-100 text-berry border border-rose-200 text-xs font-bold cursor-pointer">
-                            <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ACCOUNTS TABLE -->
-                <div id="adminPane-list" class="space-y-3">
-                    <div class="overflow-x-auto rounded-2xl border border-rose-200/80 bg-white">
-                        <table class="w-full text-left text-xs text-wine">
-                            <thead class="bg-blush text-espresso uppercase tracking-wider border-b border-rose-200/80">
-                                <tr>
-                                    <th class="p-3">ပုံ</th>
-                                    <th class="p-3">Title / Code</th>
-                                    <th class="p-3">Rank</th>
-                                    <th class="p-3">Skins / Heroes</th>
-                                    <th class="p-3">ဈေးနှုန်း</th>
-                                    <th class="p-3">Status</th>
-                                    <th class="p-3 text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="adminAccountsBody" class="divide-y divide-rose-100"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- ADD / EDIT FORM -->
-                <div id="adminPane-form" class="hidden space-y-4">
-                    <div class="flex items-center justify-between">
-                        <h3 id="formTitleHeading" class="text-base font-bold cute-font text-wine">
-                            <i class="fa-solid fa-sparkles text-magenta mr-1"></i> MLBB Account အသစ်ထည့်မည်
-                        </h3>
-                        <button type="button"
-                                id="clearAccountFormBtn"
-                                class="text-xs text-espresso/75 hover:text-magenta cursor-pointer">
-                            Form ရှင်းမည်
-                        </button>
-                    </div>
-
-                    <form id="accountEditorForm" class="space-y-4">
-                        <input type="hidden" id="editingAccountId">
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-espresso mb-1">Account Title / Code *</label>
-                                <input type="text"
-                                       id="accTitle"
-                                       required
-                                       placeholder="ဥပမာ- Candy Boutique #01"
-                                       class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs text-wine focus:outline-none">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-semibold text-espresso mb-1">Rank / Star *</label>
-                                <input type="text"
-                                       id="accRank"
-                                       required
-                                       placeholder="ဥပမာ- High Rank 115★"
-                                       class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs text-wine focus:outline-none">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-semibold text-espresso mb-1">ဈေးနှုန်း (MMK) *</label>
-                                <input type="number"
-                                       id="accPrice"
-                                       min="0"
-                                       required
-                                       placeholder="150000"
-                                       class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs text-wine focus:outline-none">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-semibold text-espresso mb-1">Skins အရေအတွက် *</label>
-                                <input type="number"
-                                       id="accSkins"
-                                       min="0"
-                                       required
-                                       placeholder="240"
-                                       class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs text-wine focus:outline-none">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-semibold text-espresso mb-1">Heroes အရေအတွက် *</label>
-                                <input type="number"
-                                       id="accHeroes"
-                                       min="0"
-                                       required
-                                       placeholder="118"
-                                       class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs text-wine focus:outline-none">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-semibold text-espresso mb-1">Win Rate (%)</label>
-                                <input type="text"
-                                       id="accWinrate"
-                                       placeholder="65.0%"
-                                       class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs text-wine focus:outline-none">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-semibold text-espresso mb-1">Telegram Username</label>
-                                <input type="text"
-                                       id="accTelegram"
-                                       value="CandyGaming8"
-                                       placeholder="CandyGaming8"
-                                       class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs text-wine focus:outline-none">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-semibold text-espresso mb-1">Status</label>
-                                <select id="accStatus"
-                                        class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs text-wine focus:outline-none">
-                                    <option value="AVAILABLE">Available (ဝယ်ယူနိုင်သည်)</option>
-                                    <option value="SOLD">Sold Out (ရောင်းပြီး)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-espresso mb-1">Rare Skins / Highlights (ကော်မာဖြင့် ခြားပါ)</label>
-                            <input type="text"
-                                   id="accHighlights"
-                                   placeholder="Angela Collector, Kagura Exorcist, Chou KOF"
-                                   class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs text-wine focus:outline-none">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-espresso mb-1">အသေးစိတ် ဖော်ပြချက်</label>
-                            <textarea id="accDescription"
-                                      rows="3"
-                                      placeholder="Moonton Clean / Bind အခြေအနေ နှင့် အသေးစိတ်အချက်အလက်များ..."
-                                      class="w-full bg-white border border-rose-200 focus:border-magenta rounded-xl px-3.5 py-2.5 text-xs text-wine focus:outline-none"></textarea>
-                        </div>
-
-                        <!-- Multi-Photo Upload -->
-                        <div class="space-y-2 border-t border-rose-200/70 pt-3">
-                            <div class="flex flex-wrap items-center gap-3">
-                                <label class="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blush hover:bg-petal text-berry border border-rose-200 text-xs font-bold transition-all">
-                                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                                    <span>ဓာတ်ပုံများ ရွေးချယ်ရန်</span>
-                                    <input type="file"
-                                           id="accPhotosInput"
-                                           accept="image/*"
-                                           multiple
-                                           class="hidden">
-                                </label>
-                                <span class="text-[11px] text-espresso/70">ပုံများစွာ ရွေးချယ်၍ Slider အဖြစ် ပြသနိုင်ပါသည်။</span>
-                            </div>
-
-                            <div id="accPhotosPreview"
-                                 class="flex flex-wrap gap-2.5 min-h-[68px] p-2.5 rounded-2xl bg-blush/70 border border-rose-200/80">
-                                <span id="noAccPhotosLabel" class="text-xs text-espresso/50 self-center mx-auto">ဓာတ်ပုံ မရွေးရသေးပါ</span>
-                            </div>
-                        </div>
-
-                        <div class="pt-2 flex items-center gap-3">
-                            <button type="submit"
-                                    id="saveAccountBtn"
-                                    class="px-6 py-2.5 rounded-full boutique-btn text-xs font-bold cute-font cursor-pointer">
-                                <i class="fa-solid fa-floppy-disk mr-1"></i> သိမ်းဆည်းမည်
-                            </button>
-                            <button type="button"
-                                    id="cancelAccountEditBtn"
-                                    class="px-4 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 text-xs cursor-pointer">
-                                မလုပ်တော့ပါ
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- SECURITY / PASSWORD RESET PANE -->
-                <div id="adminPane-security" class="hidden space-y-4 max-w-lg">
-                    <h3 class="text-base font-bold cute-font text-wine">Firebase Admin Account &amp; Password Reset</h3>
-                    <div class="bg-white border border-rose-200/80 rounded-2xl p-4 space-y-3 text-xs text-espresso">
-                        <p>Signed in as: <span id="securityEmailText" class="font-bold text-berry">-</span></p>
-                        <p class="text-espresso/75 leading-relaxed">
-                            Password Reset Link ကို လက်ရှိ Admin Email သို့ ပို့လိုပါက အောက်ပါခလုတ်ကို နှိပ်ပါ။
-                        </p>
-                        <button type="button"
-                                id="sendResetEmailBtn"
-                                class="px-4 py-2 rounded-full bg-blush hover:bg-petal text-berry border border-rose-200 font-bold text-xs cursor-pointer transition-all">
-                            <i class="fa-solid fa-envelope mr-1"></i> Password Reset Email ပို့မည်
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DELETE CONFIRMATION MODAL (NON-BLOCKING WHEN CLOSED) -->
-    <div id="deleteModal"
-         class="boutique-modal fixed inset-0 z-50 items-center justify-center p-4 bg-wine/60 backdrop-blur-xs">
-        <div class="boutique-card rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl border border-rose-300">
-            <div class="w-12 h-12 mx-auto rounded-full bg-rose-100 text-berry flex items-center justify-center text-xl">
-                <i class="fa-solid fa-triangle-exclamation"></i>
+    <!-- CUSTOM NON-BLOCKING NOTICE / CONFIRM MODAL (#noticeModal - CLOSED BY DEFAULT WITH display: none; pointer-events: none;) -->
+    <div id="noticeModal"
+         aria-hidden="true"
+         class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-plumink/60 backdrop-blur-2xs">
+        <div class="boutique-card rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl">
+            <div id="noticeIconWrap" class="w-12 h-12 mx-auto rounded-full bg-blush text-deepberry border border-roseberry/20 flex items-center justify-center text-xl">
+                <i id="noticeIcon" class="fa-solid fa-circle-info"></i>
             </div>
             <div class="space-y-1">
-                <h3 class="text-lg font-bold cute-font text-wine">Account ဖျက်ပစ်မည်လား?</h3>
-                <p id="deleteTargetName" class="text-xs text-espresso/80"></p>
+                <h3 id="noticeTitle" class="text-xl font-bold editorial-font text-plumink">Notice</h3>
+                <p id="noticeMessage" class="text-xs text-plumink/80 leading-relaxed"></p>
             </div>
-            <div class="flex items-center gap-2.5 pt-1">
-                <button type="button"
-                        id="confirmDeleteBtn"
-                        class="flex-1 py-2.5 rounded-full bg-berry hover:bg-rose-800 text-white font-bold text-xs cursor-pointer transition-all">
-                    ဖျက်ပစ်မည်
-                </button>
-                <button type="button"
-                        id="cancelDeleteBtn"
-                        class="flex-1 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 text-xs font-semibold cursor-pointer transition-all">
-                    မဖျက်တော့ပါ
-                </button>
-            </div>
+            <div id="noticeActions" class="flex items-center gap-2.5 pt-1 justify-center"></div>
         </div>
     </div>
 
-    <!-- TOAST CONTAINER -->
-    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
-
-    <!-- FIREBASE v10.14.1 MODULE & APPLICATION LOGIC -->
+    <!-- FIREBASE v10.14.1 MODULAR SCRIPT -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import {
+            getAuth,
+            signInAnonymously,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
         import {
             getFirestore,
             collection,
             doc,
             setDoc,
-            addDoc,
-            updateDoc,
             deleteDoc,
-            onSnapshot
+            onSnapshot,
+            addDoc,
+            serverTimestamp
         } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-        import {
-            getAuth,
-            signInWithEmailAndPassword,
-            signOut,
-            onAuthStateChanged,
-            sendPasswordResetEmail
-        } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
         // Firebase Configuration for Candy Official Gaming (candy-shop-a365d)
         const firebaseConfig = {
@@ -747,29 +628,31 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
         const auth = getAuth(app);
-        const mlbbCollection = collection(db, "mlbb_accounts");
-        const visitLogsCollection = collection(db, "visit_logs");
+        const db = getFirestore(app);
+        const accountsCol = collection(db, "mlbb_accounts");
+        const visitsCol = collection(db, "visit_logs");
 
-        // Secret gate for Admin Panel (?admin=candy2026 or #admin-candy2026)
-        const ADMIN_SECRET_KEY = "candy2026";
-        const TOMBSTONE_STORAGE_KEY = "candy_gaming_deleted_mlbb_ids_v1";
+        const ADMIN_CODE = "candy2026";
+        const ACCOUNTS_STORAGE_KEY = "candy_mlbb_accounts_v1";
+        const DELETED_IDS_STORAGE_KEY = "candy_mlbb_deletedIds_v1";
+        const MAX_PHOTOS = 15;
 
-        let accountsList = [];
+        // Start empty unless accounts exist in localStorage or Firestore (no seeded fake demo accounts)
+        let accounts = [];
+        let visitCount = 0;
         let activeFilter = "ALL";
-        let currentUser = null;
-        let pendingDeleteId = null;
-        let formPhotos = [];
-        let modalSlides = [];
-        let currentSlideIndex = 0;
+        let editorPhotoList = [];
+        let sliderPhotoList = [];
+        let sliderIndex = 0;
+        let pendingConfirmCallback = null;
 
         /**
-         * Safely reads tombstone-deleted account IDs so removed accounts do not reappear.
+         * Reads tombstone-protected deleted IDs so deleted accounts never reappear.
          */
-        function getTombstoneIds() {
+        function loadDeletedIds() {
             try {
-                const raw = localStorage.getItem(TOMBSTONE_STORAGE_KEY);
+                const raw = localStorage.getItem(DELETED_IDS_STORAGE_KEY);
                 const parsed = raw ? JSON.parse(raw) : [];
                 return Array.isArray(parsed) ? parsed.map(String) : [];
             } catch (_err) {
@@ -778,113 +661,132 @@
         }
 
         /**
-         * Persists a deleted account ID to the local tombstone list.
+         * Persists an account ID in the tombstone deletedIds set.
          */
-        function addTombstoneId(id) {
+        function addDeletedId(id) {
             try {
-                const current = new Set(getTombstoneIds());
-                current.add(String(id));
-                localStorage.setItem(TOMBSTONE_STORAGE_KEY, JSON.stringify([...current]));
-            } catch (_err) {
-                // Ignore storage quota or private mode issues
-            }
-        }
-
-        /**
-         * Removes an account ID from tombstones when newly saved or edited.
-         */
-        function clearTombstoneId(id) {
-            try {
-                const filtered = getTombstoneIds().filter((item) => String(item) !== String(id));
-                localStorage.setItem(TOMBSTONE_STORAGE_KEY, JSON.stringify(filtered));
+                const set = new Set(loadDeletedIds());
+                set.add(String(id));
+                localStorage.setItem(DELETED_IDS_STORAGE_KEY, JSON.stringify([...set]));
             } catch (_err) {
                 // Ignore storage errors
             }
         }
 
         /**
-         * Checks whether the current URL carries the secret Admin key.
+         * Removes an account ID from deletedIds when newly added/updated.
          */
-        function isAdminSecretUnlocked() {
+        function removeDeletedId(id) {
+            try {
+                const filtered = loadDeletedIds().filter((item) => String(item) !== String(id));
+                localStorage.setItem(DELETED_IDS_STORAGE_KEY, JSON.stringify(filtered));
+            } catch (_err) {
+                // Ignore storage errors
+            }
+        }
+
+        /**
+         * Reads MLBB accounts from localStorage, filtered against deletedIds.
+         */
+        function loadLocalAccounts() {
+            const deletedSet = new Set(loadDeletedIds());
+            try {
+                const raw = localStorage.getItem(ACCOUNTS_STORAGE_KEY);
+                const parsed = raw ? JSON.parse(raw) : [];
+                if (!Array.isArray(parsed)) return [];
+                return parsed.filter((acc) => acc && acc.id && !deletedSet.has(String(acc.id)));
+            } catch (_err) {
+                return [];
+            }
+        }
+
+        /**
+         * Saves MLBB accounts to localStorage, filtered against deletedIds.
+         */
+        function saveLocalAccounts(list) {
+            const deletedSet = new Set(loadDeletedIds());
+            try {
+                const clean = (Array.isArray(list) ? list : [])
+                    .filter((acc) => acc && acc.id && !deletedSet.has(String(acc.id)));
+                localStorage.setItem(ACCOUNTS_STORAGE_KEY, JSON.stringify(clean));
+            } catch (_err) {
+                // Ignore quota errors
+            }
+        }
+
+        /**
+         * Checks if URL search or hash carries ?admin=candy2026 or #admin-candy2026.
+         */
+        function isAdminSecretActive() {
             try {
                 const params = new URLSearchParams(window.location.search);
-                const queryMatch = params.get("admin") === ADMIN_SECRET_KEY;
-                const hashValue = (window.location.hash || "").replace(/^#/, "").trim();
-                const hashMatch =
-                    hashValue === `admin-${ADMIN_SECRET_KEY}` ||
-                    hashValue === `admin=${ADMIN_SECRET_KEY}` ||
-                    hashValue === ADMIN_SECRET_KEY;
-                return queryMatch || hashMatch || Boolean(currentUser);
+                if (params.get("admin") === ADMIN_CODE) return true;
+
+                const hashClean = (window.location.hash || "").replace(/^#/, "").trim();
+                if (
+                    hashClean === `admin-${ADMIN_CODE}` ||
+                    hashClean === `admin=${ADMIN_CODE}` ||
+                    hashClean === ADMIN_CODE
+                ) {
+                    return true;
+                }
+
+                const searchRaw = window.location.search || "";
+                const hashRaw = window.location.hash || "";
+                if (searchRaw.includes(`admin-${ADMIN_CODE}`) || hashRaw.includes(`admin-${ADMIN_CODE}`)) {
+                    return true;
+                }
             } catch (_err) {
-                return Boolean(currentUser);
+                return false;
             }
+            return false;
         }
 
         /**
-         * Shows or hides Admin entry controls based on secret gate or active auth session.
+         * Unlocks or hides #adminPanelSection based on secret URL query/hash.
          */
-        function syncAdminGateVisibility() {
-            const unlocked = isAdminSecretUnlocked();
-            const headerBtn = document.getElementById("headerAdminBtn");
-            const footerLink = document.getElementById("footerAdminLink");
-            const btnText = document.getElementById("adminBtnText");
+        function updateAdminGateUI() {
+            const unlocked = isAdminSecretActive();
+            const panel = document.getElementById("adminPanelSection");
+            const headerToggle = document.getElementById("headerAdminToggleBtn");
+            const footerAdminBtn = document.getElementById("footerAdminBtn");
 
-            if (headerBtn) {
+            if (headerToggle) {
                 if (unlocked) {
-                    headerBtn.classList.remove("hidden");
-                    headerBtn.classList.add("inline-flex");
+                    headerToggle.classList.remove("hidden");
+                    headerToggle.classList.add("inline-flex");
                 } else {
-                    headerBtn.classList.add("hidden");
-                    headerBtn.classList.remove("inline-flex");
+                    headerToggle.classList.add("hidden");
+                    headerToggle.classList.remove("inline-flex");
                 }
             }
 
-            if (footerLink) {
+            if (footerAdminBtn) {
                 if (unlocked) {
-                    footerLink.classList.remove("hidden");
-                    footerLink.classList.add("inline-flex");
+                    footerAdminBtn.classList.remove("hidden");
+                    footerAdminBtn.classList.add("inline-flex");
                 } else {
-                    footerLink.classList.add("hidden");
-                    footerLink.classList.remove("inline-flex");
+                    footerAdminBtn.classList.add("hidden");
+                    footerAdminBtn.classList.remove("inline-flex");
                 }
             }
 
-            if (btnText) {
-                btnText.textContent = currentUser ? "Admin Studio" : "Admin";
+            if (panel) {
+                if (unlocked) {
+                    panel.classList.remove("hidden");
+                } else {
+                    panel.classList.add("hidden");
+                }
             }
+
+            renderAdminTable();
         }
 
         /**
-         * Displays a non-blocking notification toast.
+         * Escapes HTML special characters safely.
          */
-        function showToast(message, type = "info") {
-            const container = document.getElementById("toastContainer");
-            if (!container) return;
-
-            const colorClasses =
-                type === "error"
-                    ? "bg-rose-700 text-white border-rose-500"
-                    : type === "success"
-                        ? "bg-emerald-700 text-white border-emerald-500"
-                        : "bg-wine text-white border-rose-300";
-
-            const toast = document.createElement("div");
-            toast.className = `px-4 py-2.5 rounded-2xl border shadow-lg text-xs font-semibold cute-font flex items-center gap-2 transition-all ${colorClasses}`;
-            toast.innerHTML = `<i class="fa-solid ${type === "error" ? "fa-circle-xmark" : type === "success" ? "fa-circle-check" : "fa-sparkles"}"></i><span>${escapeHtml(message)}</span>`;
-            container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.style.opacity = "0";
-                toast.style.transform = "translateY(8px)";
-                setTimeout(() => toast.remove(), 220);
-            }, 2800);
-        }
-
-        /**
-         * Escapes HTML strings safely for template interpolation.
-         */
-        function escapeHtml(str) {
-            return String(str ?? "")
+        function escapeHtml(text) {
+            return String(text ?? "")
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
                 .replace(/>/g, "&gt;")
@@ -893,114 +795,166 @@
         }
 
         /**
-         * Formats numbers into Myanmar Kyat currency strings.
+         * Formats price in MMK.
          */
-        function formatMMK(amount) {
-            const num = Number(amount);
-            if (!Number.isFinite(num) || num <= 0) return "ဆက်သွယ်မေးမြန်းရန်";
-            return `${num.toLocaleString("en-US")} MMK`;
+        function formatMMK(value) {
+            const amount = Number(value);
+            if (!Number.isFinite(amount) || amount <= 0) return "ဆက်သွယ်မေးမြန်းရန်";
+            return `${amount.toLocaleString("en-US")} MMK`;
         }
 
         /**
-         * Opens a modal using explicit pointer-events & flex state.
+         * Opens a modal element cleanly.
          */
-        function openBoutiqueModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (!modal) return;
-            modal.classList.add("is-open");
-            modal.setAttribute("aria-hidden", "false");
+        function openModal(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.classList.add("is-open");
+            el.setAttribute("aria-hidden", "false");
         }
 
         /**
-         * Closes a modal and guarantees zero screen or click blocking.
+         * Closes a modal element and resets pointer-events/display so it never blocks clicks.
          */
-        function closeBoutiqueModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (!modal) return;
-            modal.classList.remove("is-open");
-            modal.setAttribute("aria-hidden", "true");
-            if (modalId === "deleteModal") {
-                pendingDeleteId = null;
+        function closeModal(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.classList.remove("is-open");
+            el.setAttribute("aria-hidden", "true");
+            if (id === "noticeModal") {
+                pendingConfirmCallback = null;
             }
         }
 
         /**
-         * Step 1 View: Displays the landing welcome screen (#landingView) and hides catalog (#catalogSection).
+         * Displays a custom non-blocking notice modal instead of native alert().
          */
-        function showLandingView() {
-            const landing = document.getElementById("landingView");
-            const catalog = document.getElementById("catalogSection");
-            if (landing) landing.classList.remove("hidden");
-            if (catalog) catalog.classList.add("hidden");
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+        function showNotice(title, message, variant = "info") {
+            pendingConfirmCallback = null;
+            const titleEl = document.getElementById("noticeTitle");
+            const msgEl = document.getElementById("noticeMessage");
+            const iconEl = document.getElementById("noticeIcon");
+            const actionsEl = document.getElementById("noticeActions");
 
-        /**
-         * Step 2 View: Reveals the MLBB catalog (#catalogSection) and hides welcome screen (#landingView).
-         */
-        function openCatalogView() {
-            const landing = document.getElementById("landingView");
-            const catalog = document.getElementById("catalogSection");
-            if (landing) landing.classList.add("hidden");
-            if (catalog) catalog.classList.remove("hidden");
-            renderCatalogGrid();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-
-        /**
-         * Synchronizes desktop and mobile search inputs and re-renders the catalog.
-         */
-        function syncSearch(source) {
-            const desktop = document.getElementById("searchDesktop");
-            const mobile = document.getElementById("searchMobile");
-            if (source === "desktop" && desktop && mobile) {
-                mobile.value = desktop.value;
-            } else if (source === "mobile" && desktop && mobile) {
-                desktop.value = mobile.value;
+            if (titleEl) titleEl.textContent = title;
+            if (msgEl) msgEl.textContent = message;
+            if (iconEl) {
+                iconEl.className = variant === "error"
+                    ? "fa-solid fa-circle-exclamation text-deepberry"
+                    : variant === "success"
+                        ? "fa-solid fa-circle-check text-emerald-700"
+                        : "fa-solid fa-circle-info text-roseberry";
             }
-            renderCatalogGrid();
+            if (actionsEl) {
+                actionsEl.innerHTML = `
+                    <button type="button"
+                            id="noticeOkBtn"
+                            class="px-6 py-2.5 rounded-full berry-cta-btn text-xs font-bold cursor-pointer">
+                        OK
+                    </button>
+                `;
+                document.getElementById("noticeOkBtn")?.addEventListener("click", () => closeModal("noticeModal"));
+            }
+
+            openModal("noticeModal");
         }
 
         /**
-         * Updates active filter chip styling and re-renders the catalog.
+         * Displays a custom non-blocking confirmation modal instead of native confirm().
          */
-        function setFilterChip(filterKey) {
+        function showConfirm(title, message, onConfirm) {
+            pendingConfirmCallback = typeof onConfirm === "function" ? onConfirm : null;
+            const titleEl = document.getElementById("noticeTitle");
+            const msgEl = document.getElementById("noticeMessage");
+            const iconEl = document.getElementById("noticeIcon");
+            const actionsEl = document.getElementById("noticeActions");
+
+            if (titleEl) titleEl.textContent = title;
+            if (msgEl) msgEl.textContent = message;
+            if (iconEl) {
+                iconEl.className = "fa-solid fa-triangle-exclamation text-deepberry";
+            }
+            if (actionsEl) {
+                actionsEl.innerHTML = `
+                    <button type="button"
+                            id="noticeConfirmYesBtn"
+                            class="flex-1 py-2.5 px-4 rounded-full berry-cta-btn text-xs font-bold cursor-pointer">
+                        ဖျက်မည်
+                    </button>
+                    <button type="button"
+                            id="noticeConfirmCancelBtn"
+                            class="flex-1 py-2.5 px-4 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                        မဖျက်တော့ပါ
+                    </button>
+                `;
+                document.getElementById("noticeConfirmYesBtn")?.addEventListener("click", async () => {
+                    const cb = pendingConfirmCallback;
+                    closeModal("noticeModal");
+                    if (cb) await cb();
+                });
+                document.getElementById("noticeConfirmCancelBtn")?.addEventListener("click", () => {
+                    closeModal("noticeModal");
+                });
+            }
+
+            openModal("noticeModal");
+        }
+
+        /**
+         * Two-step navigation: shows #landingView and hides #catalogSection.
+         */
+        function goToLanding() {
+            document.getElementById("landingView")?.classList.remove("hidden");
+            document.getElementById("catalogSection")?.classList.add("hidden");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        /**
+         * Two-step navigation: hides #landingView and shows #catalogSection.
+         */
+        function goToCatalog() {
+            document.getElementById("landingView")?.classList.add("hidden");
+            document.getElementById("catalogSection")?.classList.remove("hidden");
+            renderCatalog();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        /**
+         * Updates filter pill active state and re-renders catalog cards.
+         */
+        function setFilter(filterKey) {
             activeFilter = filterKey;
-            const chips = document.querySelectorAll(".filter-chip");
-            chips.forEach((chip) => {
-                const isSelected = chip.getAttribute("data-filter") === filterKey;
-                if (isSelected) {
-                    chip.className = "filter-chip px-4 py-2.5 rounded-full boutique-btn cursor-pointer whitespace-nowrap";
+            document.querySelectorAll(".catalog-filter-pill").forEach((btn) => {
+                const isActive = btn.getAttribute("data-filter") === filterKey;
+                if (isActive) {
+                    btn.className = "catalog-filter-pill px-4 py-2.5 rounded-full berry-cta-btn cursor-pointer whitespace-nowrap";
                 } else {
-                    chip.className = "filter-chip px-4 py-2.5 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer whitespace-nowrap transition-all";
+                    btn.className = "catalog-filter-pill px-4 py-2.5 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all";
                 }
             });
-            renderCatalogGrid();
+            renderCatalog();
         }
 
         /**
-         * Resets search query, filter chip, and sort dropdown.
+         * Resets catalog search, filter pill, and sort control.
          */
-        function resetCatalogFilters() {
-            const desktop = document.getElementById("searchDesktop");
-            const mobile = document.getElementById("searchMobile");
-            const sortSelect = document.getElementById("sortSelect");
-            if (desktop) desktop.value = "";
-            if (mobile) mobile.value = "";
+        function clearCatalogFilters() {
+            const searchInput = document.getElementById("catalogSearchInput");
+            const sortSelect = document.getElementById("catalogSortSelect");
+            if (searchInput) searchInput.value = "";
             if (sortSelect) sortSelect.value = "newest";
-            setFilterChip("ALL");
+            setFilter("ALL");
         }
 
         /**
-         * Returns true when an account's rank/title indicates a high-rank MLBB account.
+         * Determines whether an account qualifies as High Rank.
          */
         function isHighRankAccount(acc) {
-            const haystack = `${acc.rank || ""} ${acc.title || ""} ${(acc.highlights || []).join(" ")}`.toLowerCase();
-            if (haystack.includes("high rank") || haystack.includes("immortal") || haystack.includes("glory") || haystack.includes("mythic")) {
-                const starMatch = haystack.match(/(\d+)\s*★|star\s*(\d+)/i);
+            const combined = `${acc.rank || ""} ${acc.title || ""} ${acc.highlight || ""}`.toLowerCase();
+            if (combined.includes("high rank") || combined.includes("immortal") || combined.includes("glory") || combined.includes("mythic")) {
+                const starMatch = combined.match(/(\d+)\s*★|star\s*(\d+)/i);
                 if (starMatch) {
-                    const stars = parseInt(starMatch[1] || starMatch[2] || "0", 10);
-                    return stars >= 50;
+                    return parseInt(starMatch[1] || starMatch[2] || "0", 10) >= 50;
                 }
                 return true;
             }
@@ -1008,23 +962,19 @@
         }
 
         /**
-         * Filters and sorts MLBB accounts and renders the responsive grid.
+         * Filters, sorts, and renders MLBB accounts in #catalogGrid.
          */
-        function renderCatalogGrid() {
+        function renderCatalog() {
             const grid = document.getElementById("catalogGrid");
-            const emptyState = document.getElementById("emptyCatalogState");
-            const countText = document.getElementById("catalogCountText");
-            if (!grid || !emptyState || !countText) return;
+            const emptyState = document.getElementById("catalogEmptyState");
+            const badge = document.getElementById("catalogCountBadge");
+            if (!grid || !emptyState || !badge) return;
 
-            const tombstones = new Set(getTombstoneIds());
-            const query = (
-                document.getElementById("searchDesktop")?.value ||
-                document.getElementById("searchMobile")?.value ||
-                ""
-            ).trim().toLowerCase();
-            const sortBy = document.getElementById("sortSelect")?.value || "newest";
+            const deletedSet = new Set(loadDeletedIds());
+            const query = (document.getElementById("catalogSearchInput")?.value || "").trim().toLowerCase();
+            const sortBy = document.getElementById("catalogSortSelect")?.value || "newest";
 
-            let filtered = accountsList.filter((acc) => !tombstones.has(String(acc.id)));
+            let filtered = accounts.filter((acc) => acc && acc.id && !deletedSet.has(String(acc.id)));
 
             if (activeFilter === "AVAILABLE") {
                 filtered = filtered.filter((acc) => (acc.status || "AVAILABLE").toUpperCase() === "AVAILABLE");
@@ -1034,26 +984,28 @@
 
             if (query) {
                 filtered = filtered.filter((acc) => {
-                    const text = [
+                    const haystack = [
                         acc.title,
                         acc.rank,
-                        acc.winrate,
-                        acc.description,
-                        ...(Array.isArray(acc.highlights) ? acc.highlights : [])
+                        acc.highlight,
+                        acc.winRate,
+                        acc.notes
                     ].join(" ").toLowerCase();
-                    return text.includes(query);
+                    return haystack.includes(query);
                 });
             }
 
-            if (sortBy === "price-low") {
+            if (sortBy === "price-asc") {
                 filtered.sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
-            } else if (sortBy === "price-high") {
+            } else if (sortBy === "price-desc") {
                 filtered.sort((a, b) => Number(b.price || 0) - Number(a.price || 0));
+            } else if (sortBy === "skins-desc") {
+                filtered.sort((a, b) => Number(b.skins || 0) - Number(a.skins || 0));
             } else {
                 filtered.sort((a, b) => Number(b.createdAt || 0) - Number(a.createdAt || 0));
             }
 
-            countText.textContent = `${filtered.length} ${filtered.length === 1 ? "Account" : "Accounts"}`;
+            badge.textContent = `${filtered.length} ${filtered.length === 1 ? "Account" : "Accounts"}`;
 
             if (filtered.length === 0) {
                 grid.innerHTML = "";
@@ -1066,64 +1018,60 @@
             grid.innerHTML = filtered.map((acc) => {
                 const isSold = (acc.status || "AVAILABLE").toUpperCase() === "SOLD";
                 const photos = Array.isArray(acc.photos) && acc.photos.length > 0
-                    ? acc.photos
-                    : ["https://placehold.co/800x460/fff2f4/be185d?text=Candy+MLBB+Account"];
-                const coverSrc = photos[0];
-                const highlights = Array.isArray(acc.highlights) ? acc.highlights.filter(Boolean) : [];
+                    ? acc.photos.slice(0, MAX_PHOTOS)
+                    : ["https://placehold.co/800x450/fff2f4/be185d?text=Candy+MLBB+Account"];
+                const highlights = String(acc.highlight || "")
+                    .split(",")
+                    .map((s) => s.trim())
+                    .filter(Boolean);
 
                 return `
                     <article class="boutique-card rounded-3xl overflow-hidden flex flex-col justify-between">
                         <div>
                             <div class="relative aspect-[16/9] w-full bg-blush overflow-hidden">
-                                <img src="${escapeHtml(coverSrc)}"
+                                <img src="${escapeHtml(photos[0])}"
                                      alt="${escapeHtml(acc.title || "MLBB Account")}"
-                                     onerror="this.onerror=null;this.src='https://placehold.co/800x460/fff2f4/be185d?text=Candy+MLBB+Account';"
+                                     onerror="this.onerror=null;this.src='https://placehold.co/800x450/fff2f4/be185d?text=Candy+MLBB+Account';"
                                      class="w-full h-full object-cover">
 
-                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shadow-xs ${
-                                    isSold
-                                        ? "bg-rose-900/90 text-rose-100 border border-rose-400/40"
-                                        : "bg-emerald-600/95 text-white border border-emerald-300/50"
+                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase ${
+                                    isSold ? "bg-deepberry text-white" : "bg-emerald-700 text-white"
                                 }">
                                     ${isSold ? "SOLD OUT" : "AVAILABLE"}
                                 </span>
 
                                 ${acc.rank ? `
-                                    <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-[11px] font-bold bg-white/95 text-wine border border-rose-200 shadow-xs cute-font">
+                                    <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-[11px] font-bold bg-white/95 text-plumink border border-roseberry/20">
                                         ${escapeHtml(acc.rank)}
                                     </span>
                                 ` : ""}
 
-                                <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full text-[11px] font-bold bg-wine/80 text-white backdrop-blur-xs flex items-center gap-1">
-                                    <i class="fa-regular fa-images text-rose-200"></i> ${photos.length}
+                                <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full text-[11px] font-bold bg-plumink/85 text-white flex items-center gap-1">
+                                    <i class="fa-regular fa-images"></i> ${photos.length}
                                 </span>
                             </div>
 
                             <div class="p-5 space-y-3.5">
-                                <h3 class="text-base sm:text-lg font-bold cute-font text-wine truncate">
+                                <h3 class="text-xl font-bold editorial-font text-plumink truncate">
                                     ${escapeHtml(acc.title || "MLBB Account")}
                                 </h3>
 
-                                <div class="grid grid-cols-3 gap-2 text-center bg-blush/85 border border-rose-200/70 rounded-2xl p-2.5">
-                                    <div>
-                                        <p class="text-[10px] text-espresso/65">Skins</p>
-                                        <p class="text-xs sm:text-sm font-bold text-wine">${Number(acc.skins || 0)}</p>
-                                    </div>
-                                    <div class="border-x border-rose-200/70">
-                                        <p class="text-[10px] text-espresso/65">Heroes</p>
-                                        <p class="text-xs sm:text-sm font-bold text-wine">${Number(acc.heroes || 0)}</p>
+                                <div class="grid grid-cols-2 gap-2.5 text-center bg-blush/85 border border-roseberry/15 rounded-2xl p-2.5">
+                                    <div class="border-r border-roseberry/15">
+                                        <p class="text-[10px] text-mauve">Skins</p>
+                                        <p class="text-sm font-bold text-plumink">${Number(acc.skins || 0)}</p>
                                     </div>
                                     <div>
-                                        <p class="text-[10px] text-espresso/65">Win Rate</p>
-                                        <p class="text-xs sm:text-sm font-bold text-berry">${escapeHtml(acc.winrate || "50%+")}</p>
+                                        <p class="text-[10px] text-mauve">Win Rate</p>
+                                        <p class="text-sm font-bold text-deepberry">${escapeHtml(acc.winRate || "50%+")}</p>
                                     </div>
                                 </div>
 
                                 ${highlights.length > 0 ? `
                                     <div class="flex flex-wrap gap-1.5">
                                         ${highlights.slice(0, 3).map((tag) => `
-                                            <span class="px-2.5 py-1 rounded-full bg-white text-berry border border-rose-200 text-[11px] font-semibold">
-                                                <i class="fa-solid fa-heart text-rosecoral text-[9px] mr-1"></i>${escapeHtml(tag)}
+                                            <span class="px-2.5 py-1 rounded-full bg-white text-deepberry border border-roseberry/20 text-[11px] font-semibold">
+                                                ${escapeHtml(tag)}
                                             </span>
                                         `).join("")}
                                     </div>
@@ -1131,17 +1079,17 @@
                             </div>
                         </div>
 
-                        <div class="px-5 pb-5 pt-2 flex items-center justify-between gap-3 border-t border-rose-200/60">
+                        <div class="px-5 pb-5 pt-2 flex items-center justify-between gap-3 border-t border-roseberry/10">
                             <div>
-                                <p class="text-[10px] text-espresso/65">ဈေးနှုန်း</p>
-                                <p class="text-sm sm:text-base font-extrabold text-berry cute-font">
+                                <p class="text-[10px] text-mauve">ဈေးနှုန်း</p>
+                                <p class="text-sm sm:text-base font-extrabold text-deepberry">
                                     ${escapeHtml(formatMMK(acc.price))}
                                 </p>
                             </div>
 
                             <button type="button"
-                                    data-open-account="${escapeHtml(acc.id)}"
-                                    class="open-detail-btn px-4 py-2.5 rounded-full boutique-btn text-xs font-bold cute-font cursor-pointer flex items-center gap-1.5">
+                                    data-open-detail="${escapeHtml(acc.id)}"
+                                    class="open-detail-btn px-4 py-2.5 rounded-full berry-cta-btn text-xs font-bold cursor-pointer flex items-center gap-1.5">
                                 <span>အသေးစိတ်</span>
                                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </button>
@@ -1152,68 +1100,72 @@
 
             grid.querySelectorAll(".open-detail-btn").forEach((btn) => {
                 btn.addEventListener("click", () => {
-                    const id = btn.getAttribute("data-open-account");
-                    if (id) openAccountDetailModal(id);
+                    const id = btn.getAttribute("data-open-detail");
+                    if (id) openDetailModal(id);
                 });
             });
         }
 
         /**
-         * Opens the multi-photo slider detail modal for a selected MLBB account.
+         * Opens the account detail modal (#detailModal) with multi-photo slider (up to 15 photos)
+         * and direct Telegram order link prefilled for @CandyGaming8.
          */
-        function openAccountDetailModal(accountId) {
-            const acc = accountsList.find((item) => String(item.id) === String(accountId));
-            const body = document.getElementById("accountModalBody");
+        function openDetailModal(id) {
+            const acc = accounts.find((item) => String(item.id) === String(id));
+            const body = document.getElementById("detailModalBody");
             if (!acc || !body) return;
 
-            modalSlides = Array.isArray(acc.photos) && acc.photos.length > 0
-                ? acc.photos
-                : ["https://placehold.co/900x520/fff2f4/be185d?text=Candy+MLBB+Account"];
-            currentSlideIndex = 0;
+            sliderPhotoList = Array.isArray(acc.photos) && acc.photos.length > 0
+                ? acc.photos.slice(0, MAX_PHOTOS)
+                : ["https://placehold.co/900x500/fff2f4/be185d?text=Candy+MLBB+Account"];
+            sliderIndex = 0;
 
             const isSold = (acc.status || "AVAILABLE").toUpperCase() === "SOLD";
-            const tgHandle = (acc.telegram || "CandyGaming8").replace(/^@/, "") || "CandyGaming8";
-            const orderText = encodeURIComponent(
+            const tgHandle = ((acc.telegram || "CandyGaming8").trim().replace(/^@/, "")) || "CandyGaming8";
+            const prefilledText = encodeURIComponent(
                 `မင်္ဂလာပါ @${tgHandle} ရှင့်၊ Candy Official Gaming မှ "${acc.title || "MLBB Account"}" (${formatMMK(acc.price)}) ကို ဝယ်ယူလိုပါသည်။`
             );
-            const highlights = Array.isArray(acc.highlights) ? acc.highlights.filter(Boolean) : [];
+            const highlights = String(acc.highlight || "")
+                .split(",")
+                .map((s) => s.trim())
+                .filter(Boolean);
 
             body.innerHTML = `
                 <div class="space-y-3">
-                    <div class="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-blush border border-rose-200">
+                    <div class="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-blush border border-roseberry/20">
                         <img id="sliderMainImage"
-                             src="${escapeHtml(modalSlides[0])}"
+                             src="${escapeHtml(sliderPhotoList[0])}"
                              alt="${escapeHtml(acc.title || "MLBB Account")}"
-                             onerror="this.onerror=null;this.src='https://placehold.co/900x520/fff2f4/be185d?text=Candy+MLBB+Account';"
+                             onerror="this.onerror=null;this.src='https://placehold.co/900x500/fff2f4/be185d?text=Candy+MLBB+Account';"
                              class="w-full h-full object-cover">
 
-                        ${modalSlides.length > 1 ? `
+                        ${sliderPhotoList.length > 1 ? `
                             <button type="button"
-                                    id="prevSlideBtn"
+                                    id="sliderPrevBtn"
                                     aria-label="Previous photo"
-                                    class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 hover:bg-magenta text-wine hover:text-white border border-rose-200 flex items-center justify-center cursor-pointer shadow-xs transition-all">
+                                    class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/95 hover:bg-roseberry text-plumink hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
                                 <i class="fa-solid fa-chevron-left text-xs"></i>
                             </button>
                             <button type="button"
-                                    id="nextSlideBtn"
+                                    id="sliderNextBtn"
                                     aria-label="Next photo"
-                                    class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 hover:bg-magenta text-wine hover:text-white border border-rose-200 flex items-center justify-center cursor-pointer shadow-xs transition-all">
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/95 hover:bg-roseberry text-plumink hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
                                 <i class="fa-solid fa-chevron-right text-xs"></i>
                             </button>
-                            <span id="slideCounterBadge"
-                                  class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-wine/85 text-white text-xs font-bold cute-font">
-                                1 / ${modalSlides.length}
+                            <span id="sliderCounterBadge"
+                                  class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-plumink/85 text-white text-xs font-bold">
+                                1 / ${sliderPhotoList.length}
                             </span>
                         ` : ""}
                     </div>
 
-                    ${modalSlides.length > 1 ? `
-                        <div id="sliderThumbs" class="flex items-center gap-2 overflow-x-auto pb-1">
-                            ${modalSlides.map((src, idx) => `
+                    ${sliderPhotoList.length > 1 ? `
+                        <div class="flex items-center gap-2 overflow-x-auto pb-1">
+                            ${sliderPhotoList.map((src, idx) => `
                                 <button type="button"
-                                        data-slide-idx="${idx}"
+                                        data-slider-idx="${idx}"
                                         class="slider-thumb-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all ${
-                                            idx === 0 ? "border-magenta scale-105" : "border-rose-200 opacity-75 hover:opacity-100"
+                                            idx === 0 ? "border-roseberry scale-105" : "border-roseberry/20 opacity-75 hover:opacity-100"
                                         }">
                                     <img src="${escapeHtml(src)}"
                                          alt="Slide ${idx + 1}"
@@ -1225,285 +1177,168 @@
                     ` : ""}
                 </div>
 
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-rose-200/80 pb-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-roseberry/15 pb-4">
                     <div>
                         <div class="flex items-center gap-2 flex-wrap">
-                            <h3 class="text-xl sm:text-2xl font-bold cute-font text-wine">
+                            <h3 class="text-2xl font-bold editorial-font text-plumink">
                                 ${escapeHtml(acc.title || "MLBB Account")}
                             </h3>
                             <span class="px-3 py-0.5 rounded-full text-[11px] font-bold ${
                                 isSold
-                                    ? "bg-rose-100 text-berry border border-rose-300"
+                                    ? "bg-petal text-deepberry border border-roseberry/25"
                                     : "bg-emerald-100 text-emerald-800 border border-emerald-300"
                             }">
                                 ${isSold ? "SOLD OUT" : "AVAILABLE"}
                             </span>
                         </div>
-                        <p class="text-xs text-espresso/75 mt-1 cute-font">
-                            Rank: <span class="font-bold text-wine">${escapeHtml(acc.rank || "-")}</span>
+                        <p class="text-xs text-mauve mt-1">
+                            Rank: <span class="font-bold text-plumink">${escapeHtml(acc.rank || "-")}</span>
                         </p>
                     </div>
 
                     <div class="text-left sm:text-right">
-                        <p class="text-[11px] text-espresso/65">ဈေးနှုန်း</p>
-                        <p class="text-xl font-extrabold text-berry cute-font">${escapeHtml(formatMMK(acc.price))}</p>
+                        <p class="text-[11px] text-mauve">ဈေးနှုန်း</p>
+                        <p class="text-xl font-extrabold text-deepberry">${escapeHtml(formatMMK(acc.price))}</p>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-3 gap-3 text-center bg-blush/90 border border-rose-200/80 rounded-2xl p-3.5">
-                    <div>
-                        <p class="text-[11px] text-espresso/70">Total Skins</p>
-                        <p class="text-base font-bold text-wine">${Number(acc.skins || 0)}</p>
-                    </div>
-                    <div class="border-x border-rose-200">
-                        <p class="text-[11px] text-espresso/70">Total Heroes</p>
-                        <p class="text-base font-bold text-wine">${Number(acc.heroes || 0)}</p>
+                <div class="grid grid-cols-2 gap-3 text-center bg-blush/90 border border-roseberry/15 rounded-2xl p-3.5">
+                    <div class="border-r border-roseberry/15">
+                        <p class="text-[11px] text-mauve">Skins Count</p>
+                        <p class="text-base font-bold text-plumink">${Number(acc.skins || 0)}</p>
                     </div>
                     <div>
-                        <p class="text-[11px] text-espresso/70">Win Rate</p>
-                        <p class="text-base font-bold text-berry">${escapeHtml(acc.winrate || "50%+")}</p>
+                        <p class="text-[11px] text-mauve">Win Rate</p>
+                        <p class="text-base font-bold text-deepberry">${escapeHtml(acc.winRate || "50%+")}</p>
                     </div>
                 </div>
 
                 ${highlights.length > 0 ? `
                     <div class="space-y-1.5">
-                        <p class="text-xs font-bold text-espresso cute-font">Highlight Skins</p>
+                        <p class="text-xs font-bold text-plumink">Highlight Skins</p>
                         <div class="flex flex-wrap gap-1.5">
-                            ${highlights.map((item) => `
-                                <span class="px-3 py-1 rounded-full bg-white text-berry border border-rose-200 text-xs font-semibold">
-                                    ${escapeHtml(item)}
+                            ${highlights.map((tag) => `
+                                <span class="px-3 py-1 rounded-full bg-white text-deepberry border border-roseberry/20 text-xs font-semibold">
+                                    ${escapeHtml(tag)}
                                 </span>
                             `).join("")}
                         </div>
                     </div>
                 ` : ""}
 
-                ${acc.description ? `
-                    <div class="bg-white/90 border border-rose-200/80 rounded-2xl p-4 space-y-1">
-                        <p class="text-xs font-bold text-espresso cute-font">အသေးစိတ် အချက်အလက်</p>
-                        <p class="text-xs sm:text-sm text-espresso/85 whitespace-pre-line leading-relaxed">
-                            ${escapeHtml(acc.description)}
+                ${acc.notes ? `
+                    <div class="bg-white border border-roseberry/15 rounded-2xl p-4 space-y-1">
+                        <p class="text-xs font-bold text-plumink">Notes / Bind Info</p>
+                        <p class="text-xs sm:text-sm text-plumink/85 whitespace-pre-line leading-relaxed">
+                            ${escapeHtml(acc.notes)}
                         </p>
                     </div>
                 ` : ""}
 
                 <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
-                    <a href="https://t.me/${escapeHtml(tgHandle)}?text=${orderText}"
+                    <a href="https://t.me/${escapeHtml(tgHandle)}?text=${prefilledText}"
                        target="_blank"
                        rel="noopener noreferrer"
-                       class="w-full sm:flex-1 py-3 px-5 rounded-full boutique-btn text-xs sm:text-sm font-bold cute-font flex items-center justify-center gap-2">
+                       class="w-full sm:flex-1 py-3 px-5 rounded-full berry-cta-btn text-xs sm:text-sm font-bold flex items-center justify-center gap-2">
                         <i class="fa-brands fa-telegram text-base"></i>
                         <span>@${escapeHtml(tgHandle)} မှ တိုက်ရိုက် မှာယူမည်</span>
                     </a>
                     <button type="button"
-                            id="detailModalCloseBtn"
-                            class="w-full sm:w-auto px-5 py-3 rounded-full bg-white hover:bg-blush text-espresso border border-rose-200 text-xs font-bold cute-font cursor-pointer">
+                            id="detailDoneBtn"
+                            class="w-full sm:w-auto px-5 py-3 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
                         ပိတ်မည်
                     </button>
                 </div>
             `;
 
-            const prevBtn = document.getElementById("prevSlideBtn");
-            const nextBtn = document.getElementById("nextSlideBtn");
-            if (prevBtn) prevBtn.addEventListener("click", () => changeDetailSlide(-1));
-            if (nextBtn) nextBtn.addEventListener("click", () => changeDetailSlide(1));
+            document.getElementById("sliderPrevBtn")?.addEventListener("click", () => moveSlider(-1));
+            document.getElementById("sliderNextBtn")?.addEventListener("click", () => moveSlider(1));
+            document.getElementById("detailDoneBtn")?.addEventListener("click", () => closeModal("detailModal"));
 
             body.querySelectorAll(".slider-thumb-btn").forEach((thumb) => {
                 thumb.addEventListener("click", () => {
-                    const idx = Number(thumb.getAttribute("data-slide-idx") || 0);
-                    setDetailSlide(idx);
+                    const idx = Number(thumb.getAttribute("data-slider-idx") || 0);
+                    setSliderIndex(idx);
                 });
             });
 
-            const detailClose = document.getElementById("detailModalCloseBtn");
-            if (detailClose) detailClose.addEventListener("click", () => closeBoutiqueModal("accountModal"));
-
-            openBoutiqueModal("accountModal");
+            openModal("detailModal");
         }
 
         /**
-         * Cycles active slide index in the detail modal.
+         * Shifts slider photo index by delta (-1 or +1).
          */
-        function changeDetailSlide(delta) {
-            if (!modalSlides.length) return;
-            const nextIndex = (currentSlideIndex + delta + modalSlides.length) % modalSlides.length;
-            setDetailSlide(nextIndex);
+        function moveSlider(delta) {
+            if (!sliderPhotoList.length) return;
+            const nextIdx = (sliderIndex + delta + sliderPhotoList.length) % sliderPhotoList.length;
+            setSliderIndex(nextIdx);
         }
 
         /**
-         * Updates the active detail modal image, counter, and thumbnail ring.
+         * Sets active slider photo and updates counter and thumbnail ring.
          */
-        function setDetailSlide(index) {
-            if (!modalSlides.length) return;
-            currentSlideIndex = Math.max(0, Math.min(index, modalSlides.length - 1));
+        function setSliderIndex(idx) {
+            if (!sliderPhotoList.length) return;
+            sliderIndex = Math.max(0, Math.min(idx, sliderPhotoList.length - 1));
             const img = document.getElementById("sliderMainImage");
-            const counter = document.getElementById("slideCounterBadge");
-            if (img) img.src = modalSlides[currentSlideIndex];
-            if (counter) counter.textContent = `${currentSlideIndex + 1} / ${modalSlides.length}`;
+            const counter = document.getElementById("sliderCounterBadge");
+            if (img) img.src = sliderPhotoList[sliderIndex];
+            if (counter) counter.textContent = `${sliderIndex + 1} / ${sliderPhotoList.length}`;
 
-            const thumbs = document.querySelectorAll(".slider-thumb-btn");
-            thumbs.forEach((btn, idx) => {
-                if (idx === currentSlideIndex) {
-                    btn.className = "slider-thumb-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all border-magenta scale-105";
+            document.querySelectorAll(".slider-thumb-btn").forEach((btn, i) => {
+                if (i === sliderIndex) {
+                    btn.className = "slider-thumb-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all border-roseberry scale-105";
                 } else {
-                    btn.className = "slider-thumb-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all border-rose-200 opacity-75 hover:opacity-100";
+                    btn.className = "slider-thumb-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all border-roseberry/20 opacity-75 hover:opacity-100";
                 }
             });
         }
 
         /**
-         * Opens the Admin Studio modal if secret-unlocked or already signed in.
+         * Renders the Admin Studio accounts table and visit counter.
          */
-        function openAdminPanel() {
-            if (!isAdminSecretUnlocked()) {
-                showToast("Admin access requires the secret link.", "error");
-                return;
-            }
-            refreshAdminAuthUI();
-            openBoutiqueModal("adminModal");
-        }
+        function renderAdminTable() {
+            const visitCounterEl = document.getElementById("adminVisitCounter");
+            if (visitCounterEl) visitCounterEl.textContent = String(visitCount);
 
-        /**
-         * Switches login vs dashboard view inside Admin Studio based on auth state.
-         */
-        function refreshAdminAuthUI() {
-            const loginView = document.getElementById("adminLoginView");
-            const dashView = document.getElementById("adminDashboardView");
-            const activeEmailEl = document.getElementById("adminActiveEmail");
-            const securityEmailEl = document.getElementById("securityEmailText");
-
-            if (currentUser) {
-                if (loginView) loginView.classList.add("hidden");
-                if (dashView) dashView.classList.remove("hidden");
-                if (activeEmailEl) activeEmailEl.textContent = currentUser.email || "";
-                if (securityEmailEl) securityEmailEl.textContent = currentUser.email || "-";
-                renderAdminAccountsTable();
-            } else {
-                if (loginView) loginView.classList.remove("hidden");
-                if (dashView) dashView.classList.add("hidden");
-            }
-            syncAdminGateVisibility();
-        }
-
-        /**
-         * Signs in to Firebase Auth for Admin Studio.
-         */
-        async function handleAdminSignIn(event) {
-            event.preventDefault();
-            const email = document.getElementById("adminEmail")?.value.trim() || "";
-            const password = document.getElementById("adminPassword")?.value || "";
-            const btn = document.getElementById("adminSignInBtn");
-
-            if (!email || !password) {
-                showToast("Email နှင့် Password ထည့်သွင်းပါ", "error");
-                return;
-            }
-
-            try {
-                if (btn) btn.disabled = true;
-                await signInWithEmailAndPassword(auth, email, password);
-                showToast("Admin Studio သို့ ဝင်ရောက်ပြီးပါပြီ", "success");
-            } catch (err) {
-                showToast(err?.message || "Sign in failed", "error");
-            } finally {
-                if (btn) btn.disabled = false;
-            }
-        }
-
-        /**
-         * Signs out of Firebase Auth.
-         */
-        async function handleAdminSignOut() {
-            try {
-                await signOut(auth);
-                showToast("Logout ပြီးပါပြီ", "info");
-            } catch (err) {
-                showToast(err?.message || "Logout failed", "error");
-            }
-        }
-
-        /**
-         * Sends a password reset email to the currently signed-in admin.
-         */
-        async function handlePasswordReset() {
-            if (!currentUser?.email) {
-                showToast("Signed-in Admin Email မရှိပါ", "error");
-                return;
-            }
-            try {
-                await sendPasswordResetEmail(auth, currentUser.email);
-                showToast(`Password reset email sent to ${currentUser.email}`, "success");
-            } catch (err) {
-                showToast(err?.message || "Failed to send reset email", "error");
-            }
-        }
-
-        /**
-         * Switches active sub-tab inside Admin Studio (list, form, security).
-         */
-        function switchAdminTab(tabName) {
-            const panes = ["list", "form", "security"];
-            panes.forEach((name) => {
-                const pane = document.getElementById(`adminPane-${name}`);
-                const tabBtn = document.getElementById(`adminTab-${name}`);
-                if (pane) {
-                    if (name === tabName) pane.classList.remove("hidden");
-                    else pane.classList.add("hidden");
-                }
-                if (tabBtn) {
-                    if (name === tabName) {
-                        tabBtn.className = "admin-tab px-4 py-2 rounded-full text-xs font-bold boutique-btn cursor-pointer";
-                    } else {
-                        tabBtn.className = "admin-tab px-4 py-2 rounded-full text-xs font-bold bg-white hover:bg-blush text-espresso border border-rose-200 cursor-pointer";
-                    }
-                }
-            });
-        }
-
-        /**
-         * Renders the Admin Studio accounts management table.
-         */
-        function renderAdminAccountsTable() {
-            const tbody = document.getElementById("adminAccountsBody");
-            const countEl = document.getElementById("adminTotalCount");
+            const tbody = document.getElementById("adminAccountsTbody");
             if (!tbody) return;
 
-            const tombstones = new Set(getTombstoneIds());
-            const visibleAccounts = accountsList.filter((acc) => !tombstones.has(String(acc.id)));
-            if (countEl) countEl.textContent = String(visibleAccounts.length);
+            const deletedSet = new Set(loadDeletedIds());
+            const items = accounts.filter((acc) => acc && acc.id && !deletedSet.has(String(acc.id)));
 
-            if (visibleAccounts.length === 0) {
+            if (items.length === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="7" class="p-6 text-center text-xs text-espresso/65">
-                            MLBB Account မရှိသေးပါ။ "Account ထည့် / ပြင်ရန်" မှ အသစ်ထည့်ပါ။
+                        <td colspan="7" class="p-6 text-center text-xs text-mauve">
+                            MLBB Account မရှိသေးပါ။ အပေါ်ရှိ Form မှ အသစ်ထည့်သွင်းနိုင်ပါသည်။
                         </td>
                     </tr>
                 `;
                 return;
             }
 
-            tbody.innerHTML = visibleAccounts.map((acc) => {
+            tbody.innerHTML = items.map((acc) => {
                 const isSold = (acc.status || "AVAILABLE").toUpperCase() === "SOLD";
-                const thumb = Array.isArray(acc.photos) && acc.photos[0]
+                const firstPhoto = Array.isArray(acc.photos) && acc.photos[0]
                     ? acc.photos[0]
                     : "https://placehold.co/120x80/fff2f4/be185d?text=MLBB";
 
                 return `
-                    <tr class="hover:bg-blush/50 transition-colors">
+                    <tr class="hover:bg-blush/50">
                         <td class="p-3">
-                            <img src="${escapeHtml(thumb)}"
+                            <img src="${escapeHtml(firstPhoto)}"
                                  alt="${escapeHtml(acc.title || "")}"
                                  onerror="this.onerror=null;this.src='https://placehold.co/120x80/fff2f4/be185d?text=MLBB';"
-                                 class="w-14 h-10 rounded-lg object-cover border border-rose-200">
+                                 class="w-14 h-10 rounded-lg object-cover border border-roseberry/20">
                         </td>
-                        <td class="p-3 font-bold text-wine">${escapeHtml(acc.title || "-")}</td>
+                        <td class="p-3 font-bold text-plumink">${escapeHtml(acc.title || "-")}</td>
                         <td class="p-3">${escapeHtml(acc.rank || "-")}</td>
-                        <td class="p-3">${Number(acc.skins || 0)} Skins / ${Number(acc.heroes || 0)} Heroes</td>
-                        <td class="p-3 font-bold text-berry">${escapeHtml(formatMMK(acc.price))}</td>
+                        <td class="p-3">${Number(acc.skins || 0)} Skins • ${escapeHtml(acc.winRate || "50%+")}</td>
+                        <td class="p-3 font-bold text-deepberry">${escapeHtml(formatMMK(acc.price))}</td>
                         <td class="p-3">
                             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
-                                isSold ? "bg-rose-100 text-berry" : "bg-emerald-100 text-emerald-800"
+                                isSold ? "bg-petal text-deepberry" : "bg-emerald-100 text-emerald-800"
                             }">
                                 ${isSold ? "SOLD" : "AVAILABLE"}
                             </span>
@@ -1511,111 +1346,111 @@
                         <td class="p-3 text-right whitespace-nowrap space-x-1.5">
                             <button type="button"
                                     data-edit-id="${escapeHtml(acc.id)}"
-                                    class="edit-acc-btn px-3 py-1 rounded-full bg-white hover:bg-blush text-wine border border-rose-200 text-[11px] font-bold cursor-pointer">
-                                ပြင်ရန်
+                                    class="admin-edit-btn px-3 py-1 rounded-full bg-white hover:bg-blush text-plumink border border-roseberry/20 text-[11px] font-bold cursor-pointer">
+                                Edit
                             </button>
                             <button type="button"
                                     data-delete-id="${escapeHtml(acc.id)}"
                                     data-delete-title="${escapeHtml(acc.title || "Account")}"
-                                    class="delete-acc-btn px-3 py-1 rounded-full bg-rose-50 hover:bg-berry text-berry hover:text-white border border-rose-200 text-[11px] font-bold cursor-pointer transition-colors">
-                                ဖျက်ရန်
+                                    class="admin-delete-btn px-3 py-1 rounded-full bg-petal hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/25 text-[11px] font-bold cursor-pointer transition-colors">
+                                Delete
                             </button>
                         </td>
                     </tr>
                 `;
             }).join("");
 
-            tbody.querySelectorAll(".edit-acc-btn").forEach((btn) => {
+            tbody.querySelectorAll(".admin-edit-btn").forEach((btn) => {
                 btn.addEventListener("click", () => {
                     const id = btn.getAttribute("data-edit-id");
                     if (id) startEditAccount(id);
                 });
             });
 
-            tbody.querySelectorAll(".delete-acc-btn").forEach((btn) => {
+            tbody.querySelectorAll(".admin-delete-btn").forEach((btn) => {
                 btn.addEventListener("click", () => {
                     const id = btn.getAttribute("data-delete-id");
                     const title = btn.getAttribute("data-delete-title") || "Account";
-                    if (id) promptDeleteAccount(id, title);
+                    if (!id) return;
+                    showConfirm(
+                        "Account ဖျက်ပစ်မည်လား?",
+                        `"${title}" ကို အပြီးဖျက်ပစ်လိုပါသလား?`,
+                        async () => {
+                            await removeAccount(id);
+                        }
+                    );
                 });
             });
         }
 
         /**
-         * Resets the Admin Account editor form to create mode.
+         * Renders thumbnails for up to 15 photos inside the Admin form.
          */
-        function resetAccountForm() {
-            const form = document.getElementById("accountEditorForm");
-            if (form) form.reset();
-            const hiddenId = document.getElementById("editingAccountId");
-            const tgInput = document.getElementById("accTelegram");
-            const heading = document.getElementById("formTitleHeading");
-            const fileInput = document.getElementById("accPhotosInput");
-            if (hiddenId) hiddenId.value = "";
-            if (tgInput) tgInput.value = "CandyGaming8";
-            if (fileInput) fileInput.value = "";
-            if (heading) {
-                heading.innerHTML = `<i class="fa-solid fa-sparkles text-magenta mr-1"></i> MLBB Account အသစ်ထည့်မည်`;
+        function renderEditorThumbnails() {
+            const container = document.getElementById("adminPhotoThumbnails");
+            const countLabel = document.getElementById("adminPhotoCountLabel");
+            if (countLabel) countLabel.textContent = `${editorPhotoList.length} / ${MAX_PHOTOS} Photos`;
+            if (!container) return;
+
+            if (!editorPhotoList.length) {
+                container.innerHTML = `
+                    <span id="emptyPhotoThumbHint" class="text-xs text-mauve self-center mx-auto">
+                        ဓာတ်ပုံ URL ထည့်နိုင်သလို ဓာတ်ပုံဖိုင်များလည်း ရွေးချယ်နိုင်ပါသည် (Max 15)
+                    </span>
+                `;
+                return;
             }
-            formPhotos = [];
-            renderFormPhotosPreview();
+
+            container.innerHTML = editorPhotoList.map((src, idx) => `
+                <div class="relative w-20 h-16 rounded-xl overflow-hidden border border-roseberry/25 bg-white">
+                    <img src="${escapeHtml(src)}"
+                         alt="Photo ${idx + 1}"
+                         onerror="this.onerror=null;this.src='https://placehold.co/160x120/fff2f4/be185d?text=IMG';"
+                         class="w-full h-full object-cover">
+                    <button type="button"
+                            data-remove-photo-idx="${idx}"
+                            aria-label="Remove photo"
+                            class="remove-editor-photo-btn absolute top-1 right-1 w-5 h-5 rounded-full bg-plumink/85 hover:bg-roseberry text-white text-[10px] flex items-center justify-center cursor-pointer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            `).join("");
+
+            container.querySelectorAll(".remove-editor-photo-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const idx = Number(btn.getAttribute("data-remove-photo-idx") || -1);
+                    if (idx >= 0 && idx < editorPhotoList.length) {
+                        editorPhotoList.splice(idx, 1);
+                        renderEditorThumbnails();
+                    }
+                });
+            });
         }
 
         /**
-         * Loads an existing account into the editor form.
+         * Reads and compresses an image file to a JPEG data URL.
          */
-        function startEditAccount(accountId) {
-            const acc = accountsList.find((item) => String(item.id) === String(accountId));
-            if (!acc) return;
-
-            document.getElementById("editingAccountId").value = acc.id;
-            document.getElementById("accTitle").value = acc.title || "";
-            document.getElementById("accRank").value = acc.rank || "";
-            document.getElementById("accPrice").value = acc.price ?? "";
-            document.getElementById("accSkins").value = acc.skins ?? 0;
-            document.getElementById("accHeroes").value = acc.heroes ?? 0;
-            document.getElementById("accWinrate").value = acc.winrate || "";
-            document.getElementById("accTelegram").value = acc.telegram || "CandyGaming8";
-            document.getElementById("accStatus").value = (acc.status || "AVAILABLE").toUpperCase();
-            document.getElementById("accHighlights").value = Array.isArray(acc.highlights)
-                ? acc.highlights.join(", ")
-                : (acc.highlights || "");
-            document.getElementById("accDescription").value = acc.description || "";
-
-            formPhotos = Array.isArray(acc.photos) ? [...acc.photos] : [];
-            renderFormPhotosPreview();
-
-            const heading = document.getElementById("formTitleHeading");
-            if (heading) {
-                heading.innerHTML = `<i class="fa-solid fa-pen-to-square text-magenta mr-1"></i> Account ပြင်ဆင်ရန် (${escapeHtml(acc.title || "")})`;
-            }
-            switchAdminTab("form");
-        }
-
-        /**
-         * Converts an uploaded image file to a compressed JPEG data URL for Firestore storage.
-         */
-        function compressImageToDataUrl(file, maxWidth = 1024, quality = 0.78) {
+        function compressImageFile(file, maxWidth = 1024, quality = 0.78) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onload = (ev) => {
                     const img = new Image();
                     img.onload = () => {
-                        let targetW = img.width;
-                        let targetH = img.height;
-                        if (targetW > maxWidth) {
-                            targetH = Math.round((targetH * maxWidth) / targetW);
-                            targetW = maxWidth;
+                        let width = img.width;
+                        let height = img.height;
+                        if (width > maxWidth) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
                         }
                         const canvas = document.createElement("canvas");
-                        canvas.width = targetW;
-                        canvas.height = targetH;
+                        canvas.width = width;
+                        canvas.height = height;
                         const ctx = canvas.getContext("2d");
                         if (!ctx) {
                             resolve(String(ev.target?.result || ""));
                             return;
                         }
-                        ctx.drawImage(img, 0, 0, targetW, targetH);
+                        ctx.drawImage(img, 0, 0, width, height);
                         resolve(canvas.toDataURL("image/jpeg", quality));
                     };
                     img.onerror = reject;
@@ -1627,270 +1462,321 @@
         }
 
         /**
-         * Handles multi-photo file uploads inside the Admin editor form.
+         * Handles selecting up to 15 image files in the Admin form.
          */
-        async function handleAccPhotosUpload(event) {
+        async function handleAdminPhotoFiles(event) {
             const files = Array.from(event.target?.files || []);
             if (!files.length) return;
 
             for (const file of files) {
+                if (editorPhotoList.length >= MAX_PHOTOS) {
+                    showNotice("Photo Limit", `ဓာတ်ပုံ ${MAX_PHOTOS} ပုံအထိသာ ထည့်နိုင်ပါသည်`, "info");
+                    break;
+                }
                 try {
-                    const dataUrl = await compressImageToDataUrl(file);
-                    if (dataUrl) formPhotos.push(dataUrl);
+                    const dataUrl = await compressImageFile(file);
+                    if (dataUrl) editorPhotoList.push(dataUrl);
                 } catch (_err) {
-                    showToast("ပုံတစ်ပုံကို ဖတ်၍မရပါ", "error");
+                    showNotice("Upload Error", "ဓာတ်ပုံဖိုင်ကို ဖတ်၍မရပါ", "error");
                 }
             }
 
-            renderFormPhotosPreview();
+            renderEditorThumbnails();
             event.target.value = "";
         }
 
         /**
-         * Renders photo thumbnails and remove buttons inside the Admin editor form.
+         * Resets the Admin account form to create mode.
          */
-        function renderFormPhotosPreview() {
-            const container = document.getElementById("accPhotosPreview");
-            if (!container) return;
-
-            if (!formPhotos.length) {
-                container.innerHTML = `<span id="noAccPhotosLabel" class="text-xs text-espresso/50 self-center mx-auto">ဓာတ်ပုံ မရွေးရသေးပါ</span>`;
-                return;
+        function resetAdminForm() {
+            document.getElementById("mlbbAccountForm")?.reset();
+            const editIdEl = document.getElementById("editingAccountId");
+            const tgEl = document.getElementById("accTelegramInput");
+            const headingEl = document.getElementById("adminFormHeading");
+            const cancelBtn = document.getElementById("cancelEditAccountBtn");
+            if (editIdEl) editIdEl.value = "";
+            if (tgEl) tgEl.value = "CandyGaming8";
+            if (cancelBtn) cancelBtn.classList.add("hidden");
+            if (headingEl) {
+                headingEl.innerHTML = `<i class="fa-solid fa-plus-circle text-roseberry mr-1"></i> MLBB Account အသစ်ထည့်ရန်`;
             }
-
-            container.innerHTML = formPhotos.map((src, idx) => `
-                <div class="relative w-20 h-16 rounded-xl overflow-hidden border border-rose-200 bg-white shadow-xs">
-                    <img src="${escapeHtml(src)}"
-                         alt="Preview ${idx + 1}"
-                         onerror="this.onerror=null;this.src='https://placehold.co/160x120/fff2f4/be185d?text=IMG';"
-                         class="w-full h-full object-cover">
-                    <button type="button"
-                            data-remove-photo="${idx}"
-                            aria-label="Remove photo"
-                            class="remove-form-photo-btn absolute top-1 right-1 w-5 h-5 rounded-full bg-wine/85 hover:bg-berry text-white text-[10px] flex items-center justify-center cursor-pointer">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            `).join("");
-
-            container.querySelectorAll(".remove-form-photo-btn").forEach((btn) => {
-                btn.addEventListener("click", () => {
-                    const idx = Number(btn.getAttribute("data-remove-photo") || -1);
-                    if (idx >= 0 && idx < formPhotos.length) {
-                        formPhotos.splice(idx, 1);
-                        renderFormPhotosPreview();
-                    }
-                });
-            });
+            editorPhotoList = [];
+            renderEditorThumbnails();
         }
 
         /**
-         * Creates or updates an MLBB account document in Firestore.
+         * Loads an existing MLBB account into the Admin form for editing.
          */
-        async function handleAccountSave(event) {
-            event.preventDefault();
-            if (!currentUser) {
-                showToast("Please sign in to Admin Studio first.", "error");
-                return;
-            }
+        function startEditAccount(id) {
+            const acc = accounts.find((item) => String(item.id) === String(id));
+            if (!acc) return;
 
-            const saveBtn = document.getElementById("saveAccountBtn");
+            document.getElementById("editingAccountId").value = acc.id;
+            document.getElementById("accTitleInput").value = acc.title || "";
+            document.getElementById("accRankInput").value = acc.rank || "";
+            document.getElementById("accPriceInput").value = acc.price ?? "";
+            document.getElementById("accStatusInput").value = (acc.status || "AVAILABLE").toUpperCase();
+            document.getElementById("accSkinsInput").value = acc.skins ?? 0;
+            document.getElementById("accWinRateInput").value = acc.winRate || "";
+            document.getElementById("accHighlightInput").value = acc.highlight || "";
+            document.getElementById("accTelegramInput").value = acc.telegram || "CandyGaming8";
+            document.getElementById("accNotesInput").value = acc.notes || "";
+
+            const currentPhotos = Array.isArray(acc.photos) ? acc.photos.slice(0, MAX_PHOTOS) : [];
+            editorPhotoList = [...currentPhotos];
+            const urlInput = document.getElementById("accPhotoUrlsInput");
+            if (urlInput) {
+                urlInput.value = currentPhotos.filter((u) => /^https?:\/\//i.test(u)).join(", ");
+            }
+            renderEditorThumbnails();
+
+            const headingEl = document.getElementById("adminFormHeading");
+            const cancelBtn = document.getElementById("cancelEditAccountBtn");
+            if (headingEl) {
+                headingEl.innerHTML = `<i class="fa-solid fa-pen-to-square text-roseberry mr-1"></i> Account ပြင်ဆင်ရန် (${escapeHtml(acc.title || "")})`;
+            }
+            if (cancelBtn) cancelBtn.classList.remove("hidden");
+            document.getElementById("adminPanelSection")?.scrollIntoView({ behavior: "smooth" });
+        }
+
+        /**
+         * Creates or updates an MLBB account in localStorage and Firestore (mlbb_accounts).
+         */
+        async function handleSaveAccount(event) {
+            event.preventDefault();
+
             const existingId = (document.getElementById("editingAccountId")?.value || "").trim();
-            const title = (document.getElementById("accTitle")?.value || "").trim();
-            const rank = (document.getElementById("accRank")?.value || "").trim();
-            const price = Number(document.getElementById("accPrice")?.value || 0);
-            const skins = Number(document.getElementById("accSkins")?.value || 0);
-            const heroes = Number(document.getElementById("accHeroes")?.value || 0);
-            const winrate = (document.getElementById("accWinrate")?.value || "").trim() || "50%+";
-            const telegram = ((document.getElementById("accTelegram")?.value || "CandyGaming8").trim().replace(/^@/, "")) || "CandyGaming8";
-            const status = (document.getElementById("accStatus")?.value || "AVAILABLE").toUpperCase();
-            const highlightsRaw = document.getElementById("accHighlights")?.value || "";
-            const highlights = highlightsRaw.split(",").map((s) => s.trim()).filter(Boolean);
-            const description = (document.getElementById("accDescription")?.value || "").trim();
+            const title = (document.getElementById("accTitleInput")?.value || "").trim();
+            const rank = (document.getElementById("accRankInput")?.value || "").trim();
+            const price = Number(document.getElementById("accPriceInput")?.value || 0);
+            const status = (document.getElementById("accStatusInput")?.value || "AVAILABLE").toUpperCase();
+            const skins = Number(document.getElementById("accSkinsInput")?.value || 0);
+            const winRate = (document.getElementById("accWinRateInput")?.value || "").trim() || "50%+";
+            const highlight = (document.getElementById("accHighlightInput")?.value || "").trim();
+            const telegram = ((document.getElementById("accTelegramInput")?.value || "CandyGaming8").trim().replace(/^@/, "")) || "CandyGaming8";
+            const notes = (document.getElementById("accNotesInput")?.value || "").trim();
+
+            const typedUrls = (document.getElementById("accPhotoUrlsInput")?.value || "")
+                .split(/[\n,]+/)
+                .map((s) => s.trim())
+                .filter((u) => /^https?:\/\//i.test(u));
+
+            const mergedPhotos = [];
+            for (const src of [...typedUrls, ...editorPhotoList]) {
+                if (mergedPhotos.length >= MAX_PHOTOS) break;
+                if (!mergedPhotos.includes(src)) mergedPhotos.push(src);
+            }
 
             if (!title || !rank) {
-                showToast("Title နှင့် Rank ထည့်သွင်းပါ", "error");
+                showNotice("Missing Info", "Account Title နှင့် Rank ထည့်သွင်းပါ", "error");
                 return;
             }
 
+            const docId = existingId || `mlbb_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+            const existingRecord = existingId ? accounts.find((item) => String(item.id) === existingId) : null;
+            const createdAt = existingRecord?.createdAt || Date.now();
+
             const payload = {
+                id: docId,
                 title,
                 rank,
                 price: Number.isFinite(price) ? price : 0,
-                skins: Number.isFinite(skins) ? skins : 0,
-                heroes: Number.isFinite(heroes) ? heroes : 0,
-                winrate,
-                telegram,
                 status,
-                highlights,
-                description,
-                photos: [...formPhotos],
+                skins: Number.isFinite(skins) ? skins : 0,
+                winRate,
+                highlight,
+                telegram,
+                notes,
+                photos: mergedPhotos,
+                createdAt,
                 updatedAt: Date.now()
             };
 
-            try {
-                if (saveBtn) saveBtn.disabled = true;
-                if (existingId) {
-                    clearTombstoneId(existingId);
-                    await updateDoc(doc(db, "mlbb_accounts", existingId), payload);
-                    showToast("MLBB Account ပြင်ဆင်ပြီးပါပြီ", "success");
-                } else {
-                    payload.createdAt = Date.now();
-                    const createdRef = await addDoc(mlbbCollection, payload);
-                    clearTombstoneId(createdRef.id);
-                    showToast("MLBB Account အသစ် သိမ်းဆည်းပြီးပါပြီ", "success");
-                }
-                resetAccountForm();
-                switchAdminTab("list");
-            } catch (err) {
-                showToast(err?.message || "Failed to save account", "error");
-            } finally {
-                if (saveBtn) saveBtn.disabled = false;
+            removeDeletedId(docId);
+
+            const idx = accounts.findIndex((item) => String(item.id) === docId);
+            if (idx >= 0) {
+                accounts[idx] = { ...accounts[idx], ...payload };
+            } else {
+                accounts.unshift(payload);
             }
-        }
-
-        /**
-         * Opens the delete confirmation modal for a specific account.
-         */
-        function promptDeleteAccount(accountId, title) {
-            pendingDeleteId = String(accountId);
-            const label = document.getElementById("deleteTargetName");
-            if (label) label.textContent = `"${title}" ကို အပြီးဖျက်ပစ်လိုပါသလား?`;
-            openBoutiqueModal("deleteModal");
-        }
-
-        /**
-         * Deletes an account from Firestore and records a tombstone ID so it never reappears.
-         */
-        async function executeAccountDelete() {
-            if (!pendingDeleteId) return;
-            const targetId = pendingDeleteId;
-            const confirmBtn = document.getElementById("confirmDeleteBtn");
+            saveLocalAccounts(accounts);
+            renderCatalog();
+            renderAdminTable();
 
             try {
-                if (confirmBtn) confirmBtn.disabled = true;
-                addTombstoneId(targetId);
-                accountsList = accountsList.filter((item) => String(item.id) !== String(targetId));
-                renderCatalogGrid();
-                renderAdminAccountsTable();
+                await setDoc(doc(db, "mlbb_accounts", docId), {
+                    ...payload,
+                    syncedAt: serverTimestamp()
+                }, { merge: true });
+                showNotice("Saved", "MLBB Account ကို သိမ်းဆည်းပြီးပါပြီ", "success");
+            } catch (_err) {
+                showNotice("Saved Locally", "Local storage တွင် သိမ်းဆည်းပြီးပါပြီ (Firestore rule စစ်ဆေးပါ)", "info");
+            }
+
+            resetAdminForm();
+        }
+
+        /**
+         * Deletes an MLBB account using tombstone deletedIds protection + Firestore deleteDoc + localStorage update.
+         */
+        async function removeAccount(id) {
+            const targetId = String(id);
+            addDeletedId(targetId);
+            accounts = accounts.filter((item) => String(item.id) !== targetId);
+            saveLocalAccounts(accounts);
+            renderCatalog();
+            renderAdminTable();
+
+            try {
                 await deleteDoc(doc(db, "mlbb_accounts", targetId));
-                showToast("Account ဖျက်ပြီးပါပြီ", "success");
-            } catch (err) {
-                showToast(err?.message || "Delete failed", "error");
-            } finally {
-                if (confirmBtn) confirmBtn.disabled = false;
-                closeBoutiqueModal("deleteModal");
+                showNotice("Deleted", "MLBB Account ကို ဖျက်ပြီးပါပြီ", "success");
+            } catch (_err) {
+                showNotice("Deleted", "Account ကို ဖျက်ပြီးပါပြီ", "info");
             }
         }
 
         /**
-         * Records a lightweight visit log entry once per browser session.
+         * Records a visit in Firestore visit_logs once per browser session.
          */
         async function recordSessionVisit() {
             try {
-                if (sessionStorage.getItem("candy_visit_logged_v1")) return;
-                sessionStorage.setItem("candy_visit_logged_v1", "1");
-                const docId = `visit_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
-                await setDoc(doc(visitLogsCollection, docId), {
+                if (sessionStorage.getItem("candy_mlbb_visit_logged")) return;
+                sessionStorage.setItem("candy_mlbb_visit_logged", "1");
+                await addDoc(visitsCol, {
                     store: "Candy Official Gaming",
                     game: "MLBB",
-                    visitedAt: Date.now()
+                    createdAt: serverTimestamp(),
+                    clientTime: Date.now()
                 });
             } catch (_err) {
-                // Non-critical telemetry; ignore when unauthenticated or offline
+                // Ignore unauthenticated or offline telemetry error
             }
         }
 
         /**
-         * Wires all static DOM event listeners cleanly on startup.
+         * Binds all event listeners explicitly and cleanly.
          */
-        function bindAllEvents() {
-            document.getElementById("brandLogoBtn")?.addEventListener("click", showLandingView);
-            document.getElementById("footerBrandBtn")?.addEventListener("click", showLandingView);
-            document.getElementById("enterMlbbCatalogBtn")?.addEventListener("click", openCatalogView);
-            document.getElementById("secondaryCatalogBtn")?.addEventListener("click", openCatalogView);
-            document.getElementById("backToLandingBtn")?.addEventListener("click", showLandingView);
-            document.getElementById("resetFiltersBtn")?.addEventListener("click", resetCatalogFilters);
+        function bindAllListeners() {
+            document.getElementById("brandHomeBtn")?.addEventListener("click", goToLanding);
+            document.getElementById("footerBrandBtn")?.addEventListener("click", goToLanding);
+            document.getElementById("headerCatalogBtn")?.addEventListener("click", goToCatalog);
+            document.getElementById("openCatalogBtn")?.addEventListener("click", goToCatalog);
+            document.getElementById("landingSecondaryCatalogBtn")?.addEventListener("click", goToCatalog);
+            document.getElementById("backToLandingBtn")?.addEventListener("click", goToLanding);
+            document.getElementById("clearCatalogFiltersBtn")?.addEventListener("click", clearCatalogFilters);
 
-            document.getElementById("searchDesktop")?.addEventListener("input", () => syncSearch("desktop"));
-            document.getElementById("searchMobile")?.addEventListener("input", () => syncSearch("mobile"));
-            document.getElementById("sortSelect")?.addEventListener("change", renderCatalogGrid);
+            document.getElementById("catalogSearchInput")?.addEventListener("input", renderCatalog);
+            document.getElementById("catalogSortSelect")?.addEventListener("change", renderCatalog);
 
-            document.querySelectorAll(".filter-chip").forEach((chip) => {
-                chip.addEventListener("click", () => {
-                    const filterKey = chip.getAttribute("data-filter") || "ALL";
-                    setFilterChip(filterKey);
+            document.querySelectorAll(".catalog-filter-pill").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const key = btn.getAttribute("data-filter") || "ALL";
+                    setFilter(key);
                 });
             });
 
-            document.getElementById("headerAdminBtn")?.addEventListener("click", openAdminPanel);
-            document.getElementById("footerAdminLink")?.addEventListener("click", openAdminPanel);
-            document.getElementById("closeAccountModalBtn")?.addEventListener("click", () => closeBoutiqueModal("accountModal"));
-            document.getElementById("closeAdminModalBtn")?.addEventListener("click", () => closeBoutiqueModal("adminModal"));
-            document.getElementById("cancelDeleteBtn")?.addEventListener("click", () => closeBoutiqueModal("deleteModal"));
-            document.getElementById("confirmDeleteBtn")?.addEventListener("click", executeAccountDelete);
-
-            document.getElementById("accountModal")?.addEventListener("click", (ev) => {
-                if (ev.target === ev.currentTarget) closeBoutiqueModal("accountModal");
-            });
-            document.getElementById("adminModal")?.addEventListener("click", (ev) => {
-                if (ev.target === ev.currentTarget) closeBoutiqueModal("adminModal");
-            });
-            document.getElementById("deleteModal")?.addEventListener("click", (ev) => {
-                if (ev.target === ev.currentTarget) closeBoutiqueModal("deleteModal");
+            document.getElementById("headerAdminToggleBtn")?.addEventListener("click", () => {
+                const panel = document.getElementById("adminPanelSection");
+                if (!panel) return;
+                panel.classList.toggle("hidden");
+                if (!panel.classList.contains("hidden")) {
+                    panel.scrollIntoView({ behavior: "smooth" });
+                }
             });
 
-            document.getElementById("adminLoginForm")?.addEventListener("submit", handleAdminSignIn);
-            document.getElementById("adminLogoutBtn")?.addEventListener("click", handleAdminSignOut);
-            document.getElementById("sendResetEmailBtn")?.addEventListener("click", handlePasswordReset);
-
-            document.querySelectorAll(".admin-tab").forEach((tabBtn) => {
-                tabBtn.addEventListener("click", () => {
-                    const tabName = tabBtn.getAttribute("data-tab") || "list";
-                    switchAdminTab(tabName);
-                });
+            document.getElementById("footerAdminBtn")?.addEventListener("click", () => {
+                updateAdminGateUI();
+                document.getElementById("adminPanelSection")?.scrollIntoView({ behavior: "smooth" });
             });
 
-            document.getElementById("clearAccountFormBtn")?.addEventListener("click", resetAccountForm);
-            document.getElementById("cancelAccountEditBtn")?.addEventListener("click", () => {
-                resetAccountForm();
-                switchAdminTab("list");
+            document.getElementById("collapseAdminBtn")?.addEventListener("click", () => {
+                document.getElementById("adminPanelSection")?.classList.add("hidden");
             });
-            document.getElementById("accPhotosInput")?.addEventListener("change", handleAccPhotosUpload);
-            document.getElementById("accountEditorForm")?.addEventListener("submit", handleAccountSave);
 
-            window.addEventListener("hashchange", syncAdminGateVisibility);
+            document.getElementById("accPhotoFilesInput")?.addEventListener("change", handleAdminPhotoFiles);
+            document.getElementById("mlbbAccountForm")?.addEventListener("submit", handleSaveAccount);
+            document.getElementById("resetAdminFormBtn")?.addEventListener("click", resetAdminForm);
+            document.getElementById("cancelEditAccountBtn")?.addEventListener("click", resetAdminForm);
+
+            document.getElementById("closeDetailModalBtn")?.addEventListener("click", () => closeModal("detailModal"));
+
+            document.getElementById("detailModal")?.addEventListener("click", (ev) => {
+                if (ev.target === ev.currentTarget) closeModal("detailModal");
+            });
+
+            document.getElementById("noticeModal")?.addEventListener("click", (ev) => {
+                if (ev.target === ev.currentTarget) closeModal("noticeModal");
+            });
+
+            window.addEventListener("hashchange", updateAdminGateUI);
             document.addEventListener("keydown", (ev) => {
                 if (ev.key === "Escape") {
-                    closeBoutiqueModal("deleteModal");
-                    closeBoutiqueModal("accountModal");
-                    closeBoutiqueModal("adminModal");
+                    closeModal("noticeModal");
+                    closeModal("detailModal");
                 }
             });
         }
 
-        // Start event bindings, auth listener, and real-time Firestore subscription
-        bindAllEvents();
-        syncAdminGateVisibility();
-        showLandingView();
+        // Boot application: two-step flow starts on #landingView, secret admin panel checks ?admin=candy2026 / #admin-candy2026
+        accounts = loadLocalAccounts();
+        bindAllListeners();
+        goToLanding();
+        updateAdminGateUI();
+        renderEditorThumbnails();
 
         onAuthStateChanged(auth, (user) => {
-            currentUser = user;
-            refreshAdminAuthUI();
+            const statusEl = document.getElementById("adminFirebaseStatus");
+            if (statusEl) {
+                statusEl.textContent = user
+                    ? "Firebase Auth connected (candy-shop-a365d) • Live Firestore sync active"
+                    : "Connecting Firebase Auth (candy-shop-a365d)...";
+            }
         });
 
-        onSnapshot(mlbbCollection, (snapshot) => {
-            const tombstones = new Set(getTombstoneIds());
-            accountsList = snapshot.docs
-                .map((d) => ({ id: d.id, ...d.data() }))
-                .filter((acc) => !tombstones.has(String(acc.id)));
-
-            renderCatalogGrid();
-            if (currentUser) {
-                renderAdminAccountsTable();
+        signInAnonymously(auth).catch((_err) => {
+            const statusEl = document.getElementById("adminFirebaseStatus");
+            if (statusEl) {
+                statusEl.textContent = "Local + Firestore mode ready (candy-shop-a365d)";
             }
-        }, (err) => {
-            showToast(err?.message || "Firestore sync error", "error");
+        });
+
+        onSnapshot(accountsCol, (snapshot) => {
+            const deletedSet = new Set(loadDeletedIds());
+            const remoteItems = [];
+            snapshot.forEach((docSnap) => {
+                const data = docSnap.data() || {};
+                const docId = String(data.id || docSnap.id);
+                if (!deletedSet.has(docId)) {
+                    remoteItems.push({
+                        ...data,
+                        id: docId,
+                        createdAt: Number(data.createdAt || 0)
+                    });
+                }
+            });
+
+            if (remoteItems.length > 0) {
+                accounts = remoteItems;
+                saveLocalAccounts(accounts);
+            } else {
+                accounts = loadLocalAccounts();
+            }
+
+            renderCatalog();
+            renderAdminTable();
+        }, (_err) => {
+            accounts = loadLocalAccounts();
+            renderCatalog();
+            renderAdminTable();
+        });
+
+        onSnapshot(visitsCol, (snapshot) => {
+            visitCount = snapshot.size;
+            const visitCounterEl = document.getElementById("adminVisitCounter");
+            if (visitCounterEl) visitCounterEl.textContent = String(visitCount);
+        }, (_err) => {
+            // Keep visit counter at 0 if visit_logs read is restricted
         });
 
         recordSessionVisit();
