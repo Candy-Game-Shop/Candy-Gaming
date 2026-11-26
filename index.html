@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candy Official Gaming - MLBB Account Store</title>
+    <title>Candy Official Gaming - MLBB Account Boutique</title>
     <link rel="icon" type="image/jpeg" href="IMG_20261126_162338_994.jpg">
     <link rel="apple-touch-icon" href="IMG_20261126_162338_994.jpg">
 
@@ -11,31 +11,31 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Playfair Display, Plus Jakarta Sans & Padauk -->
+    <!-- Google Fonts: Playfair Display, Montserrat, Plus Jakarta Sans & Padauk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Padauk:wght@400;700&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        blush: {
-                            bg: '#fff8fa',
+                        boutique: {
+                            bg: '#fff7f9',
                             card: '#ffffff',
                             soft: '#fdebf2',
-                            accent: '#f4c2d7',
-                            rose: '#d81b60',
-                            deep: '#ad1457',
-                            ink: '#2d1820',
-                            muted: '#6e4c59',
-                            border: '#f4c2d7'
+                            border: '#f2d5df',
+                            accent: '#be185d',
+                            deep: '#9d174d',
+                            ink: '#2d1620',
+                            muted: '#6e4756'
                         }
                     },
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'Padauk', 'sans-serif'],
-                        serif: ['Playfair Display', 'Padauk', 'serif']
+                        sans: ['Plus Jakarta Sans', 'Montserrat', 'Padauk', 'sans-serif'],
+                        serif: ['Playfair Display', 'Padauk', 'serif'],
+                        display: ['Montserrat', 'Padauk', 'sans-serif']
                     }
                 }
             }
@@ -44,63 +44,66 @@
 
     <style>
         body {
-            background-color: #fff8fa;
+            background-color: #fff7f9;
             background-image:
-                radial-gradient(at 12% 8%, rgba(244, 194, 215, 0.45) 0px, transparent 50%),
-                radial-gradient(at 88% 15%, rgba(253, 235, 242, 0.85) 0px, transparent 55%),
-                radial-gradient(at 50% 96%, rgba(216, 27, 96, 0.08) 0px, transparent 55%);
-            color: #2d1820;
-            font-family: 'Plus Jakarta Sans', 'Padauk', sans-serif;
+                radial-gradient(at 10% 10%, rgba(242, 213, 223, 0.55) 0px, transparent 52%),
+                radial-gradient(at 90% 14%, rgba(253, 235, 242, 0.9) 0px, transparent 55%),
+                radial-gradient(at 50% 96%, rgba(190, 24, 93, 0.07) 0px, transparent 55%);
+            color: #2d1620;
+            font-family: 'Plus Jakarta Sans', 'Montserrat', 'Padauk', sans-serif;
             overflow-x: hidden;
         }
 
-        .boutique-title {
+        .boutique-heading {
             font-family: 'Playfair Display', 'Padauk', serif;
-            color: #2d1820;
+            color: #2d1620;
         }
 
-        .boutique-card {
+        .boutique-surface {
             background-color: #ffffff;
-            border: 1px solid #f4c2d7;
-            box-shadow: 0 10px 28px -12px rgba(216, 27, 96, 0.14);
+            border: 1px solid #f2d5df;
+            box-shadow: 0 12px 30px -14px rgba(157, 23, 77, 0.16);
         }
 
-        .rose-btn {
-            background: linear-gradient(135deg, #ec407a 0%, #d81b60 100%);
+        .berry-btn {
+            background: linear-gradient(135deg, #be185d 0%, #9d174d 100%);
             color: #ffffff;
             transition: all 0.2s ease;
         }
-        .rose-btn:hover {
-            background: linear-gradient(135deg, #d81b60 0%, #ad1457 100%);
-            box-shadow: 0 8px 18px -6px rgba(216, 27, 96, 0.45);
+
+        .berry-btn:hover {
+            background: linear-gradient(135deg, #db2777 0%, #831843 100%);
+            box-shadow: 0 8px 18px -6px rgba(157, 23, 77, 0.45);
         }
 
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #fff8fa;
+            background: #fff7f9;
         }
+
         ::-webkit-scrollbar-thumb {
-            background: #f4c2d7;
+            background: #f2d5df;
             border-radius: 9999px;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-blush-rose selection:text-white">
+<body class="min-h-screen flex flex-col justify-between selection:bg-boutique-accent selection:text-white">
 
     <!-- TOP NAVIGATION BAR -->
-    <header class="sticky top-0 z-40 bg-[#fff8fa]/95 backdrop-blur-md border-b border-blush-border">
+    <header class="sticky top-0 z-40 bg-[#fff7f9]/95 backdrop-blur-md border-b border-boutique-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-            <!-- Brand Logo & Storefront Name -->
+            <!-- Brand Logo & Name -->
             <div class="flex items-center gap-2.5 cursor-pointer min-w-0" onclick="handleBrandClick()">
-                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-blush-border bg-white flex-shrink-0 shadow-xs">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-boutique-border bg-white flex-shrink-0">
                     <img id="headerBrandLogo" src="IMG_20261126_162338_994.jpg" alt="Candy Official Gaming Logo"
-                        onerror="this.src='https://placehold.co/80x80/fdebf2/d81b60?text=C'"
+                        onerror="this.src='https://placehold.co/80x80/fdebf2/be185d?text=C'"
                         class="w-full h-full object-cover">
                 </div>
-                <span class="boutique-title text-base sm:text-xl font-bold tracking-tight truncate">
+                <span class="boutique-heading text-base sm:text-xl font-bold tracking-tight truncate">
                     Candy Official Gaming
                 </span>
             </div>
@@ -108,19 +111,19 @@
             <!-- Navigation Actions -->
             <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
                 <button type="button" onclick="openCatalogView()"
-                    class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-white hover:bg-blush-soft text-blush-ink border border-blush-border text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer">
-                    <i class="fa-solid fa-layer-group text-blush-rose text-xs"></i>
+                    class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-white hover:bg-boutique-soft text-boutique-ink border border-boutique-border text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer">
+                    <i class="fa-solid fa-layer-group text-boutique-accent text-xs"></i>
                     <span>MLBB Catalog</span>
                 </button>
 
                 <a href="https://t.me/CandyGaming8" target="_blank" rel="noopener noreferrer"
-                    class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-white hover:bg-sky-50 text-blush-ink border border-blush-border text-xs font-semibold flex items-center gap-1.5 transition-all">
-                    <i class="fa-brands fa-telegram text-sky-500 text-sm"></i>
+                    class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-white hover:bg-sky-50 text-boutique-ink border border-boutique-border text-xs font-semibold flex items-center gap-1.5 transition-all">
+                    <i class="fa-brands fa-telegram text-sky-600 text-sm"></i>
                     <span>@CandyGaming8</span>
                 </a>
 
                 <button id="headerAdminBtn" type="button" onclick="openAdminModal()"
-                    class="hidden items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl bg-blush-soft hover:bg-blush-accent/50 text-blush-deep border border-blush-border text-xs font-bold transition-all cursor-pointer">
+                    class="hidden items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl bg-boutique-soft hover:bg-boutique-border text-boutique-deep border border-boutique-border text-xs font-bold transition-all cursor-pointer">
                     <i class="fa-solid fa-user-shield text-xs"></i>
                     <span id="adminBtnText">Admin</span>
                 </button>
@@ -133,22 +136,21 @@
 
         <!-- 1. WELCOME CARD VIEW -->
         <section id="welcomeSection" class="py-4 sm:py-8 flex items-center justify-center">
-            <div class="boutique-card w-full rounded-3xl p-6 sm:p-8 md:p-10">
+            <div class="boutique-surface w-full rounded-3xl p-6 sm:p-8 md:p-10">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                    <!-- Welcome Copy & CTA Buttons -->
                     <div class="md:col-span-6 space-y-5">
                         <div class="space-y-2">
-                            <h1 class="boutique-title text-3xl sm:text-4xl md:text-[42px] font-bold leading-tight">
+                            <h1 class="boutique-heading text-3xl sm:text-4xl md:text-[42px] font-bold leading-tight">
                                 Candy Official Gaming မှကြိုဆိုပါတယ် ရှင့်
                             </h1>
-                            <p class="text-xs sm:text-sm text-blush-muted leading-relaxed max-w-md">
-                                Mobile Legend အကောင့်များကိုသာ သီးသန့်ရောင်းချပေးသော Candy Official Gaming Store ဖြစ်ပါသည်
+                            <p class="text-xs sm:text-sm text-boutique-muted leading-relaxed max-w-md">
+                                Mobile Legend အကောင့်များကိုသာ သီးသန့်ရောင်းချပေးသော Candy Official Gaming Boutique Store ဖြစ်ပါသည်
                             </p>
                         </div>
 
                         <div class="flex flex-wrap items-center gap-3 pt-1">
                             <button type="button" onclick="openCatalogView()"
-                                class="rose-btn px-5 py-3.5 rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center leading-snug text-center min-w-[144px] cursor-pointer shadow-sm">
+                                class="berry-btn px-5 py-3.5 rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center leading-snug text-center min-w-[148px] cursor-pointer">
                                 <span class="flex items-center gap-1.5">
                                     <span>Mobile Legend</span>
                                     <i class="fa-solid fa-crown text-amber-200 text-xs"></i>
@@ -158,31 +160,30 @@
                             </button>
 
                             <a href="https://t.me/CandyGaming8" target="_blank" rel="noopener noreferrer"
-                                class="px-4 py-3.5 rounded-xl bg-white hover:bg-blush-soft text-blush-ink border border-blush-border text-xs sm:text-sm font-semibold flex items-center gap-2.5 transition-all">
-                                <i class="fa-brands fa-telegram text-sky-500 text-lg flex-shrink-0"></i>
+                                class="px-4 py-3.5 rounded-xl bg-white hover:bg-boutique-soft text-boutique-ink border border-boutique-border text-xs sm:text-sm font-semibold flex items-center gap-2.5 transition-all">
+                                <i class="fa-brands fa-telegram text-sky-600 text-lg flex-shrink-0"></i>
                                 <span class="leading-snug text-left">
-                                    <strong class="font-bold text-blush-ink">@CandyGaming8</strong><br>
-                                    <span class="text-xs text-blush-muted">နှင့် ဆက်သွယ်ရန်</span>
+                                    <strong class="font-bold text-boutique-ink">@CandyGaming8</strong><br>
+                                    <span class="text-xs text-boutique-muted">နှင့် ဆက်သွယ်ရန်</span>
                                 </span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Showcase Image Banner -->
                     <div class="md:col-span-6">
-                        <div class="relative w-full h-56 sm:h-64 md:h-72 rounded-2xl overflow-hidden border border-blush-border bg-blush-soft">
+                        <div class="relative w-full h-56 sm:h-64 md:h-72 rounded-2xl overflow-hidden border border-boutique-border bg-boutique-soft">
                             <img id="mlbbShowcaseImg" src="53129ee050d008e49b174d49e2e488e3.jpg" alt="Candy Official Gaming MLBB Showcase"
-                                onerror="if(!this.dataset.f1){this.dataset.f1=1;this.src='1000001942_2.jpg';}else if(!this.dataset.f2){this.dataset.f2=1;this.src='IMG_20261126_162338_994.jpg';}else{this.src='https://placehold.co/800x480/fdebf2/d81b60?text=Candy+Official+Gaming';}"
+                                onerror="if(!this.dataset.f1){this.dataset.f1=1;this.src='1000001942_2.jpg';}else if(!this.dataset.f2){this.dataset.f2=1;this.src='IMG_20261126_162338_994.jpg';}else{this.src='https://placehold.co/800x480/fdebf2/be185d?text=Candy+Official+Gaming';}"
                                 class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent pointer-events-none"></div>
-                            <div class="absolute top-3 left-3 bg-white/95 text-blush-deep border border-blush-border text-[11px] font-bold px-3 py-1 rounded-full">
+                            <div class="absolute top-3 left-3 bg-white/95 text-boutique-deep border border-boutique-border text-[11px] font-bold px-3 py-1 rounded-full">
                                 <i class="fa-solid fa-gamepad mr-1"></i> MLBB Accounts Only
                             </div>
                             <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
-                                <span class="font-bold bg-black/45 px-2.5 py-1 rounded-lg backdrop-blur-xs">
+                                <span class="font-bold bg-black/45 px-2.5 py-1 rounded-lg">
                                     Candy Official Gaming
                                 </span>
-                                <span class="font-semibold bg-blush-rose px-2.5 py-1 rounded-lg">
+                                <span class="font-semibold bg-boutique-accent px-2.5 py-1 rounded-lg">
                                     @CandyGaming8
                                 </span>
                             </div>
@@ -194,19 +195,18 @@
 
         <!-- 2. MLBB ACCOUNTS CATALOG SECTION -->
         <section id="catalogSection" class="hidden space-y-5">
-            <!-- Section Header with Back to Welcome Button -->
-            <div class="boutique-card rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="boutique-surface rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <p class="text-[11px] font-bold uppercase tracking-wider text-blush-rose">
+                    <p class="text-[11px] font-bold uppercase tracking-wider text-boutique-accent font-display">
                         CANDY OFFICIAL GAMING — MLBB BOUTIQUE
                     </p>
-                    <h2 class="boutique-title text-2xl sm:text-3xl font-bold mt-0.5">
+                    <h2 class="boutique-heading text-2xl sm:text-3xl font-bold mt-0.5">
                         Mobile Legend အကောင့်များ
                     </h2>
                 </div>
 
                 <button type="button" onclick="showWelcomeView()"
-                    class="self-start sm:self-center px-4 py-2 rounded-xl bg-white hover:bg-blush-soft text-blush-ink border border-blush-border text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer">
+                    class="self-start sm:self-center px-4 py-2 rounded-xl bg-white hover:bg-boutique-soft text-boutique-ink border border-boutique-border text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer">
                     <i class="fa-solid fa-arrow-left text-xs"></i>
                     <span>ကြိုဆိုစာမျက်နှာသို့</span>
                 </button>
@@ -214,36 +214,36 @@
 
             <!-- Search Input -->
             <div class="relative w-full">
-                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-blush-muted text-sm"></i>
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-boutique-muted text-sm"></i>
                 <input type="text" id="searchInput" oninput="renderAccounts()"
                     placeholder="Account Code, Rank, Star, Skin ရှာဖွေပါ..."
-                    class="w-full bg-white border border-blush-border focus:border-blush-rose rounded-xl pl-10 pr-4 py-3 text-xs sm:text-sm text-blush-ink placeholder-blush-muted focus:outline-none transition-all">
+                    class="w-full bg-white border border-boutique-border focus:border-boutique-accent rounded-xl pl-10 pr-4 py-3 text-xs sm:text-sm text-boutique-ink placeholder-boutique-muted focus:outline-none transition-all">
             </div>
 
-            <!-- Filter Tabs, Count & Sort Row -->
+            <!-- Filter Tabs, Count & Sort Selector -->
             <div class="flex flex-wrap items-center justify-between gap-3">
                 <div class="flex items-center gap-2 flex-wrap">
                     <button type="button" id="filter-ALL" onclick="setFilter('ALL')"
-                        class="filter-tab px-4 py-2 rounded-xl text-xs font-bold rose-btn cursor-pointer flex items-center gap-1.5">
+                        class="filter-tab px-4 py-2 rounded-xl text-xs font-bold berry-btn cursor-pointer flex items-center gap-1.5">
                         <i class="fa-solid fa-layer-group text-[11px]"></i>
                         <span>All</span>
                     </button>
                     <button type="button" id="filter-AVAILABLE" onclick="setFilter('AVAILABLE')"
-                        class="filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-blush-soft text-blush-ink border border-blush-border cursor-pointer flex items-center gap-1.5">
+                        class="filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-boutique-soft text-boutique-ink border border-boutique-border cursor-pointer flex items-center gap-1.5">
                         <i class="fa-solid fa-circle-check text-emerald-600 text-xs"></i>
                         <span>Available</span>
                     </button>
                     <button type="button" id="filter-HIGH_RANK" onclick="setFilter('HIGH_RANK')"
-                        class="filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-blush-soft text-blush-ink border border-blush-border cursor-pointer flex items-center gap-1.5">
+                        class="filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-boutique-soft text-boutique-ink border border-boutique-border cursor-pointer flex items-center gap-1.5">
                         <i class="fa-solid fa-crown text-amber-500 text-xs"></i>
                         <span>High Rank</span>
                     </button>
                 </div>
 
                 <div class="flex items-center gap-3 ml-auto text-xs">
-                    <span id="accountCountLabel" class="font-semibold text-blush-muted">0 Accounts</span>
+                    <span id="accountCountLabel" class="font-semibold text-boutique-muted">0 Accounts</span>
                     <select id="sortSelect" onchange="renderAccounts()"
-                        class="bg-white border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs font-semibold text-blush-ink focus:outline-none cursor-pointer">
+                        class="bg-white border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs font-semibold text-boutique-ink focus:outline-none cursor-pointer">
                         <option value="newest">Newest</option>
                         <option value="price-low">Price: Low to High</option>
                         <option value="price-high">Price: High to Low</option>
@@ -253,20 +253,20 @@
 
             <!-- Accounts Grid -->
             <div id="accountGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div class="col-span-full text-center py-12 text-xs text-blush-muted">
-                    <i class="fa-solid fa-spinner fa-spin text-blush-rose mr-1.5"></i> Mobile Legend အကောင့်များ ရယူနေပါသည်...
+                <div class="col-span-full text-center py-12 text-xs text-boutique-muted">
+                    <i class="fa-solid fa-spinner fa-spin text-boutique-accent mr-1.5"></i> Mobile Legend အကောင့်များ ရယူနေပါသည်...
                 </div>
             </div>
 
             <!-- Empty State -->
-            <div id="emptyState" class="hidden boutique-card rounded-2xl p-10 text-center space-y-3">
-                <div class="w-12 h-12 mx-auto rounded-full bg-blush-soft text-blush-rose flex items-center justify-center text-lg">
+            <div id="emptyState" class="hidden boutique-surface rounded-2xl p-10 text-center space-y-3">
+                <div class="w-12 h-12 mx-auto rounded-full bg-boutique-soft text-boutique-accent flex items-center justify-center text-lg">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <p class="text-sm font-bold text-blush-ink">ရှာဖွေမှုနှင့် ကိုက်ညီသော Account မရှိပါ</p>
-                <p class="text-xs text-blush-muted">Filter သို့မဟုတ် Search စာသားကို ပြန်လည်စစ်ဆေးကြည့်ပါ။</p>
+                <p class="text-sm font-bold text-boutique-ink">ရှာဖွေမှုနှင့် ကိုက်ညီသော Account မရှိပါ</p>
+                <p class="text-xs text-boutique-muted">Filter သို့မဟုတ် Search စာသားကို ပြန်လည်စစ်ဆေးကြည့်ပါ။</p>
                 <button type="button" onclick="resetCatalogFilters()"
-                    class="px-4 py-2 rounded-xl bg-blush-soft hover:bg-blush-accent/60 text-blush-deep border border-blush-border text-xs font-bold cursor-pointer">
+                    class="px-4 py-2 rounded-xl bg-boutique-soft hover:bg-boutique-border text-boutique-deep border border-boutique-border text-xs font-bold cursor-pointer">
                     အားလုံးပြန်ကြည့်မည်
                 </button>
             </div>
@@ -275,26 +275,26 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="mt-12 border-t border-blush-border bg-[#fff8fa]/95 py-5">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-blush-muted">
+    <footer class="mt-12 border-t border-boutique-border bg-[#fff7f9]/95 py-5">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-boutique-muted">
             <div class="flex items-center gap-2.5">
-                <div class="w-7 h-7 rounded-full overflow-hidden border border-blush-border bg-white flex-shrink-0">
+                <div class="w-7 h-7 rounded-full overflow-hidden border border-boutique-border bg-white flex-shrink-0">
                     <img id="footerBrandLogo" src="IMG_20261126_162338_994.jpg" alt="Candy Official Gaming"
-                        onerror="this.src='https://placehold.co/56x56/fdebf2/d81b60?text=C'"
+                        onerror="this.src='https://placehold.co/56x56/fdebf2/be185d?text=C'"
                         class="w-full h-full object-cover">
                 </div>
-                <span class="font-bold text-blush-ink">Candy Official Gaming</span>
+                <span class="font-bold text-boutique-ink">Candy Official Gaming</span>
             </div>
 
             <div class="flex items-center gap-4">
                 <a href="https://t.me/CandyGaming8" target="_blank" rel="noopener noreferrer"
-                    class="font-semibold text-sky-600 hover:text-sky-700 flex items-center gap-1.5">
+                    class="font-semibold text-sky-700 hover:text-sky-800 flex items-center gap-1.5">
                     <i class="fa-brands fa-telegram text-sm"></i>
                     <span>@CandyGaming8</span>
                 </a>
 
                 <button id="footerAdminBtn" type="button" onclick="openAdminModal()"
-                    class="hidden font-semibold text-blush-rose hover:text-blush-deep items-center gap-1 cursor-pointer">
+                    class="hidden font-semibold text-boutique-accent hover:text-boutique-deep items-center gap-1 cursor-pointer">
                     <i class="fa-solid fa-lock text-[11px]"></i>
                     <span>Admin</span>
                 </button>
@@ -304,9 +304,9 @@
 
     <!-- ACCOUNT DETAILS MODAL -->
     <div id="accountModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs overflow-y-auto">
-        <div class="relative w-full max-w-2xl bg-white border border-blush-border rounded-3xl overflow-hidden shadow-2xl my-8">
+        <div class="relative w-full max-w-2xl bg-white border border-boutique-border rounded-3xl overflow-hidden shadow-2xl my-8">
             <button type="button" onclick="closeModal('accountModal')"
-                class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/95 hover:bg-blush-rose hover:text-white text-blush-ink border border-blush-border flex items-center justify-center transition-all cursor-pointer">
+                class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/95 hover:bg-boutique-accent hover:text-white text-boutique-ink border border-boutique-border flex items-center justify-center transition-all cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="accountModalBody" class="p-5 sm:p-7 space-y-5"></div>
@@ -315,32 +315,32 @@
 
     <!-- ADMIN MODAL -->
     <div id="adminModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/65 backdrop-blur-xs overflow-y-auto">
-        <div class="relative w-full max-w-4xl bg-white border border-blush-border rounded-3xl overflow-hidden shadow-2xl my-8">
-            <div class="flex items-center justify-between px-6 py-4 bg-blush-soft border-b border-blush-border">
+        <div class="relative w-full max-w-4xl bg-white border border-boutique-border rounded-3xl overflow-hidden shadow-2xl my-8">
+            <div class="flex items-center justify-between px-6 py-4 bg-boutique-soft border-b border-boutique-border">
                 <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-shield-halved text-blush-rose text-base"></i>
-                    <h3 class="text-sm sm:text-base font-bold text-blush-deep">Candy Official Gaming — Admin Panel</h3>
+                    <i class="fa-solid fa-shield-halved text-boutique-accent text-base"></i>
+                    <h3 class="text-sm sm:text-base font-bold text-boutique-deep">Candy Official Gaming — Admin Panel</h3>
                 </div>
-                <button type="button" onclick="closeModal('adminModal')" class="text-blush-muted hover:text-blush-ink text-lg cursor-pointer">
+                <button type="button" onclick="closeModal('adminModal')" class="text-boutique-muted hover:text-boutique-ink text-lg cursor-pointer">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
             <!-- ADMIN LOGIN VIEW -->
             <div id="adminLoginView" class="p-7 sm:p-9 max-w-md mx-auto space-y-5 text-center">
-                <div class="w-14 h-14 mx-auto rounded-full bg-blush-soft border border-blush-border flex items-center justify-center text-blush-rose text-xl">
+                <div class="w-14 h-14 mx-auto rounded-full bg-boutique-soft border border-boutique-border flex items-center justify-center text-boutique-accent text-xl">
                     <i class="fa-solid fa-lock"></i>
                 </div>
                 <div>
-                    <h4 class="text-lg font-bold text-blush-ink">Admin Login</h4>
-                    <p class="text-xs text-blush-muted mt-1">Firebase Admin Email နှင့် Password ဖြင့် ဝင်ရောက်ပါ</p>
+                    <h4 class="text-lg font-bold text-boutique-ink">Admin Login</h4>
+                    <p class="text-xs text-boutique-muted mt-1">Firebase Admin Email နှင့် Password ဖြင့် ဝင်ရောက်ပါ</p>
                 </div>
                 <form onsubmit="handleAdminLogin(event)" class="space-y-3.5 text-left">
                     <input type="email" id="adminEmailInput" required placeholder="Admin Email"
-                        class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-blush-ink focus:outline-none">
+                        class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-boutique-ink focus:outline-none">
                     <input type="password" id="adminPasswordInput" required placeholder="Admin Password"
-                        class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-blush-ink focus:outline-none">
-                    <button type="submit" id="adminLoginBtn" class="w-full py-3 rounded-xl rose-btn font-bold text-xs sm:text-sm cursor-pointer">
+                        class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-boutique-ink focus:outline-none">
+                    <button type="submit" id="adminLoginBtn" class="w-full py-3 rounded-xl berry-btn font-bold text-xs sm:text-sm cursor-pointer">
                         Login ဝင်မည်
                     </button>
                 </form>
@@ -348,26 +348,26 @@
 
             <!-- ADMIN DASHBOARD VIEW -->
             <div id="adminDashboardView" class="hidden p-5 sm:p-6 space-y-5">
-                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-blush-border pb-3.5">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-boutique-border pb-3.5">
                     <div class="flex flex-wrap items-center gap-2">
                         <button type="button" id="adminTab-list" onclick="showAdminTab('list')"
-                            class="admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold rose-btn cursor-pointer">
+                            class="admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold berry-btn cursor-pointer">
                             <i class="fa-solid fa-list mr-1"></i> Accounts (<span id="adminTotalCount">0</span>)
                         </button>
                         <button type="button" id="adminTab-add" onclick="showAdminTab('add')"
-                            class="admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-blush-bg text-blush-ink border border-blush-border cursor-pointer">
+                            class="admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-boutique-bg text-boutique-ink border border-boutique-border cursor-pointer">
                             <i class="fa-solid fa-plus mr-1"></i> Account ထည့်ရန်
                         </button>
                         <button type="button" id="adminTab-images" onclick="showAdminTab('images')"
-                            class="admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-blush-bg text-blush-ink border border-blush-border cursor-pointer">
+                            class="admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-boutique-bg text-boutique-ink border border-boutique-border cursor-pointer">
                             <i class="fa-solid fa-image mr-1"></i> Site Images
                         </button>
                         <button type="button" id="adminTab-visitors" onclick="showAdminTab('visitors')"
-                            class="admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-blush-bg text-blush-ink border border-blush-border cursor-pointer">
+                            class="admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-boutique-bg text-boutique-ink border border-boutique-border cursor-pointer">
                             <i class="fa-solid fa-eye mr-1"></i> Visitors (<span id="adminVisitorBadgeCount">0</span>)
                         </button>
                         <button type="button" id="adminTab-settings" onclick="showAdminTab('settings')"
-                            class="admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-blush-bg text-blush-ink border border-blush-border cursor-pointer">
+                            class="admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-boutique-bg text-boutique-ink border border-boutique-border cursor-pointer">
                             <i class="fa-solid fa-gear mr-1"></i> Account Info
                         </button>
                     </div>
@@ -378,11 +378,11 @@
                     </button>
                 </div>
 
-                <!-- TAB 1: ACCOUNTS LIST & STATUS TOGGLE -->
+                <!-- TAB 1: ACCOUNTS LIST -->
                 <div id="adminSection-list" class="space-y-3">
-                    <div class="overflow-x-auto rounded-2xl border border-blush-border">
-                        <table class="w-full text-left text-xs text-blush-ink">
-                            <thead class="bg-blush-soft text-blush-deep uppercase font-bold border-b border-blush-border">
+                    <div class="overflow-x-auto rounded-2xl border border-boutique-border">
+                        <table class="w-full text-left text-xs text-boutique-ink">
+                            <thead class="bg-boutique-soft text-boutique-deep uppercase font-bold border-b border-boutique-border">
                                 <tr>
                                     <th class="p-3">ပုံ</th>
                                     <th class="p-3">Title / Code</th>
@@ -393,14 +393,14 @@
                                     <th class="p-3 text-right">Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="adminAccountTable" class="divide-y divide-blush-border bg-white"></tbody>
+                            <tbody id="adminAccountTable" class="divide-y divide-boutique-border bg-white"></tbody>
                         </table>
                     </div>
                 </div>
 
                 <!-- TAB 2: ADD / EDIT ACCOUNT FORM -->
                 <div id="adminSection-add" class="hidden space-y-4">
-                    <h4 id="formHeaderTitle" class="text-sm font-bold text-blush-deep">
+                    <h4 id="formHeaderTitle" class="text-sm font-bold text-boutique-deep">
                         <i class="fa-solid fa-square-plus mr-1"></i> MLBB Account အသစ်တင်မည်
                     </h4>
 
@@ -409,50 +409,50 @@
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                             <div>
-                                <label class="block text-xs font-semibold text-blush-muted mb-1">Account Title / Code *</label>
+                                <label class="block text-xs font-semibold text-boutique-muted mb-1">Account Title / Code *</label>
                                 <input type="text" id="accTitle" required placeholder="ဥပမာ- Candy001"
-                                    class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                    class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                             </div>
 
                             <div>
-                                <label class="block text-xs font-semibold text-blush-muted mb-1">Rank / Star *</label>
+                                <label class="block text-xs font-semibold text-boutique-muted mb-1">Rank / Star *</label>
                                 <input type="text" id="accRank" required placeholder="ဥပမာ- High Rank 95★"
-                                    class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                    class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                             </div>
 
                             <div>
-                                <label class="block text-xs font-semibold text-blush-muted mb-1">ဈေးနှုန်း (MMK) *</label>
+                                <label class="block text-xs font-semibold text-boutique-muted mb-1">ဈေးနှုန်း (MMK) *</label>
                                 <input type="number" id="accPrice" required placeholder="ဥပမာ- 250000"
-                                    class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                    class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                             </div>
 
                             <div>
-                                <label class="block text-xs font-semibold text-blush-muted mb-1">Skins အရေအတွက် *</label>
+                                <label class="block text-xs font-semibold text-boutique-muted mb-1">Skins အရေအတွက် *</label>
                                 <input type="number" id="accSkins" required placeholder="ဥပမာ- 250"
-                                    class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                    class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                             </div>
 
                             <div>
-                                <label class="block text-xs font-semibold text-blush-muted mb-1">Heroes အရေအတွက်</label>
+                                <label class="block text-xs font-semibold text-boutique-muted mb-1">Heroes အရေအတွက်</label>
                                 <input type="number" id="accHeroes" placeholder="ဥပမာ- 118"
-                                    class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                    class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                             </div>
 
                             <div>
-                                <label class="block text-xs font-semibold text-blush-muted mb-1">Win Rate (%)</label>
+                                <label class="block text-xs font-semibold text-boutique-muted mb-1">Win Rate (%)</label>
                                 <input type="text" id="accWinrate" placeholder="ဥပမာ- 63%"
-                                    class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                    class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                             </div>
 
                             <div>
-                                <label class="block text-xs font-semibold text-blush-muted mb-1">Telegram Username</label>
+                                <label class="block text-xs font-semibold text-boutique-muted mb-1">Telegram Username</label>
                                 <input type="text" id="accTelegram" value="CandyGaming8" placeholder="CandyGaming8"
-                                    class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                    class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                             </div>
 
                             <div>
-                                <label class="block text-xs font-semibold text-blush-muted mb-1">Status</label>
-                                <select id="accStatus" class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                <label class="block text-xs font-semibold text-boutique-muted mb-1">Status</label>
+                                <select id="accStatus" class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                                     <option value="AVAILABLE">AVAILABLE</option>
                                     <option value="SOLD">SOLD</option>
                                 </select>
@@ -460,37 +460,56 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-blush-muted mb-1">Highlights / Rare Skins (ကော်မာဖြင့်ခြားပါ)</label>
+                            <label class="block text-xs font-semibold text-boutique-muted mb-1">Highlights / Rare Skins (ကော်မာဖြင့်ခြားပါ)</label>
                             <input type="text" id="accHighlights" placeholder="ဥပမာ- Angela, Gusion Collector, Chou KOF"
-                                class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-blush-muted mb-1">အသေးစိတ် ဖော်ပြချက်</label>
+                            <label class="block text-xs font-semibold text-boutique-muted mb-1">အသေးစိတ် ဖော်ပြချက်</label>
                             <textarea id="accDesc" rows="3" placeholder="Moonton Clean / All Unbind, Emblem Max..."
-                                class="w-full bg-blush-bg border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none"></textarea>
+                                class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none"></textarea>
                         </div>
 
-                        <div class="space-y-2 border-t border-blush-border pt-3">
-                            <label class="block text-xs font-bold text-blush-deep">Account ဓာတ်ပုံများ</label>
+                        <!-- Mobile-Safe Photo Picker + Fallback -->
+                        <div class="space-y-2 border-t border-boutique-border pt-3">
+                            <label class="block text-xs font-bold text-boutique-deep">Account ဓာတ်ပုံများ</label>
                             <div class="flex flex-wrap items-center gap-3">
-                                <label class="cursor-pointer px-4 py-2 rounded-xl bg-blush-soft hover:bg-blush-accent/60 text-blush-deep border border-blush-border text-xs font-bold flex items-center gap-1.5">
-                                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                                    <span>ပုံရွေးရန်</span>
-                                    <input type="file" id="imageInput" accept="image/*" multiple onchange="handleImageUpload(event)" class="hidden">
-                                </label>
-                                <span class="text-[11px] text-blush-muted">ပုံများကို အလိုအလျောက် compress လုပ်ပြီး သိမ်းပေးပါမည်။</span>
+                                <div class="relative inline-flex items-center">
+                                    <button type="button" id="selectAccountPhotosBtn" onclick="triggerAccountImagePicker(event)"
+                                        class="cursor-pointer px-4 py-2 rounded-xl bg-boutique-soft hover:bg-boutique-border text-boutique-deep border border-boutique-border text-xs font-bold flex items-center gap-1.5">
+                                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                                        <span>ပုံရွေးချယ်ပါ (Select Photos)</span>
+                                    </button>
+                                    <input type="file" id="imageInput" accept="image/*" multiple onchange="handleImageUpload(event)"
+                                        aria-label="Select account photos"
+                                        class="sr-only">
+                                </div>
+                                <span class="text-[11px] text-boutique-muted">ပုံများကို အလိုအလျောက် compress လုပ်ပြီး သိမ်းပေးပါမည်။</span>
                             </div>
-                            <div id="imagePreviewContainer" class="flex flex-wrap gap-2.5 min-h-[56px] p-2.5 rounded-xl bg-blush-bg border border-blush-border">
-                                <p class="text-xs text-blush-muted self-center mx-auto">ပုံမရွေးရသေးပါ</p>
+                            <p id="imagePickerStatusHint" class="text-[11px] text-boutique-muted"></p>
+
+                            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1">
+                                <input type="text" id="accountImageUrlInput"
+                                    placeholder="ဖုန်း picker ပိတ်ထားပါက Image URL သို့မဟုတ် data:image/... ထည့်ပါ"
+                                    class="flex-1 bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
+                                <button type="button" onclick="addAccountImageFromUrl()"
+                                    class="px-3.5 py-2 rounded-xl bg-white hover:bg-boutique-soft text-boutique-deep border border-boutique-border text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer flex-shrink-0">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <span>URL / Link ထည့်မည်</span>
+                                </button>
+                            </div>
+
+                            <div id="imagePreviewContainer" class="flex flex-wrap gap-2.5 min-h-[56px] p-2.5 rounded-xl bg-boutique-bg border border-boutique-border">
+                                <p class="text-xs text-boutique-muted self-center mx-auto">ပုံမရွေးရသေးပါ</p>
                             </div>
                         </div>
 
                         <div class="flex items-center gap-2.5 pt-2">
-                            <button type="submit" id="saveAccountBtn" class="px-5 py-2.5 rounded-xl rose-btn font-bold text-xs cursor-pointer">
+                            <button type="submit" id="saveAccountBtn" class="px-5 py-2.5 rounded-xl berry-btn font-bold text-xs cursor-pointer">
                                 <i class="fa-solid fa-floppy-disk mr-1"></i> သိမ်းဆည်းမည်
                             </button>
-                            <button type="button" onclick="cancelEditForm()" class="px-4 py-2.5 rounded-xl bg-blush-bg text-blush-ink border border-blush-border text-xs font-semibold cursor-pointer">
+                            <button type="button" onclick="cancelEditForm()" class="px-4 py-2.5 rounded-xl bg-boutique-bg text-boutique-ink border border-boutique-border text-xs font-semibold cursor-pointer">
                                 Cancel
                             </button>
                         </div>
@@ -499,74 +518,72 @@
 
                 <!-- TAB 3: SITE IMAGES TAB -->
                 <div id="adminSection-images" class="hidden space-y-4">
-                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-blush-border pb-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-boutique-border pb-3">
                         <div>
-                            <h4 class="text-sm font-bold text-blush-deep">
+                            <h4 class="text-sm font-bold text-boutique-deep">
                                 <i class="fa-solid fa-image mr-1"></i> Site Images (Brand Logo &amp; Welcome Banner)
                             </h4>
-                            <p class="text-xs text-blush-muted mt-0.5">
-                                ပုံအသစ် ရွေးတင်ခြင်း သို့မဟုတ် Image Path / URL ထည့်သွင်းပြီး Firestore ထဲ သိမ်းဆည်းနိုင်ပါသည်။
+                            <p class="text-xs text-boutique-muted mt-0.5">
+                                ပုံအသစ် ရွေးတင်ခြင်း သို့မဟုတ် Image Path / URL ထည့်သွင်းပြီး Firestore (store_settings/site_images) ထဲ သိမ်းဆည်းနိုင်ပါသည်။
                             </p>
                         </div>
                         <button type="button" id="saveSiteImagesBtn" onclick="handleSaveSiteImages()"
-                            class="px-5 py-2.5 rounded-xl rose-btn font-bold text-xs cursor-pointer flex items-center gap-1.5">
+                            class="px-5 py-2.5 rounded-xl berry-btn font-bold text-xs cursor-pointer flex items-center gap-1.5">
                             <i class="fa-solid fa-floppy-disk"></i>
                             <span>Site Images သိမ်းမည်</span>
                         </button>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <!-- Brand Logo Card -->
-                        <div class="rounded-2xl border border-blush-border bg-blush-bg p-4 space-y-3">
+                        <div class="rounded-2xl border border-boutique-border bg-boutique-bg p-4 space-y-3">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-blush-deep">Brand Logo</span>
-                                <label class="cursor-pointer px-3 py-1.5 rounded-lg bg-white hover:bg-blush-soft text-blush-deep border border-blush-border text-[11px] font-bold flex items-center gap-1">
+                                <span class="text-xs font-bold text-boutique-deep">Brand Logo</span>
+                                <label class="cursor-pointer px-3 py-1.5 rounded-lg bg-white hover:bg-boutique-soft text-boutique-deep border border-boutique-border text-[11px] font-bold flex items-center gap-1">
                                     <i class="fa-solid fa-upload"></i>
                                     <span>ပုံရွေးတင်မည်</span>
                                     <input type="file" id="logoFileInput" accept="image/*" onchange="handleSiteImageFile(event, 'brandLogo')" class="hidden">
                                 </label>
                             </div>
-                            <div class="w-20 h-20 rounded-full overflow-hidden border border-blush-border bg-white mx-auto">
+                            <div class="w-20 h-20 rounded-full overflow-hidden border border-boutique-border bg-white mx-auto">
                                 <img id="adminPreviewBrandLogo" src="IMG_20261126_162338_994.jpg" alt="Brand Logo Preview"
-                                    onerror="this.src='https://placehold.co/120x120/fdebf2/d81b60?text=Logo'"
+                                    onerror="this.src='https://placehold.co/120x120/fdebf2/be185d?text=Logo'"
                                     class="w-full h-full object-cover">
                             </div>
                             <div>
-                                <label class="block text-[11px] font-semibold text-blush-muted mb-1">Image Path / URL</label>
+                                <label class="block text-[11px] font-semibold text-boutique-muted mb-1">Image Path / URL</label>
                                 <input type="text" id="brandLogoInput" oninput="previewSiteImageFromInput('brandLogo')"
-                                    class="w-full bg-white border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                    class="w-full bg-white border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                             </div>
                         </div>
 
-                        <!-- Welcome Banner Card -->
-                        <div class="rounded-2xl border border-blush-border bg-blush-bg p-4 space-y-3">
+                        <div class="rounded-2xl border border-boutique-border bg-boutique-bg p-4 space-y-3">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-blush-deep">Welcome Banner</span>
-                                <label class="cursor-pointer px-3 py-1.5 rounded-lg bg-white hover:bg-blush-soft text-blush-deep border border-blush-border text-[11px] font-bold flex items-center gap-1">
+                                <span class="text-xs font-bold text-boutique-deep">Welcome Banner</span>
+                                <label class="cursor-pointer px-3 py-1.5 rounded-lg bg-white hover:bg-boutique-soft text-boutique-deep border border-boutique-border text-[11px] font-bold flex items-center gap-1">
                                     <i class="fa-solid fa-upload"></i>
                                     <span>ပုံရွေးတင်မည်</span>
                                     <input type="file" id="bannerFileInput" accept="image/*" onchange="handleSiteImageFile(event, 'welcomeBanner')" class="hidden">
                                 </label>
                             </div>
-                            <div class="w-full h-24 rounded-xl overflow-hidden border border-blush-border bg-white">
+                            <div class="w-full h-24 rounded-xl overflow-hidden border border-boutique-border bg-white">
                                 <img id="adminPreviewWelcomeBanner" src="53129ee050d008e49b174d49e2e488e3.jpg" alt="Welcome Banner Preview"
-                                    onerror="this.src='https://placehold.co/480x160/fdebf2/d81b60?text=Banner'"
+                                    onerror="this.src='https://placehold.co/480x160/fdebf2/be185d?text=Banner'"
                                     class="w-full h-full object-cover">
                             </div>
                             <div>
-                                <label class="block text-[11px] font-semibold text-blush-muted mb-1">Image Path / URL</label>
+                                <label class="block text-[11px] font-semibold text-boutique-muted mb-1">Image Path / URL</label>
                                 <input type="text" id="welcomeBannerInput" oninput="previewSiteImageFromInput('welcomeBanner')"
-                                    class="w-full bg-white border border-blush-border focus:border-blush-rose rounded-xl px-3 py-2 text-xs text-blush-ink focus:outline-none">
+                                    class="w-full bg-white border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 4: VISITORS VIEWER & CLEARER -->
+                <!-- TAB 4: VISITORS LOGS -->
                 <div id="adminSection-visitors" class="hidden space-y-3">
                     <div class="flex flex-wrap items-center justify-between gap-2">
-                        <p class="text-xs font-semibold text-blush-muted">
-                            Total Visits: <strong id="visitorTotalCount" class="text-blush-deep">0</strong> |
+                        <p class="text-xs font-semibold text-boutique-muted">
+                            Total Visits: <strong id="visitorTotalCount" class="text-boutique-deep">0</strong> |
                             Today: <strong id="visitorTodayCount" class="text-emerald-700">0</strong>
                         </p>
                         <button type="button" onclick="clearVisitorLogs()"
@@ -575,9 +592,9 @@
                         </button>
                     </div>
 
-                    <div class="overflow-x-auto rounded-2xl border border-blush-border">
-                        <table class="w-full text-left text-xs text-blush-ink">
-                            <thead class="bg-blush-soft text-blush-deep uppercase font-bold border-b border-blush-border">
+                    <div class="overflow-x-auto rounded-2xl border border-boutique-border">
+                        <table class="w-full text-left text-xs text-boutique-ink">
+                            <thead class="bg-boutique-soft text-boutique-deep uppercase font-bold border-b border-boutique-border">
                                 <tr>
                                     <th class="p-3">Time</th>
                                     <th class="p-3">Device / Browser</th>
@@ -585,18 +602,18 @@
                                     <th class="p-3">Referer</th>
                                 </tr>
                             </thead>
-                            <tbody id="adminVisitorTable" class="divide-y divide-blush-border bg-white"></tbody>
+                            <tbody id="adminVisitorTable" class="divide-y divide-boutique-border bg-white"></tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- TAB 5: ACCOUNT INFO & PASSWORD RESET -->
+                <!-- TAB 5: ACCOUNT INFO -->
                 <div id="adminSection-settings" class="hidden max-w-lg space-y-3">
-                    <div class="p-4 rounded-2xl bg-blush-bg border border-blush-border space-y-2 text-xs">
-                        <p class="text-blush-ink">Admin Email: <strong id="currentAdminEmailDisplay" class="text-blush-deep">-</strong></p>
-                        <p class="text-blush-muted">Password reset link ကို လက်ရှိ Admin Email သို့ ပို့နိုင်ပါသည်။</p>
+                    <div class="p-4 rounded-2xl bg-boutique-bg border border-boutique-border space-y-2 text-xs">
+                        <p class="text-boutique-ink">Admin Email: <strong id="currentAdminEmailDisplay" class="text-boutique-deep">-</strong></p>
+                        <p class="text-boutique-muted">Password reset link ကို လက်ရှိ Admin Email သို့ ပို့နိုင်ပါသည်။</p>
                         <button type="button" onclick="sendAdminPasswordReset()"
-                            class="mt-1 px-4 py-2 rounded-xl bg-white hover:bg-blush-soft text-blush-deep border border-blush-border font-bold text-xs cursor-pointer">
+                            class="mt-1 px-4 py-2 rounded-xl bg-white hover:bg-boutique-soft text-boutique-deep border border-boutique-border font-bold text-xs cursor-pointer">
                             <i class="fa-solid fa-paper-plane mr-1"></i> Send Reset Email
                         </button>
                     </div>
@@ -904,11 +921,11 @@
         window.setFilter = function(filterKey) {
             activeFilter = filterKey;
             document.querySelectorAll(".filter-tab").forEach((btn) => {
-                btn.className = "filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-blush-soft text-blush-ink border border-blush-border cursor-pointer flex items-center gap-1.5";
+                btn.className = "filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-boutique-soft text-boutique-ink border border-boutique-border cursor-pointer flex items-center gap-1.5";
             });
             const activeBtn = document.getElementById(`filter-${filterKey}`);
             if (activeBtn) {
-                activeBtn.className = "filter-tab px-4 py-2 rounded-xl text-xs font-bold rose-btn cursor-pointer flex items-center gap-1.5";
+                activeBtn.className = "filter-tab px-4 py-2 rounded-xl text-xs font-bold berry-btn cursor-pointer flex items-center gap-1.5";
             }
             renderAccounts();
         };
@@ -966,18 +983,18 @@
                 const isSold = acc.status === "SOLD";
                 const imgSrc = (acc.images && acc.images.length > 0)
                     ? acc.images[0]
-                    : "https://placehold.co/600x400/fdebf2/d81b60?text=Candy+MLBB";
+                    : "https://placehold.co/600x400/fdebf2/be185d?text=Candy+MLBB";
                 const imgCount = acc.images && acc.images.length > 0 ? acc.images.length : 1;
                 const priceText = Number(acc.price || 0).toLocaleString();
                 const wrText = acc.winrate ? String(acc.winrate).replace(/%$/, "") : "-";
                 const highlights = Array.isArray(acc.highlights) ? acc.highlights.slice(0, 3) : [];
 
                 return `
-                    <article class="boutique-card rounded-2xl overflow-hidden flex flex-col justify-between transition-all hover:-translate-y-0.5">
+                    <article class="boutique-surface rounded-2xl overflow-hidden flex flex-col justify-between transition-all hover:-translate-y-0.5">
                         <div>
-                            <div class="relative h-48 sm:h-52 bg-blush-soft overflow-hidden cursor-pointer" onclick="openAccountDetails('${acc.id}')">
+                            <div class="relative h-48 sm:h-52 bg-boutique-soft overflow-hidden cursor-pointer" onclick="openAccountDetails('${acc.id}')">
                                 <img src="${imgSrc}" alt="${acc.title || "MLBB Account"}"
-                                    onerror="this.src='https://placehold.co/600x400/fdebf2/d81b60?text=Candy+MLBB'"
+                                    onerror="this.src='https://placehold.co/600x400/fdebf2/be185d?text=Candy+MLBB'"
                                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-103">
 
                                 <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider ${
@@ -986,7 +1003,7 @@
                                     ${isSold ? "SOLD OUT" : "AVAILABLE"}
                                 </span>
 
-                                <span class="absolute top-3 right-3 px-2 py-0.5 rounded-lg bg-white/95 text-blush-ink border border-blush-border text-[11px] font-bold">
+                                <span class="absolute top-3 right-3 px-2 py-0.5 rounded-lg bg-white/95 text-boutique-ink border border-boutique-border text-[11px] font-bold">
                                     ${acc.rank || "High Rank"}
                                 </span>
 
@@ -997,24 +1014,24 @@
                             </div>
 
                             <div class="p-4 sm:p-5 space-y-3.5">
-                                <h3 class="text-sm sm:text-base font-bold text-blush-ink truncate cursor-pointer hover:text-blush-rose" onclick="openAccountDetails('${acc.id}')">
+                                <h3 class="text-sm sm:text-base font-bold text-boutique-ink truncate cursor-pointer hover:text-boutique-accent" onclick="openAccountDetails('${acc.id}')">
                                     ${acc.title || "MLBB Account"}
                                 </h3>
 
-                                <div class="grid grid-cols-2 rounded-xl border border-blush-border bg-blush-bg divide-x divide-blush-border text-center py-2">
+                                <div class="grid grid-cols-2 rounded-xl border border-boutique-border bg-boutique-bg divide-x divide-boutique-border text-center py-2">
                                     <div class="px-2">
-                                        <p class="text-[11px] text-blush-muted">Skins</p>
-                                        <p class="text-sm font-extrabold text-blush-deep mt-0.5">${acc.skins || 0}</p>
+                                        <p class="text-[11px] text-boutique-muted">Skins</p>
+                                        <p class="text-sm font-extrabold text-boutique-deep mt-0.5">${acc.skins || 0}</p>
                                     </div>
                                     <div class="px-2">
-                                        <p class="text-[11px] text-blush-muted">Win Rate</p>
-                                        <p class="text-sm font-extrabold text-blush-deep mt-0.5">${wrText}</p>
+                                        <p class="text-[11px] text-boutique-muted">Win Rate</p>
+                                        <p class="text-sm font-extrabold text-boutique-deep mt-0.5">${wrText}</p>
                                     </div>
                                 </div>
 
                                 <div class="flex flex-wrap gap-1.5 min-h-[26px]">
                                     ${highlights.map((tag) => `
-                                        <span class="px-2.5 py-0.5 rounded-full bg-blush-soft text-blush-deep border border-blush-border text-[11px] font-semibold">
+                                        <span class="px-2.5 py-0.5 rounded-full bg-boutique-soft text-boutique-deep border border-boutique-border text-[11px] font-semibold">
                                             ${tag}
                                         </span>
                                     `).join("")}
@@ -1024,14 +1041,14 @@
 
                         <div class="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 flex items-end justify-between gap-2">
                             <div>
-                                <p class="text-[11px] text-blush-muted">ဈေးနှုန်း:</p>
-                                <p class="text-base sm:text-lg font-extrabold text-blush-deep leading-tight">
+                                <p class="text-[11px] text-boutique-muted">ဈေးနှုန်း:</p>
+                                <p class="text-base sm:text-lg font-extrabold text-boutique-deep leading-tight">
                                     ${priceText} <span class="text-xs font-bold">MMK</span>
                                 </p>
                             </div>
 
                             <button type="button" onclick="openAccountDetails('${acc.id}')"
-                                class="rose-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer">
+                                class="berry-btn px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer">
                                 <span>အသေးစိတ်</span>
                                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </button>
@@ -1047,7 +1064,7 @@
 
             currentModalImages = (acc.images && acc.images.length > 0)
                 ? acc.images
-                : ["https://placehold.co/600x400/fdebf2/d81b60?text=Candy+MLBB"];
+                : ["https://placehold.co/600x400/fdebf2/be185d?text=Candy+MLBB"];
             activeModalImageIndex = 0;
 
             const isSold = acc.status === "SOLD";
@@ -1061,18 +1078,18 @@
             const body = document.getElementById("accountModalBody");
             body.innerHTML = `
                 <div class="space-y-2.5">
-                    <div class="relative h-60 sm:h-72 rounded-2xl bg-blush-bg border border-blush-border overflow-hidden">
+                    <div class="relative h-60 sm:h-72 rounded-2xl bg-boutique-bg border border-boutique-border overflow-hidden">
                         <img id="mainModalImg" src="${currentModalImages[0]}" alt="${acc.title}"
-                            onerror="this.src='https://placehold.co/600x400/fdebf2/d81b60?text=Candy+MLBB'"
+                            onerror="this.src='https://placehold.co/600x400/fdebf2/be185d?text=Candy+MLBB'"
                             class="w-full h-full object-contain">
 
                         ${currentModalImages.length > 1 ? `
                             <button type="button" onclick="prevModalImg()"
-                                class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/95 hover:bg-blush-rose hover:text-white text-blush-ink border border-blush-border flex items-center justify-center cursor-pointer">
+                                class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/95 hover:bg-boutique-accent hover:text-white text-boutique-ink border border-boutique-border flex items-center justify-center cursor-pointer">
                                 <i class="fa-solid fa-chevron-left text-xs"></i>
                             </button>
                             <button type="button" onclick="nextModalImg()"
-                                class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/95 hover:bg-blush-rose hover:text-white text-blush-ink border border-blush-border flex items-center justify-center cursor-pointer">
+                                class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/95 hover:bg-boutique-accent hover:text-white text-boutique-ink border border-boutique-border flex items-center justify-center cursor-pointer">
                                 <i class="fa-solid fa-chevron-right text-xs"></i>
                             </button>
                         ` : ""}
@@ -1086,17 +1103,17 @@
                         <div class="flex items-center gap-2 overflow-x-auto pb-1">
                             ${currentModalImages.map((img, idx) => `
                                 <img id="thumb-${idx}" src="${img}" onclick="setModalImg(${idx})"
-                                    class="w-16 h-12 rounded-lg object-cover cursor-pointer border-2 ${idx === 0 ? "border-blush-rose" : "border-transparent opacity-65 hover:opacity-100"}">
+                                    class="w-16 h-12 rounded-lg object-cover cursor-pointer border-2 ${idx === 0 ? "border-boutique-accent" : "border-transparent opacity-65 hover:opacity-100"}">
                             `).join("")}
                         </div>
                     ` : ""}
                 </div>
 
                 <div class="space-y-4">
-                    <div class="flex flex-wrap items-start justify-between gap-3 border-b border-blush-border pb-3.5">
+                    <div class="flex flex-wrap items-start justify-between gap-3 border-b border-boutique-border pb-3.5">
                         <div>
                             <div class="flex items-center gap-2 mb-1">
-                                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blush-soft text-blush-deep border border-blush-border">
+                                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-boutique-soft text-boutique-deep border border-boutique-border">
                                     ${formatRankLabel(acc.rank)}
                                 </span>
                                 <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
@@ -1105,41 +1122,41 @@
                                     ${isSold ? "SOLD OUT" : "AVAILABLE"}
                                 </span>
                             </div>
-                            <h3 class="text-lg sm:text-xl font-bold text-blush-ink">${acc.title || "MLBB Account"}</h3>
+                            <h3 class="text-lg sm:text-xl font-bold text-boutique-ink">${acc.title || "MLBB Account"}</h3>
                         </div>
                         <div class="text-left sm:text-right">
-                            <p class="text-[11px] text-blush-muted">ဈေးနှုန်း</p>
-                            <p class="text-xl font-extrabold text-blush-deep">${priceText} <span class="text-xs">MMK</span></p>
+                            <p class="text-[11px] text-boutique-muted">ဈေးနှုန်း</p>
+                            <p class="text-xl font-extrabold text-boutique-deep">${priceText} <span class="text-xs">MMK</span></p>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-2.5 rounded-2xl bg-blush-bg border border-blush-border p-3 text-center text-xs">
+                    <div class="grid grid-cols-3 gap-2.5 rounded-2xl bg-boutique-bg border border-boutique-border p-3 text-center text-xs">
                         <div>
-                            <p class="text-[11px] text-blush-muted">Skins</p>
-                            <p class="font-extrabold text-blush-ink mt-0.5">${acc.skins || 0}</p>
+                            <p class="text-[11px] text-boutique-muted">Skins</p>
+                            <p class="font-extrabold text-boutique-ink mt-0.5">${acc.skins || 0}</p>
                         </div>
                         <div>
-                            <p class="text-[11px] text-blush-muted">Heroes</p>
-                            <p class="font-extrabold text-blush-ink mt-0.5">${acc.heroes || "-"}</p>
+                            <p class="text-[11px] text-boutique-muted">Heroes</p>
+                            <p class="font-extrabold text-boutique-ink mt-0.5">${acc.heroes || "-"}</p>
                         </div>
                         <div>
-                            <p class="text-[11px] text-blush-muted">Win Rate</p>
-                            <p class="font-extrabold text-blush-deep mt-0.5">${acc.winrate || "-"}</p>
+                            <p class="text-[11px] text-boutique-muted">Win Rate</p>
+                            <p class="font-extrabold text-boutique-deep mt-0.5">${acc.winrate || "-"}</p>
                         </div>
                     </div>
 
                     ${(acc.highlights && acc.highlights.length > 0) ? `
                         <div class="flex flex-wrap gap-1.5">
                             ${acc.highlights.map((h) => `
-                                <span class="px-2.5 py-1 rounded-full bg-blush-soft text-blush-deep border border-blush-border text-xs font-semibold">
+                                <span class="px-2.5 py-1 rounded-full bg-boutique-soft text-boutique-deep border border-boutique-border text-xs font-semibold">
                                     ${h}
                                 </span>
                             `).join("")}
                         </div>
                     ` : ""}
 
-                    <div class="rounded-xl bg-blush-bg border border-blush-border p-3.5 text-xs text-blush-ink leading-relaxed">
-                        <p class="font-bold text-blush-deep mb-1">Account အသေးစိတ်</p>
+                    <div class="rounded-xl bg-boutique-bg border border-boutique-border p-3.5 text-xs text-boutique-ink leading-relaxed">
+                        <p class="font-bold text-boutique-deep mb-1">Account အသေးစိတ်</p>
                         <p>${acc.description || "အသေးစိတ် အချက်အလက်များကို @CandyGaming8 တွင် ဆက်သွယ်မေးမြန်းနိုင်ပါသည်။"}</p>
                     </div>
 
@@ -1149,7 +1166,7 @@
                         </button>
                     ` : `
                         <a href="${tgUrl}" target="_blank" rel="noopener noreferrer"
-                            class="w-full py-3 rounded-xl rose-btn font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm">
+                            class="w-full py-3 rounded-xl berry-btn font-bold text-xs sm:text-sm flex items-center justify-center gap-2">
                             <i class="fa-brands fa-telegram text-base"></i>
                             <span>@CandyGaming8 ဖြင့် ဝယ်ယူရန်</span>
                         </a>
@@ -1168,7 +1185,7 @@
                 const thumb = document.getElementById(`thumb-${i}`);
                 if (thumb) {
                     thumb.className = `w-16 h-12 rounded-lg object-cover cursor-pointer border-2 ${
-                        i === idx ? "border-blush-rose" : "border-transparent opacity-65 hover:opacity-100"
+                        i === idx ? "border-boutique-accent" : "border-transparent opacity-65 hover:opacity-100"
                     }`;
                 }
             });
@@ -1251,11 +1268,11 @@
 
         window.showAdminTab = function(tabName) {
             document.querySelectorAll(".admin-tab-btn").forEach((btn) => {
-                btn.className = "admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-blush-bg text-blush-ink border border-blush-border cursor-pointer";
+                btn.className = "admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-boutique-bg text-boutique-ink border border-boutique-border cursor-pointer";
             });
             const active = document.getElementById(`adminTab-${tabName}`);
             if (active) {
-                active.className = "admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold rose-btn cursor-pointer";
+                active.className = "admin-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold berry-btn cursor-pointer";
             }
 
             ["list", "add", "images", "visitors", "settings"].forEach((name) => {
@@ -1276,38 +1293,37 @@
 
         window.renderAdminTable = function() {
             const tbody = document.getElementById("adminAccountTable");
-            const totalEl = document.getElementById("adminTotalCount");
-            if (totalEl) totalEl.innerText = accounts.length;
+            const countEl = document.getElementById("adminTotalCount");
+            if (countEl) countEl.innerText = accounts.length;
             if (!tbody) return;
 
             if (accounts.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-blush-muted">Account မရှိသေးပါ</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-boutique-muted">တင်ထားသော Account မရှိသေးပါ</td></tr>`;
                 return;
             }
 
             tbody.innerHTML = accounts.map((acc) => {
-                const isSold = acc.status === "SOLD";
-                const thumb = (acc.images && acc.images.length > 0)
+                const img = (acc.images && acc.images.length > 0)
                     ? acc.images[0]
-                    : "https://placehold.co/80x60/fdebf2/d81b60?text=MLBB";
-
+                    : "https://placehold.co/100x60/fdebf2/be185d?text=Candy";
+                const isSold = acc.status === "SOLD";
                 return `
-                    <tr class="hover:bg-blush-bg/60">
-                        <td class="p-3"><img src="${thumb}" class="w-12 h-9 object-cover rounded-lg border border-blush-border"></td>
-                        <td class="p-3 font-bold text-blush-ink max-w-[150px] truncate">${acc.title || "-"}</td>
-                        <td class="p-3 text-blush-deep font-semibold">${acc.rank || "-"}</td>
-                        <td class="p-3 text-blush-muted">${acc.skins || 0} / ${acc.winrate || "-"}</td>
-                        <td class="p-3 font-bold text-blush-deep">${Number(acc.price || 0).toLocaleString()} Ks</td>
+                    <tr>
+                        <td class="p-3"><img src="${img}" class="w-12 h-9 object-cover rounded-lg border border-boutique-border"></td>
+                        <td class="p-3 font-bold text-boutique-ink max-w-[160px] truncate">${acc.title || "-"}</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded-md bg-boutique-soft text-boutique-deep text-[11px] font-bold">${acc.rank || "-"}</span></td>
+                        <td class="p-3 text-boutique-muted">${acc.skins || 0} Skins / ${acc.winrate || "-"}</td>
+                        <td class="p-3 font-extrabold text-boutique-deep">${Number(acc.price || 0).toLocaleString()} Ks</td>
                         <td class="p-3">
                             <button type="button" onclick="toggleAccountStatus('${acc.id}')"
-                                class="px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase cursor-pointer ${
+                                class="px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase cursor-pointer ${
                                     isSold ? "bg-red-100 text-red-700" : "bg-emerald-100 text-emerald-700"
                                 }">
                                 ${isSold ? "SOLD" : "AVAILABLE"}
                             </button>
                         </td>
                         <td class="p-3 text-right space-x-2">
-                            <button type="button" onclick="editAccount('${acc.id}')" class="text-blush-rose hover:text-blush-deep p-1 cursor-pointer" title="Edit">
+                            <button type="button" onclick="editAccount('${acc.id}')" class="text-boutique-accent hover:text-boutique-deep p-1 cursor-pointer" title="Edit">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
                             <button type="button" onclick="confirmDeleteAccount('${acc.id}')" class="text-red-600 hover:text-red-700 p-1 cursor-pointer" title="Delete">
@@ -1333,13 +1349,80 @@
             }
         };
 
+        window.triggerAccountImagePicker = function(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const input = document.getElementById("imageInput");
+            const hint = document.getElementById("imagePickerStatusHint");
+            if (!input) return;
+
+            try {
+                input.value = "";
+                if (typeof input.showPicker === "function") {
+                    input.showPicker();
+                } else {
+                    input.click();
+                }
+                if (hint) {
+                    hint.textContent = "Device မှ ပုံရွေးချယ်ရန် ဖွင့်နေပါသည်... မပွင့်ပါက အောက်ပါ URL / Link ထည့်မည်ကို အသုံးပြုနိုင်ပါသည်။";
+                }
+            } catch (_) {
+                try {
+                    input.click();
+                } catch (err) {
+                    console.error("File picker blocked:", err);
+                    if (hint) {
+                        hint.textContent = "ဤ Browser/WebView တွင် ဖုန်း Gallery ဖွင့်ခွင့် ပိတ်ထားနိုင်ပါသည်။ Image URL သို့မဟုတ် data:image/... ထည့်သွင်းပြီး အသုံးပြုပါ။";
+                    }
+                    showToast("Browser/WebView က ပုံရွေးခွင့် ပိတ်ထားပါသည်။ Image URL ဖြင့် ထည့်နိုင်ပါသည်။", "error");
+                }
+            }
+        };
+
+        window.addAccountImageFromUrl = function() {
+            const input = document.getElementById("accountImageUrlInput");
+            const hint = document.getElementById("imagePickerStatusHint");
+            if (!input) return;
+
+            const raw = (input.value || "").trim();
+            if (!raw) {
+                showToast("Image URL သို့မဟုတ် data:image/... ထည့်ပါ", "error");
+                return;
+            }
+
+            const isHttpUrl = /^https?:\/\/.+/i.test(raw);
+            const isDataImage = /^data:image\/[a-zA-Z0-9.+-]+;base64,.+/i.test(raw);
+            const isRelativePath = /^[a-zA-Z0-9_./-]+\.(jpg|jpeg|png|webp|gif)$/i.test(raw);
+
+            if (!isHttpUrl && !isDataImage && !isRelativePath) {
+                showToast("မှန်ကန်သော Image URL သို့မဟုတ် data:image/... ထည့်ပါ", "error");
+                return;
+            }
+
+            uploadedImagesBase64.push(raw);
+            input.value = "";
+            if (hint) {
+                hint.textContent = "Image Link / Data URI ကို စာရင်းထဲ ထည့်သွင်းပြီးပါပြီ။";
+            }
+            renderImagePreviews();
+            showToast("ပုံ Link ထည့်ပြီးပါပြီ", "success");
+        };
+
         window.handleImageUpload = async function(e) {
-            const files = Array.from(e.target.files || []);
+            const files = Array.from((e && e.target && e.target.files) || []);
+            const hint = document.getElementById("imagePickerStatusHint");
+            if (!files.length) return;
+
             for (const f of files) {
                 const compressed = await compressImage(f, 760, 0.72);
                 if (compressed) uploadedImagesBase64.push(compressed);
             }
-            e.target.value = "";
+            if (e && e.target) e.target.value = "";
+            if (hint) {
+                hint.textContent = `${files.length} ပုံ ရွေးချယ်ပြီးပါပြီ။`;
+            }
             renderImagePreviews();
         };
 
@@ -1347,11 +1430,11 @@
             const box = document.getElementById("imagePreviewContainer");
             if (!box) return;
             if (uploadedImagesBase64.length === 0) {
-                box.innerHTML = `<p class="text-xs text-blush-muted self-center mx-auto">ပုံမရွေးရသေးပါ</p>`;
+                box.innerHTML = `<p class="text-xs text-boutique-muted self-center mx-auto">ပုံမရွေးရသေးပါ</p>`;
                 return;
             }
             box.innerHTML = uploadedImagesBase64.map((src, idx) => `
-                <div class="relative w-16 h-16 rounded-lg overflow-hidden border border-blush-border">
+                <div class="relative w-16 h-16 rounded-lg overflow-hidden border border-boutique-border">
                     <img src="${src}" class="w-full h-full object-cover">
                     <button type="button" onclick="removeUploadedImage(${idx})"
                         class="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-red-600 text-white text-[10px] flex items-center justify-center cursor-pointer">
@@ -1394,7 +1477,7 @@
 
             const rawImgs = uploadedImagesBase64.length > 0
                 ? [...uploadedImagesBase64]
-                : ["https://placehold.co/600x400/fdebf2/d81b60?text=Candy+MLBB"];
+                : ["https://placehold.co/600x400/fdebf2/be185d?text=Candy+MLBB"];
             const safeImgs = fitImagesWithinFirestoreLimit(rawImgs);
 
             try {
@@ -1495,16 +1578,16 @@
             modal.id = "deleteConfirmModal";
             modal.className = "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs";
             modal.innerHTML = `
-                <div class="bg-white border border-blush-border rounded-2xl p-6 max-w-sm w-full space-y-4 text-center shadow-2xl">
-                    <h4 class="text-base font-bold text-blush-ink">ဖျက်ပစ်ရန် သေချာပါသလား?</h4>
-                    <p class="text-xs text-blush-muted">${acc.title || id} ကို ဖျက်ပစ်ပါမည်။</p>
+                <div class="bg-white border border-boutique-border rounded-2xl p-6 max-w-sm w-full space-y-4 text-center shadow-2xl">
+                    <h4 class="text-base font-bold text-boutique-ink">ဖျက်ပစ်ရန် သေချာပါသလား?</h4>
+                    <p class="text-xs text-boutique-muted">${acc.title || id} ကို ဖျက်ပစ်ပါမည်။</p>
                     <div class="flex gap-2">
                         <button type="button" onclick="executeDeleteAccount('${acc.id}')"
                             class="flex-1 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold cursor-pointer">
                             ဖျက်မည်
                         </button>
                         <button type="button" onclick="document.getElementById('deleteConfirmModal').remove()"
-                            class="flex-1 py-2 rounded-xl bg-blush-bg text-blush-ink border border-blush-border text-xs font-semibold cursor-pointer">
+                            class="flex-1 py-2 rounded-xl bg-boutique-bg text-boutique-ink border border-boutique-border text-xs font-semibold cursor-pointer">
                             Cancel
                         </button>
                     </div>
@@ -1592,7 +1675,7 @@
 
             if (!tbody) return;
             if (visitorLogs.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4" class="p-5 text-center text-blush-muted">မှတ်တမ်း မရှိသေးပါ</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="4" class="p-5 text-center text-boutique-muted">မှတ်တမ်း မရှိသေးပါ</td></tr>`;
                 return;
             }
 
@@ -1600,10 +1683,10 @@
                 const timeStr = v.timestamp ? new Date(v.timestamp).toLocaleString("en-GB", { hour12: true }) : "-";
                 return `
                     <tr>
-                        <td class="p-3 text-blush-muted whitespace-nowrap">${timeStr}</td>
-                        <td class="p-3 font-semibold text-blush-ink">${v.device || "-"}</td>
-                        <td class="p-3 text-blush-muted whitespace-nowrap">${v.screen || "-"}</td>
-                        <td class="p-3 text-blush-muted max-w-[180px] truncate">${v.referer || "Direct"}</td>
+                        <td class="p-3 text-boutique-muted whitespace-nowrap">${timeStr}</td>
+                        <td class="p-3 font-semibold text-boutique-ink">${v.device || "-"}</td>
+                        <td class="p-3 text-boutique-muted whitespace-nowrap">${v.screen || "-"}</td>
+                        <td class="p-3 text-boutique-muted max-w-[180px] truncate">${v.referer || "Direct"}</td>
                     </tr>
                 `;
             }).join("");
@@ -1631,7 +1714,7 @@
                 ? "bg-white border-emerald-300 text-emerald-700"
                 : type === "error"
                 ? "bg-white border-red-300 text-red-700"
-                : "bg-white border-blush-border text-blush-deep";
+                : "bg-white border-boutique-border text-boutique-deep";
             el.className = `px-4 py-2.5 rounded-xl border shadow-lg text-xs font-bold ${style}`;
             el.innerText = msg;
             box.appendChild(el);
