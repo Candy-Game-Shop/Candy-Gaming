@@ -89,6 +89,8 @@
 
         .boutique-card {
             position: relative;
+            overflow: hidden;
+            min-width: 0;
             background: linear-gradient(180deg, #ffffff 0%, #fff9fa 65%, #fff2f4 100%);
             border: 1px solid rgba(190, 24, 93, 0.16);
             box-shadow:
@@ -103,6 +105,22 @@
             box-shadow:
                 0 18px 34px -16px rgba(42, 12, 24, 0.2),
                 0 6px 14px -4px rgba(190, 24, 93, 0.12);
+        }
+
+        /* Strictly clip photos inside rounded containers without overflowing frames */
+        .boutique-photo-frame {
+            overflow: hidden;
+            max-width: 100%;
+            min-width: 0;
+            border-radius: 1.25rem;
+        }
+
+        .boutique-photo-frame > img {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
         }
 
         /* Closed modal backdrops must remain non-blocking until .is-open is added */
@@ -141,16 +159,17 @@
                     id="brandHomeBtn"
                     aria-label="Candy Official Gaming Home"
                     class="flex items-center gap-3 text-left cursor-pointer">
-                <img src="IMG_20261126_162338_994.jpg"
-                     alt="Candy Official Gaming"
-                     onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff2f4/be185d?text=COG';"
-                     class="w-11 h-11 rounded-xl object-cover bg-softblush border border-roseberry/25 flex-shrink-0">
+                <div class="boutique-photo-frame w-11 h-11 bg-softblush border border-roseberry/25 flex-shrink-0">
+                    <img src="IMG_20261126_162338_994.jpg"
+                         alt="Candy Official Gaming"
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff2f4/be185d?text=COG';">
+                </div>
                 <span class="text-lg sm:text-2xl font-bold editorial-font rose-berry-gradient-text tracking-tight">
                     Candy Official Gaming
                 </span>
             </button>
 
-            <!-- Right Actions: Catalog + Admin (Admin link only) + Telegram -->
+            <!-- Right Actions: MLBB Catalog + Discrete Admin Trigger (Admin URL only) + @CandyGaming8 -->
             <div class="flex items-center gap-2 sm:gap-2.5">
                 <button type="button"
                         id="headerCatalogBtn"
@@ -159,7 +178,7 @@
                     <span>MLBB Catalog</span>
                 </button>
 
-                <!-- Hidden on buyer links; visible ONLY on dedicated Admin link -->
+                <!-- Discrete Admin trigger: visible ONLY on Admin URLs, never on buyer links -->
                 <button type="button"
                         id="headerAdminLinkBtn"
                         style="display: none;"
@@ -182,7 +201,7 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
 
-        <!-- ADMIN STUDIO PANEL (Available ONLY on Admin link and unlocked only after clicking Admin + verifying key/Firebase; never auto-opened on load/refresh) -->
+        <!-- ADMIN STUDIO PANEL (Available ONLY on Admin URL and unlocked only after key + Firebase Auth; never auto-opened on load/refresh) -->
         <section id="adminStudioPanel"
                  style="display: none;"
                  class="hidden boutique-surface rounded-3xl p-5 sm:p-8 space-y-6 border-2 border-roseberry/25">
@@ -190,7 +209,7 @@
                 <div class="space-y-1">
                     <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-xl bg-softblush text-deepberry border border-roseberry/20 text-[11px] font-bold">
                         <i class="fa-solid fa-shield-halved text-roseberry"></i>
-                        <span>Candy Official Gaming • Admin Panel</span>
+                        <span>Candy Official Gaming • Admin Studio</span>
                     </div>
                     <h2 class="text-xl sm:text-2xl font-bold editorial-font rose-berry-gradient-text">
                         MLBB Account &amp; Price Management
@@ -207,11 +226,28 @@
                         <span id="adminTotalVisitsLabel" class="text-deepberry font-extrabold">0</span>
                     </div>
                     <button type="button"
+                            id="adminSignOutBtn"
+                            class="px-3.5 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                        <i class="fa-solid fa-right-from-bracket mr-1 text-roseberry"></i> Sign Out
+                    </button>
+                    <button type="button"
                             id="lockAdminStudioBtn"
                             class="px-3.5 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
                         <i class="fa-solid fa-lock mr-1 text-roseberry"></i> Lock
                     </button>
                 </div>
+            </div>
+
+            <!-- Firebase Auth Session & Password Reset Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-2 bg-softblush/70 border border-roseberry/15 rounded-2xl px-4 py-2.5 text-xs">
+                <div class="text-inksub">
+                    Admin Account: <span id="currentAdminEmailText" class="font-bold text-inkdark">-</span>
+                </div>
+                <button type="button"
+                        id="sendAdminResetBtn"
+                        class="px-3 py-1 rounded-lg bg-white hover:bg-petal text-deepberry border border-roseberry/20 text-[11px] font-bold cursor-pointer transition-all">
+                    <i class="fa-solid fa-envelope mr-1"></i> Reset Password Email
+                </button>
             </div>
 
             <!-- Admin Tabs -->
@@ -232,7 +268,7 @@
                         data-admin-tab="dia"
                         id="adminTab-dia"
                         class="admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
-                    <i class="fa-regular fa-gem mr-1 text-roseberry"></i> Dia Prices
+                    <i class="fa-regular fa-gem mr-1 text-roseberry"></i> MLBB Dia Prices
                 </button>
                 <button type="button"
                         data-admin-tab="tg"
@@ -406,7 +442,7 @@
                 </form>
             </div>
 
-            <!-- TAB 3: DIA PRICES EDITOR -->
+            <!-- TAB 3: MLBB DIA PRICES EDITOR -->
             <div id="adminPane-dia" class="hidden bg-white border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-5">
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-roseberry/15 pb-3">
                     <h3 class="text-lg font-bold editorial-font text-inkdark">MLBB Diamond &amp; Pass Prices</h3>
@@ -502,9 +538,9 @@
 
         <!-- STEP 1: LANDING / GATEWAY SECTION (#landingView) -->
         <section id="landingView" class="py-4 sm:py-8">
-            <div class="boutique-card rounded-3xl p-6 sm:p-10 md:p-12 max-w-5xl mx-auto">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                    <div class="space-y-4 max-w-2xl">
+            <div class="boutique-card rounded-3xl p-6 sm:p-10 md:p-12 max-w-5xl mx-auto overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] items-center gap-8 min-w-0">
+                    <div class="space-y-4 min-w-0">
                         <!-- Refined greeting heading cleanly sized at text-xl sm:text-3xl -->
                         <h1 class="text-xl sm:text-3xl font-bold editorial-font rose-berry-gradient-text leading-snug">
                             Candy Gaming မှကြိုဆိုပါတယ်ရှင့်
@@ -515,7 +551,7 @@
                             Mobile Legend အကောင့်များကိုသာ သီးသန့်ရောင်းချပေးသော Candy Store ဖြစ်ပါသည်
                         </p>
 
-                        <!-- Clean inline navigation button to #catalogSection (no floating circular badges) -->
+                        <!-- Clean inline navigation buttons without circular/floating/pill badge stickers -->
                         <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
                             <button type="button"
                                     id="openCatalogBtn"
@@ -535,12 +571,11 @@
                         </div>
                     </div>
 
-                    <!-- Single clean photo showcase frame with IMG_20261126_162338_994.jpg -->
-                    <div class="w-full md:max-w-sm rounded-2xl overflow-hidden border border-roseberry/20 bg-white aspect-[16/10] flex-shrink-0">
+                    <!-- Single photo showcase frame strictly clipped inside its rounded border -->
+                    <div class="boutique-photo-frame w-full aspect-[16/10] bg-white border border-roseberry/20">
                         <img src="IMG_20261126_162338_994.jpg"
                              alt="Candy Official Gaming"
-                             onerror="this.onerror=null;this.src='https://placehold.co/800x500/fff2f4/be185d?text=Candy+Official+Gaming';"
-                             class="w-full h-full object-cover">
+                             onerror="this.onerror=null;this.src='https://placehold.co/800x500/fff2f4/be185d?text=Candy+Official+Gaming';">
                     </div>
                 </div>
             </div>
@@ -637,10 +672,11 @@
             <button type="button"
                     id="footerHomeBtn"
                     class="flex items-center gap-2.5 cursor-pointer text-left">
-                <img src="IMG_20261126_162338_994.jpg"
-                     alt="Candy Official Gaming"
-                     onerror="this.onerror=null;this.src='https://placehold.co/80x80/fff2f4/be185d?text=COG';"
-                     class="w-8 h-8 rounded-xl object-cover bg-softblush border border-roseberry/25 flex-shrink-0">
+                <div class="boutique-photo-frame w-8 h-8 bg-softblush border border-roseberry/25 flex-shrink-0">
+                    <img src="IMG_20261126_162338_994.jpg"
+                         alt="Candy Official Gaming"
+                         onerror="this.onerror=null;this.src='https://placehold.co/80x80/fff2f4/be185d?text=COG';">
+                </div>
                 <span class="font-bold editorial-font text-base text-inkdark">Candy Official Gaming</span>
             </button>
 
@@ -678,29 +714,67 @@
         </div>
     </div>
 
-    <!-- ADMIN KEY / ACCESS MODAL (#adminKeyModal - CLOSED BY DEFAULT: display: none; pointer-events: none;) -->
+    <!-- ADMIN KEY & FIREBASE EMAIL/PASSWORD MODAL (#adminKeyModal - CLOSED BY DEFAULT: display: none; pointer-events: none;) -->
     <div id="adminKeyModal"
          aria-hidden="true"
          class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-inkdark/60 backdrop-blur-2xs">
-        <div class="boutique-card rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl">
+        <div class="boutique-card rounded-3xl p-6 max-w-md w-full space-y-5 shadow-2xl">
             <div class="text-center space-y-1">
                 <div class="w-12 h-12 mx-auto rounded-2xl bg-softblush text-deepberry border border-roseberry/20 flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-key"></i>
+                    <i class="fa-solid fa-shield-halved"></i>
                 </div>
-                <h3 class="text-xl font-bold editorial-font text-inkdark">Admin Access</h3>
-                <p class="text-xs text-inksub">Enter Admin key to unlock Candy MLBB Admin Panel</p>
+                <h3 class="text-xl font-bold editorial-font text-inkdark">Admin Verification</h3>
+                <p class="text-xs text-inksub">Admin Key (candy2026) နှင့် Firebase Email / Password ဖြင့် ဝင်ရောက်ပါ</p>
             </div>
-            <form id="adminKeyForm" class="space-y-3">
-                <input type="password"
-                       id="adminKeyInput"
-                       autocomplete="off"
-                       placeholder="Admin key"
-                       class="w-full bg-white border border-roseberry/25 focus:border-roseberry rounded-xl px-3.5 py-2.5 text-xs text-inkdark focus:outline-none">
+
+            <!-- Step A: Admin Key Verification -->
+            <form id="adminKeyForm" class="space-y-2.5">
+                <label class="block text-xs font-bold text-inkdark">1. Admin Access Key</label>
+                <div class="flex items-center gap-2">
+                    <input type="password"
+                           id="adminKeyInput"
+                           autocomplete="off"
+                           placeholder="Enter key (candy2026)"
+                           class="flex-1 bg-white border border-roseberry/25 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                    <button type="submit"
+                            id="verifyAdminKeyBtn"
+                            class="px-4 py-2 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseberry/25 text-xs font-bold cursor-pointer">
+                        Verify Key
+                    </button>
+                </div>
                 <p id="adminKeyErrorMsg" class="hidden text-xs font-semibold text-berrydark"></p>
+                <p id="adminKeyVerifiedMsg" class="hidden text-xs font-semibold text-emerald-700">
+                    Key verified. Please sign in with Firebase Email &amp; Password below.
+                </p>
+            </form>
+
+            <!-- Step B: Firebase Authentication Email & Password Sign-In -->
+            <form id="adminFirebaseLoginForm" class="space-y-3 border-t border-roseberry/15 pt-4">
+                <label class="block text-xs font-bold text-inkdark">2. Firebase Admin Sign-In</label>
+                <div>
+                    <label class="block text-[11px] font-semibold text-inksub mb-1">Admin Email</label>
+                    <input type="email"
+                           id="adminEmailInput"
+                           required
+                           autocomplete="username"
+                           placeholder="admin@example.com"
+                           class="w-full bg-white border border-roseberry/25 focus:border-roseberry rounded-xl px-3.5 py-2.5 text-xs text-inkdark focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold text-inksub mb-1">Password</label>
+                    <input type="password"
+                           id="adminPasswordInput"
+                           required
+                           autocomplete="current-password"
+                           placeholder="••••••••"
+                           class="w-full bg-white border border-roseberry/25 focus:border-roseberry rounded-xl px-3.5 py-2.5 text-xs text-inkdark focus:outline-none">
+                </div>
+                <p id="adminAuthErrorMsg" class="hidden text-xs font-semibold text-berrydark"></p>
                 <div class="flex items-center gap-2.5 pt-1">
                     <button type="submit"
+                            id="adminFirebaseLoginSubmitBtn"
                             class="flex-1 py-2.5 px-4 rounded-xl rose-berry-btn text-xs font-bold cursor-pointer">
-                        Unlock
+                        <i class="fa-solid fa-right-to-bracket mr-1"></i> Sign In
                     </button>
                     <button type="button"
                             id="cancelAdminKeyBtn"
@@ -733,8 +807,10 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
         import {
             getAuth,
-            signInAnonymously,
-            onAuthStateChanged
+            signInWithEmailAndPassword,
+            signOut,
+            onAuthStateChanged,
+            sendPasswordResetEmail
         } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
         import {
             getFirestore,
@@ -809,6 +885,8 @@
 
         // Always defaults to false on page load and refresh
         let isAdminUnlocked = false;
+        let isAdminKeyVerified = false;
+        let currentFirebaseUser = null;
         let currentAdminTab = "accounts";
         let accounts = [];
         let visitorLogs = [];
@@ -896,7 +974,7 @@
         }
 
         /**
-         * Returns true ONLY when the current URL matches the dedicated Admin link format.
+         * Returns true ONLY when the current URL matches an Admin URL format.
          * Buyer links never show Admin buttons or Admin controls.
          */
         function isDedicatedAdminLink() {
@@ -917,8 +995,8 @@
         }
 
         /**
-         * Updates Admin trigger visibility (only on Admin link) and Admin panel visibility
-         * (only when isAdminUnlocked === true after clicking Admin and verifying key/Firebase).
+         * Updates Admin trigger visibility (only on Admin URLs) and Admin Studio panel visibility
+         * (only when on Admin URL, key verified, and Firebase Auth signed in).
          */
         function syncAdminState() {
             const onAdminLink = isDedicatedAdminLink();
@@ -941,11 +1019,19 @@
 
             if (!onAdminLink) {
                 isAdminUnlocked = false;
+                isAdminKeyVerified = false;
                 closeModal("adminKeyModal");
             }
 
+            isAdminUnlocked = Boolean(onAdminLink && isAdminKeyVerified && currentFirebaseUser);
+
+            const emailLabel = document.getElementById("currentAdminEmailText");
+            if (emailLabel) {
+                emailLabel.textContent = currentFirebaseUser?.email || "-";
+            }
+
             if (panel) {
-                if (onAdminLink && isAdminUnlocked) {
+                if (isAdminUnlocked) {
                     panel.style.display = "block";
                     panel.classList.remove("hidden");
                     switchAdminTab(currentAdminTab);
@@ -963,15 +1049,33 @@
                 document.getElementById("adminStudioPanel")?.scrollIntoView({ behavior: "smooth" });
                 return;
             }
-            const input = document.getElementById("adminKeyInput");
-            const err = document.getElementById("adminKeyErrorMsg");
-            if (input) input.value = "";
-            if (err) {
-                err.textContent = "";
-                err.classList.add("hidden");
+
+            const keyInput = document.getElementById("adminKeyInput");
+            const keyErr = document.getElementById("adminKeyErrorMsg");
+            const keyOk = document.getElementById("adminKeyVerifiedMsg");
+            const authErr = document.getElementById("adminAuthErrorMsg");
+
+            if (keyInput && !isAdminKeyVerified) keyInput.value = "";
+            if (keyErr) {
+                keyErr.textContent = "";
+                keyErr.classList.add("hidden");
             }
+            if (keyOk) {
+                keyOk.classList.toggle("hidden", !isAdminKeyVerified);
+            }
+            if (authErr) {
+                authErr.textContent = "";
+                authErr.classList.add("hidden");
+            }
+
             openModal("adminKeyModal");
-            setTimeout(() => document.getElementById("adminKeyInput")?.focus(), 25);
+            setTimeout(() => {
+                if (!isAdminKeyVerified) {
+                    document.getElementById("adminKeyInput")?.focus();
+                } else {
+                    document.getElementById("adminEmailInput")?.focus();
+                }
+            }, 25);
         }
 
         function switchAdminTab(tabName) {
@@ -1238,11 +1342,10 @@
                 return `
                     <article class="boutique-card rounded-3xl overflow-hidden flex flex-col justify-between">
                         <div>
-                            <div class="relative aspect-[16/9] w-full bg-softblush overflow-hidden">
+                            <div class="boutique-photo-frame relative aspect-[16/9] w-full bg-softblush" style="border-radius: 0;">
                                 <img src="${escapeHtml(photos[0] || HERO_PHOTO)}"
                                      alt="${escapeHtml(acc.title || "MLBB Account")}"
-                                     onerror="this.onerror=null;this.src='${FALLBACK_PHOTO}';"
-                                     class="w-full h-full object-cover">
+                                     onerror="this.onerror=null;this.src='${FALLBACK_PHOTO}';">
 
                                 <span class="absolute top-3 left-3 px-3 py-1 rounded-xl text-[10px] font-bold uppercase ${
                                     isSold ? "bg-deepberry text-white" : "bg-emerald-700 text-white"
@@ -1335,12 +1438,11 @@
 
             body.innerHTML = `
                 <div class="space-y-3">
-                    <div class="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-softblush border border-roseberry/20">
+                    <div class="boutique-photo-frame relative aspect-[16/9] w-full bg-softblush border border-roseberry/20">
                         <img id="sliderActiveImg"
                              src="${escapeHtml(modalPhotos[0])}"
                              alt="${escapeHtml(acc.title || "MLBB Account")}"
-                             onerror="this.onerror=null;this.src='${FALLBACK_PHOTO}';"
-                             class="w-full h-full object-cover">
+                             onerror="this.onerror=null;this.src='${FALLBACK_PHOTO}';">
 
                         ${modalPhotos.length > 1 ? `
                             <button type="button"
@@ -1367,13 +1469,12 @@
                             ${modalPhotos.map((src, i) => `
                                 <button type="button"
                                         data-thumb-idx="${i}"
-                                        class="thumb-switch-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all ${
+                                        class="boutique-photo-frame thumb-switch-btn w-16 h-12 border-2 flex-shrink-0 cursor-pointer transition-all ${
                                             i === 0 ? "border-roseberry scale-105" : "border-roseberry/20 opacity-75 hover:opacity-100"
                                         }">
                                     <img src="${escapeHtml(src)}"
                                          alt="Photo ${i + 1}"
-                                         onerror="this.onerror=null;this.src='https://placehold.co/160x120/fff2f4/be185d?text=IMG';"
-                                         class="w-full h-full object-cover">
+                                         onerror="this.onerror=null;this.src='https://placehold.co/160x120/fff2f4/be185d?text=IMG';">
                                 </button>
                             `).join("")}
                         </div>
@@ -1478,13 +1579,13 @@
 
             document.querySelectorAll(".thumb-switch-btn").forEach((btn, i) => {
                 btn.className = i === modalPhotoIdx
-                    ? "thumb-switch-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all border-roseberry scale-105"
-                    : "thumb-switch-btn w-16 h-12 rounded-xl overflow-hidden border-2 flex-shrink-0 cursor-pointer transition-all border-roseberry/20 opacity-75 hover:opacity-100";
+                    ? "boutique-photo-frame thumb-switch-btn w-16 h-12 border-2 flex-shrink-0 cursor-pointer transition-all border-roseberry scale-105"
+                    : "boutique-photo-frame thumb-switch-btn w-16 h-12 border-2 flex-shrink-0 cursor-pointer transition-all border-roseberry/20 opacity-75 hover:opacity-100";
             });
         }
 
         function renderAdminAccountsTable() {
-            if (!isAdminUnlocked || !isDedicatedAdminLink()) return;
+            if (!isAdminUnlocked) return;
             const deleted = getDeletedIdsSet();
             const visible = accounts.filter((acc) => acc && acc.id && !deleted.has(String(acc.id)));
 
@@ -1516,10 +1617,11 @@
                 return `
                     <tr class="hover:bg-softblush/60">
                         <td class="p-3">
-                            <img src="${escapeHtml(firstImg)}"
-                                 alt="${escapeHtml(acc.title || "")}"
-                                 onerror="this.onerror=null;this.src='https://placehold.co/120x80/fff2f4/be185d?text=MLBB';"
-                                 class="w-14 h-10 rounded-lg object-cover border border-roseberry/20">
+                            <div class="boutique-photo-frame w-14 h-10 border border-roseberry/20">
+                                <img src="${escapeHtml(firstImg)}"
+                                     alt="${escapeHtml(acc.title || "")}"
+                                     onerror="this.onerror=null;this.src='https://placehold.co/120x80/fff2f4/be185d?text=MLBB';">
+                            </div>
                         </td>
                         <td class="p-3 font-bold text-inkdark">${escapeHtml(acc.title || "-")}</td>
                         <td class="p-3">${escapeHtml(acc.rank || "-")}</td>
@@ -1609,11 +1711,10 @@
             }
 
             wrap.innerHTML = formPhotos.map((src, i) => `
-                <div class="relative w-16 h-16 rounded-xl overflow-hidden border border-roseberry/25 bg-white flex-shrink-0">
+                <div class="boutique-photo-frame relative w-16 h-16 border border-roseberry/25 bg-white flex-shrink-0">
                     <img src="${escapeHtml(src)}"
                          alt="Upload ${i + 1}"
-                         onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff2f4/be185d?text=IMG';"
-                         class="w-full h-full object-cover">
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff2f4/be185d?text=IMG';">
                     <button type="button"
                             data-rm-idx="${i}"
                             aria-label="Remove photo ${i + 1}"
@@ -1915,7 +2016,7 @@
             writeLocalJson(DIA_KEY, cleaned);
             try {
                 await setDoc(diaPricesDoc, { ...cleaned, updatedAt: Date.now() }, { merge: true });
-                showNotice("Saved", "Dia ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "success");
+                showNotice("Saved", "MLBB Dia ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "success");
             } catch (_err) {
                 showNotice("Saved Locally", "Local storage တွင် Dia ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "info");
             }
@@ -2021,31 +2122,29 @@
         }
 
         function renderAdminVisitorLogs() {
-            if (!isAdminUnlocked || !isDedicatedAdminLink()) return;
+            if (!isAdminUnlocked) return;
             const totalEl = document.getElementById("visitorLogsCountLabel");
             const tbody = document.getElementById("adminVisitorLogsBody");
-            if (totalEl) totalEl.textContent = String(visitorLogs.length || totalVisits);
+            if (totalEl) totalEl.textContent = String(totalVisits);
             if (!tbody) return;
 
-            if (!visitorLogs.length) {
+            if (visitorLogs.length === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="4" class="p-6 text-center text-xs text-inksub">
-                            Total Visits: ${totalVisits}
-                        </td>
+                        <td colspan="4" class="p-5 text-center text-xs text-inksub">No visitor logs yet.</td>
                     </tr>
                 `;
                 return;
             }
 
-            tbody.innerHTML = visitorLogs.slice(0, 50).map((row) => {
-                const timeText = row.clientTime ? new Date(Number(row.clientTime)).toLocaleString() : "-";
+            tbody.innerHTML = visitorLogs.slice(0, 30).map((row) => {
+                const dt = row.clientTime ? new Date(Number(row.clientTime)).toLocaleString() : "-";
                 return `
                     <tr class="hover:bg-softblush/60">
-                        <td class="p-3 whitespace-nowrap">${escapeHtml(timeText)}</td>
-                        <td class="p-3">${escapeHtml(row.device || "Web")}</td>
+                        <td class="p-3 whitespace-nowrap">${escapeHtml(dt)}</td>
+                        <td class="p-3">${escapeHtml(row.device || "-")}</td>
                         <td class="p-3">${escapeHtml(row.screen || "-")}</td>
-                        <td class="p-3">${escapeHtml(row.store || "Candy Official Gaming")}</td>
+                        <td class="p-3 font-semibold text-deepberry">${escapeHtml(row.store || "Candy Official Gaming")}</td>
                     </tr>
                 `;
             }).join("");
@@ -2053,17 +2152,24 @@
 
         async function logVisitOnce() {
             try {
-                if (sessionStorage.getItem("candy_mlbb_visit_tracked")) return;
-                sessionStorage.setItem("candy_mlbb_visit_tracked", "1");
+                if (sessionStorage.getItem("candy_visit_logged") === "1") return;
+                sessionStorage.setItem("candy_visit_logged", "1");
+                const ua = navigator.userAgent || "";
+                const device = /android/i.test(ua)
+                    ? "Android"
+                    : /iphone|ipad|ipod/i.test(ua)
+                        ? "iOS"
+                        : "Desktop";
+                const screenInfo = `${window.screen?.width || 0}x${window.screen?.height || 0}`;
                 await addDoc(visitsCol, {
                     store: "Candy Official Gaming",
-                    device: navigator.platform || "Web",
-                    screen: `${window.innerWidth}x${window.innerHeight}`,
+                    device,
+                    screen: screenInfo,
                     clientTime: Date.now(),
                     createdAt: serverTimestamp()
                 });
             } catch (_err) {
-                // Ignore offline or rule limits
+                // Ignore visit log errors
             }
         }
 
@@ -2073,22 +2179,52 @@
             document.getElementById("headerCatalogBtn")?.addEventListener("click", showCatalog);
             document.getElementById("openCatalogBtn")?.addEventListener("click", showCatalog);
             document.getElementById("backToLandingBtn")?.addEventListener("click", showLanding);
+
             document.getElementById("resetCatalogFiltersBtn")?.addEventListener("click", () => {
-                const s = document.getElementById("catalogSearchInput");
-                const srt = document.getElementById("catalogSortSelect");
-                if (s) s.value = "";
-                if (srt) srt.value = "newest";
+                const search = document.getElementById("catalogSearchInput");
+                const sort = document.getElementById("catalogSortSelect");
+                if (search) search.value = "";
+                if (sort) sort.value = "newest";
                 setCatalogFilter("ALL");
             });
 
             document.getElementById("headerAdminLinkBtn")?.addEventListener("click", onAdminTriggerClick);
             document.getElementById("footerAdminLinkBtn")?.addEventListener("click", onAdminTriggerClick);
             document.getElementById("cancelAdminKeyBtn")?.addEventListener("click", () => closeModal("adminKeyModal"));
+
             document.getElementById("lockAdminStudioBtn")?.addEventListener("click", () => {
                 isAdminUnlocked = false;
+                isAdminKeyVerified = false;
                 syncAdminState();
             });
 
+            document.getElementById("adminSignOutBtn")?.addEventListener("click", async () => {
+                isAdminUnlocked = false;
+                isAdminKeyVerified = false;
+                try {
+                    await signOut(auth);
+                } catch (_err) {
+                    // Ignore signOut errors
+                }
+                syncAdminState();
+                showNotice("Signed Out", "Admin session မှ ထွက်ပြီးပါပြီ", "info");
+            });
+
+            document.getElementById("sendAdminResetBtn")?.addEventListener("click", async () => {
+                const targetEmail = (currentFirebaseUser?.email || document.getElementById("adminEmailInput")?.value || "").trim();
+                if (!targetEmail) {
+                    showNotice("Email Required", "Password reset ပို့ရန် Admin Email ထည့်သွင်းပါ", "error");
+                    return;
+                }
+                try {
+                    await sendPasswordResetEmail(auth, targetEmail);
+                    showNotice("Reset Sent", `Password reset link ကို ${targetEmail} သို့ ပို့ပြီးပါပြီ`, "success");
+                } catch (_err) {
+                    showNotice("Reset Failed", "Password reset email ပို့၍မရပါ", "error");
+                }
+            });
+
+            // Step 1 of Admin modal: verify key 'candy2026'
             document.getElementById("adminKeyForm")?.addEventListener("submit", (ev) => {
                 ev.preventDefault();
                 if (!isDedicatedAdminLink()) {
@@ -2097,14 +2233,79 @@
                 }
                 const entered = (document.getElementById("adminKeyInput")?.value || "").trim();
                 const errEl = document.getElementById("adminKeyErrorMsg");
+                const okEl = document.getElementById("adminKeyVerifiedMsg");
+
                 if (entered === ADMIN_KEY) {
-                    isAdminUnlocked = true;
+                    isAdminKeyVerified = true;
+                    if (errEl) {
+                        errEl.textContent = "";
+                        errEl.classList.add("hidden");
+                    }
+                    if (okEl) okEl.classList.remove("hidden");
+                    syncAdminState();
+                    if (!isAdminUnlocked) {
+                        document.getElementById("adminEmailInput")?.focus();
+                    }
+                } else {
+                    isAdminKeyVerified = false;
+                    if (okEl) okEl.classList.add("hidden");
+                    if (errEl) {
+                        errEl.textContent = "Invalid Admin key";
+                        errEl.classList.remove("hidden");
+                    }
+                }
+            });
+
+            // Step 2 of Admin modal: Firebase Email & Password sign-in
+            document.getElementById("adminFirebaseLoginForm")?.addEventListener("submit", async (ev) => {
+                ev.preventDefault();
+                if (!isDedicatedAdminLink()) {
+                    closeModal("adminKeyModal");
+                    return;
+                }
+
+                const keyErrEl = document.getElementById("adminKeyErrorMsg");
+                if (!isAdminKeyVerified) {
+                    const typedKey = (document.getElementById("adminKeyInput")?.value || "").trim();
+                    if (typedKey === ADMIN_KEY) {
+                        isAdminKeyVerified = true;
+                        document.getElementById("adminKeyVerifiedMsg")?.classList.remove("hidden");
+                    } else {
+                        if (keyErrEl) {
+                            keyErrEl.textContent = "First verify Admin key (candy2026)";
+                            keyErrEl.classList.remove("hidden");
+                        }
+                        return;
+                    }
+                }
+
+                const email = (document.getElementById("adminEmailInput")?.value || "").trim();
+                const password = document.getElementById("adminPasswordInput")?.value || "";
+                const errEl = document.getElementById("adminAuthErrorMsg");
+                const submitBtn = document.getElementById("adminFirebaseLoginSubmitBtn");
+
+                if (errEl) {
+                    errEl.textContent = "";
+                    errEl.classList.add("hidden");
+                }
+                if (submitBtn) submitBtn.disabled = true;
+
+                try {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    if (document.getElementById("adminPasswordInput")) {
+                        document.getElementById("adminPasswordInput").value = "";
+                    }
                     closeModal("adminKeyModal");
                     syncAdminState();
                     document.getElementById("adminStudioPanel")?.scrollIntoView({ behavior: "smooth" });
-                } else if (errEl) {
-                    errEl.textContent = "Invalid Admin key";
-                    errEl.classList.remove("hidden");
+                } catch (err) {
+                    const code = err?.code || "auth-error";
+                    if (errEl) {
+                        errEl.textContent = `Firebase Login မအောင်မြင်ပါ (${code})။ Email နှင့် Password စစ်ဆေးပါ။`;
+                        errEl.classList.remove("hidden");
+                    }
+                } finally {
+                    if (submitBtn) submitBtn.disabled = false;
                 }
             });
 
@@ -2182,6 +2383,7 @@
 
         // Initialize cleanly on every load/refresh: Admin unlocked is always false and Admin section stays hidden
         isAdminUnlocked = false;
+        isAdminKeyVerified = false;
         accounts = loadAccountsFromStorage();
         diaPrices = normalizeDia(readLocalJson(DIA_KEY, DEFAULT_DIA));
         draftDiaPrices = normalizeDia(diaPrices);
@@ -2193,19 +2395,14 @@
         syncAdminState();
 
         onAuthStateChanged(auth, (user) => {
+            currentFirebaseUser = user || null;
             const statusEl = document.getElementById("adminSyncStatusText");
             if (statusEl) {
                 statusEl.textContent = user
-                    ? "Firebase Auth connected (candy-shop-a365d) • Firestore live sync ready"
-                    : "Connecting Firebase Auth (candy-shop-a365d)...";
+                    ? `Signed in as ${user.email || "Admin"} (candy-shop-a365d)`
+                    : "Firebase (candy-shop-a365d) ready • Key + Email/Password required for Admin Studio";
             }
-        });
-
-        signInAnonymously(auth).catch((_err) => {
-            const statusEl = document.getElementById("adminSyncStatusText");
-            if (statusEl) {
-                statusEl.textContent = "Local + Firestore mode ready (candy-shop-a365d)";
-            }
+            syncAdminState();
         });
 
         onSnapshot(accountsCol, (snap) => {
