@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Padauk:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
-        // Design tokens for Cream-Blush (#fdf6f7), Alabaster (#fff9fa), Soft Blush (#fff2f4) & Rose-Berry (#be185d / #9d174d)
+        // Boutique palette tokens: Cream-Blush (#fdf6f7), Alabaster (#fff9fa), Soft Blush (#fff2f4), Rose-Berry (#be185d / #9d174d)
         tailwind.config = {
             theme: {
                 extend: {
@@ -41,7 +41,6 @@
     </script>
 
     <style>
-        /* Editorial cream-blush (#fdf6f7), alabaster (#fff9fa), soft blush (#fff2f4) & rose-berry (#be185d / #9d174d) styling */
         html, body {
             background-color: #fdf6f7;
             color: #3b1d2a;
@@ -81,8 +80,8 @@
         }
 
         .boutique-panel {
-            background: rgba(255, 249, 250, 0.96);
-            border: 1px solid rgba(190, 24, 93, 0.16);
+            background: rgba(255, 249, 250, 0.97);
+            border: 1px solid rgba(190, 24, 93, 0.18);
             box-shadow:
                 0 14px 32px -16px rgba(59, 29, 42, 0.16),
                 0 2px 6px -1px rgba(190, 24, 93, 0.05);
@@ -106,7 +105,7 @@
                 0 6px 14px -4px rgba(190, 24, 93, 0.12);
         }
 
-        /* All closed modal backdrops are strictly display: none; pointer-events: none; */
+        /* Closed modal backdrops must remain non-blocking until .is-open is added */
         .modal-backdrop {
             display: none;
             pointer-events: none;
@@ -134,7 +133,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-petal selection:text-plumink">
 
-    <!-- STICKY HEADER BAR (No Admin UI shown to regular buyers) -->
+    <!-- STICKY HEADER BAR -->
     <header class="sticky top-0 z-40 bg-alabaster/95 backdrop-blur-md border-b border-roseberry/15 shadow-2xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
             <!-- Brand Home Trigger -->
@@ -159,7 +158,7 @@
                 </div>
             </button>
 
-            <!-- Buyer Navigation & Telegram Contact -->
+            <!-- Navigation & Telegram Contact -->
             <div class="flex items-center gap-2 sm:gap-2.5">
                 <button type="button"
                         id="headerCatalogBtn"
@@ -183,7 +182,7 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
 
-        <!-- SECRET ADMIN STUDIO SECTION (Strictly hidden on load/refresh; unlocked via ?admin=candy2026, #admin-candy2026, or #adminUnlockModal) -->
+        <!-- SECRET ADMIN STUDIO SECTION (Hidden on load/refresh; unlocked only via candy2026) -->
         <section id="adminPanelSection"
                  style="display: none;"
                  class="hidden boutique-panel rounded-3xl p-5 sm:p-8 space-y-6 border-2 border-roseberry/25">
@@ -191,7 +190,7 @@
                 <div class="space-y-1">
                     <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-xl bg-blush text-deepberry border border-roseberry/20 text-[11px] font-bold">
                         <i class="fa-solid fa-shield-halved text-roseberry"></i>
-                        <span>Admin Studio (candy2026)</span>
+                        <span>Secret Admin Panel (candy2026)</span>
                     </div>
                     <h2 class="text-xl sm:text-2xl font-bold editorial-font berry-title-gradient">
                         Candy Official Gaming — MLBB Account Studio
@@ -215,8 +214,62 @@
                 </div>
             </div>
 
-            <!-- Add / Edit MLBB Account Form -->
-            <div class="bg-white/95 border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-4">
+            <!-- Admin Sub-Navigation Tabs -->
+            <div class="flex flex-wrap items-center gap-2 border-b border-roseberry/15 pb-4">
+                <button type="button"
+                        data-admin-tab="list"
+                        id="adminTab-list"
+                        class="admin-studio-tab px-4 py-2 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer">
+                    <i class="fa-solid fa-list mr-1"></i> Accounts စာရင်း (<span id="adminTotalCount">0</span>)
+                </button>
+                <button type="button"
+                        data-admin-tab="add"
+                        id="adminTab-add"
+                        class="admin-studio-tab px-4 py-2 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                    <i class="fa-solid fa-plus mr-1 text-roseberry"></i> Account အသစ်ထည့်ရန်
+                </button>
+                <button type="button"
+                        data-admin-tab="dia"
+                        id="adminTab-dia"
+                        class="admin-studio-tab px-4 py-2 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                    <i class="fa-regular fa-gem mr-1 text-roseberry"></i> Dia ဈေးပြင်ရန်
+                </button>
+                <button type="button"
+                        data-admin-tab="tg"
+                        id="adminTab-tg"
+                        class="admin-studio-tab px-4 py-2 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                    <i class="fa-solid fa-star mr-1 text-roseberry"></i> Star &amp; TG ဈေးပြင်ရန်
+                </button>
+                <button type="button"
+                        data-admin-tab="visitors"
+                        id="adminTab-visitors"
+                        class="admin-studio-tab px-4 py-2 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                    <i class="fa-solid fa-users mr-1 text-roseberry"></i> Visitor Logs
+                </button>
+            </div>
+
+            <!-- ADMIN TAB 1: ACCOUNTS LIST -->
+            <div id="adminSection-list" class="space-y-4">
+                <div class="overflow-x-auto rounded-2xl border border-roseberry/15 bg-white">
+                    <table class="w-full text-left text-xs text-plumink">
+                        <thead class="bg-blush text-plumink uppercase tracking-wider border-b border-roseberry/15">
+                            <tr>
+                                <th class="p-3">Photo</th>
+                                <th class="p-3">Account</th>
+                                <th class="p-3">Rank</th>
+                                <th class="p-3">Skins / WR</th>
+                                <th class="p-3">Price</th>
+                                <th class="p-3">Status</th>
+                                <th class="p-3 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminAccountsTbody" class="divide-y divide-roseberry/10"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ADMIN TAB 2: ADD / EDIT ACCOUNT FORM -->
+            <div id="adminSection-add" class="hidden bg-white/95 border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-4">
                 <div class="flex items-center justify-between gap-2">
                     <h3 id="adminFormHeading" class="text-lg font-bold editorial-font text-plumink">
                         <i class="fa-solid fa-plus-circle text-roseberry mr-1"></i> MLBB Account အသစ်ထည့်ရန်
@@ -354,22 +407,111 @@
                 </form>
             </div>
 
-            <!-- Admin Accounts Table -->
-            <div class="overflow-x-auto rounded-2xl border border-roseberry/15 bg-white">
-                <table class="w-full text-left text-xs text-plumink">
-                    <thead class="bg-blush text-plumink uppercase tracking-wider border-b border-roseberry/15">
-                        <tr>
-                            <th class="p-3">Photo</th>
-                            <th class="p-3">Account</th>
-                            <th class="p-3">Rank</th>
-                            <th class="p-3">Skins / WR</th>
-                            <th class="p-3">Price</th>
-                            <th class="p-3">Status</th>
-                            <th class="p-3 text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="adminAccountsTbody" class="divide-y divide-roseberry/10"></tbody>
-                </table>
+            <!-- ADMIN TAB 3: DIA PRICE EDITOR -->
+            <div id="adminSection-dia" class="hidden bg-white/95 border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-5">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-roseberry/15 pb-3">
+                    <div>
+                        <h3 class="text-lg font-bold editorial-font text-plumink">
+                            <i class="fa-regular fa-gem text-roseberry mr-1"></i> MLBB Dia Price Editor
+                        </h3>
+                        <p class="text-[11px] text-mauve">Edit or add MLBB Diamond &amp; Pass packages and save to Firestore</p>
+                    </div>
+                    <button type="button"
+                            id="saveDiaPricesBtn"
+                            class="px-5 py-2.5 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer">
+                        <i class="fa-solid fa-floppy-disk mr-1"></i> Save Dia Prices
+                    </button>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-deepberry">Pass &amp; Bundles</p>
+                        <button type="button"
+                                id="addDiaBundleBtn"
+                                class="px-3 py-1.5 rounded-xl bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer">
+                            <i class="fa-solid fa-plus mr-1"></i> Add Bundle
+                        </button>
+                    </div>
+                    <div id="adminDiaBundleInputs" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-deepberry">Diamond Packages</p>
+                        <button type="button"
+                                id="addDiaPackageBtn"
+                                class="px-3 py-1.5 rounded-xl bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer">
+                            <i class="fa-solid fa-plus mr-1"></i> Add Dia Package
+                        </button>
+                    </div>
+                    <div id="adminDiaPackageInputs" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+            </div>
+
+            <!-- ADMIN TAB 4: STAR & TG PREMIUM PRICE EDITOR -->
+            <div id="adminSection-tg" class="hidden bg-white/95 border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-5">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-roseberry/15 pb-3">
+                    <div>
+                        <h3 class="text-lg font-bold editorial-font text-plumink">
+                            <i class="fa-solid fa-star text-roseberry mr-1"></i> Star &amp; TG Premium Price Editor
+                        </h3>
+                        <p class="text-[11px] text-mauve">Edit or add Telegram Premium plans and Telegram Star packages</p>
+                    </div>
+                    <button type="button"
+                            id="saveTgPricesBtn"
+                            class="px-5 py-2.5 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer">
+                        <i class="fa-solid fa-floppy-disk mr-1"></i> Save Star &amp; TG Prices
+                    </button>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-deepberry">Telegram Premium Plans</p>
+                        <button type="button"
+                                id="addTgPremiumBtn"
+                                class="px-3 py-1.5 rounded-xl bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer">
+                            <i class="fa-solid fa-plus mr-1"></i> Add Plan
+                        </button>
+                    </div>
+                    <div id="adminTgPremiumInputs" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-deepberry">Telegram Star Packages</p>
+                        <button type="button"
+                                id="addTgStarBtn"
+                                class="px-3 py-1.5 rounded-xl bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer">
+                            <i class="fa-solid fa-plus mr-1"></i> Add Star Package
+                        </button>
+                    </div>
+                    <div id="adminTgStarInputs" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+            </div>
+
+            <!-- ADMIN TAB 5: VISITOR LOGS -->
+            <div id="adminSection-visitors" class="hidden bg-white/95 border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                        <h3 class="text-lg font-bold editorial-font text-plumink">Visitor Logs</h3>
+                        <p class="text-xs text-mauve">
+                            Total Recorded Visits: <span id="visitorLogTotalSpan" class="font-bold text-deepberry">0</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="overflow-x-auto rounded-2xl border border-roseberry/15 bg-white">
+                    <table class="w-full text-left text-xs text-plumink">
+                        <thead class="bg-blush text-plumink uppercase tracking-wider border-b border-roseberry/15">
+                            <tr>
+                                <th class="p-3">Time</th>
+                                <th class="p-3">Device / Browser</th>
+                                <th class="p-3">Screen</th>
+                                <th class="p-3">Store</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminVisitorLogsTbody" class="divide-y divide-roseberry/10"></tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
@@ -383,7 +525,7 @@
                             <span>Candy Official Gaming • MLBB Boutique</span>
                         </div>
 
-                        <!-- Greeting headline with balanced sizing (text-xl sm:text-3xl) -->
+                        <!-- Greeting headline with refined font size -->
                         <h1 class="text-xl sm:text-3xl font-bold editorial-font berry-title-gradient leading-snug">
                             Candy Gaming မှကြိုဆိုပါတယ်ရှင့်
                         </h1>
@@ -413,7 +555,7 @@
                         </div>
                     </div>
 
-                    <!-- Single clean photo showcase frame displaying IMG_20261126_162338_994.jpg -->
+                    <!-- Single clean photo frame displaying IMG_20261126_162338_994.jpg -->
                     <div class="w-full md:max-w-sm rounded-2xl overflow-hidden border border-roseberry/20 bg-white aspect-[16/10]">
                         <img src="IMG_20261126_162338_994.jpg"
                              alt="Candy Official Gaming"
@@ -510,7 +652,7 @@
         </section>
     </main>
 
-    <!-- FOOTER (No Admin UI shown to regular buyers) -->
+    <!-- FOOTER -->
     <footer class="mt-14 bg-alabaster/95 border-t border-roseberry/15 py-7 text-mauve">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
             <button type="button"
@@ -632,17 +774,48 @@
         const db = getFirestore(app);
         const accountsCol = collection(db, "mlbb_accounts");
         const visitsCol = collection(db, "visit_logs");
+        const diaPricesDocRef = doc(db, "store_settings", "mlbb_dia_prices");
+        const tgPricesDocRef = doc(db, "store_settings", "tg_star_premium_prices");
 
         const ADMIN_SECRET = "candy2026";
         const ACCOUNTS_STORAGE_KEY = "candy_mlbb_accounts_v1";
         const DELETED_IDS_STORAGE_KEY = "candy_mlbb_deletedIds_v1";
+        const DIA_STORAGE_KEY = "candy_mlbb_dia_prices_v1";
+        const TG_STORAGE_KEY = "candy_tg_star_premium_v1";
         const MAX_PHOTOS = 15;
         const DEFAULT_BANNER_IMAGE = "IMG_20261126_162338_994.jpg";
         const FALLBACK_PLACEHOLDER_IMAGE = "https://placehold.co/800x450/fff2f4/be185d?text=Candy+MLBB+Account";
 
+        const DEFAULT_DIA_DATA = {
+            bundles: [
+                { id: "b-weekly", label: "Weekly Pass", price: 9000 },
+                { id: "b-elite", label: "Weekly Elite Bundle", price: 5000 }
+            ],
+            packages: [
+                { id: "d-86", amount: "86", price: 6500 },
+                { id: "d-172", amount: "172", price: 16000 },
+                { id: "d-257", amount: "257", price: 20300 },
+                { id: "d-343", amount: "343", price: 26800 }
+            ]
+        };
+
+        const DEFAULT_TG_DATA = {
+            premium: [
+                { id: "tgp-3m", label: "3 Months (Gift plan)", price: 62000 },
+                { id: "tgp-6m", label: "6 Months (Gift plan)", price: 84000 }
+            ],
+            stars: [
+                { id: "tgs-50", amount: "50", price: 3800 },
+                { id: "tgs-100", amount: "100", price: 7600 },
+                { id: "tgs-200", amount: "200", price: 15200 }
+            ]
+        };
+
         // Strictly initialized to false on load and refresh
         let isAdminUnlocked = false;
+        let activeAdminTab = "list";
         let accounts = [];
+        let visitorRows = [];
         let visitCount = 0;
         let activeFilter = "ALL";
         let editorPhotoList = [];
@@ -650,8 +823,99 @@
         let sliderIndex = 0;
         let pendingConfirmCallback = null;
 
+        let diaData = cloneDefaultDia();
+        let draftDiaData = cloneDefaultDia();
+        let tgData = cloneDefaultTg();
+        let draftTgData = cloneDefaultTg();
+
+        function cloneDefaultDia() {
+            return {
+                bundles: DEFAULT_DIA_DATA.bundles.map((b) => ({ ...b })),
+                packages: DEFAULT_DIA_DATA.packages.map((p) => ({ ...p }))
+            };
+        }
+
+        function cloneDefaultTg() {
+            return {
+                premium: DEFAULT_TG_DATA.premium.map((p) => ({ ...p })),
+                stars: DEFAULT_TG_DATA.stars.map((s) => ({ ...s }))
+            };
+        }
+
+        function normalizeDia(raw) {
+            if (!raw || typeof raw !== "object") return cloneDefaultDia();
+            const bundles = Array.isArray(raw.bundles)
+                ? raw.bundles.map((b, i) => ({
+                    id: String(b.id || `b-${i}`),
+                    label: String(b.label || "").trim(),
+                    price: Number(b.price || 0)
+                }))
+                : cloneDefaultDia().bundles;
+            const packages = Array.isArray(raw.packages)
+                ? raw.packages.map((p, i) => ({
+                    id: String(p.id || `d-${i}`),
+                    amount: String(p.amount || "").trim(),
+                    price: Number(p.price || 0)
+                }))
+                : cloneDefaultDia().packages;
+            return { bundles, packages };
+        }
+
+        function normalizeTg(raw) {
+            if (!raw || typeof raw !== "object") return cloneDefaultTg();
+            const premium = Array.isArray(raw.premium)
+                ? raw.premium.map((p, i) => ({
+                    id: String(p.id || `tgp-${i}`),
+                    label: String(p.label || "").trim(),
+                    price: Number(p.price || 0)
+                }))
+                : cloneDefaultTg().premium;
+            const stars = Array.isArray(raw.stars)
+                ? raw.stars.map((s, i) => ({
+                    id: String(s.id || `tgs-${i}`),
+                    amount: String(s.amount || "").trim(),
+                    price: Number(s.price || 0)
+                }))
+                : cloneDefaultTg().stars;
+            return { premium, stars };
+        }
+
+        function loadLocalDia() {
+            try {
+                const raw = localStorage.getItem(DIA_STORAGE_KEY);
+                return raw ? normalizeDia(JSON.parse(raw)) : cloneDefaultDia();
+            } catch (_err) {
+                return cloneDefaultDia();
+            }
+        }
+
+        function saveLocalDia(data) {
+            try {
+                localStorage.setItem(DIA_STORAGE_KEY, JSON.stringify(data));
+            } catch (_err) {
+                // Ignore storage errors
+            }
+        }
+
+        function loadLocalTg() {
+            try {
+                const raw = localStorage.getItem(TG_STORAGE_KEY);
+                return raw ? normalizeTg(JSON.parse(raw)) : cloneDefaultTg();
+            } catch (_err) {
+                return cloneDefaultTg();
+            }
+        }
+
+        function saveLocalTg(data) {
+            try {
+                localStorage.setItem(TG_STORAGE_KEY, JSON.stringify(data));
+            } catch (_err) {
+                // Ignore storage errors
+            }
+        }
+
         /**
-         * Checks whether the URL explicitly carries ?admin=candy2026 or #admin-candy2026.
+         * Checks whether URL explicitly contains ?admin=candy2026 or #admin-candy2026.
          */
         function hasUrlAdminSecret() {
             try {
@@ -673,8 +937,7 @@
             if (isAdminUnlocked) {
                 panel.style.display = "block";
                 panel.classList.remove("hidden");
-                renderEditorThumbnails();
-                renderAdminTable();
+                switchAdminTab(activeAdminTab);
             } else {
                 panel.style.display = "none";
                 panel.classList.add("hidden");
@@ -682,18 +945,35 @@
         }
 
         /**
-         * Opens the secret Admin unlock modal (#adminUnlockModal).
+         * Switches active tab inside Admin Studio.
          */
-        function openAdminUnlockModal() {
-            const input = document.getElementById("adminSecretInput");
-            const errEl = document.getElementById("adminUnlockError");
-            if (input) input.value = "";
-            if (errEl) {
-                errEl.textContent = "";
-                errEl.classList.add("hidden");
+        function switchAdminTab(tabName) {
+            activeAdminTab = tabName || "list";
+            const tabs = ["list", "add", "dia", "tg", "visitors"];
+            tabs.forEach((key) => {
+                const btn = document.getElementById(`adminTab-${key}`);
+                const sec = document.getElementById(`adminSection-${key}`);
+                if (btn) {
+                    btn.className = key === activeAdminTab
+                        ? "admin-studio-tab px-4 py-2 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer"
+                        : "admin-studio-tab px-4 py-2 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all";
+                }
+                if (sec) {
+                    sec.classList.toggle("hidden", key !== activeAdminTab);
+                }
+            });
+
+            if (activeAdminTab === "list") renderAdminTable();
+            if (activeAdminTab === "add") renderEditorThumbnails();
+            if (activeAdminTab === "dia") {
+                draftDiaData = normalizeDia(diaData);
+                renderAdminDiaEditor();
             }
-            openModal("adminUnlockModal");
-            setTimeout(() => input?.focus(), 50);
+            if (activeAdminTab === "tg") {
+                draftTgData = normalizeTg(tgData);
+                renderAdminTgEditor();
+            }
+            if (activeAdminTab === "visitors") renderVisitorLogs();
         }
 
         /**
@@ -1283,18 +1563,12 @@
             openModal("detailModal");
         }
 
-        /**
-         * Moves active slider photo forward or backward.
-         */
         function moveSlider(delta) {
             if (!sliderPhotoList.length) return;
             const nextIdx = (sliderIndex + delta + sliderPhotoList.length) % sliderPhotoList.length;
             setSliderIndex(nextIdx);
         }
 
-        /**
-         * Updates slider image, counter label, and active thumbnail highlight.
-         */
         function setSliderIndex(idx) {
             if (!sliderPhotoList.length) return;
             sliderIndex = Math.max(0, Math.min(idx, sliderPhotoList.length - 1));
@@ -1318,20 +1592,23 @@
         function renderAdminTable() {
             if (!isAdminUnlocked) return;
 
+            const deletedSet = loadDeletedIdsSet();
+            const items = accounts.filter((acc) => acc && acc.id && !deletedSet.has(String(acc.id)));
+
+            const totalEl = document.getElementById("adminTotalCount");
+            if (totalEl) totalEl.textContent = String(items.length);
+
             const visitCounterEl = document.getElementById("adminVisitCounter");
             if (visitCounterEl) visitCounterEl.textContent = String(visitCount);
 
             const tbody = document.getElementById("adminAccountsTbody");
             if (!tbody) return;
 
-            const deletedSet = loadDeletedIdsSet();
-            const items = accounts.filter((acc) => acc && acc.id && !deletedSet.has(String(acc.id)));
-
             if (items.length === 0) {
                 tbody.innerHTML = `
                     <tr>
                         <td colspan="7" class="p-6 text-center text-xs text-mauve">
-                            MLBB Account မရှိသေးပါ။ အပေါ်ရှိ Form မှ အသစ်ထည့်သွင်းနိုင်ပါသည်။
+                            MLBB Account မရှိသေးပါ။ "Account အသစ်ထည့်ရန်" Tab မှ အသစ်ထည့်သွင်းနိုင်ပါသည်။
                         </td>
                     </tr>
                 `;
@@ -1399,6 +1676,235 @@
             });
         }
 
+        function syncDiaDraftDom() {
+            draftDiaData.bundles.forEach((b) => {
+                const l = document.getElementById(`diaBundleLabel-${b.id}`);
+                const p = document.getElementById(`diaBundlePrice-${b.id}`);
+                if (l) b.label = l.value;
+                if (p) b.price = Number(p.value || 0);
+            });
+            draftDiaData.packages.forEach((pkg) => {
+                const a = document.getElementById(`diaPkgAmt-${pkg.id}`);
+                const p = document.getElementById(`diaPkgPrice-${pkg.id}`);
+                if (a) pkg.amount = a.value;
+                if (p) pkg.price = Number(p.value || 0);
+            });
+        }
+
+        function renderAdminDiaEditor() {
+            const bundleWrap = document.getElementById("adminDiaBundleInputs");
+            const pkgWrap = document.getElementById("adminDiaPackageInputs");
+            if (!bundleWrap || !pkgWrap) return;
+
+            bundleWrap.innerHTML = draftDiaData.bundles.map((b) => `
+                <div class="bg-alabaster border border-roseberry/15 rounded-xl p-3 flex items-center gap-2">
+                    <div class="flex-1 space-y-1.5">
+                        <input type="text"
+                               id="diaBundleLabel-${escapeHtml(b.id)}"
+                               value="${escapeHtml(b.label)}"
+                               placeholder="Bundle Name"
+                               class="w-full bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-plumink">
+                        <input type="number"
+                               min="0"
+                               id="diaBundlePrice-${escapeHtml(b.id)}"
+                               value="${Number(b.price || 0)}"
+                               placeholder="Price (MMK)"
+                               class="w-full bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
+                    </div>
+                    <button type="button"
+                            data-del-dia-bundle="${escapeHtml(b.id)}"
+                            class="del-dia-bundle-btn px-2.5 py-2 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/20 text-xs cursor-pointer">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join("");
+
+            pkgWrap.innerHTML = draftDiaData.packages.map((pkg) => `
+                <div class="bg-alabaster border border-roseberry/15 rounded-xl p-2.5 flex items-center gap-2">
+                    <input type="text"
+                           id="diaPkgAmt-${escapeHtml(pkg.id)}"
+                           value="${escapeHtml(pkg.amount)}"
+                           placeholder="Dia"
+                           class="w-24 bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-plumink">
+                    <input type="number"
+                           min="0"
+                           id="diaPkgPrice-${escapeHtml(pkg.id)}"
+                           value="${Number(pkg.price || 0)}"
+                           placeholder="Price"
+                           class="flex-1 bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
+                    <button type="button"
+                            data-del-dia-pkg="${escapeHtml(pkg.id)}"
+                            class="del-dia-pkg-btn px-2.5 py-1.5 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/20 text-xs cursor-pointer">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join("");
+
+            bundleWrap.querySelectorAll(".del-dia-bundle-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    syncDiaDraftDom();
+                    const id = btn.getAttribute("data-del-dia-bundle");
+                    draftDiaData.bundles = draftDiaData.bundles.filter((x) => x.id !== id);
+                    renderAdminDiaEditor();
+                });
+            });
+
+            pkgWrap.querySelectorAll(".del-dia-pkg-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    syncDiaDraftDom();
+                    const id = btn.getAttribute("data-del-dia-pkg");
+                    draftDiaData.packages = draftDiaData.packages.filter((x) => x.id !== id);
+                    renderAdminDiaEditor();
+                });
+            });
+        }
+
+        async function saveDiaPrices() {
+            syncDiaDraftDom();
+            const cleaned = normalizeDia({
+                bundles: draftDiaData.bundles.filter((b) => String(b.label || "").trim()),
+                packages: draftDiaData.packages.filter((p) => String(p.amount || "").trim())
+            });
+            diaData = cleaned;
+            saveLocalDia(cleaned);
+            try {
+                await setDoc(diaPricesDocRef, { ...cleaned, updatedAt: Date.now() }, { merge: true });
+                showNotice("Saved", "Dia ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "success");
+            } catch (_err) {
+                showNotice("Saved Locally", "Local storage တွင် Dia ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "info");
+            }
+        }
+
+        function syncTgDraftDom() {
+            draftTgData.premium.forEach((p) => {
+                const l = document.getElementById(`tgPremLabel-${p.id}`);
+                const pr = document.getElementById(`tgPremPrice-${p.id}`);
+                if (l) p.label = l.value;
+                if (pr) p.price = Number(pr.value || 0);
+            });
+            draftTgData.stars.forEach((s) => {
+                const a = document.getElementById(`tgStarAmt-${s.id}`);
+                const pr = document.getElementById(`tgStarPrice-${s.id}`);
+                if (a) s.amount = a.value;
+                if (pr) s.price = Number(pr.value || 0);
+            });
+        }
+
+        function renderAdminTgEditor() {
+            const premWrap = document.getElementById("adminTgPremiumInputs");
+            const starWrap = document.getElementById("adminTgStarInputs");
+            if (!premWrap || !starWrap) return;
+
+            premWrap.innerHTML = draftTgData.premium.map((item) => `
+                <div class="bg-alabaster border border-roseberry/15 rounded-xl p-3 flex items-center gap-2">
+                    <div class="flex-1 space-y-1.5">
+                        <input type="text"
+                               id="tgPremLabel-${escapeHtml(item.id)}"
+                               value="${escapeHtml(item.label)}"
+                               placeholder="Plan Label"
+                               class="w-full bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-plumink">
+                        <input type="number"
+                               min="0"
+                               id="tgPremPrice-${escapeHtml(item.id)}"
+                               value="${Number(item.price || 0)}"
+                               placeholder="Price (MMK)"
+                               class="w-full bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
+                    </div>
+                    <button type="button"
+                            data-del-tg-prem="${escapeHtml(item.id)}"
+                            class="del-tg-prem-btn px-2.5 py-2 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/20 text-xs cursor-pointer">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join("");
+
+            starWrap.innerHTML = draftTgData.stars.map((st) => `
+                <div class="bg-alabaster border border-roseberry/15 rounded-xl p-2.5 flex items-center gap-2">
+                    <input type="text"
+                           id="tgStarAmt-${escapeHtml(st.id)}"
+                           value="${escapeHtml(st.amount)}"
+                           placeholder="Stars"
+                           class="w-24 bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-plumink">
+                    <input type="number"
+                           min="0"
+                           id="tgStarPrice-${escapeHtml(st.id)}"
+                           value="${Number(st.price || 0)}"
+                           placeholder="Price"
+                           class="flex-1 bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
+                    <button type="button"
+                            data-del-tg-star="${escapeHtml(st.id)}"
+                            class="del-tg-star-btn px-2.5 py-1.5 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/20 text-xs cursor-pointer">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join("");
+
+            premWrap.querySelectorAll(".del-tg-prem-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    syncTgDraftDom();
+                    const id = btn.getAttribute("data-del-tg-prem");
+                    draftTgData.premium = draftTgData.premium.filter((x) => x.id !== id);
+                    renderAdminTgEditor();
+                });
+            });
+
+            starWrap.querySelectorAll(".del-tg-star-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    syncTgDraftDom();
+                    const id = btn.getAttribute("data-del-tg-star");
+                    draftTgData.stars = draftTgData.stars.filter((x) => x.id !== id);
+                    renderAdminTgEditor();
+                });
+            });
+        }
+
+        async function saveTgPrices() {
+            syncTgDraftDom();
+            const cleaned = normalizeTg({
+                premium: draftTgData.premium.filter((p) => String(p.label || "").trim()),
+                stars: draftTgData.stars.filter((s) => String(s.amount || "").trim())
+            });
+            tgData = cleaned;
+            saveLocalTg(cleaned);
+            try {
+                await setDoc(tgPricesDocRef, { ...cleaned, updatedAt: Date.now() }, { merge: true });
+                showNotice("Saved", "Star & TG Premium ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "success");
+            } catch (_err) {
+                showNotice("Saved Locally", "Local storage တွင် Star & TG ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "info");
+            }
+        }
+
+        function renderVisitorLogs() {
+            if (!isAdminUnlocked) return;
+            const totalSpan = document.getElementById("visitorLogTotalSpan");
+            const tbody = document.getElementById("adminVisitorLogsTbody");
+            if (totalSpan) totalSpan.textContent = String(visitorRows.length || visitCount);
+            if (!tbody) return;
+
+            if (!visitorRows.length) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="p-6 text-center text-xs text-mauve">
+                            Total Visits: ${visitCount} • Detailed log entries not yet available
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = visitorRows.slice(0, 50).map((row) => {
+                const dt = row.clientTime ? new Date(Number(row.clientTime)).toLocaleString() : "-";
+                return `
+                    <tr class="hover:bg-blush/50">
+                        <td class="p-3 whitespace-nowrap">${escapeHtml(dt)}</td>
+                        <td class="p-3">${escapeHtml(row.device || "Web Client")}</td>
+                        <td class="p-3">${escapeHtml(row.screen || "-")}</td>
+                        <td class="p-3">${escapeHtml(row.store || "Candy Official Gaming")}</td>
+                    </tr>
+                `;
+            }).join("");
+        }
+
         /**
          * Renders photo thumbnails in Admin form (up to MAX_PHOTOS = 15).
          */
@@ -1445,9 +1951,6 @@
             });
         }
 
-        /**
-         * Compresses uploaded image file using Canvas.
-         */
         function compressImageFile(file, maxWidth = 1024, quality = 0.78) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -1479,9 +1982,6 @@
             });
         }
 
-        /**
-         * Handles file input for up to 15 photos in Admin form.
-         */
         async function handleAdminPhotoFiles(event) {
             const files = Array.from(event.target?.files || []);
             if (!files.length) return;
@@ -1503,9 +2003,6 @@
             event.target.value = "";
         }
 
-        /**
-         * Resets Admin form fields and photo list.
-         */
         function resetAdminForm() {
             document.getElementById("mlbbAccountForm")?.reset();
             const editIdEl = document.getElementById("editingAccountId");
@@ -1522,13 +2019,11 @@
             renderEditorThumbnails();
         }
 
-        /**
-         * Loads an existing account into Admin form for editing.
-         */
         function startEditAccount(id) {
             const acc = accounts.find((item) => String(item.id) === String(id));
             if (!acc) return;
 
+            switchAdminTab("add");
             document.getElementById("editingAccountId").value = acc.id;
             document.getElementById("accTitleInput").value = acc.title || "";
             document.getElementById("accRankInput").value = acc.rank || "";
@@ -1556,12 +2051,8 @@
                 headingEl.innerHTML = `<i class="fa-solid fa-pen-to-square text-roseberry mr-1"></i> Account ပြင်ဆင်ရန် (${escapeHtml(acc.title || "")})`;
             }
             if (cancelBtn) cancelBtn.classList.remove("hidden");
-            document.getElementById("adminPanelSection")?.scrollIntoView({ behavior: "smooth" });
         }
 
-        /**
-         * Saves or updates an MLBB account in localStorage and Firestore (mlbb_accounts).
-         */
         async function handleSaveAccount(event) {
             event.preventDefault();
 
@@ -1638,11 +2129,9 @@
             }
 
             resetAdminForm();
+            switchAdminTab("list");
         }
 
-        /**
-         * Deletes an MLBB account with tombstone deletedIds protection + Firestore deleteDoc + localStorage sync.
-         */
         async function removeAccount(id) {
             const targetId = String(id);
             addDeletedId(targetId);
@@ -1659,9 +2148,6 @@
             }
         }
 
-        /**
-         * Logs session visit to Firestore visit_logs once per session.
-         */
         async function recordSessionVisit() {
             try {
                 if (sessionStorage.getItem("candy_mlbb_visit_logged")) return;
@@ -1669,6 +2155,8 @@
                 await addDoc(visitsCol, {
                     store: "Candy Official Gaming",
                     game: "MLBB",
+                    device: navigator.platform || "Web Client",
+                    screen: `${window.innerWidth}x${window.innerHeight}`,
                     createdAt: serverTimestamp(),
                     clientTime: Date.now()
                 });
@@ -1677,9 +2165,6 @@
             }
         }
 
-        /**
-         * Binds storefront, admin unlock modal, and admin studio event listeners.
-         */
         function bindListeners() {
             document.getElementById("brandHomeBtn")?.addEventListener("click", goToLanding);
             document.getElementById("footerBrandBtn")?.addEventListener("click", goToLanding);
@@ -1697,6 +2182,41 @@
                     setFilter(key);
                 });
             });
+
+            document.querySelectorAll(".admin-studio-tab").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const tabKey = btn.getAttribute("data-admin-tab") || "list";
+                    switchAdminTab(tabKey);
+                });
+            });
+
+            document.getElementById("addDiaBundleBtn")?.addEventListener("click", () => {
+                syncDiaDraftDom();
+                draftDiaData.bundles.push({ id: `b-${Date.now()}`, label: "", price: 0 });
+                renderAdminDiaEditor();
+            });
+
+            document.getElementById("addDiaPackageBtn")?.addEventListener("click", () => {
+                syncDiaDraftDom();
+                draftDiaData.packages.push({ id: `d-${Date.now()}`, amount: "", price: 0 });
+                renderAdminDiaEditor();
+            });
+
+            document.getElementById("saveDiaPricesBtn")?.addEventListener("click", saveDiaPrices);
+
+            document.getElementById("addTgPremiumBtn")?.addEventListener("click", () => {
+                syncTgDraftDom();
+                draftTgData.premium.push({ id: `tgp-${Date.now()}`, label: "", price: 0 });
+                renderAdminTgEditor();
+            });
+
+            document.getElementById("addTgStarBtn")?.addEventListener("click", () => {
+                syncTgDraftDom();
+                draftTgData.stars.push({ id: `tgs-${Date.now()}`, amount: "", price: 0 });
+                renderAdminTgEditor();
+            });
+
+            document.getElementById("saveTgPricesBtn")?.addEventListener("click", saveTgPrices);
 
             document.getElementById("closeDetailModalBtn")?.addEventListener("click", () => closeModal("detailModal"));
             document.getElementById("cancelAdminUnlockBtn")?.addEventListener("click", () => closeModal("adminUnlockModal"));
@@ -1766,6 +2286,10 @@
         // Initialize state: strictly hidden Admin Panel on load/refresh unless ?admin=candy2026 or #admin-candy2026 is present
         isAdminUnlocked = hasUrlAdminSecret();
         accounts = loadLocalAccounts();
+        diaData = loadLocalDia();
+        draftDiaData = normalizeDia(diaData);
+        tgData = loadLocalTg();
+        draftTgData = normalizeTg(tgData);
         bindListeners();
         goToLanding();
         syncAdminPanelVisibility();
@@ -1813,10 +2337,43 @@
             renderAdminTable();
         });
 
+        onSnapshot(diaPricesDocRef, (snap) => {
+            if (snap.exists()) {
+                diaData = normalizeDia(snap.data());
+                saveLocalDia(diaData);
+                if (isAdminUnlocked && activeAdminTab === "dia") {
+                    draftDiaData = normalizeDia(diaData);
+                    renderAdminDiaEditor();
+                }
+            }
+        }, (_err) => {
+            // Keep local Dia data
+        });
+
+        onSnapshot(tgPricesDocRef, (snap) => {
+            if (snap.exists()) {
+                tgData = normalizeTg(snap.data());
+                saveLocalTg(tgData);
+                if (isAdminUnlocked && activeAdminTab === "tg") {
+                    draftTgData = normalizeTg(tgData);
+                    renderAdminTgEditor();
+                }
+            }
+        }, (_err) => {
+            // Keep local TG data
+        });
+
         onSnapshot(visitsCol, (snapshot) => {
             visitCount = snapshot.size;
+            const rows = [];
+            snapshot.forEach((d) => rows.push({ id: d.id, ...(d.data() || {}) }));
+            rows.sort((a, b) => Number(b.clientTime || 0) - Number(a.clientTime || 0));
+            visitorRows = rows;
             const visitCounterEl = document.getElementById("adminVisitCounter");
             if (visitCounterEl) visitCounterEl.textContent = String(visitCount);
+            if (isAdminUnlocked && activeAdminTab === "visitors") {
+                renderVisitorLogs();
+            }
         }, (_err) => {
             // Keep visit counter at 0 if visit_logs read is restricted
         });
