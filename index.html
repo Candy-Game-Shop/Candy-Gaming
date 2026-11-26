@@ -76,6 +76,32 @@
             box-shadow: 0 8px 18px -6px rgba(157, 23, 77, 0.45);
         }
 
+        /* Real clickable file input styled cleanly for mobile browsers (Redmi Note 12 / MIUI / HyperOS) */
+        .mobile-photo-file-input {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            font-size: 12px;
+            color: #2d1620;
+            background-color: #ffffff;
+            border: 1px solid #f2d5df;
+            border-radius: 0.75rem;
+            padding: 0.35rem;
+            cursor: pointer;
+        }
+
+        .mobile-photo-file-input::file-selector-button {
+            margin-right: 0.65rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 0.6rem;
+            border: 1px solid #f2d5df;
+            background-color: #fdebf2;
+            color: #9d174d;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -471,23 +497,30 @@
                                 class="w-full bg-boutique-bg border border-boutique-border focus:border-boutique-accent rounded-xl px-3 py-2 text-xs text-boutique-ink focus:outline-none"></textarea>
                         </div>
 
-                        <!-- Mobile-Safe Photo Picker + Fallback -->
-                        <div class="space-y-2 border-t border-boutique-border pt-3">
-                            <label class="block text-xs font-bold text-boutique-deep">Account ဓာတ်ပုံများ</label>
-                            <div class="flex flex-wrap items-center gap-3">
-                                <div class="relative inline-flex items-center">
+                        <!-- Redmi Note 12 / Mobile Safe Visible File Picker + Button + URL Fallback -->
+                        <div class="space-y-2.5 border-t border-boutique-border pt-3">
+                            <label for="imageInput" class="block text-xs font-bold text-boutique-deep">Account ဓာတ်ပုံများ</label>
+
+                            <div class="space-y-2">
+                                <div class="flex flex-wrap items-center gap-2.5">
                                     <button type="button" id="selectAccountPhotosBtn" onclick="triggerAccountImagePicker(event)"
                                         class="cursor-pointer px-4 py-2 rounded-xl bg-boutique-soft hover:bg-boutique-border text-boutique-deep border border-boutique-border text-xs font-bold flex items-center gap-1.5">
                                         <i class="fa-solid fa-cloud-arrow-up"></i>
-                                        <span>ပုံရွေးချယ်ပါ (Select Photos)</span>
+                                        <span>ပုံရွေးရန်</span>
                                     </button>
-                                    <input type="file" id="imageInput" accept="image/*" multiple onchange="handleImageUpload(event)"
-                                        aria-label="Select account photos"
-                                        class="sr-only">
+                                    <span class="text-[11px] text-boutique-muted">ပုံများကို အလိုအလျောက် compress လုပ်ပြီး သိမ်းပေးပါမည်။</span>
                                 </div>
-                                <span class="text-[11px] text-boutique-muted">ပုံများကို အလိုအလျောက် compress လုပ်ပြီး သိမ်းပေးပါမည်။</span>
+
+                                <!-- Physically visible input element so MIUI / HyperOS / Chrome on Redmi Note 12 opens picker natively -->
+                                <input type="file" id="imageInput" accept="image/*" multiple
+                                    onchange="handleImageUpload(event)"
+                                    aria-label="ပုံရွေးရန်"
+                                    class="mobile-photo-file-input">
                             </div>
-                            <p id="imagePickerStatusHint" class="text-[11px] text-boutique-muted"></p>
+
+                            <p id="imagePickerStatusHint" class="text-[11px] text-boutique-muted">
+                                Redmi Note 12 သို့မဟုတ် ဖုန်း Browser တွင် အထက်ပါ "ပုံရွေးရန်" သို့မဟုတ် "Choose Files" ကို တိုက်ရိုက်နှိပ်ပြီး ပုံရွေးချယ်နိုင်ပါသည်။
+                            </p>
 
                             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1">
                                 <input type="text" id="accountImageUrlInput"
@@ -538,17 +571,17 @@
                         <div class="rounded-2xl border border-boutique-border bg-boutique-bg p-4 space-y-3">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-bold text-boutique-deep">Brand Logo</span>
-                                <label class="cursor-pointer px-3 py-1.5 rounded-lg bg-white hover:bg-boutique-soft text-boutique-deep border border-boutique-border text-[11px] font-bold flex items-center gap-1">
-                                    <i class="fa-solid fa-upload"></i>
-                                    <span>ပုံရွေးတင်မည်</span>
-                                    <input type="file" id="logoFileInput" accept="image/*" onchange="handleSiteImageFile(event, 'brandLogo')" class="hidden">
-                                </label>
+                                <span class="text-[11px] text-boutique-muted">Logo ပုံရွေးပါ</span>
                             </div>
                             <div class="w-20 h-20 rounded-full overflow-hidden border border-boutique-border bg-white mx-auto">
                                 <img id="adminPreviewBrandLogo" src="IMG_20261126_162338_994.jpg" alt="Brand Logo Preview"
                                     onerror="this.src='https://placehold.co/120x120/fdebf2/be185d?text=Logo'"
                                     class="w-full h-full object-cover">
                             </div>
+                            <input type="file" id="logoFileInput" accept="image/*"
+                                onchange="handleSiteImageFile(event, 'brandLogo')"
+                                aria-label="Brand Logo ပုံရွေးရန်"
+                                class="mobile-photo-file-input">
                             <div>
                                 <label class="block text-[11px] font-semibold text-boutique-muted mb-1">Image Path / URL</label>
                                 <input type="text" id="brandLogoInput" oninput="previewSiteImageFromInput('brandLogo')"
@@ -559,17 +592,17 @@
                         <div class="rounded-2xl border border-boutique-border bg-boutique-bg p-4 space-y-3">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-bold text-boutique-deep">Welcome Banner</span>
-                                <label class="cursor-pointer px-3 py-1.5 rounded-lg bg-white hover:bg-boutique-soft text-boutique-deep border border-boutique-border text-[11px] font-bold flex items-center gap-1">
-                                    <i class="fa-solid fa-upload"></i>
-                                    <span>ပုံရွေးတင်မည်</span>
-                                    <input type="file" id="bannerFileInput" accept="image/*" onchange="handleSiteImageFile(event, 'welcomeBanner')" class="hidden">
-                                </label>
+                                <span class="text-[11px] text-boutique-muted">Banner ပုံရွေးပါ</span>
                             </div>
                             <div class="w-full h-24 rounded-xl overflow-hidden border border-boutique-border bg-white">
                                 <img id="adminPreviewWelcomeBanner" src="53129ee050d008e49b174d49e2e488e3.jpg" alt="Welcome Banner Preview"
                                     onerror="this.src='https://placehold.co/480x160/fdebf2/be185d?text=Banner'"
                                     class="w-full h-full object-cover">
                             </div>
+                            <input type="file" id="bannerFileInput" accept="image/*"
+                                onchange="handleSiteImageFile(event, 'welcomeBanner')"
+                                aria-label="Welcome Banner ပုံရွေးရန်"
+                                class="mobile-photo-file-input">
                             <div>
                                 <label class="block text-[11px] font-semibold text-boutique-muted mb-1">Image Path / URL</label>
                                 <input type="text" id="welcomeBannerInput" oninput="previewSiteImageFromInput('welcomeBanner')"
@@ -1359,14 +1392,14 @@
             if (!input) return;
 
             try {
-                input.value = "";
+                input.focus();
                 if (typeof input.showPicker === "function") {
                     input.showPicker();
                 } else {
                     input.click();
                 }
                 if (hint) {
-                    hint.textContent = "Device မှ ပုံရွေးချယ်ရန် ဖွင့်နေပါသည်... မပွင့်ပါက အောက်ပါ URL / Link ထည့်မည်ကို အသုံးပြုနိုင်ပါသည်။";
+                    hint.textContent = "ပုံရွေးချယ်ရန် ဖွင့်နေပါသည်... မပွင့်ပါက အထက်ပါ file ခလုတ် သို့မဟုတ် URL / Link ထည့်မည်ကို နှိပ်ပါ။";
                 }
             } catch (_) {
                 try {
