@@ -105,7 +105,7 @@
                 0 6px 14px -4px rgba(190, 24, 93, 0.12);
         }
 
-        /* Closed modals must strictly have display: none; pointer-events: none; so they never block clicks */
+        /* Closed modals strictly have display: none; pointer-events: none; so they never block page interactions */
         .modal-backdrop {
             display: none;
             pointer-events: none;
@@ -141,9 +141,10 @@
                     id="brandHomeBtn"
                     aria-label="Candy Official Gaming Home"
                     class="flex items-center gap-3 text-left cursor-pointer group">
-                <div class="w-11 h-11 rounded-full bg-blush border-2 border-roseberry/25 flex items-center justify-center text-roseberry font-bold editorial-font text-lg flex-shrink-0">
-                    COG
-                </div>
+                <img src="IMG_20261126_162338_994.jpg"
+                     alt="Candy Official Gaming"
+                     onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff2f4/be185d?text=COG';"
+                     class="w-11 h-11 rounded-full object-cover bg-blush border-2 border-roseberry/25 flex-shrink-0">
                 <div>
                     <div class="flex items-center gap-2">
                         <span class="text-xl sm:text-2xl font-bold editorial-font berry-title-gradient tracking-tight">
@@ -190,7 +191,7 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
 
         <!-- SECRET-GATED ADMIN STUDIO (#adminPanelSection) -->
-        <!-- Stays hidden by default for normal buyers; unlocks immediately on ?admin=candy2026 or #admin-candy2026 -->
+        <!-- Hidden by default for normal buyers; unlocks immediately on ?admin=candy2026 or #admin-candy2026 -->
         <section id="adminPanelSection" class="hidden boutique-panel rounded-3xl p-5 sm:p-8 space-y-6 border-2 border-roseberry/25">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-roseberry/15 pb-4">
                 <div class="space-y-1">
@@ -311,10 +312,10 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-plumink mb-1">Photo URLs (up to 15, comma or newline separated)</label>
+                        <label class="block text-xs font-bold text-plumink mb-1">Photo URLs or Paths (up to 15, comma or newline separated)</label>
                         <input type="text"
                                id="accPhotoUrlsInput"
-                               placeholder="https://example.com/photo1.jpg, https://example.com/photo2.jpg"
+                               placeholder="IMG_20261126_162338_994.jpg"
                                class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
                     </div>
 
@@ -336,7 +337,7 @@
                         <div id="adminPhotoThumbnails"
                              class="flex flex-wrap gap-2 min-h-[60px] p-2.5 rounded-2xl bg-blush/70 border border-roseberry/15">
                             <span id="emptyPhotoThumbHint" class="text-xs text-mauve self-center mx-auto">
-                                ဓာတ်ပုံ URL ထည့်နိုင်သလို ဓာတ်ပုံဖိုင်များလည်း ရွေးချယ်နိုင်ပါသည် (Max 15)
+                                ဓာတ်ပုံ URL သို့မဟုတ် IMG_20261126_162338_994.jpg ထည့်နိုင်သလို ဓာတ်ပုံဖိုင်များလည်း ရွေးချယ်နိုင်ပါသည် (Max 15)
                             </span>
                         </div>
                     </div>
@@ -429,8 +430,15 @@
                     </div>
 
                     <div class="bg-blush/90 border border-roseberry/20 rounded-2xl p-5 sm:p-6 md:max-w-xs w-full space-y-3.5">
+                        <div class="rounded-2xl overflow-hidden border border-roseberry/20 bg-white aspect-[16/10]">
+                            <img src="IMG_20261126_162338_994.jpg"
+                                 alt="Candy Official Gaming MLBB Showcase"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/640x400/fff2f4/be185d?text=Candy+MLBB+Vault';"
+                                 class="w-full h-full object-cover">
+                        </div>
+
                         <div class="flex items-center gap-3">
-                            <div class="w-11 h-11 rounded-2xl bg-white border border-roseberry/20 flex items-center justify-center text-roseberry text-lg flex-shrink-0">
+                            <div class="w-10 h-10 rounded-2xl bg-white border border-roseberry/20 flex items-center justify-center text-roseberry text-base flex-shrink-0">
                                 <i class="fa-solid fa-gem"></i>
                             </div>
                             <div>
@@ -546,9 +554,10 @@
             <button type="button"
                     id="footerBrandBtn"
                     class="flex items-center gap-2.5 cursor-pointer text-left">
-                <span class="w-8 h-8 rounded-full bg-blush border border-roseberry/25 flex items-center justify-center text-roseberry font-bold editorial-font text-xs">
-                    COG
-                </span>
+                <img src="IMG_20261126_162338_994.jpg"
+                     alt="Candy Official Gaming"
+                     onerror="this.onerror=null;this.src='https://placehold.co/80x80/fff2f4/be185d?text=COG';"
+                     class="w-8 h-8 rounded-full object-cover bg-blush border border-roseberry/25 flex-shrink-0">
                 <span class="font-bold editorial-font text-base text-plumink">Candy Official Gaming</span>
                 <span>• MLBB Boutique</span>
             </button>
@@ -637,6 +646,8 @@
         const ACCOUNTS_STORAGE_KEY = "candy_mlbb_accounts_v1";
         const DELETED_IDS_STORAGE_KEY = "candy_mlbb_deletedIds_v1";
         const MAX_PHOTOS = 15;
+        const DEFAULT_BANNER_IMAGE = "IMG_20261126_162338_994.jpg";
+        const FALLBACK_PLACEHOLDER_IMAGE = "https://placehold.co/800x450/fff2f4/be185d?text=Candy+MLBB+Account";
 
         // Start empty unless accounts exist in localStorage or Firestore (no seeded fake demo accounts)
         let accounts = [];
@@ -646,6 +657,18 @@
         let sliderPhotoList = [];
         let sliderIndex = 0;
         let pendingConfirmCallback = null;
+
+        /**
+         * Normalizes any photo reference, replacing IMG_20261125_220821_646.png with IMG_20261126_162338_994.jpg.
+         */
+        function normalizePhotoRef(ref) {
+            const raw = String(ref ?? "").trim();
+            if (!raw) return "";
+            if (raw.includes("IMG_20261125_220821_646.png")) {
+                return raw.replace(/IMG_20261125_220821_646\.png/g, DEFAULT_BANNER_IMAGE);
+            }
+            return raw;
+        }
 
         /**
          * Reads tombstone-protected deleted IDs so deleted accounts never reappear.
@@ -686,6 +709,22 @@
         }
 
         /**
+         * Normalizes an account record and sanitizes photo references.
+         */
+        function sanitizeAccountRecord(acc) {
+            if (!acc || !acc.id) return null;
+            const photos = Array.isArray(acc.photos)
+                ? acc.photos.map(normalizePhotoRef).filter(Boolean).slice(0, MAX_PHOTOS)
+                : [];
+            return {
+                ...acc,
+                id: String(acc.id),
+                photos,
+                createdAt: Number(acc.createdAt || 0)
+            };
+        }
+
+        /**
          * Reads MLBB accounts from localStorage, filtered against deletedIds.
          */
         function loadLocalAccounts() {
@@ -694,7 +733,9 @@
                 const raw = localStorage.getItem(ACCOUNTS_STORAGE_KEY);
                 const parsed = raw ? JSON.parse(raw) : [];
                 if (!Array.isArray(parsed)) return [];
-                return parsed.filter((acc) => acc && acc.id && !deletedSet.has(String(acc.id)));
+                return parsed
+                    .map(sanitizeAccountRecord)
+                    .filter((acc) => acc && !deletedSet.has(acc.id));
             } catch (_err) {
                 return [];
             }
@@ -707,7 +748,8 @@
             const deletedSet = new Set(loadDeletedIds());
             try {
                 const clean = (Array.isArray(list) ? list : [])
-                    .filter((acc) => acc && acc.id && !deletedSet.has(String(acc.id)));
+                    .map(sanitizeAccountRecord)
+                    .filter((acc) => acc && !deletedSet.has(acc.id));
                 localStorage.setItem(ACCOUNTS_STORAGE_KEY, JSON.stringify(clean));
             } catch (_err) {
                 // Ignore quota errors
@@ -1017,9 +1059,10 @@
 
             grid.innerHTML = filtered.map((acc) => {
                 const isSold = (acc.status || "AVAILABLE").toUpperCase() === "SOLD";
-                const photos = Array.isArray(acc.photos) && acc.photos.length > 0
-                    ? acc.photos.slice(0, MAX_PHOTOS)
-                    : ["https://placehold.co/800x450/fff2f4/be185d?text=Candy+MLBB+Account"];
+                const rawPhotos = Array.isArray(acc.photos) && acc.photos.length > 0
+                    ? acc.photos.map(normalizePhotoRef).filter(Boolean).slice(0, MAX_PHOTOS)
+                    : [DEFAULT_BANNER_IMAGE];
+                const photos = rawPhotos.length > 0 ? rawPhotos : [DEFAULT_BANNER_IMAGE];
                 const highlights = String(acc.highlight || "")
                     .split(",")
                     .map((s) => s.trim())
@@ -1031,7 +1074,7 @@
                             <div class="relative aspect-[16/9] w-full bg-blush overflow-hidden">
                                 <img src="${escapeHtml(photos[0])}"
                                      alt="${escapeHtml(acc.title || "MLBB Account")}"
-                                     onerror="this.onerror=null;this.src='https://placehold.co/800x450/fff2f4/be185d?text=Candy+MLBB+Account';"
+                                     onerror="this.onerror=null;this.src='${FALLBACK_PLACEHOLDER_IMAGE}';"
                                      class="w-full h-full object-cover">
 
                                 <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase ${
@@ -1115,9 +1158,10 @@
             const body = document.getElementById("detailModalBody");
             if (!acc || !body) return;
 
-            sliderPhotoList = Array.isArray(acc.photos) && acc.photos.length > 0
-                ? acc.photos.slice(0, MAX_PHOTOS)
-                : ["https://placehold.co/900x500/fff2f4/be185d?text=Candy+MLBB+Account"];
+            const normalized = Array.isArray(acc.photos) && acc.photos.length > 0
+                ? acc.photos.map(normalizePhotoRef).filter(Boolean).slice(0, MAX_PHOTOS)
+                : [DEFAULT_BANNER_IMAGE];
+            sliderPhotoList = normalized.length > 0 ? normalized : [DEFAULT_BANNER_IMAGE];
             sliderIndex = 0;
 
             const isSold = (acc.status || "AVAILABLE").toUpperCase() === "SOLD";
@@ -1136,7 +1180,7 @@
                         <img id="sliderMainImage"
                              src="${escapeHtml(sliderPhotoList[0])}"
                              alt="${escapeHtml(acc.title || "MLBB Account")}"
-                             onerror="this.onerror=null;this.src='https://placehold.co/900x500/fff2f4/be185d?text=Candy+MLBB+Account';"
+                             onerror="this.onerror=null;this.src='${FALLBACK_PLACEHOLDER_IMAGE}';"
                              class="w-full h-full object-cover">
 
                         ${sliderPhotoList.length > 1 ? `
@@ -1321,8 +1365,8 @@
             tbody.innerHTML = items.map((acc) => {
                 const isSold = (acc.status || "AVAILABLE").toUpperCase() === "SOLD";
                 const firstPhoto = Array.isArray(acc.photos) && acc.photos[0]
-                    ? acc.photos[0]
-                    : "https://placehold.co/120x80/fff2f4/be185d?text=MLBB";
+                    ? normalizePhotoRef(acc.photos[0])
+                    : DEFAULT_BANNER_IMAGE;
 
                 return `
                     <tr class="hover:bg-blush/50">
@@ -1395,7 +1439,7 @@
             if (!editorPhotoList.length) {
                 container.innerHTML = `
                     <span id="emptyPhotoThumbHint" class="text-xs text-mauve self-center mx-auto">
-                        ဓာတ်ပုံ URL ထည့်နိုင်သလို ဓာတ်ပုံဖိုင်များလည်း ရွေးချယ်နိုင်ပါသည် (Max 15)
+                        ဓာတ်ပုံ URL သို့မဟုတ် IMG_20261126_162338_994.jpg ထည့်နိုင်သလို ဓာတ်ပုံဖိုင်များလည်း ရွေးချယ်နိုင်ပါသည် (Max 15)
                     </span>
                 `;
                 return;
@@ -1522,11 +1566,13 @@
             document.getElementById("accTelegramInput").value = acc.telegram || "CandyGaming8";
             document.getElementById("accNotesInput").value = acc.notes || "";
 
-            const currentPhotos = Array.isArray(acc.photos) ? acc.photos.slice(0, MAX_PHOTOS) : [];
+            const currentPhotos = Array.isArray(acc.photos)
+                ? acc.photos.map(normalizePhotoRef).filter(Boolean).slice(0, MAX_PHOTOS)
+                : [];
             editorPhotoList = [...currentPhotos];
             const urlInput = document.getElementById("accPhotoUrlsInput");
             if (urlInput) {
-                urlInput.value = currentPhotos.filter((u) => /^https?:\/\//i.test(u)).join(", ");
+                urlInput.value = currentPhotos.filter((u) => !u.startsWith("data:")).join(", ");
             }
             renderEditorThumbnails();
 
@@ -1558,13 +1604,16 @@
 
             const typedUrls = (document.getElementById("accPhotoUrlsInput")?.value || "")
                 .split(/[\n,]+/)
-                .map((s) => s.trim())
-                .filter((u) => /^https?:\/\//i.test(u));
+                .map((s) => normalizePhotoRef(s))
+                .filter((u) => /^https?:\/\//i.test(u) || /^[\w./-]+\.(png|jpe?g|webp|gif)$/i.test(u));
 
             const mergedPhotos = [];
-            for (const src of [...typedUrls, ...editorPhotoList]) {
+            for (const src of [...typedUrls, ...editorPhotoList.map(normalizePhotoRef)]) {
                 if (mergedPhotos.length >= MAX_PHOTOS) break;
-                if (!mergedPhotos.includes(src)) mergedPhotos.push(src);
+                if (src && !mergedPhotos.includes(src)) mergedPhotos.push(src);
+            }
+            if (mergedPhotos.length === 0) {
+                mergedPhotos.push(DEFAULT_BANNER_IMAGE);
             }
 
             if (!title || !rank) {
@@ -1748,11 +1797,8 @@
                 const data = docSnap.data() || {};
                 const docId = String(data.id || docSnap.id);
                 if (!deletedSet.has(docId)) {
-                    remoteItems.push({
-                        ...data,
-                        id: docId,
-                        createdAt: Number(data.createdAt || 0)
-                    });
+                    const sanitized = sanitizeAccountRecord({ ...data, id: docId });
+                    if (sanitized) remoteItems.push(sanitized);
                 }
             });
 
