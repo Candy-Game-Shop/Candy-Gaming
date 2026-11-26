@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Padauk:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
-        // Boutique palette tokens: Cream-Blush (#fdf6f7), Alabaster (#fff9fa), Soft Blush (#fff2f4), Rose-Berry (#be185d / #9d174d)
+        // Boutique color tokens: Cream-Blush (#fdf6f7), Alabaster (#fff9fa), Soft Blush (#fff2f4), Rose-Berry (#be185d / #9d174d)
         tailwind.config = {
             theme: {
                 extend: {
@@ -158,7 +158,7 @@
                 </div>
             </button>
 
-            <!-- Navigation & Telegram Contact -->
+            <!-- Navigation, Admin Key Trigger & Telegram Contact -->
             <div class="flex items-center gap-2 sm:gap-2.5">
                 <button type="button"
                         id="headerCatalogBtn"
@@ -166,6 +166,13 @@
                     <i class="fa-solid fa-layer-group text-roseberry"></i>
                     <span class="hidden sm:inline">MLBB Catalog</span>
                     <span class="sm:hidden">Catalog</span>
+                </button>
+
+                <button type="button"
+                        id="headerAdminTriggerBtn"
+                        class="px-3 py-2 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-lock text-roseberry text-[11px]"></i>
+                    <span>Admin</span>
                 </button>
 
                 <a href="https://t.me/CandyGaming8"
@@ -182,7 +189,7 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
 
-        <!-- SECRET ADMIN STUDIO SECTION (Hidden on load/refresh; unlocked only via candy2026) -->
+        <!-- SECRET ADMIN STUDIO SECTION (Strictly hidden on load/refresh; unlocked only by clicking Admin -> entering candy2026) -->
         <section id="adminPanelSection"
                  style="display: none;"
                  class="hidden boutique-panel rounded-3xl p-5 sm:p-8 space-y-6 border-2 border-roseberry/25">
@@ -206,6 +213,11 @@
                         <span>Total Visits:</span>
                         <span id="adminVisitCounter" class="text-deepberry font-extrabold">0</span>
                     </div>
+                    <button type="button"
+                            id="openAdminStudioModalBtn"
+                            class="px-3.5 py-2 rounded-xl bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                        <i class="fa-solid fa-up-right-from-square mr-1 text-roseberry"></i> Studio Summary
+                    </button>
                     <button type="button"
                             id="lockAdminBtn"
                             class="px-3.5 py-2 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
@@ -535,7 +547,7 @@
                             Mobile Legend အကောင့်များကိုသာ သီးသန့်ရောင်းချပေးသော Candy Store ဖြစ်ပါသည်
                         </p>
 
-                        <!-- Two-step navigation primary CTA button to #catalogSection -->
+                        <!-- Inline primary CTA button to #catalogSection (no floating circular badge) -->
                         <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
                             <button type="button"
                                     id="openCatalogBtn"
@@ -667,6 +679,11 @@
             </button>
 
             <div class="flex items-center gap-5">
+                <button type="button"
+                        id="footerAdminTriggerBtn"
+                        class="hover:text-deepberry font-semibold transition-colors flex items-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-lock text-roseberry text-[11px]"></i> Admin
+                </button>
                 <a href="https://t.me/CandyGaming8"
                    target="_blank"
                    rel="noopener noreferrer"
@@ -692,8 +709,8 @@
         </div>
     </div>
 
-    <!-- SECRET ADMIN UNLOCK MODAL (#adminUnlockModal - CLOSED BY DEFAULT: display: none; pointer-events: none;) -->
-    <div id="adminUnlockModal"
+    <!-- SECRET ADMIN KEY MODAL (#adminKeyModal - CLOSED BY DEFAULT: display: none; pointer-events: none;) -->
+    <div id="adminKeyModal"
          aria-hidden="true"
          class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-plumink/60 backdrop-blur-2xs">
         <div class="boutique-card rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl">
@@ -704,20 +721,20 @@
                 <h3 class="text-xl font-bold editorial-font text-plumink">Admin Access</h3>
                 <p class="text-xs text-mauve">Enter secret key to unlock Admin Studio</p>
             </div>
-            <form id="adminUnlockForm" class="space-y-3">
+            <form id="adminKeyForm" class="space-y-3">
                 <input type="password"
                        id="adminSecretInput"
                        autocomplete="off"
                        placeholder="Secret key"
                        class="w-full bg-white border border-roseberry/25 focus:border-roseberry rounded-xl px-3.5 py-2.5 text-xs text-plumink focus:outline-none">
-                <p id="adminUnlockError" class="hidden text-xs font-semibold text-deepberry"></p>
+                <p id="adminKeyError" class="hidden text-xs font-semibold text-deepberry"></p>
                 <div class="flex items-center gap-2.5 pt-1">
                     <button type="submit"
                             class="flex-1 py-2.5 px-4 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer">
                         Unlock
                     </button>
                     <button type="button"
-                            id="cancelAdminUnlockBtn"
+                            id="cancelAdminKeyBtn"
                             class="flex-1 py-2.5 px-4 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
                         Cancel
                     </button>
@@ -726,12 +743,60 @@
         </div>
     </div>
 
+    <!-- ADMIN STUDIO MODAL (#adminStudioModal - CLOSED BY DEFAULT: display: none; pointer-events: none;) -->
+    <div id="adminStudioModal"
+         aria-hidden="true"
+         class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-plumink/60 backdrop-blur-2xs overflow-y-auto">
+        <div class="relative w-full max-w-4xl boutique-card rounded-3xl overflow-hidden shadow-2xl my-8">
+            <div class="flex items-center justify-between px-6 py-4 bg-alabaster border-b border-roseberry/15">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-roseberry"></i>
+                    <h3 class="text-lg font-bold editorial-font text-plumink">Candy MLBB Admin Studio</h3>
+                </div>
+                <button type="button"
+                        id="closeAdminStudioModalBtn"
+                        aria-label="Close Admin Studio Modal"
+                        class="w-9 h-9 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 flex items-center justify-center cursor-pointer transition-all">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-5 sm:p-6 space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+                    <div class="p-4 rounded-2xl bg-blush border border-roseberry/15">
+                        <p class="text-[11px] text-mauve">MLBB Accounts</p>
+                        <p id="studioModalAccountCount" class="text-xl font-extrabold text-plumink mt-1">0</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-blush border border-roseberry/15">
+                        <p class="text-[11px] text-mauve">Total Visits</p>
+                        <p id="studioModalVisitCount" class="text-xl font-extrabold text-deepberry mt-1">0</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-blush border border-roseberry/15">
+                        <p class="text-[11px] text-mauve">Contact Handle</p>
+                        <p class="text-sm font-extrabold text-plumink mt-2">@CandyGaming8</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center justify-end gap-2.5 pt-2">
+                    <button type="button"
+                            id="studioModalJumpAddBtn"
+                            class="px-4 py-2.5 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer">
+                        <i class="fa-solid fa-plus mr-1"></i> Add Account in Panel
+                    </button>
+                    <button type="button"
+                            id="studioModalDoneBtn"
+                            class="px-4 py-2.5 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- CUSTOM NON-BLOCKING NOTICE / CONFIRM MODAL (#noticeModal - CLOSED BY DEFAULT: display: none; pointer-events: none;) -->
     <div id="noticeModal"
          aria-hidden="true"
          class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-plumink/60 backdrop-blur-2xs">
         <div class="boutique-card rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl">
-            <div id="noticeIconWrap" class="w-12 h-12 mx-auto rounded-2xl bg-blush text-deepberry border border-roseberry/20 flex items-center justify-center text-xl">
+            <div class="w-12 h-12 mx-auto rounded-2xl bg-blush text-deepberry border border-roseberry/20 flex items-center justify-center text-xl">
                 <i id="noticeIcon" class="fa-solid fa-circle-info"></i>
             </div>
             <div class="space-y-1">
@@ -766,7 +831,9 @@
             apiKey: "AIzaSyDcOqqy9EP1xkFdOe0xh4kt4TMPWEOz_nA",
             authDomain: "candy-shop-a365d.firebaseapp.com",
             projectId: "candy-shop-a365d",
-            storageBucket: "candy-shop-a365d.appspot.com"
+            storageBucket: "candy-shop-a365d.appspot.com",
+            messagingSenderId: "000000000000",
+            appId: "1:000000000000:web:candy-shop-a365d"
         };
 
         const app = initializeApp(firebaseConfig);
@@ -777,41 +844,49 @@
         const diaPricesDocRef = doc(db, "store_settings", "mlbb_dia_prices");
         const tgPricesDocRef = doc(db, "store_settings", "tg_star_premium_prices");
 
-        const ADMIN_SECRET = "candy2026";
-        const ACCOUNTS_STORAGE_KEY = "candy_mlbb_accounts_v1";
-        const DELETED_IDS_STORAGE_KEY = "candy_mlbb_deletedIds_v1";
-        const DIA_STORAGE_KEY = "candy_mlbb_dia_prices_v1";
-        const TG_STORAGE_KEY = "candy_tg_star_premium_v1";
         const MAX_PHOTOS = 15;
+        const ADMIN_SECRET = "candy2026";
         const DEFAULT_BANNER_IMAGE = "IMG_20261126_162338_994.jpg";
-        const FALLBACK_PLACEHOLDER_IMAGE = "https://placehold.co/800x450/fff2f4/be185d?text=Candy+MLBB+Account";
+        const FALLBACK_PLACEHOLDER_IMAGE = "https://placehold.co/960x540/fff2f4/be185d?text=Candy+Official+Gaming";
+
+        const ACCOUNTS_STORAGE_KEY = "candy_official_mlbb_accounts_v1";
+        const DELETED_IDS_STORAGE_KEY = "candy_official_mlbb_deleted_ids_v1";
+        const DIA_STORAGE_KEY = "candy_official_mlbb_dia_prices_v1";
+        const TG_STORAGE_KEY = "candy_official_mlbb_tg_prices_v1";
 
         const DEFAULT_DIA_DATA = {
             bundles: [
-                { id: "b-weekly", label: "Weekly Pass", price: 9000 },
-                { id: "b-elite", label: "Weekly Elite Bundle", price: 5000 }
+                { id: "b-weekly-pass", label: "Weekly Pass", price: 9000 },
+                { id: "b-weekly-elite", label: "Weekly Elite Bundle", price: 5000 },
+                { id: "b-monthly-epic", label: "Monthly Epic Bundle", price: 22100 }
             ],
             packages: [
                 { id: "d-86", amount: "86", price: 6500 },
                 { id: "d-172", amount: "172", price: 16000 },
                 { id: "d-257", amount: "257", price: 20300 },
-                { id: "d-343", amount: "343", price: 26800 }
+                { id: "d-343", amount: "343", price: 26800 },
+                { id: "d-514", amount: "514", price: 40600 },
+                { id: "d-706", amount: "706", price: 51000 },
+                { id: "d-1412", amount: "1412", price: 102000 },
+                { id: "d-2195", amount: "2195", price: 151300 }
             ]
         };
 
         const DEFAULT_TG_DATA = {
             premium: [
-                { id: "tgp-3m", label: "3 Months (Gift plan)", price: 62000 },
-                { id: "tgp-6m", label: "6 Months (Gift plan)", price: 84000 }
+                { id: "tgp-3m", label: "3 Months (Gift Plan)", price: 62000 },
+                { id: "tgp-6m", label: "6 Months (Gift Plan)", price: 84000 },
+                { id: "tgp-1y", label: "1 Year (Gift Plan)", price: 146000 }
             ],
             stars: [
                 { id: "tgs-50", amount: "50", price: 3800 },
                 { id: "tgs-100", amount: "100", price: 7600 },
-                { id: "tgs-200", amount: "200", price: 15200 }
+                { id: "tgs-200", amount: "200", price: 15200 },
+                { id: "tgs-500", amount: "500", price: 38000 }
             ]
         };
 
-        // Strictly initialized to false on load and refresh
+        // Strictly initialized to false on every load and refresh (never auto-opened by URL)
         let isAdminUnlocked = false;
         let activeAdminTab = "list";
         let accounts = [];
@@ -915,33 +990,55 @@
         }
 
         /**
-         * Checks whether URL explicitly contains ?admin=candy2026 or #admin-candy2026.
-         */
-        function hasUrlAdminSecret() {
-            try {
-                const params = new URLSearchParams(window.location.search || "");
-                const queryVal = (params.get("admin") || "").trim();
-                const hashVal = String(window.location.hash || "").trim().toLowerCase();
-                return queryVal === ADMIN_SECRET || hashVal === `#admin-${ADMIN_SECRET}`;
-            } catch (_err) {
-                return false;
-            }
-        }
-
-        /**
          * Synchronizes #adminPanelSection visibility strictly using isAdminUnlocked and inline display.
+         * Never auto-opens on initial load or refresh.
          */
         function syncAdminPanelVisibility() {
             const panel = document.getElementById("adminPanelSection");
+            const studioModal = document.getElementById("adminStudioModal");
             if (!panel) return;
             if (isAdminUnlocked) {
                 panel.style.display = "block";
                 panel.classList.remove("hidden");
                 switchAdminTab(activeAdminTab);
+                syncStudioModalStats();
             } else {
                 panel.style.display = "none";
                 panel.classList.add("hidden");
+                if (studioModal) {
+                    closeModal("adminStudioModal");
+                }
             }
+        }
+
+        function syncStudioModalStats() {
+            const deletedSet = loadDeletedIdsSet();
+            const count = accounts.filter((acc) => acc && acc.id && !deletedSet.has(String(acc.id))).length;
+            const accEl = document.getElementById("studioModalAccountCount");
+            const visEl = document.getElementById("studioModalVisitCount");
+            if (accEl) accEl.textContent = String(count);
+            if (visEl) visEl.textContent = String(visitCount);
+        }
+
+        /**
+         * Opens #adminKeyModal when triggered by click, or opens #adminStudioModal if already unlocked.
+         */
+        function handleAdminTriggerClick() {
+            if (isAdminUnlocked) {
+                syncAdminPanelVisibility();
+                syncStudioModalStats();
+                openModal("adminStudioModal");
+                return;
+            }
+            const input = document.getElementById("adminSecretInput");
+            const errEl = document.getElementById("adminKeyError");
+            if (input) input.value = "";
+            if (errEl) {
+                errEl.textContent = "";
+                errEl.classList.add("hidden");
+            }
+            openModal("adminKeyModal");
+            setTimeout(() => document.getElementById("adminSecretInput")?.focus(), 20);
         }
 
         /**
@@ -2169,6 +2266,8 @@
             document.getElementById("brandHomeBtn")?.addEventListener("click", goToLanding);
             document.getElementById("footerBrandBtn")?.addEventListener("click", goToLanding);
             document.getElementById("headerCatalogBtn")?.addEventListener("click", goToCatalog);
+            document.getElementById("headerAdminTriggerBtn")?.addEventListener("click", handleAdminTriggerClick);
+            document.getElementById("footerAdminTriggerBtn")?.addEventListener("click", handleAdminTriggerClick);
             document.getElementById("openCatalogBtn")?.addEventListener("click", goToCatalog);
             document.getElementById("backToLandingBtn")?.addEventListener("click", goToLanding);
             document.getElementById("clearCatalogFiltersBtn")?.addEventListener("click", clearCatalogFilters);
@@ -2219,16 +2318,34 @@
             document.getElementById("saveTgPricesBtn")?.addEventListener("click", saveTgPrices);
 
             document.getElementById("closeDetailModalBtn")?.addEventListener("click", () => closeModal("detailModal"));
-            document.getElementById("cancelAdminUnlockBtn")?.addEventListener("click", () => closeModal("adminUnlockModal"));
+            document.getElementById("cancelAdminKeyBtn")?.addEventListener("click", () => closeModal("adminKeyModal"));
+            document.getElementById("closeAdminStudioModalBtn")?.addEventListener("click", () => closeModal("adminStudioModal"));
+            document.getElementById("studioModalDoneBtn")?.addEventListener("click", () => closeModal("adminStudioModal"));
+            document.getElementById("openAdminStudioModalBtn")?.addEventListener("click", () => {
+                if (!isAdminUnlocked) {
+                    handleAdminTriggerClick();
+                    return;
+                }
+                syncStudioModalStats();
+                openModal("adminStudioModal");
+            });
+            document.getElementById("studioModalJumpAddBtn")?.addEventListener("click", () => {
+                if (!isAdminUnlocked) return;
+                closeModal("adminStudioModal");
+                switchAdminTab("add");
+                document.getElementById("adminPanelSection")?.scrollIntoView({ behavior: "smooth" });
+            });
 
-            document.getElementById("adminUnlockForm")?.addEventListener("submit", (ev) => {
+            document.getElementById("adminKeyForm")?.addEventListener("submit", (ev) => {
                 ev.preventDefault();
                 const secret = (document.getElementById("adminSecretInput")?.value || "").trim();
-                const errEl = document.getElementById("adminUnlockError");
+                const errEl = document.getElementById("adminKeyError");
                 if (secret === ADMIN_SECRET) {
                     isAdminUnlocked = true;
-                    closeModal("adminUnlockModal");
+                    closeModal("adminKeyModal");
                     syncAdminPanelVisibility();
+                    syncStudioModalStats();
+                    openModal("adminStudioModal");
                     document.getElementById("adminPanelSection")?.scrollIntoView({ behavior: "smooth" });
                 } else if (errEl) {
                     errEl.textContent = "Invalid secret key";
@@ -2250,30 +2367,24 @@
                 if (ev.target === ev.currentTarget) closeModal("detailModal");
             });
 
-            document.getElementById("adminUnlockModal")?.addEventListener("click", (ev) => {
-                if (ev.target === ev.currentTarget) closeModal("adminUnlockModal");
+            document.getElementById("adminKeyModal")?.addEventListener("click", (ev) => {
+                if (ev.target === ev.currentTarget) closeModal("adminKeyModal");
+            });
+
+            document.getElementById("adminStudioModal")?.addEventListener("click", (ev) => {
+                if (ev.target === ev.currentTarget) closeModal("adminStudioModal");
             });
 
             document.getElementById("noticeModal")?.addEventListener("click", (ev) => {
                 if (ev.target === ev.currentTarget) closeModal("noticeModal");
             });
 
-            const handleSecretUrlTrigger = () => {
-                if (hasUrlAdminSecret()) {
-                    isAdminUnlocked = true;
-                    syncAdminPanelVisibility();
-                } else {
-                    isAdminUnlocked = false;
-                    syncAdminPanelVisibility();
-                }
-            };
-
-            window.addEventListener("hashchange", handleSecretUrlTrigger);
-
+            // Never auto-unlock on load or hashchange; only unlock after explicit click + candy2026 key entry
             document.addEventListener("keydown", (ev) => {
                 if (ev.key === "Escape") {
                     closeModal("noticeModal");
-                    closeModal("adminUnlockModal");
+                    closeModal("adminStudioModal");
+                    closeModal("adminKeyModal");
                     closeModal("detailModal");
                 } else if (ev.key === "ArrowLeft" && document.getElementById("detailModal")?.classList.contains("is-open")) {
                     moveSlider(-1);
@@ -2283,8 +2394,8 @@
             });
         }
 
-        // Initialize state: strictly hidden Admin Panel on load/refresh unless ?admin=candy2026 or #admin-candy2026 is present
-        isAdminUnlocked = hasUrlAdminSecret();
+        // Initialize state: strictly hidden Admin Panel and modals on every load/refresh
+        isAdminUnlocked = false;
         accounts = loadLocalAccounts();
         diaData = loadLocalDia();
         draftDiaData = normalizeDia(diaData);
