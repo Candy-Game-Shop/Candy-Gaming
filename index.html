@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candy Official Gaming — MLBB Boutique</title>
+    <title>Candy Official Gaming — MLBB Boutique Storefront</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -29,8 +29,10 @@
                         deepberry: '#9d174d',
                         berrydark: '#881337',
                         petal: '#fbcfe8',
-                        inkdark: '#2a0c18',
-                        inksub: '#5c283d'
+                        roseborder: '#f4d5dc',
+                        inkdark: '#2b121b',
+                        inksub: '#5c2b3c',
+                        inkmuted: '#7a4456'
                     },
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'Padauk', 'sans-serif'],
@@ -44,7 +46,7 @@
     <style>
         html, body {
             background-color: #fdf6f7;
-            color: #2a0c18;
+            color: #2b121b;
             font-family: 'Plus Jakarta Sans', 'Padauk', sans-serif;
             overflow-x: hidden;
         }
@@ -61,7 +63,7 @@
         }
 
         .rose-berry-gradient-text {
-            background: linear-gradient(125deg, #2a0c18 0%, #9d174d 52%, #be185d 90%);
+            background: linear-gradient(125deg, #2b121b 0%, #9d174d 52%, #be185d 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -81,9 +83,9 @@
 
         .boutique-surface {
             background: rgba(255, 249, 250, 0.97);
-            border: 1px solid rgba(190, 24, 93, 0.18);
+            border: 1px solid #f4d5dc;
             box-shadow:
-                0 14px 32px -16px rgba(42, 12, 24, 0.16),
+                0 14px 32px -16px rgba(43, 18, 27, 0.16),
                 0 2px 6px -1px rgba(190, 24, 93, 0.05);
         }
 
@@ -92,18 +94,18 @@
             overflow: hidden;
             min-width: 0;
             background: linear-gradient(180deg, #ffffff 0%, #fff9fa 65%, #fff2f4 100%);
-            border: 1px solid rgba(190, 24, 93, 0.16);
+            border: 1px solid #f4d5dc;
             box-shadow:
-                0 12px 28px -14px rgba(42, 12, 24, 0.14),
+                0 12px 28px -14px rgba(43, 18, 27, 0.14),
                 0 2px 6px -1px rgba(190, 24, 93, 0.05);
             transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
         }
 
         .boutique-card:hover {
             transform: translateY(-2px);
-            border-color: rgba(190, 24, 93, 0.34);
+            border-color: #fbcfe8;
             box-shadow:
-                0 18px 34px -16px rgba(42, 12, 24, 0.2),
+                0 18px 34px -16px rgba(43, 18, 27, 0.2),
                 0 6px 14px -4px rgba(190, 24, 93, 0.12);
         }
 
@@ -151,38 +153,38 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-petal selection:text-inkdark">
 
-    <!-- HEADER BAR -->
-    <header class="sticky top-0 z-40 bg-alabaster/95 backdrop-blur-md border-b border-roseberry/15">
+    <!-- TOP HEADER BAR -->
+    <header class="sticky top-0 z-40 bg-alabaster/95 backdrop-blur-md border-b border-roseborder">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
-            <!-- Brand Title Only (no subtitle text) -->
+            <!-- Brand Title Only (no "Boutique • Curated Accounts" tagline) -->
             <button type="button"
                     id="brandHomeBtn"
                     aria-label="Candy Official Gaming Home"
-                    class="flex items-center gap-3 text-left cursor-pointer">
-                <div class="boutique-photo-frame w-11 h-11 bg-softblush border border-roseberry/25 flex-shrink-0">
+                    class="flex items-center gap-3 text-left cursor-pointer min-w-0">
+                <div class="boutique-photo-frame w-11 h-11 bg-softblush border border-roseborder flex-shrink-0">
                     <img src="IMG_20261126_162338_994.jpg"
                          alt="Candy Official Gaming"
                          onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff2f4/be185d?text=COG';">
                 </div>
-                <span class="text-lg sm:text-2xl font-bold editorial-font rose-berry-gradient-text tracking-tight">
+                <span class="text-lg sm:text-2xl font-bold editorial-font rose-berry-gradient-text tracking-tight truncate">
                     Candy Official Gaming
                 </span>
             </button>
 
-            <!-- Right Actions: MLBB Catalog + Discrete Admin Trigger (Admin URL only) + @CandyGaming8 -->
-            <div class="flex items-center gap-2 sm:gap-2.5">
+            <!-- Right Navigation Actions -->
+            <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
                 <button type="button"
                         id="headerCatalogBtn"
-                        class="px-3.5 py-2 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer transition-all flex items-center gap-1.5">
+                        class="px-3.5 py-2 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseborder text-xs font-bold cursor-pointer transition-all flex items-center gap-1.5">
                     <i class="fa-solid fa-layer-group text-roseberry"></i>
                     <span>MLBB Catalog</span>
                 </button>
 
-                <!-- Discrete Admin trigger: visible ONLY on Admin URLs, never on buyer links -->
+                <!-- Admin button: strictly hidden on buyer URLs; visible ONLY on valid Admin links -->
                 <button type="button"
                         id="headerAdminLinkBtn"
                         style="display: none;"
-                        class="hidden px-3 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/25 text-xs font-bold cursor-pointer transition-all items-center gap-1.5">
+                        class="hidden px-3 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer transition-all items-center gap-1.5">
                     <i class="fa-solid fa-shield-halved text-roseberry text-xs"></i>
                     <span>Admin</span>
                 </button>
@@ -190,7 +192,7 @@
                 <a href="https://t.me/CandyGaming8"
                    target="_blank"
                    rel="noopener noreferrer"
-                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold transition-all">
+                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold transition-all">
                     <i class="fa-brands fa-telegram text-sky-600 text-sm"></i>
                     <span>@CandyGaming8</span>
                 </a>
@@ -201,13 +203,13 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
 
-        <!-- ADMIN STUDIO PANEL (Available ONLY on Admin URL and unlocked only after key + Firebase Auth; never auto-opened on load/refresh) -->
+        <!-- ADMIN STUDIO PANEL (Hidden by default on load/refresh; only shown when unlocked via Admin link + key + Firebase Auth) -->
         <section id="adminStudioPanel"
                  style="display: none;"
-                 class="hidden boutique-surface rounded-3xl p-5 sm:p-8 space-y-6 border-2 border-roseberry/25">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-roseberry/15 pb-4">
+                 class="hidden boutique-surface rounded-3xl p-5 sm:p-8 space-y-6 border-2 border-petal">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-roseborder pb-4">
                 <div class="space-y-1">
-                    <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-xl bg-softblush text-deepberry border border-roseberry/20 text-[11px] font-bold">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-xl bg-softblush text-deepberry border border-roseborder text-[11px] font-bold">
                         <i class="fa-solid fa-shield-halved text-roseberry"></i>
                         <span>Candy Official Gaming • Admin Studio</span>
                     </div>
@@ -220,38 +222,38 @@
                 </div>
 
                 <div class="flex flex-wrap items-center gap-2">
-                    <div class="px-3.5 py-2 rounded-xl bg-softblush border border-roseberry/20 text-xs font-bold text-inkdark flex items-center gap-2">
+                    <div class="px-3.5 py-2 rounded-xl bg-softblush border border-roseborder text-xs font-bold text-inkdark flex items-center gap-2">
                         <i class="fa-solid fa-eye text-roseberry"></i>
                         <span>Visits:</span>
                         <span id="adminTotalVisitsLabel" class="text-deepberry font-extrabold">0</span>
                     </div>
                     <button type="button"
-                            id="adminSignOutBtn"
-                            class="px-3.5 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
-                        <i class="fa-solid fa-right-from-bracket mr-1 text-roseberry"></i> Sign Out
+                            id="adminSignOutClearBtn"
+                            class="px-3.5 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer transition-all">
+                        <i class="fa-solid fa-right-from-bracket mr-1 text-roseberry"></i> Sign Out &amp; Clear Saved Login
                     </button>
                     <button type="button"
                             id="lockAdminStudioBtn"
-                            class="px-3.5 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
-                        <i class="fa-solid fa-lock mr-1 text-roseberry"></i> Lock
+                            class="px-3.5 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer transition-all">
+                        <i class="fa-solid fa-lock mr-1 text-roseberry"></i> Lock Panel
                     </button>
                 </div>
             </div>
 
-            <!-- Firebase Auth Session & Password Reset Bar -->
-            <div class="flex flex-wrap items-center justify-between gap-2 bg-softblush/70 border border-roseberry/15 rounded-2xl px-4 py-2.5 text-xs">
+            <!-- Firebase Auth Account & Password Reset Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-2 bg-softblush/80 border border-roseborder rounded-2xl px-4 py-2.5 text-xs">
                 <div class="text-inksub">
-                    Admin Account: <span id="currentAdminEmailText" class="font-bold text-inkdark">-</span>
+                    Signed-in Admin: <span id="currentAdminEmailText" class="font-bold text-inkdark">-</span>
                 </div>
                 <button type="button"
                         id="sendAdminResetBtn"
-                        class="px-3 py-1 rounded-lg bg-white hover:bg-petal text-deepberry border border-roseberry/20 text-[11px] font-bold cursor-pointer transition-all">
-                    <i class="fa-solid fa-envelope mr-1"></i> Reset Password Email
+                        class="px-3 py-1 rounded-lg bg-white hover:bg-petal text-deepberry border border-roseborder text-[11px] font-bold cursor-pointer transition-all">
+                    <i class="fa-solid fa-envelope mr-1"></i> Send Reset Password Email
                 </button>
             </div>
 
-            <!-- Admin Tabs -->
-            <div class="flex flex-wrap items-center gap-2 border-b border-roseberry/15 pb-4">
+            <!-- Admin Studio Navigation Tabs -->
+            <div class="flex flex-wrap items-center gap-2 border-b border-roseborder pb-4">
                 <button type="button"
                         data-admin-tab="accounts"
                         id="adminTab-accounts"
@@ -261,34 +263,34 @@
                 <button type="button"
                         data-admin-tab="editor"
                         id="adminTab-editor"
-                        class="admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                        class="admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer transition-all">
                     <i class="fa-solid fa-plus mr-1 text-roseberry"></i> Add / Edit Account
                 </button>
                 <button type="button"
                         data-admin-tab="dia"
                         id="adminTab-dia"
-                        class="admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
-                    <i class="fa-regular fa-gem mr-1 text-roseberry"></i> MLBB Dia Prices
-                </button>
-                <button type="button"
-                        data-admin-tab="tg"
-                        id="adminTab-tg"
-                        class="admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
-                    <i class="fa-solid fa-star mr-1 text-roseberry"></i> Star &amp; TG Prices
+                        class="admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer transition-all">
+                    <i class="fa-regular fa-gem mr-1 text-roseberry"></i> Dia / Star / TG Prices
                 </button>
                 <button type="button"
                         data-admin-tab="visitors"
                         id="adminTab-visitors"
-                        class="admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                        class="admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer transition-all">
                     <i class="fa-solid fa-users mr-1 text-roseberry"></i> Visitor Logs
+                </button>
+                <button type="button"
+                        data-admin-tab="authinfo"
+                        id="adminTab-authinfo"
+                        class="admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer transition-all">
+                    <i class="fa-solid fa-key mr-1 text-roseberry"></i> Account / Auth Info
                 </button>
             </div>
 
             <!-- TAB 1: ACCOUNTS LIST -->
             <div id="adminPane-accounts" class="space-y-4">
-                <div class="overflow-x-auto rounded-2xl border border-roseberry/15 bg-white">
+                <div class="overflow-x-auto rounded-2xl border border-roseborder bg-white">
                     <table class="w-full text-left text-xs text-inkdark">
-                        <thead class="bg-softblush text-inkdark uppercase tracking-wider border-b border-roseberry/15">
+                        <thead class="bg-softblush text-inkdark uppercase tracking-wider border-b border-roseborder">
                             <tr>
                                 <th class="p-3">Photo</th>
                                 <th class="p-3">Account</th>
@@ -299,20 +301,20 @@
                                 <th class="p-3 text-right">Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="adminAccountsTableBody" class="divide-y divide-roseberry/10"></tbody>
+                        <tbody id="adminAccountsTableBody" class="divide-y divide-roseborder/60"></tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- TAB 2: ADD / EDIT ACCOUNT FORM -->
-            <div id="adminPane-editor" class="hidden bg-white border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-4">
+            <!-- TAB 2: ADD / EDIT ACCOUNT FORM (UP TO 15 PHOTOS) -->
+            <div id="adminPane-editor" class="hidden bg-white border border-roseborder rounded-2xl p-4 sm:p-6 space-y-4">
                 <div class="flex items-center justify-between gap-2">
                     <h3 id="adminEditorTitle" class="text-lg font-bold editorial-font text-inkdark">
                         Add MLBB Account
                     </h3>
                     <button type="button"
                             id="clearEditorFormBtn"
-                            class="px-3 py-1.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer">
+                            class="px-3 py-1.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseborder text-xs font-bold cursor-pointer">
                         Clear Form
                     </button>
                 </div>
@@ -327,7 +329,7 @@
                                    id="formTitleInput"
                                    required
                                    placeholder="Candy MLBB #001"
-                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                                   class="w-full bg-alabaster border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
                         </div>
 
                         <div>
@@ -336,7 +338,7 @@
                                    id="formRankInput"
                                    required
                                    placeholder="Mythical Immortal 120★"
-                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                                   class="w-full bg-alabaster border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
                         </div>
 
                         <div>
@@ -346,13 +348,13 @@
                                    min="0"
                                    required
                                    placeholder="150000"
-                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                                   class="w-full bg-alabaster border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
                         </div>
 
                         <div>
                             <label class="block text-xs font-bold text-inkdark mb-1">Status</label>
                             <select id="formStatusInput"
-                                    class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                                    class="w-full bg-alabaster border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
                                 <option value="AVAILABLE">AVAILABLE</option>
                                 <option value="SOLD">SOLD</option>
                             </select>
@@ -365,7 +367,7 @@
                                    min="0"
                                    required
                                    placeholder="250"
-                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                                   class="w-full bg-alabaster border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
                         </div>
 
                         <div>
@@ -373,7 +375,7 @@
                             <input type="text"
                                    id="formWinRateInput"
                                    placeholder="62.5%"
-                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                                   class="w-full bg-alabaster border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
                         </div>
 
                         <div>
@@ -381,7 +383,7 @@
                             <input type="text"
                                    id="formHighlightInput"
                                    placeholder="Angela Collector, Ruby Aspirant"
-                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                                   class="w-full bg-alabaster border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
                         </div>
 
                         <div>
@@ -390,7 +392,7 @@
                                    id="formTelegramInput"
                                    value="CandyGaming8"
                                    placeholder="CandyGaming8"
-                                   class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                                   class="w-full bg-alabaster border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
                         </div>
                     </div>
 
@@ -399,12 +401,12 @@
                         <input type="text"
                                id="formPhotoUrlsInput"
                                placeholder="IMG_20261126_162338_994.jpg"
-                               class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                               class="w-full bg-alabaster border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
                     </div>
 
                     <div class="space-y-2">
                         <div class="flex flex-wrap items-center gap-3">
-                            <label class="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold transition-all">
+                            <label class="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseborder text-xs font-bold transition-all">
                                 <i class="fa-solid fa-images"></i>
                                 <span>Upload Photos (Max 15)</span>
                                 <input type="file"
@@ -417,7 +419,7 @@
                         </div>
 
                         <div id="formPhotoThumbnails"
-                             class="flex flex-wrap gap-2 min-h-[56px] p-2.5 rounded-2xl bg-softblush/70 border border-roseberry/15"></div>
+                             class="flex flex-wrap gap-2 min-h-[56px] p-2.5 rounded-2xl bg-softblush/70 border border-roseborder"></div>
                     </div>
 
                     <div>
@@ -425,7 +427,7 @@
                         <textarea id="formNotesInput"
                                   rows="2"
                                   placeholder="Clean Moonton bind, full access details..."
-                                  class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none"></textarea>
+                                  class="w-full bg-alabaster border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none"></textarea>
                     </div>
 
                     <div class="flex items-center gap-3 pt-1">
@@ -435,78 +437,70 @@
                         </button>
                         <button type="button"
                                 id="cancelEditBtn"
-                                class="hidden px-4 py-2.5 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer">
+                                class="hidden px-4 py-2.5 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer">
                             Cancel Edit
                         </button>
                     </div>
                 </form>
             </div>
 
-            <!-- TAB 3: MLBB DIA PRICES EDITOR -->
-            <div id="adminPane-dia" class="hidden bg-white border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-5">
-                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-roseberry/15 pb-3">
-                    <h3 class="text-lg font-bold editorial-font text-inkdark">MLBB Diamond &amp; Pass Prices</h3>
+            <!-- TAB 3: DIA / STAR / TG PRICES EDITOR -->
+            <div id="adminPane-dia" class="hidden bg-white border border-roseborder rounded-2xl p-4 sm:p-6 space-y-6">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-roseborder pb-3">
+                    <h3 class="text-lg font-bold editorial-font text-inkdark">MLBB Dia, Telegram Star &amp; TG Premium Prices</h3>
                     <button type="button"
-                            id="saveDiaPricesBtn"
+                            id="saveAllRatesBtn"
                             class="px-5 py-2.5 rounded-xl rose-berry-btn text-xs font-bold cursor-pointer">
-                        <i class="fa-solid fa-floppy-disk mr-1"></i> Save Dia Prices
+                        <i class="fa-solid fa-floppy-disk mr-1"></i> Save All Prices
                     </button>
                 </div>
 
+                <!-- MLBB Dia Bundles -->
                 <div class="space-y-2.5">
                     <div class="flex items-center justify-between">
-                        <p class="text-xs font-bold text-deepberry">Bundles</p>
+                        <p class="text-xs font-bold text-deepberry">MLBB Pass &amp; Bundles</p>
                         <button type="button"
                                 id="addDiaBundleBtn"
-                                class="px-3 py-1.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer">
+                                class="px-3 py-1.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseborder text-xs font-bold cursor-pointer">
                             <i class="fa-solid fa-plus mr-1"></i> Add Bundle
                         </button>
                     </div>
                     <div id="adminDiaBundlesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
                 </div>
 
+                <!-- MLBB Dia Packages -->
                 <div class="space-y-2.5">
                     <div class="flex items-center justify-between">
-                        <p class="text-xs font-bold text-deepberry">Diamond Packages</p>
+                        <p class="text-xs font-bold text-deepberry">MLBB Diamond Packages</p>
                         <button type="button"
                                 id="addDiaPackageBtn"
-                                class="px-3 py-1.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer">
-                            <i class="fa-solid fa-plus mr-1"></i> Add Package
+                                class="px-3 py-1.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseborder text-xs font-bold cursor-pointer">
+                            <i class="fa-solid fa-plus mr-1"></i> Add Dia
                         </button>
                     </div>
                     <div id="adminDiaPackagesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
                 </div>
-            </div>
 
-            <!-- TAB 4: STAR & TG PREMIUM PRICE EDITOR -->
-            <div id="adminPane-tg" class="hidden bg-white border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-5">
-                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-roseberry/15 pb-3">
-                    <h3 class="text-lg font-bold editorial-font text-inkdark">Telegram Star &amp; Premium Prices</h3>
-                    <button type="button"
-                            id="saveTgPricesBtn"
-                            class="px-5 py-2.5 rounded-xl rose-berry-btn text-xs font-bold cursor-pointer">
-                        <i class="fa-solid fa-floppy-disk mr-1"></i> Save Star &amp; TG Prices
-                    </button>
-                </div>
-
-                <div class="space-y-2.5">
+                <!-- Telegram Premium Plans -->
+                <div class="space-y-2.5 border-t border-roseborder pt-4">
                     <div class="flex items-center justify-between">
                         <p class="text-xs font-bold text-deepberry">Telegram Premium Plans</p>
                         <button type="button"
                                 id="addTgPremiumBtn"
-                                class="px-3 py-1.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer">
+                                class="px-3 py-1.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseborder text-xs font-bold cursor-pointer">
                             <i class="fa-solid fa-plus mr-1"></i> Add Plan
                         </button>
                     </div>
                     <div id="adminTgPremiumGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
                 </div>
 
+                <!-- Telegram Star Packages -->
                 <div class="space-y-2.5">
                     <div class="flex items-center justify-between">
                         <p class="text-xs font-bold text-deepberry">Telegram Star Packages</p>
                         <button type="button"
                                 id="addTgStarBtn"
-                                class="px-3 py-1.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseberry/20 text-xs font-bold cursor-pointer">
+                                class="px-3 py-1.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseborder text-xs font-bold cursor-pointer">
                             <i class="fa-solid fa-plus mr-1"></i> Add Star
                         </button>
                     </div>
@@ -514,15 +508,15 @@
                 </div>
             </div>
 
-            <!-- TAB 5: VISITOR LOGS -->
-            <div id="adminPane-visitors" class="hidden bg-white border border-roseberry/15 rounded-2xl p-4 sm:p-6 space-y-4">
+            <!-- TAB 4: VISITOR LOGS -->
+            <div id="adminPane-visitors" class="hidden bg-white border border-roseborder rounded-2xl p-4 sm:p-6 space-y-4">
                 <div class="flex items-center justify-between">
                     <h3 class="text-lg font-bold editorial-font text-inkdark">Visitor Logs</h3>
                     <span class="text-xs font-bold text-deepberry">Total: <span id="visitorLogsCountLabel">0</span></span>
                 </div>
-                <div class="overflow-x-auto rounded-2xl border border-roseberry/15">
+                <div class="overflow-x-auto rounded-2xl border border-roseborder">
                     <table class="w-full text-left text-xs text-inkdark">
-                        <thead class="bg-softblush text-inkdark uppercase tracking-wider border-b border-roseberry/15">
+                        <thead class="bg-softblush text-inkdark uppercase tracking-wider border-b border-roseborder">
                             <tr>
                                 <th class="p-3">Time</th>
                                 <th class="p-3">Device</th>
@@ -530,28 +524,34 @@
                                 <th class="p-3">Store</th>
                             </tr>
                         </thead>
-                        <tbody id="adminVisitorLogsBody" class="divide-y divide-roseberry/10"></tbody>
+                        <tbody id="adminVisitorLogsBody" class="divide-y divide-roseborder/60"></tbody>
                     </table>
                 </div>
             </div>
+
+            <!-- TAB 5: ACCOUNT / AUTH INFO -->
+            <div id="adminPane-authinfo" class="hidden bg-white border border-roseborder rounded-2xl p-4 sm:p-6 space-y-3 text-xs text-inkdark">
+                <h3 class="text-lg font-bold editorial-font text-inkdark">Firebase Auth &amp; Admin Access Info</h3>
+                <p>Firebase Project: <span class="font-bold text-deepberry">candy-shop-a365d</span></p>
+                <p>Session Persistence: <span class="font-bold text-inkdark">browserLocalPersistence</span> (stays signed in across refreshes)</p>
+                <p>Admin Access Key: <span class="font-bold text-deepberry">candy2026</span> (remembered on Admin URLs once verified)</p>
+                <p>Signed-In Admin Email: <span id="authInfoEmailText" class="font-bold text-inkdark">-</span></p>
+            </div>
         </section>
 
-        <!-- STEP 1: LANDING / GATEWAY SECTION (#landingView) -->
+        <!-- STEP 1: LANDING / SHOWCASE SECTION (#landingView) -->
         <section id="landingView" class="py-4 sm:py-8">
             <div class="boutique-card rounded-3xl p-6 sm:p-10 md:p-12 max-w-5xl mx-auto overflow-hidden">
                 <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] items-center gap-8 min-w-0">
                     <div class="space-y-4 min-w-0">
-                        <!-- Refined greeting heading cleanly sized at text-xl sm:text-3xl -->
                         <h1 class="text-xl sm:text-3xl font-bold editorial-font rose-berry-gradient-text leading-snug">
                             Candy Gaming မှကြိုဆိုပါတယ်ရှင့်
                         </h1>
 
-                        <!-- Required MLBB-only storefront description -->
                         <p class="text-xs sm:text-sm text-inksub leading-relaxed">
                             Mobile Legend အကောင့်များကိုသာ သီးသန့်ရောင်းချပေးသော Candy Store ဖြစ်ပါသည်
                         </p>
 
-                        <!-- Clean inline navigation buttons without circular/floating/pill badge stickers -->
                         <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
                             <button type="button"
                                     id="openCatalogBtn"
@@ -564,18 +564,18 @@
                             <a href="https://t.me/CandyGaming8"
                                target="_blank"
                                rel="noopener noreferrer"
-                               class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all">
+                               class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all">
                                 <i class="fa-brands fa-telegram text-sky-600 text-base"></i>
                                 <span>@CandyGaming8 နှင့် ဆက်သွယ်ရန်</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Single photo showcase frame strictly clipped inside its rounded border -->
-                    <div class="boutique-photo-frame w-full aspect-[16/10] bg-white border border-roseberry/20">
+                    <!-- Single clean photo showcase frame strictly clipped inside rounded container -->
+                    <div class="boutique-photo-frame w-full aspect-[16/10] bg-white border border-roseborder">
                         <img src="IMG_20261126_162338_994.jpg"
-                             alt="Candy Official Gaming"
-                             onerror="this.onerror=null;this.src='https://placehold.co/800x500/fff2f4/be185d?text=Candy+Official+Gaming';">
+                             alt="Candy Official Gaming Showcase"
+                             onerror="this.onerror=null;this.src='https://placehold.co/960x540/fff2f4/be185d?text=Candy+Official+Gaming';">
                     </div>
                 </div>
             </div>
@@ -595,9 +595,9 @@
 
                 <button type="button"
                         id="backToLandingBtn"
-                        class="self-start sm:self-auto px-4 py-2.5 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer flex items-center gap-2 transition-all">
+                        class="self-start sm:self-auto px-4 py-2.5 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer flex items-center gap-2 transition-all">
                     <i class="fa-solid fa-arrow-left text-roseberry"></i>
-                    <span>← ကြိုဆိုစာမျက်နှာသို့</span>
+                    <span>ကြိုဆိုစာမျက်နှာသို့</span>
                 </button>
             </div>
 
@@ -608,7 +608,7 @@
                     <input type="text"
                            id="catalogSearchInput"
                            placeholder="Account Code, Rank, Star, Skin ရှာဖွေပါ..."
-                           class="w-full bg-white border border-roseberry/20 focus:border-roseberry text-xs sm:text-sm rounded-xl pl-10 pr-4 py-2.5 text-inkdark placeholder-inksub/60 focus:outline-none transition-all">
+                           class="w-full bg-white border border-roseborder focus:border-roseberry text-xs sm:text-sm rounded-xl pl-10 pr-4 py-2.5 text-inkdark placeholder-inkmuted focus:outline-none transition-all">
                 </div>
 
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-1">
@@ -620,12 +620,12 @@
                         </button>
                         <button type="button"
                                 data-filter="AVAILABLE"
-                                class="filter-pill px-4 py-2.5 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all">
+                                class="filter-pill px-4 py-2.5 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder cursor-pointer whitespace-nowrap transition-all">
                             <i class="fa-solid fa-circle-check text-emerald-700 mr-1"></i> Available
                         </button>
                         <button type="button"
                                 data-filter="HIGH_RANK"
-                                class="filter-pill px-4 py-2.5 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all">
+                                class="filter-pill px-4 py-2.5 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder cursor-pointer whitespace-nowrap transition-all">
                             <i class="fa-solid fa-crown text-amber-700 mr-1"></i> High Rank
                         </button>
                     </div>
@@ -633,7 +633,7 @@
                     <div class="flex items-center justify-between md:justify-end gap-2.5 text-xs">
                         <span id="catalogCountLabel" class="text-inksub font-semibold">0 Accounts</span>
                         <select id="catalogSortSelect"
-                                class="bg-white border border-roseberry/20 text-inkdark rounded-xl px-3.5 py-2 text-xs font-medium focus:outline-none focus:border-roseberry">
+                                class="bg-white border border-roseborder text-inkdark rounded-xl px-3.5 py-2 text-xs font-medium focus:outline-none focus:border-roseberry">
                             <option value="newest">Newest</option>
                             <option value="price-asc">Price: Low to High</option>
                             <option value="price-desc">Price: High to Low</option>
@@ -648,7 +648,7 @@
 
             <!-- Empty State -->
             <div id="catalogEmptyState" class="hidden boutique-card rounded-3xl p-10 sm:p-14 text-center space-y-3">
-                <div class="w-16 h-16 mx-auto rounded-2xl bg-softblush border border-roseberry/20 flex items-center justify-center text-roseberry text-2xl">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-softblush border border-roseborder flex items-center justify-center text-roseberry text-2xl">
                     <i class="fa-solid fa-wand-sparkles"></i>
                 </div>
                 <h3 class="text-xl font-bold editorial-font text-inkdark">ပြသရန် MLBB Account မရှိသေးပါ</h3>
@@ -658,7 +658,7 @@
                 <div class="pt-2">
                     <button type="button"
                             id="resetCatalogFiltersBtn"
-                            class="px-5 py-2.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseberry/25 text-xs font-bold cursor-pointer transition-all">
+                            class="px-5 py-2.5 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseborder text-xs font-bold cursor-pointer transition-all">
                         Filter များ ပြန်ရှင်းမည်
                     </button>
                 </div>
@@ -667,12 +667,12 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="mt-14 bg-alabaster/95 border-t border-roseberry/15 py-7 text-inksub">
+    <footer class="mt-14 bg-alabaster/95 border-t border-roseborder py-7 text-inksub">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
             <button type="button"
                     id="footerHomeBtn"
                     class="flex items-center gap-2.5 cursor-pointer text-left">
-                <div class="boutique-photo-frame w-8 h-8 bg-softblush border border-roseberry/25 flex-shrink-0">
+                <div class="boutique-photo-frame w-8 h-8 bg-softblush border border-roseborder flex-shrink-0">
                     <img src="IMG_20261126_162338_994.jpg"
                          alt="Candy Official Gaming"
                          onerror="this.onerror=null;this.src='https://placehold.co/80x80/fff2f4/be185d?text=COG';">
@@ -681,7 +681,7 @@
             </button>
 
             <div class="flex items-center gap-5">
-                <!-- Hidden on buyer links; visible ONLY on dedicated Admin link -->
+                <!-- Hidden on buyer links; visible ONLY on valid Admin links -->
                 <button type="button"
                         id="footerAdminLinkBtn"
                         style="display: none;"
@@ -699,7 +699,7 @@
         </div>
     </footer>
 
-    <!-- MULTI-PHOTO SLIDER DETAIL MODAL (#detailModal - CLOSED BY DEFAULT: display: none; pointer-events: none;) -->
+    <!-- MULTI-PHOTO SLIDER DETAIL MODAL (#detailModal - CLOSED BY DEFAULT) -->
     <div id="detailModal"
          aria-hidden="true"
          class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-inkdark/55 backdrop-blur-2xs overflow-y-auto">
@@ -707,27 +707,27 @@
             <button type="button"
                     id="closeDetailModalBtn"
                     aria-label="Close account details"
-                    class="absolute top-4 right-4 z-20 w-9 h-9 rounded-xl bg-white/95 hover:bg-roseberry text-inkdark hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
+                    class="absolute top-4 right-4 z-20 w-9 h-9 rounded-xl bg-white/95 hover:bg-roseberry text-inkdark hover:text-white border border-roseborder flex items-center justify-center cursor-pointer transition-all">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="detailModalBody" class="p-5 sm:p-7 space-y-5"></div>
         </div>
     </div>
 
-    <!-- ADMIN KEY & FIREBASE EMAIL/PASSWORD MODAL (#adminKeyModal - CLOSED BY DEFAULT: display: none; pointer-events: none;) -->
+    <!-- ADMIN KEY & FIREBASE AUTH MODAL (#adminKeyModal - CLOSED BY DEFAULT) -->
     <div id="adminKeyModal"
          aria-hidden="true"
-         class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-inkdark/60 backdrop-blur-2xs">
-        <div class="boutique-card rounded-3xl p-6 max-w-md w-full space-y-5 shadow-2xl">
+         class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-inkdark/60 backdrop-blur-2xs overflow-y-auto">
+        <div class="boutique-card rounded-3xl p-6 max-w-md w-full space-y-5 shadow-2xl my-8">
             <div class="text-center space-y-1">
-                <div class="w-12 h-12 mx-auto rounded-2xl bg-softblush text-deepberry border border-roseberry/20 flex items-center justify-center text-xl">
+                <div class="w-12 h-12 mx-auto rounded-2xl bg-softblush text-deepberry border border-roseborder flex items-center justify-center text-xl">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
                 <h3 class="text-xl font-bold editorial-font text-inkdark">Admin Verification</h3>
                 <p class="text-xs text-inksub">Admin Key (candy2026) နှင့် Firebase Email / Password ဖြင့် ဝင်ရောက်ပါ</p>
             </div>
 
-            <!-- Step A: Admin Key Verification -->
+            <!-- Step 1: Admin Key Verification -->
             <form id="adminKeyForm" class="space-y-2.5">
                 <label class="block text-xs font-bold text-inkdark">1. Admin Access Key</label>
                 <div class="flex items-center gap-2">
@@ -735,21 +735,21 @@
                            id="adminKeyInput"
                            autocomplete="off"
                            placeholder="Enter key (candy2026)"
-                           class="flex-1 bg-white border border-roseberry/25 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
+                           class="flex-1 bg-white border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-inkdark focus:outline-none">
                     <button type="submit"
                             id="verifyAdminKeyBtn"
-                            class="px-4 py-2 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseberry/25 text-xs font-bold cursor-pointer">
+                            class="px-4 py-2 rounded-xl bg-softblush hover:bg-petal text-deepberry border border-roseborder text-xs font-bold cursor-pointer">
                         Verify Key
                     </button>
                 </div>
                 <p id="adminKeyErrorMsg" class="hidden text-xs font-semibold text-berrydark"></p>
                 <p id="adminKeyVerifiedMsg" class="hidden text-xs font-semibold text-emerald-700">
-                    Key verified. Please sign in with Firebase Email &amp; Password below.
+                    Admin key verified &amp; remembered on this Admin link.
                 </p>
             </form>
 
-            <!-- Step B: Firebase Authentication Email & Password Sign-In -->
-            <form id="adminFirebaseLoginForm" class="space-y-3 border-t border-roseberry/15 pt-4">
+            <!-- Step 2: Firebase Email & Password Sign-In -->
+            <form id="adminFirebaseLoginForm" class="space-y-3 border-t border-roseborder pt-4">
                 <label class="block text-xs font-bold text-inkdark">2. Firebase Admin Sign-In</label>
                 <div>
                     <label class="block text-[11px] font-semibold text-inksub mb-1">Admin Email</label>
@@ -758,7 +758,7 @@
                            required
                            autocomplete="username"
                            placeholder="admin@example.com"
-                           class="w-full bg-white border border-roseberry/25 focus:border-roseberry rounded-xl px-3.5 py-2.5 text-xs text-inkdark focus:outline-none">
+                           class="w-full bg-white border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2.5 text-xs text-inkdark focus:outline-none">
                 </div>
                 <div>
                     <label class="block text-[11px] font-semibold text-inksub mb-1">Password</label>
@@ -767,8 +767,15 @@
                            required
                            autocomplete="current-password"
                            placeholder="••••••••"
-                           class="w-full bg-white border border-roseberry/25 focus:border-roseberry rounded-xl px-3.5 py-2.5 text-xs text-inkdark focus:outline-none">
+                           class="w-full bg-white border border-roseborder focus:border-roseberry rounded-xl px-3.5 py-2.5 text-xs text-inkdark focus:outline-none">
                 </div>
+                <label class="flex items-center gap-2 text-[11px] font-semibold text-inksub cursor-pointer select-none">
+                    <input type="checkbox"
+                           id="rememberAdminCredsCheckbox"
+                           checked
+                           class="rounded border-roseborder text-roseberry focus:ring-roseberry">
+                    <span>Save login credentials for quick sign-in</span>
+                </label>
                 <p id="adminAuthErrorMsg" class="hidden text-xs font-semibold text-berrydark"></p>
                 <div class="flex items-center gap-2.5 pt-1">
                     <button type="submit"
@@ -778,7 +785,7 @@
                     </button>
                     <button type="button"
                             id="cancelAdminKeyBtn"
-                            class="flex-1 py-2.5 px-4 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                            class="flex-1 py-2.5 px-4 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer">
                         Cancel
                     </button>
                 </div>
@@ -786,12 +793,12 @@
         </div>
     </div>
 
-    <!-- NON-BLOCKING NOTICE / CONFIRM MODAL (#noticeModal - CLOSED BY DEFAULT: display: none; pointer-events: none;) -->
+    <!-- NON-BLOCKING NOTICE / CONFIRM MODAL (#noticeModal - CLOSED BY DEFAULT) -->
     <div id="noticeModal"
          aria-hidden="true"
          class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-inkdark/60 backdrop-blur-2xs">
         <div class="boutique-card rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl">
-            <div class="w-12 h-12 mx-auto rounded-2xl bg-softblush text-deepberry border border-roseberry/20 flex items-center justify-center text-xl">
+            <div class="w-12 h-12 mx-auto rounded-2xl bg-softblush text-deepberry border border-roseborder flex items-center justify-center text-xl">
                 <i id="noticeModalIcon" class="fa-solid fa-circle-info"></i>
             </div>
             <div class="space-y-1">
@@ -802,6 +809,9 @@
         </div>
     </div>
 
+    <!-- NON-BLOCKING TOAST CONTAINER -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
     <!-- FIREBASE v10.14.1 MODULAR SCRIPT -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
@@ -810,7 +820,9 @@
             signInWithEmailAndPassword,
             signOut,
             onAuthStateChanged,
-            sendPasswordResetEmail
+            sendPasswordResetEmail,
+            setPersistence,
+            browserLocalPersistence
         } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
         import {
             getFirestore,
@@ -823,7 +835,7 @@
             serverTimestamp
         } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
-        // Firebase v10.14.1 configuration for projectId: candy-shop-a365d
+        // Firebase v10.14.1 configuration for candy-shop-a365d
         const firebaseConfig = {
             apiKey: "AIzaSyDcOqqy9EP1xkFdOe0xh4kt4TMPWEOz_nA",
             authDomain: "candy-shop-a365d.firebaseapp.com",
@@ -850,6 +862,8 @@
         const DELETED_IDS_KEY = "candy_mlbb_deleted_ids_v2";
         const DIA_KEY = "candy_mlbb_dia_prices_v2";
         const TG_KEY = "candy_mlbb_tg_prices_v2";
+        const ADMIN_KEY_STORAGE = "candy_admin_key_verified_v2";
+        const ADMIN_CREDS_STORAGE = "candy_admin_saved_creds_v2";
 
         const DEFAULT_DIA = {
             bundles: [
@@ -883,7 +897,7 @@
             ]
         };
 
-        // Always defaults to false on page load and refresh
+        // Always starts false on load/refresh so Admin Studio never auto-opens
         let isAdminUnlocked = false;
         let isAdminKeyVerified = false;
         let currentFirebaseUser = null;
@@ -974,29 +988,130 @@
         }
 
         /**
-         * Returns true ONLY when the current URL matches an Admin URL format.
-         * Buyer links never show Admin buttons or Admin controls.
+         * Checks whether the current URL is an Admin link:
+         * ?mode=admin&key=candy2026, ?admin=candy2026, #admin-candy2026, or #admin-mode-candy2026.
          */
         function isDedicatedAdminLink() {
             try {
-                const params = new URLSearchParams(window.location.search);
-                const mode = (params.get("mode") || "").toLowerCase();
-                const key = params.get("key") || "";
-                const adminParam = params.get("admin") || "";
-                const hashClean = (window.location.hash || "").replace(/^#/, "");
+                const params = new URLSearchParams(window.location.search || "");
+                const mode = (params.get("mode") || "").trim().toLowerCase();
+                const queryKey = (params.get("key") || "").trim();
+                const adminParam = (params.get("admin") || "").trim();
+                const rawHash = (window.location.hash || "").replace(/^#/, "").trim();
+                const hashClean = rawHash.startsWith("/") ? rawHash.slice(1) : rawHash;
+                const hashParams = new URLSearchParams(hashClean.replace(/^\?/, ""));
+                const hashMode = (hashParams.get("mode") || "").trim().toLowerCase();
+                const hashKey = (hashParams.get("key") || "").trim();
 
-                if (mode === "admin" && key === ADMIN_KEY) return true;
+                if (mode === "admin" && queryKey === ADMIN_KEY) return true;
                 if (adminParam === ADMIN_KEY) return true;
                 if (hashClean === `admin-${ADMIN_KEY}` || hashClean === `admin-mode-${ADMIN_KEY}`) return true;
+                if (hashMode === "admin" && hashKey === ADMIN_KEY) return true;
                 return false;
             } catch (_err) {
                 return false;
             }
         }
 
+        function hasRememberedAdminKey() {
+            if (!isDedicatedAdminLink()) return false;
+            try {
+                if (sessionStorage.getItem(ADMIN_KEY_STORAGE) === ADMIN_KEY) return true;
+                if (localStorage.getItem(ADMIN_KEY_STORAGE) === ADMIN_KEY) return true;
+            } catch (_err) {
+                // Ignore storage errors
+            }
+            return false;
+        }
+
+        function persistRememberedAdminKey(verified) {
+            try {
+                if (verified && isDedicatedAdminLink()) {
+                    sessionStorage.setItem(ADMIN_KEY_STORAGE, ADMIN_KEY);
+                    localStorage.setItem(ADMIN_KEY_STORAGE, ADMIN_KEY);
+                } else {
+                    sessionStorage.removeItem(ADMIN_KEY_STORAGE);
+                    localStorage.removeItem(ADMIN_KEY_STORAGE);
+                }
+            } catch (_err) {
+                // Ignore storage errors
+            }
+        }
+
+        function loadRememberedAdminCreds() {
+            const saved = readLocalJson(ADMIN_CREDS_STORAGE, null);
+            if (!saved || typeof saved !== "object") return { email: "", password: "", remember: true };
+            return {
+                email: String(saved.email || ""),
+                password: String(saved.password || ""),
+                remember: saved.remember !== false
+            };
+        }
+
+        function saveRememberedAdminCreds(email, password, remember) {
+            if (!remember) {
+                try {
+                    localStorage.removeItem(ADMIN_CREDS_STORAGE);
+                } catch (_err) {
+                    // Ignore storage errors
+                }
+                return;
+            }
+            writeLocalJson(ADMIN_CREDS_STORAGE, {
+                email: String(email || "").trim(),
+                password: String(password || ""),
+                remember: true
+            });
+        }
+
+        function clearRememberedAdminCreds() {
+            try {
+                localStorage.removeItem(ADMIN_CREDS_STORAGE);
+            } catch (_err) {
+                // Ignore storage errors
+            }
+        }
+
+        function hydrateAdminLoginInputs() {
+            const creds = loadRememberedAdminCreds();
+            const emailInput = document.getElementById("adminEmailInput");
+            const passInput = document.getElementById("adminPasswordInput");
+            const remCheckbox = document.getElementById("rememberAdminCredsCheckbox");
+
+            if (emailInput && creds.email) emailInput.value = creds.email;
+            if (passInput && creds.remember && creds.password) passInput.value = creds.password;
+            if (remCheckbox) remCheckbox.checked = creds.remember;
+        }
+
+        function showToast(message, tone = "info") {
+            const container = document.getElementById("toastContainer");
+            if (!container) return;
+
+            const toast = document.createElement("div");
+            const toneClasses = tone === "error"
+                ? "bg-white border-berrydark text-berrydark"
+                : tone === "success"
+                    ? "bg-white border-emerald-600 text-emerald-800"
+                    : "bg-white border-roseberry text-inkdark";
+
+            toast.className = `px-4 py-2.5 rounded-2xl border shadow-xl text-xs font-bold flex items-center gap-2 transition-all duration-200 pointer-events-auto ${toneClasses}`;
+            const icon = tone === "error"
+                ? "fa-circle-exclamation"
+                : tone === "success"
+                    ? "fa-circle-check"
+                    : "fa-circle-info";
+            toast.innerHTML = `<i class="fa-solid ${icon}"></i><span>${escapeHtml(message)}</span>`;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "translate-y-1");
+                setTimeout(() => toast.remove(), 220);
+            }, 2600);
+        }
+
         /**
-         * Updates Admin trigger visibility (only on Admin URLs) and Admin Studio panel visibility
-         * (only when on Admin URL, key verified, and Firebase Auth signed in).
+         * Synchronizes Admin trigger visibility (only on Admin URLs) and Admin Studio panel
+         * visibility (only when on Admin URL, key verified, and Firebase Auth signed in).
          */
         function syncAdminState() {
             const onAdminLink = isDedicatedAdminLink();
@@ -1026,9 +1141,9 @@
             isAdminUnlocked = Boolean(onAdminLink && isAdminKeyVerified && currentFirebaseUser);
 
             const emailLabel = document.getElementById("currentAdminEmailText");
-            if (emailLabel) {
-                emailLabel.textContent = currentFirebaseUser?.email || "-";
-            }
+            const authInfoEmail = document.getElementById("authInfoEmailText");
+            if (emailLabel) emailLabel.textContent = currentFirebaseUser?.email || "-";
+            if (authInfoEmail) authInfoEmail.textContent = currentFirebaseUser?.email || "-";
 
             if (panel) {
                 if (isAdminUnlocked) {
@@ -1044,25 +1159,27 @@
 
         function onAdminTriggerClick() {
             if (!isDedicatedAdminLink()) return;
+            isAdminKeyVerified = hasRememberedAdminKey();
+            syncAdminState();
+
             if (isAdminUnlocked) {
-                syncAdminState();
                 document.getElementById("adminStudioPanel")?.scrollIntoView({ behavior: "smooth" });
                 return;
             }
+
+            hydrateAdminLoginInputs();
 
             const keyInput = document.getElementById("adminKeyInput");
             const keyErr = document.getElementById("adminKeyErrorMsg");
             const keyOk = document.getElementById("adminKeyVerifiedMsg");
             const authErr = document.getElementById("adminAuthErrorMsg");
 
-            if (keyInput && !isAdminKeyVerified) keyInput.value = "";
+            if (keyInput) keyInput.value = isAdminKeyVerified ? ADMIN_KEY : "";
             if (keyErr) {
                 keyErr.textContent = "";
                 keyErr.classList.add("hidden");
             }
-            if (keyOk) {
-                keyOk.classList.toggle("hidden", !isAdminKeyVerified);
-            }
+            if (keyOk) keyOk.classList.toggle("hidden", !isAdminKeyVerified);
             if (authErr) {
                 authErr.textContent = "";
                 authErr.classList.add("hidden");
@@ -1080,14 +1197,14 @@
 
         function switchAdminTab(tabName) {
             currentAdminTab = tabName || "accounts";
-            const tabs = ["accounts", "editor", "dia", "tg", "visitors"];
+            const tabs = ["accounts", "editor", "dia", "visitors", "authinfo"];
             tabs.forEach((t) => {
                 const btn = document.getElementById(`adminTab-${t}`);
                 const pane = document.getElementById(`adminPane-${t}`);
                 if (btn) {
                     btn.className = t === currentAdminTab
                         ? "admin-tab-btn px-4 py-2 rounded-xl rose-berry-btn text-xs font-bold cursor-pointer"
-                        : "admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer transition-all";
+                        : "admin-tab-btn px-4 py-2 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer transition-all";
                 }
                 if (pane) {
                     pane.classList.toggle("hidden", t !== currentAdminTab);
@@ -1098,10 +1215,8 @@
             if (currentAdminTab === "editor") renderFormThumbnails();
             if (currentAdminTab === "dia") {
                 draftDiaPrices = normalizeDia(diaPrices);
-                renderAdminDiaEditor();
-            }
-            if (currentAdminTab === "tg") {
                 draftTgPrices = normalizeTg(tgPrices);
+                renderAdminDiaEditor();
                 renderAdminTgEditor();
             }
             if (currentAdminTab === "visitors") renderAdminVisitorLogs();
@@ -1239,7 +1354,7 @@
                     </button>
                     <button type="button"
                             id="confirmCancelBtn"
-                            class="flex-1 py-2.5 px-4 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer">
+                            class="flex-1 py-2.5 px-4 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer">
                         Cancel
                     </button>
                 `;
@@ -1272,7 +1387,7 @@
                 const match = btn.getAttribute("data-filter") === filterKey;
                 btn.className = match
                     ? "filter-pill px-4 py-2.5 rounded-xl rose-berry-btn cursor-pointer whitespace-nowrap"
-                    : "filter-pill px-4 py-2.5 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 cursor-pointer whitespace-nowrap transition-all";
+                    : "filter-pill px-4 py-2.5 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder cursor-pointer whitespace-nowrap transition-all";
             });
             renderCatalog();
         }
@@ -1354,7 +1469,7 @@
                                 </span>
 
                                 ${acc.rank ? `
-                                    <span class="absolute top-3 right-3 px-3 py-1 rounded-xl text-[11px] font-bold bg-white/95 text-inkdark border border-roseberry/20">
+                                    <span class="absolute top-3 right-3 px-3 py-1 rounded-xl text-[11px] font-bold bg-white/95 text-inkdark border border-roseborder">
                                         ${escapeHtml(acc.rank)}
                                     </span>
                                 ` : ""}
@@ -1369,8 +1484,8 @@
                                     ${escapeHtml(acc.title || "MLBB Account")}
                                 </h3>
 
-                                <div class="grid grid-cols-2 gap-2 text-center bg-softblush/85 border border-roseberry/15 rounded-2xl p-2.5">
-                                    <div class="border-r border-roseberry/15">
+                                <div class="grid grid-cols-2 gap-2 text-center bg-softblush/85 border border-roseborder rounded-2xl p-2.5">
+                                    <div class="border-r border-roseborder">
                                         <p class="text-[10px] text-inksub">Skins</p>
                                         <p class="text-sm font-bold text-inkdark">${Number(acc.skins || 0)}</p>
                                     </div>
@@ -1383,7 +1498,7 @@
                                 ${tags.length > 0 ? `
                                     <div class="flex flex-wrap gap-1.5">
                                         ${tags.slice(0, 3).map((tag) => `
-                                            <span class="px-2.5 py-1 rounded-xl bg-white text-deepberry border border-roseberry/20 text-[11px] font-semibold">
+                                            <span class="px-2.5 py-1 rounded-xl bg-white text-deepberry border border-roseborder text-[11px] font-semibold">
                                                 ${escapeHtml(tag)}
                                             </span>
                                         `).join("")}
@@ -1392,7 +1507,7 @@
                             </div>
                         </div>
 
-                        <div class="px-5 pb-5 pt-2 flex items-center justify-between gap-3 border-t border-roseberry/10">
+                        <div class="px-5 pb-5 pt-2 flex items-center justify-between gap-3 border-t border-roseborder/60">
                             <div>
                                 <p class="text-[10px] text-inksub">ဈေးနှုန်း</p>
                                 <p class="text-sm sm:text-base font-extrabold text-deepberry">
@@ -1438,7 +1553,7 @@
 
             body.innerHTML = `
                 <div class="space-y-3">
-                    <div class="boutique-photo-frame relative aspect-[16/9] w-full bg-softblush border border-roseberry/20">
+                    <div class="boutique-photo-frame relative aspect-[16/9] w-full bg-softblush border border-roseborder">
                         <img id="sliderActiveImg"
                              src="${escapeHtml(modalPhotos[0])}"
                              alt="${escapeHtml(acc.title || "MLBB Account")}"
@@ -1448,13 +1563,13 @@
                             <button type="button"
                                     id="prevPhotoBtn"
                                     aria-label="Previous photo"
-                                    class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl bg-white/95 hover:bg-roseberry text-inkdark hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
+                                    class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl bg-white/95 hover:bg-roseberry text-inkdark hover:text-white border border-roseborder flex items-center justify-center cursor-pointer transition-all">
                                 <i class="fa-solid fa-chevron-left text-xs"></i>
                             </button>
                             <button type="button"
                                     id="nextPhotoBtn"
                                     aria-label="Next photo"
-                                    class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl bg-white/95 hover:bg-roseberry text-inkdark hover:text-white border border-roseberry/25 flex items-center justify-center cursor-pointer transition-all">
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl bg-white/95 hover:bg-roseberry text-inkdark hover:text-white border border-roseborder flex items-center justify-center cursor-pointer transition-all">
                                 <i class="fa-solid fa-chevron-right text-xs"></i>
                             </button>
                             <span id="sliderCountLabel"
@@ -1470,7 +1585,7 @@
                                 <button type="button"
                                         data-thumb-idx="${i}"
                                         class="boutique-photo-frame thumb-switch-btn w-16 h-12 border-2 flex-shrink-0 cursor-pointer transition-all ${
-                                            i === 0 ? "border-roseberry scale-105" : "border-roseberry/20 opacity-75 hover:opacity-100"
+                                            i === 0 ? "border-roseberry scale-105" : "border-roseborder opacity-75 hover:opacity-100"
                                         }">
                                     <img src="${escapeHtml(src)}"
                                          alt="Photo ${i + 1}"
@@ -1481,7 +1596,7 @@
                     ` : ""}
                 </div>
 
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-roseberry/15 pb-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-roseborder pb-4">
                     <div>
                         <div class="flex items-center gap-2 flex-wrap">
                             <h3 class="text-2xl font-bold editorial-font text-inkdark">
@@ -1503,8 +1618,8 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3 text-center bg-softblush/90 border border-roseberry/15 rounded-2xl p-3.5">
-                    <div class="border-r border-roseberry/15">
+                <div class="grid grid-cols-2 gap-3 text-center bg-softblush/90 border border-roseborder rounded-2xl p-3.5">
+                    <div class="border-r border-roseborder">
                         <p class="text-[11px] text-inksub">Skins Count</p>
                         <p class="text-base font-bold text-inkdark">${Number(acc.skins || 0)}</p>
                     </div>
@@ -1519,7 +1634,7 @@
                         <p class="text-xs font-bold text-inkdark">Highlight Skins</p>
                         <div class="flex flex-wrap gap-1.5">
                             ${tags.map((tag) => `
-                                <span class="px-3 py-1 rounded-xl bg-white text-deepberry border border-roseberry/20 text-xs font-semibold">
+                                <span class="px-3 py-1 rounded-xl bg-white text-deepberry border border-roseborder text-xs font-semibold">
                                     ${escapeHtml(tag)}
                                 </span>
                             `).join("")}
@@ -1528,7 +1643,7 @@
                 ` : ""}
 
                 ${acc.notes ? `
-                    <div class="bg-white border border-roseberry/15 rounded-2xl p-4 space-y-1">
+                    <div class="bg-white border border-roseborder rounded-2xl p-4 space-y-1">
                         <p class="text-xs font-bold text-inkdark">Notes / Bind Details</p>
                         <p class="text-xs sm:text-sm text-inkdark/85 whitespace-pre-line leading-relaxed">${escapeHtml(acc.notes)}</p>
                     </div>
@@ -1544,7 +1659,7 @@
                     </a>
                     <button type="button"
                             id="closeDetailFooterBtn"
-                            class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseberry/20 text-xs font-bold cursor-pointer">
+                            class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white hover:bg-softblush text-inkdark border border-roseborder text-xs font-bold cursor-pointer">
                         ပိတ်မည်
                     </button>
                 </div>
@@ -1580,7 +1695,7 @@
             document.querySelectorAll(".thumb-switch-btn").forEach((btn, i) => {
                 btn.className = i === modalPhotoIdx
                     ? "boutique-photo-frame thumb-switch-btn w-16 h-12 border-2 flex-shrink-0 cursor-pointer transition-all border-roseberry scale-105"
-                    : "boutique-photo-frame thumb-switch-btn w-16 h-12 border-2 flex-shrink-0 cursor-pointer transition-all border-roseberry/20 opacity-75 hover:opacity-100";
+                    : "boutique-photo-frame thumb-switch-btn w-16 h-12 border-2 flex-shrink-0 cursor-pointer transition-all border-roseborder opacity-75 hover:opacity-100";
             });
         }
 
@@ -1617,7 +1732,7 @@
                 return `
                     <tr class="hover:bg-softblush/60">
                         <td class="p-3">
-                            <div class="boutique-photo-frame w-14 h-10 border border-roseberry/20">
+                            <div class="boutique-photo-frame w-14 h-10 border border-roseborder">
                                 <img src="${escapeHtml(firstImg)}"
                                      alt="${escapeHtml(acc.title || "")}"
                                      onerror="this.onerror=null;this.src='https://placehold.co/120x80/fff2f4/be185d?text=MLBB';">
@@ -1639,12 +1754,12 @@
                         <td class="p-3 text-right whitespace-nowrap space-x-1.5">
                             <button type="button"
                                     data-edit-id="${escapeHtml(acc.id)}"
-                                    class="row-edit-btn px-2.5 py-1.5 rounded-lg bg-softblush hover:bg-petal text-deepberry border border-roseberry/20 text-[11px] font-bold cursor-pointer">
+                                    class="row-edit-btn px-2.5 py-1.5 rounded-lg bg-softblush hover:bg-petal text-deepberry border border-roseborder text-[11px] font-bold cursor-pointer">
                                 Edit
                             </button>
                             <button type="button"
                                     data-del-id="${escapeHtml(acc.id)}"
-                                    class="row-del-btn px-2.5 py-1.5 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/25 text-[11px] font-bold cursor-pointer transition-colors">
+                                    class="row-del-btn px-2.5 py-1.5 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseborder text-[11px] font-bold cursor-pointer transition-colors">
                                 Delete
                             </button>
                         </td>
@@ -1692,8 +1807,9 @@
 
             try {
                 await setDoc(doc(db, "mlbb_accounts", String(id)), { status: nextStatus, updatedAt: Date.now() }, { merge: true });
+                showToast(`Status updated to ${nextStatus}`, "success");
             } catch (_err) {
-                // Local update already applied
+                showToast("Updated locally", "info");
             }
         }
 
@@ -1706,12 +1822,12 @@
             label.textContent = `${formPhotos.length} / ${MAX_PHOTOS} Photos`;
 
             if (formPhotos.length === 0) {
-                wrap.innerHTML = `<span class="text-xs text-inksub self-center mx-auto">No uploaded photos yet (Max 15)</span>`;
+                wrap.innerHTML = `<span class="text-xs text-inkmuted self-center mx-auto">No uploaded photos yet (Max 15)</span>`;
                 return;
             }
 
             wrap.innerHTML = formPhotos.map((src, i) => `
-                <div class="boutique-photo-frame relative w-16 h-16 border border-roseberry/25 bg-white flex-shrink-0">
+                <div class="boutique-photo-frame relative w-16 h-16 border border-roseborder bg-white flex-shrink-0">
                     <img src="${escapeHtml(src)}"
                          alt="Upload ${i + 1}"
                          onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff2f4/be185d?text=IMG';">
@@ -1944,44 +2060,44 @@
             if (!bWrap || !pWrap) return;
 
             bWrap.innerHTML = draftDiaPrices.bundles.map((b) => `
-                <div class="bg-alabaster border border-roseberry/15 rounded-xl p-3 flex items-center gap-2">
+                <div class="bg-alabaster border border-roseborder rounded-xl p-3 flex items-center gap-2">
                     <div class="flex-1 space-y-1.5">
                         <input type="text"
                                id="diaBLabel-${escapeHtml(b.id)}"
                                value="${escapeHtml(b.label)}"
                                placeholder="Bundle Name"
-                               class="w-full bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-inkdark">
+                               class="w-full bg-white border border-roseborder rounded-lg px-2.5 py-1.5 text-xs font-bold text-inkdark">
                         <input type="number"
                                min="0"
                                id="diaBPrice-${escapeHtml(b.id)}"
                                value="${Number(b.price || 0)}"
                                placeholder="Price (MMK)"
-                               class="w-full bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
+                               class="w-full bg-white border border-roseborder rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
                     </div>
                     <button type="button"
                             data-rm-db="${escapeHtml(b.id)}"
-                            class="rm-db-btn px-2.5 py-2 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/20 text-xs cursor-pointer">
+                            class="rm-db-btn px-2.5 py-2 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseborder text-xs cursor-pointer">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
             `).join("");
 
             pWrap.innerHTML = draftDiaPrices.packages.map((pkg) => `
-                <div class="bg-alabaster border border-roseberry/15 rounded-xl p-2.5 flex items-center gap-2">
+                <div class="bg-alabaster border border-roseborder rounded-xl p-2.5 flex items-center gap-2">
                     <input type="text"
                            id="diaPAmt-${escapeHtml(pkg.id)}"
                            value="${escapeHtml(pkg.amount)}"
                            placeholder="Dia"
-                           class="w-24 bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-inkdark">
+                           class="w-24 bg-white border border-roseborder rounded-lg px-2.5 py-1.5 text-xs font-bold text-inkdark">
                     <input type="number"
                            min="0"
                            id="diaPPrice-${escapeHtml(pkg.id)}"
                            value="${Number(pkg.price || 0)}"
                            placeholder="Price"
-                           class="flex-1 bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
+                           class="flex-1 bg-white border border-roseborder rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
                     <button type="button"
                             data-rm-dp="${escapeHtml(pkg.id)}"
-                            class="rm-dp-btn px-2.5 py-1.5 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/20 text-xs cursor-pointer">
+                            class="rm-dp-btn px-2.5 py-1.5 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseborder text-xs cursor-pointer">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
@@ -2006,22 +2122,6 @@
             });
         }
 
-        async function saveDiaPrices() {
-            syncDiaDraft();
-            const cleaned = normalizeDia({
-                bundles: draftDiaPrices.bundles.filter((b) => String(b.label || "").trim()),
-                packages: draftDiaPrices.packages.filter((p) => String(p.amount || "").trim())
-            });
-            diaPrices = cleaned;
-            writeLocalJson(DIA_KEY, cleaned);
-            try {
-                await setDoc(diaPricesDoc, { ...cleaned, updatedAt: Date.now() }, { merge: true });
-                showNotice("Saved", "MLBB Dia ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "success");
-            } catch (_err) {
-                showNotice("Saved Locally", "Local storage တွင် Dia ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "info");
-            }
-        }
-
         function syncTgDraft() {
             draftTgPrices.premium.forEach((p) => {
                 const l = document.getElementById(`tgPLabel-${p.id}`);
@@ -2043,44 +2143,44 @@
             if (!pWrap || !sWrap) return;
 
             pWrap.innerHTML = draftTgPrices.premium.map((item) => `
-                <div class="bg-alabaster border border-roseberry/15 rounded-xl p-3 flex items-center gap-2">
+                <div class="bg-alabaster border border-roseborder rounded-xl p-3 flex items-center gap-2">
                     <div class="flex-1 space-y-1.5">
                         <input type="text"
                                id="tgPLabel-${escapeHtml(item.id)}"
                                value="${escapeHtml(item.label)}"
                                placeholder="Plan Label"
-                               class="w-full bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-inkdark">
+                               class="w-full bg-white border border-roseborder rounded-lg px-2.5 py-1.5 text-xs font-bold text-inkdark">
                         <input type="number"
                                min="0"
                                id="tgPPrice-${escapeHtml(item.id)}"
                                value="${Number(item.price || 0)}"
                                placeholder="Price (MMK)"
-                               class="w-full bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
+                               class="w-full bg-white border border-roseborder rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
                     </div>
                     <button type="button"
                             data-rm-tgp="${escapeHtml(item.id)}"
-                            class="rm-tgp-btn px-2.5 py-2 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/20 text-xs cursor-pointer">
+                            class="rm-tgp-btn px-2.5 py-2 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseborder text-xs cursor-pointer">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
             `).join("");
 
             sWrap.innerHTML = draftTgPrices.stars.map((st) => `
-                <div class="bg-alabaster border border-roseberry/15 rounded-xl p-2.5 flex items-center gap-2">
+                <div class="bg-alabaster border border-roseborder rounded-xl p-2.5 flex items-center gap-2">
                     <input type="text"
                            id="tgSAmt-${escapeHtml(st.id)}"
                            value="${escapeHtml(st.amount)}"
                            placeholder="Stars"
-                           class="w-24 bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-inkdark">
+                           class="w-24 bg-white border border-roseborder rounded-lg px-2.5 py-1.5 text-xs font-bold text-inkdark">
                     <input type="number"
                            min="0"
                            id="tgSPrice-${escapeHtml(st.id)}"
                            value="${Number(st.price || 0)}"
                            placeholder="Price"
-                           class="flex-1 bg-white border border-roseberry/20 rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
+                           class="flex-1 bg-white border border-roseborder rounded-lg px-2.5 py-1.5 text-xs font-bold text-deepberry">
                     <button type="button"
                             data-rm-tgs="${escapeHtml(st.id)}"
-                            class="rm-tgs-btn px-2.5 py-1.5 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/20 text-xs cursor-pointer">
+                            class="rm-tgs-btn px-2.5 py-1.5 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseborder text-xs cursor-pointer">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
@@ -2105,19 +2205,32 @@
             });
         }
 
-        async function saveTgPrices() {
+        async function saveAllRates() {
+            syncDiaDraft();
             syncTgDraft();
-            const cleaned = normalizeTg({
+
+            const cleanedDia = normalizeDia({
+                bundles: draftDiaPrices.bundles.filter((b) => String(b.label || "").trim()),
+                packages: draftDiaPrices.packages.filter((p) => String(p.amount || "").trim())
+            });
+            const cleanedTg = normalizeTg({
                 premium: draftTgPrices.premium.filter((p) => String(p.label || "").trim()),
                 stars: draftTgPrices.stars.filter((s) => String(s.amount || "").trim())
             });
-            tgPrices = cleaned;
-            writeLocalJson(TG_KEY, cleaned);
+
+            diaPrices = cleanedDia;
+            tgPrices = cleanedTg;
+            writeLocalJson(DIA_KEY, cleanedDia);
+            writeLocalJson(TG_KEY, cleanedTg);
+
             try {
-                await setDoc(tgPricesDoc, { ...cleaned, updatedAt: Date.now() }, { merge: true });
-                showNotice("Saved", "Star & TG Premium ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "success");
+                await Promise.all([
+                    setDoc(diaPricesDoc, { ...cleanedDia, updatedAt: Date.now() }, { merge: true }),
+                    setDoc(tgPricesDoc, { ...cleanedTg, updatedAt: Date.now() }, { merge: true })
+                ]);
+                showNotice("Saved", "Dia, Telegram Star နှင့် TG Premium ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "success");
             } catch (_err) {
-                showNotice("Saved Locally", "Local storage တွင် Star & TG ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "info");
+                showNotice("Saved Locally", "Local storage တွင် ဈေးနှုန်းများ သိမ်းဆည်းပြီးပါပြီ", "info");
             }
         }
 
@@ -2194,20 +2307,26 @@
 
             document.getElementById("lockAdminStudioBtn")?.addEventListener("click", () => {
                 isAdminUnlocked = false;
-                isAdminKeyVerified = false;
                 syncAdminState();
+                showToast("Admin Studio locked", "info");
             });
 
-            document.getElementById("adminSignOutBtn")?.addEventListener("click", async () => {
+            document.getElementById("adminSignOutClearBtn")?.addEventListener("click", async () => {
                 isAdminUnlocked = false;
                 isAdminKeyVerified = false;
+                persistRememberedAdminKey(false);
+                clearRememberedAdminCreds();
                 try {
                     await signOut(auth);
                 } catch (_err) {
                     // Ignore signOut errors
                 }
+                const emailInput = document.getElementById("adminEmailInput");
+                const passInput = document.getElementById("adminPasswordInput");
+                if (emailInput) emailInput.value = "";
+                if (passInput) passInput.value = "";
                 syncAdminState();
-                showNotice("Signed Out", "Admin session မှ ထွက်ပြီးပါပြီ", "info");
+                showNotice("Signed Out", "Firebase session နှင့် saved login အချက်အလက်များကို ရှင်းလင်းပြီးပါပြီ", "info");
             });
 
             document.getElementById("sendAdminResetBtn")?.addEventListener("click", async () => {
@@ -2224,7 +2343,7 @@
                 }
             });
 
-            // Step 1 of Admin modal: verify key 'candy2026'
+            // Step 1: Verify Admin Access Key ('candy2026') and remember on Admin URLs
             document.getElementById("adminKeyForm")?.addEventListener("submit", (ev) => {
                 ev.preventDefault();
                 if (!isDedicatedAdminLink()) {
@@ -2237,17 +2356,22 @@
 
                 if (entered === ADMIN_KEY) {
                     isAdminKeyVerified = true;
+                    persistRememberedAdminKey(true);
                     if (errEl) {
                         errEl.textContent = "";
                         errEl.classList.add("hidden");
                     }
                     if (okEl) okEl.classList.remove("hidden");
                     syncAdminState();
-                    if (!isAdminUnlocked) {
+                    if (isAdminUnlocked) {
+                        closeModal("adminKeyModal");
+                        document.getElementById("adminStudioPanel")?.scrollIntoView({ behavior: "smooth" });
+                    } else {
                         document.getElementById("adminEmailInput")?.focus();
                     }
                 } else {
                     isAdminKeyVerified = false;
+                    persistRememberedAdminKey(false);
                     if (okEl) okEl.classList.add("hidden");
                     if (errEl) {
                         errEl.textContent = "Invalid Admin key";
@@ -2256,7 +2380,7 @@
                 }
             });
 
-            // Step 2 of Admin modal: Firebase Email & Password sign-in
+            // Step 2: Firebase Email & Password Sign-In with browserLocalPersistence
             document.getElementById("adminFirebaseLoginForm")?.addEventListener("submit", async (ev) => {
                 ev.preventDefault();
                 if (!isDedicatedAdminLink()) {
@@ -2269,6 +2393,7 @@
                     const typedKey = (document.getElementById("adminKeyInput")?.value || "").trim();
                     if (typedKey === ADMIN_KEY) {
                         isAdminKeyVerified = true;
+                        persistRememberedAdminKey(true);
                         document.getElementById("adminKeyVerifiedMsg")?.classList.remove("hidden");
                     } else {
                         if (keyErrEl) {
@@ -2281,6 +2406,7 @@
 
                 const email = (document.getElementById("adminEmailInput")?.value || "").trim();
                 const password = document.getElementById("adminPasswordInput")?.value || "";
+                const rememberCreds = Boolean(document.getElementById("rememberAdminCredsCheckbox")?.checked);
                 const errEl = document.getElementById("adminAuthErrorMsg");
                 const submitBtn = document.getElementById("adminFirebaseLoginSubmitBtn");
 
@@ -2291,8 +2417,10 @@
                 if (submitBtn) submitBtn.disabled = true;
 
                 try {
+                    await setPersistence(auth, browserLocalPersistence);
                     await signInWithEmailAndPassword(auth, email, password);
-                    if (document.getElementById("adminPasswordInput")) {
+                    saveRememberedAdminCreds(email, password, rememberCreds);
+                    if (!rememberCreds && document.getElementById("adminPasswordInput")) {
                         document.getElementById("adminPasswordInput").value = "";
                     }
                     closeModal("adminKeyModal");
@@ -2341,8 +2469,6 @@
                 draftDiaPrices.packages.push({ id: `d-${Date.now()}`, amount: "", price: 0 });
                 renderAdminDiaEditor();
             });
-            document.getElementById("saveDiaPricesBtn")?.addEventListener("click", saveDiaPrices);
-
             document.getElementById("addTgPremiumBtn")?.addEventListener("click", () => {
                 syncTgDraft();
                 draftTgPrices.premium.push({ id: `tgp-${Date.now()}`, label: "", price: 0 });
@@ -2353,7 +2479,7 @@
                 draftTgPrices.stars.push({ id: `tgs-${Date.now()}`, amount: "", price: 0 });
                 renderAdminTgEditor();
             });
-            document.getElementById("saveTgPricesBtn")?.addEventListener("click", saveTgPrices);
+            document.getElementById("saveAllRatesBtn")?.addEventListener("click", saveAllRates);
 
             document.getElementById("closeDetailModalBtn")?.addEventListener("click", () => closeModal("detailModal"));
             document.getElementById("detailModal")?.addEventListener("click", (ev) => {
@@ -2381,9 +2507,9 @@
             });
         }
 
-        // Initialize cleanly on every load/refresh: Admin unlocked is always false and Admin section stays hidden
+        // Initialize on load/refresh: never auto-open Admin modal/panel; restore remembered key & local auth persistence
+        isAdminKeyVerified = hasRememberedAdminKey();
         isAdminUnlocked = false;
-        isAdminKeyVerified = false;
         accounts = loadAccountsFromStorage();
         diaPrices = normalizeDia(readLocalJson(DIA_KEY, DEFAULT_DIA));
         draftDiaPrices = normalizeDia(diaPrices);
@@ -2392,10 +2518,19 @@
 
         bindEvents();
         showLanding();
+        hydrateAdminLoginInputs();
         syncAdminState();
+
+        setPersistence(auth, browserLocalPersistence).catch(() => {});
 
         onAuthStateChanged(auth, (user) => {
             currentFirebaseUser = user || null;
+            if (user?.email) {
+                const creds = loadRememberedAdminCreds();
+                if (creds.remember) {
+                    saveRememberedAdminCreds(user.email, creds.password, true);
+                }
+            }
             const statusEl = document.getElementById("adminSyncStatusText");
             if (statusEl) {
                 statusEl.textContent = user
