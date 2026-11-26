@@ -177,7 +177,17 @@
                     <span>@CandyGaming8</span>
                 </a>
 
-                <!-- Secret-Gated Admin Studio Toggle (hidden unless ?admin=candy2026 or #admin-candy2026 is present) -->
+                <!-- Discrete Admin Unlock Trigger (never auto-opens on initial load or refresh) -->
+                <button type="button"
+                        id="headerAdminGateBtn"
+                        aria-label="Unlock Admin"
+                        title="Unlock Admin"
+                        class="px-2.5 py-2 rounded-xl bg-white hover:bg-blush text-mauve hover:text-deepberry border border-roseberry/15 text-xs font-semibold cursor-pointer transition-all flex items-center gap-1">
+                    <i class="fa-solid fa-lock text-[11px]"></i>
+                    <span class="hidden md:inline">Admin</span>
+                </button>
+
+                <!-- Top Header Admin Studio Button (hidden on initial load until unlocked via modal) -->
                 <button type="button"
                         id="headerAdminToggleBtn"
                         class="hidden items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-950 border border-amber-300 text-xs font-bold cursor-pointer transition-all">
@@ -191,8 +201,8 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
 
-        <!-- SECRET-GATED ADMIN STUDIO (#adminPanelSection) -->
-        <section id="adminPanelSection" class="hidden boutique-panel rounded-3xl p-5 sm:p-8 space-y-6 border-2 border-roseberry/25">
+        <!-- SECRET-GATED ADMIN STUDIO (#adminPanelSection - strictly hidden on initial load & refresh) -->
+        <section id="adminPanelSection" style="display: none;" class="hidden boutique-panel rounded-3xl p-5 sm:p-8 space-y-6 border-2 border-roseberry/25">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-roseberry/15 pb-4">
                 <div class="space-y-1">
                     <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-xl bg-blush text-deepberry border border-roseberry/20 text-[11px] font-bold">
@@ -394,7 +404,7 @@
                             <span>Candy Official Gaming • MLBB Boutique</span>
                         </div>
 
-                        <!-- Balanced greeting typography (text-xl sm:text-3xl) -->
+                        <!-- Scaled greeting typography -->
                         <h1 class="text-xl sm:text-3xl font-bold editorial-font berry-title-gradient leading-snug">
                             Candy Gaming မှကြိုဆိုပါတယ်ရှင့်
                         </h1>
@@ -423,7 +433,7 @@
                         </div>
                     </div>
 
-                    <!-- Single clean photo showcase frame with no nested boxes, badges, or extra captions -->
+                    <!-- Single clean photo showcase frame using IMG_20261126_162338_994.jpg with clean fallback -->
                     <div class="w-full md:max-w-sm rounded-2xl overflow-hidden border border-roseberry/20 bg-white aspect-[16/10]">
                         <img src="IMG_20261126_162338_994.jpg"
                              alt="Candy Official Gaming"
@@ -550,6 +560,53 @@
         </div>
     </footer>
 
+    <!-- ADMIN UNLOCK MODAL (#adminUnlockModal - CLOSED BY DEFAULT WITH display: none; pointer-events: none;) -->
+    <div id="adminUnlockModal"
+         aria-hidden="true"
+         class="modal-backdrop fixed inset-0 z-50 items-center justify-center p-4 bg-plumink/60 backdrop-blur-2xs">
+        <div class="boutique-card rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl">
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 rounded-xl bg-blush border border-roseberry/20 flex items-center justify-center text-deepberry">
+                        <i class="fa-solid fa-key text-sm"></i>
+                    </div>
+                    <h3 class="text-lg font-bold editorial-font text-plumink">Admin Access</h3>
+                </div>
+                <button type="button"
+                        id="closeAdminUnlockModalBtn"
+                        aria-label="Close admin unlock modal"
+                        class="w-8 h-8 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 flex items-center justify-center cursor-pointer transition-all">
+                    <i class="fa-solid fa-xmark text-xs"></i>
+                </button>
+            </div>
+
+            <form id="adminUnlockForm" class="space-y-3">
+                <div>
+                    <label for="adminSecretCodeInput" class="block text-xs font-bold text-plumink mb-1">
+                        Secret Code
+                    </label>
+                    <input type="password"
+                           id="adminSecretCodeInput"
+                           autocomplete="off"
+                           placeholder="Enter secret code"
+                           class="w-full bg-alabaster border border-roseberry/20 focus:border-roseberry rounded-xl px-3.5 py-2 text-xs text-plumink focus:outline-none">
+                </div>
+                <p id="adminUnlockErrorMsg" class="hidden text-xs font-semibold text-deepberry"></p>
+                <div class="flex items-center gap-2 pt-1">
+                    <button type="submit"
+                            class="flex-1 py-2.5 px-4 rounded-xl berry-cta-btn text-xs font-bold cursor-pointer">
+                        Unlock Admin
+                    </button>
+                    <button type="button"
+                            id="cancelAdminUnlockBtn"
+                            class="px-4 py-2.5 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-xs font-bold cursor-pointer transition-all">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- ACCOUNT DETAIL MODAL (#detailModal - CLOSED BY DEFAULT WITH display: none; pointer-events: none;) -->
     <div id="detailModal"
          aria-hidden="true"
@@ -625,21 +682,22 @@
         let accounts = [];
         let visitCount = 0;
         let activeFilter = "ALL";
+        let isAdminUnlocked = false;
         let editorPhotoList = [];
         let sliderPhotoList = [];
         let sliderIndex = 0;
         let pendingConfirmCallback = null;
 
         /**
-         * Normalizes image paths to reference IMG_20261126_162338_994.jpg cleanly.
+         * Normalizes photo paths/URLs cleanly.
          */
-        function normalizePhotoRef(ref) {
-            const raw = String(ref ?? "").trim();
+        function normalizePhotoRef(src) {
+            const raw = String(src || "").trim();
             if (!raw) return "";
-            if (raw.includes("IMG_20261125_220821_646.png")) {
-                return raw.replace(/IMG_20261125_220821_646\.png/g, DEFAULT_BANNER_IMAGE);
+            if (/^https?:\/\//i.test(raw) || raw.startsWith("data:image/")) {
+                return raw;
             }
-            return raw;
+            return raw.replace(/^\.?\//, "");
         }
 
         /**
@@ -733,44 +791,27 @@
         }
 
         /**
-         * Checks whether ?admin=candy2026 or #admin-candy2026 is active.
+         * Applies strict admin visibility rules:
+         * - Always false/hidden on initial load & refresh.
+         * - Unlocks only after explicit click + valid "candy2026" code inside #adminUnlockModal.
          */
-        function isAdminSecretActive() {
-            try {
-                const params = new URLSearchParams(window.location.search);
-                if (params.get("admin") === ADMIN_CODE) return true;
-
-                const hashClean = (window.location.hash || "").replace(/^#/, "").trim();
-                if (
-                    hashClean === `admin-${ADMIN_CODE}` ||
-                    hashClean === `admin=${ADMIN_CODE}` ||
-                    hashClean === ADMIN_CODE
-                ) {
-                    return true;
-                }
-
-                const searchRaw = window.location.search || "";
-                const hashRaw = window.location.hash || "";
-                if (searchRaw.includes(`admin-${ADMIN_CODE}`) || hashRaw.includes(`admin-${ADMIN_CODE}`)) {
-                    return true;
-                }
-            } catch (_err) {
-                return false;
-            }
-            return false;
-        }
-
-        /**
-         * Immediately unlocks #adminPanelSection when ?admin=candy2026 or #admin-candy2026 is present.
-         */
-        function updateAdminGateUI() {
-            const unlocked = isAdminSecretActive();
+        function syncAdminVisibilityUI() {
             const panel = document.getElementById("adminPanelSection");
             const headerToggle = document.getElementById("headerAdminToggleBtn");
             const footerAdminBtn = document.getElementById("footerAdminBtn");
 
+            if (panel) {
+                if (isAdminUnlocked) {
+                    panel.style.display = "block";
+                    panel.classList.remove("hidden");
+                } else {
+                    panel.style.display = "none";
+                    panel.classList.add("hidden");
+                }
+            }
+
             if (headerToggle) {
-                if (unlocked) {
+                if (isAdminUnlocked) {
                     headerToggle.classList.remove("hidden");
                     headerToggle.classList.add("inline-flex");
                 } else {
@@ -780,7 +821,7 @@
             }
 
             if (footerAdminBtn) {
-                if (unlocked) {
+                if (isAdminUnlocked) {
                     footerAdminBtn.classList.remove("hidden");
                     footerAdminBtn.classList.add("inline-flex");
                 } else {
@@ -789,15 +830,48 @@
                 }
             }
 
-            if (panel) {
-                if (unlocked) {
-                    panel.classList.remove("hidden");
-                } else {
-                    panel.classList.add("hidden");
+            renderAdminTable();
+        }
+
+        /**
+         * Opens the explicit Admin unlock modal (#adminUnlockModal).
+         */
+        function openAdminUnlockModal() {
+            const input = document.getElementById("adminSecretCodeInput");
+            const errEl = document.getElementById("adminUnlockErrorMsg");
+            if (errEl) {
+                errEl.textContent = "";
+                errEl.classList.add("hidden");
+            }
+            if (input) {
+                input.value = "";
+            }
+            openModal("adminUnlockModal");
+            setTimeout(() => input?.focus(), 40);
+        }
+
+        /**
+         * Validates "candy2026" entered inside #adminUnlockModal and unlocks #adminPanelSection.
+         */
+        function handleAdminUnlockSubmit(event) {
+            event.preventDefault();
+            const input = document.getElementById("adminSecretCodeInput");
+            const errEl = document.getElementById("adminUnlockErrorMsg");
+            const entered = (input?.value || "").trim();
+
+            if (entered === ADMIN_CODE) {
+                isAdminUnlocked = true;
+                closeModal("adminUnlockModal");
+                syncAdminVisibilityUI();
+                document.getElementById("adminPanelSection")?.scrollIntoView({ behavior: "smooth" });
+            } else {
+                isAdminUnlocked = false;
+                syncAdminVisibilityUI();
+                if (errEl) {
+                    errEl.textContent = "Invalid secret code.";
+                    errEl.classList.remove("hidden");
                 }
             }
-
-            renderAdminTable();
         }
 
         /**
@@ -1366,13 +1440,12 @@
                         <td class="p-3 text-right whitespace-nowrap space-x-1.5">
                             <button type="button"
                                     data-edit-id="${escapeHtml(acc.id)}"
-                                    class="admin-edit-btn px-3 py-1 rounded-xl bg-white hover:bg-blush text-plumink border border-roseberry/20 text-[11px] font-bold cursor-pointer">
+                                    class="admin-edit-btn px-2.5 py-1.5 rounded-lg bg-blush hover:bg-petal text-deepberry border border-roseberry/20 text-[11px] font-bold cursor-pointer">
                                 Edit
                             </button>
                             <button type="button"
                                     data-delete-id="${escapeHtml(acc.id)}"
-                                    data-delete-title="${escapeHtml(acc.title || "Account")}"
-                                    class="admin-delete-btn px-3 py-1 rounded-xl bg-petal hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/25 text-[11px] font-bold cursor-pointer transition-colors">
+                                    class="admin-delete-btn px-2.5 py-1.5 rounded-lg bg-white hover:bg-roseberry text-deepberry hover:text-white border border-roseberry/25 text-[11px] font-bold cursor-pointer transition-colors">
                                 Delete
                             </button>
                         </td>
@@ -1390,31 +1463,30 @@
             tbody.querySelectorAll(".admin-delete-btn").forEach((btn) => {
                 btn.addEventListener("click", () => {
                     const id = btn.getAttribute("data-delete-id");
-                    const title = btn.getAttribute("data-delete-title") || "Account";
                     if (!id) return;
                     showConfirm(
-                        "Account ဖျက်ပစ်မည်လား?",
-                        `"${title}" ကို အပြီးဖျက်ပစ်လိုပါသလား?`,
-                        async () => {
-                            await removeAccount(id);
-                        }
+                        "MLBB Account ဖျက်ရန်",
+                        "ဤ MLBB Account ကို အပြီးဖျက်ရန် သေချာပါသလား?",
+                        () => removeAccount(id)
                     );
                 });
             });
         }
 
         /**
-         * Renders Admin photo thumbnails (up to MAX_PHOTOS = 15).
+         * Renders photo thumbnails in Admin form (up to MAX_PHOTOS = 15).
          */
         function renderEditorThumbnails() {
             const container = document.getElementById("adminPhotoThumbnails");
             const countLabel = document.getElementById("adminPhotoCountLabel");
-            if (countLabel) countLabel.textContent = `${editorPhotoList.length} / ${MAX_PHOTOS} Photos`;
-            if (!container) return;
+            if (!container || !countLabel) return;
 
-            if (!editorPhotoList.length) {
+            editorPhotoList = editorPhotoList.slice(0, MAX_PHOTOS);
+            countLabel.textContent = `${editorPhotoList.length} / ${MAX_PHOTOS} Photos`;
+
+            if (editorPhotoList.length === 0) {
                 container.innerHTML = `
-                    <span id="emptyPhotoThumbHint" class="text-xs text-mauve self-center mx-auto">
+                    <span class="text-xs text-mauve self-center mx-auto">
                         ဓာတ်ပုံ URL သို့မဟုတ် IMG_20261126_162338_994.jpg ထည့်နိုင်သလို ဓာတ်ပုံဖိုင်များလည်း ရွေးချယ်နိုင်ပါသည် (Max 15)
                     </span>
                 `;
@@ -1422,15 +1494,15 @@
             }
 
             container.innerHTML = editorPhotoList.map((src, idx) => `
-                <div class="relative w-20 h-16 rounded-xl overflow-hidden border border-roseberry/25 bg-white">
+                <div class="relative w-16 h-16 rounded-xl overflow-hidden border border-roseberry/25 bg-white flex-shrink-0">
                     <img src="${escapeHtml(src)}"
                          alt="Photo ${idx + 1}"
-                         onerror="this.onerror=null;this.src='https://placehold.co/160x120/fff2f4/be185d?text=IMG';"
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x120/fff2f4/be185d?text=IMG';"
                          class="w-full h-full object-cover">
                     <button type="button"
                             data-remove-photo-idx="${idx}"
-                            aria-label="Remove photo"
-                            class="remove-editor-photo-btn absolute top-1 right-1 w-5 h-5 rounded-lg bg-plumink/85 hover:bg-roseberry text-white text-[10px] flex items-center justify-center cursor-pointer">
+                            aria-label="Remove photo ${idx + 1}"
+                            class="remove-editor-photo-btn absolute top-0.5 right-0.5 w-5 h-5 rounded-md bg-plumink/85 hover:bg-roseberry text-white text-[10px] flex items-center justify-center cursor-pointer">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
@@ -1438,8 +1510,8 @@
 
             container.querySelectorAll(".remove-editor-photo-btn").forEach((btn) => {
                 btn.addEventListener("click", () => {
-                    const idx = Number(btn.getAttribute("data-remove-photo-idx") || -1);
-                    if (idx >= 0 && idx < editorPhotoList.length) {
+                    const idx = Number(btn.getAttribute("data-remove-photo-idx"));
+                    if (Number.isInteger(idx) && idx >= 0 && idx < editorPhotoList.length) {
                         editorPhotoList.splice(idx, 1);
                         renderEditorThumbnails();
                     }
@@ -1700,22 +1772,44 @@
                 });
             });
 
+            document.getElementById("headerAdminGateBtn")?.addEventListener("click", openAdminUnlockModal);
+            document.getElementById("closeAdminUnlockModalBtn")?.addEventListener("click", () => closeModal("adminUnlockModal"));
+            document.getElementById("cancelAdminUnlockBtn")?.addEventListener("click", () => closeModal("adminUnlockModal"));
+            document.getElementById("adminUnlockForm")?.addEventListener("submit", handleAdminUnlockSubmit);
+
             document.getElementById("headerAdminToggleBtn")?.addEventListener("click", () => {
+                if (!isAdminUnlocked) {
+                    openAdminUnlockModal();
+                    return;
+                }
                 const panel = document.getElementById("adminPanelSection");
                 if (!panel) return;
-                panel.classList.toggle("hidden");
-                if (!panel.classList.contains("hidden")) {
+                const currentlyShown = !panel.classList.contains("hidden") && panel.style.display !== "none";
+                if (currentlyShown) {
+                    panel.style.display = "none";
+                    panel.classList.add("hidden");
+                } else {
+                    panel.style.display = "block";
+                    panel.classList.remove("hidden");
                     panel.scrollIntoView({ behavior: "smooth" });
                 }
             });
 
             document.getElementById("footerAdminBtn")?.addEventListener("click", () => {
-                updateAdminGateUI();
+                if (!isAdminUnlocked) {
+                    openAdminUnlockModal();
+                    return;
+                }
+                syncAdminVisibilityUI();
                 document.getElementById("adminPanelSection")?.scrollIntoView({ behavior: "smooth" });
             });
 
             document.getElementById("collapseAdminBtn")?.addEventListener("click", () => {
-                document.getElementById("adminPanelSection")?.classList.add("hidden");
+                const panel = document.getElementById("adminPanelSection");
+                if (panel) {
+                    panel.style.display = "none";
+                    panel.classList.add("hidden");
+                }
             });
 
             document.getElementById("accPhotoFilesInput")?.addEventListener("change", handleAdminPhotoFiles);
@@ -1725,6 +1819,10 @@
 
             document.getElementById("closeDetailModalBtn")?.addEventListener("click", () => closeModal("detailModal"));
 
+            document.getElementById("adminUnlockModal")?.addEventListener("click", (ev) => {
+                if (ev.target === ev.currentTarget) closeModal("adminUnlockModal");
+            });
+
             document.getElementById("detailModal")?.addEventListener("click", (ev) => {
                 if (ev.target === ev.currentTarget) closeModal("detailModal");
             });
@@ -1733,11 +1831,11 @@
                 if (ev.target === ev.currentTarget) closeModal("noticeModal");
             });
 
-            window.addEventListener("hashchange", updateAdminGateUI);
             document.addEventListener("keydown", (ev) => {
                 if (ev.key === "Escape") {
                     closeModal("noticeModal");
                     closeModal("detailModal");
+                    closeModal("adminUnlockModal");
                 } else if (ev.key === "ArrowLeft" && document.getElementById("detailModal")?.classList.contains("is-open")) {
                     moveSlider(-1);
                 } else if (ev.key === "ArrowRight" && document.getElementById("detailModal")?.classList.contains("is-open")) {
@@ -1746,11 +1844,12 @@
             });
         }
 
-        // Initialize storefront UI, two-step navigation, secret admin gate & Firebase listeners
+        // Initialize storefront UI, two-step navigation, strict initial admin lock & Firebase listeners
+        isAdminUnlocked = false;
         accounts = loadLocalAccounts();
         bindAllListeners();
         goToLanding();
-        updateAdminGateUI();
+        syncAdminVisibilityUI();
         renderEditorThumbnails();
 
         onAuthStateChanged(auth, (user) => {
